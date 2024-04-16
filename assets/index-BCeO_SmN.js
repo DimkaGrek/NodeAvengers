@@ -185,4 +185,4 @@ Error generating stack: `+o.message+`
     background-repeat: no-repeat;
     background-position: left top;
     background-size: 100% 100%;
-`,Dg="Hello from NodeEvengers";function Ug(){return console.log(Dg),L.jsx(Ag,{children:L.jsx(s1,{children:L.jsxs(Sn,{path:"/",element:L.jsx(Pv,{}),children:[L.jsx(Sn,{path:"/first",element:L.jsx(_g,{})}),L.jsx(Sn,{path:"/second",element:L.jsx(Og,{}),children:L.jsx(Sn,{path:":half",element:L.jsx(Lg,{})})}),L.jsx(Sn,{path:"*",element:L.jsx(Mg,{})})]})})})}Lu.createRoot(document.getElementById("root")).render(L.jsx(v1,{basename:"/react_vite",children:L.jsx(Ug,{})}));
+`,Dg="Hello from NodeEvengers";function Ug(){return console.log(Dg),L.jsx(Ag,{children:L.jsx(s1,{children:L.jsxs(Sn,{path:"/",element:L.jsx(Pv,{}),children:[L.jsx(Sn,{path:"/first",element:L.jsx(_g,{})}),L.jsx(Sn,{path:"/second",element:L.jsx(Og,{}),children:L.jsx(Sn,{path:":half",element:L.jsx(Lg,{})})}),L.jsx(Sn,{path:"*",element:L.jsx(Mg,{})})]})})})}Lu.createRoot(document.getElementById("root")).render(L.jsx(v1,{basename:"/NodeEvengers",children:L.jsx(Ug,{})}));
