@@ -125,7 +125,7 @@ Error generating stack: `+o.message+`
   width: 40px;
   height: 40px;
   object-fit: cover;
-`,Pg="/react_vite/assets/example-DfzbkeJu.png",_g=()=>L.jsxs(kg,{children:[L.jsx(Eg,{children:"First Page"}),L.jsx(Cg,{src:Pg,alt:"Example"})]}),$g=Me.div`
+`,Pg="/NodeEvengers/assets/example-DfzbkeJu.png",_g=()=>L.jsxs(kg,{children:[L.jsx(Eg,{children:"First Page"}),L.jsx(Cg,{src:Pg,alt:"Example"})]}),$g=Me.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,7 +178,7 @@ Error generating stack: `+o.message+`
     0 0 20px #00baff,
     0 0 40px #00baff,
     0 0 80px #00baff;
-`,Mg=()=>L.jsx(Ig,{children:L.jsx(jg,{children:"404"})}),Fg="/react_vite/assets/background-TAuGcCrF.png",Ag=Me.div`
+`,Mg=()=>L.jsx(Ig,{children:L.jsx(jg,{children:"404"})}),Fg="/NodeEvengers/assets/background-TAuGcCrF.png",Ag=Me.div`
     width: 100%;
     height: 100vh;
     background-image: url(${Fg});
