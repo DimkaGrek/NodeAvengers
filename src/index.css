@@ -66,3 +66,31 @@ img {
   font-display: swap;
 }
 /* ------------------- */
+:root {
+  /* Background  */
+
+  --main-white-background: #fcfcfc;
+  --main-background-body-light-gray: #f6f6f7;
+  --main-background-button-olive: #bedbb0;
+  --main-background-button-violet: #5255bc;
+  --main-background-violet: #ecedfd;
+
+  /* Colors some elements  */
+
+  --main-black-dark-theme: #151515;
+  --main-black-dark-theme-another: #1f1f1f;
+  --main-black-dark-theme-another-two: #121212;
+
+  /* Color-Text  */
+
+  --main-black-text: #161616;
+  --main-white-text: #ffffff;
+  --main-violet-text: #5255bc;
+  --main-text-inside-input-dark-theme: #fff;
+
+  /* Color-priority-tasks */
+
+  --main-low-priority: #8fa1d0;
+  --main-medium-priority: #e09cb5;
+  --main-high-priority: #bedbb0;
+}
