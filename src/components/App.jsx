@@ -5,6 +5,7 @@ import AuthPage from "../pages/AuthPage/AuthPage";
 import HomePage from "../pages/HomePage/HomePage";
 import { PublicRoute, PrivateRoute } from "../routes";
 import SharedLayout from "./SharedLayout/SharedLayout";
+import { TestPage } from "../pages/TestPage/TestPage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/test" element={<TestPage />} />
         <Route path="*" element={<Navigate to="welcome" replace />} />
       </Route>
     </Routes>
