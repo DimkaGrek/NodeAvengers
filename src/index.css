@@ -72,9 +72,11 @@ html[data-theme="dark"] {
   --background-header: #161616;
   --background-sidebar: #121212;
   --background-main-content: #1f1f1f;
-  --color-text-white: #fff;
-  --color-text-gray: rgba(255, 255, 255, 0.5);
+  --color-text: #fff;
+  --color-text-50: rgba(255, 255, 255, 0.5);
+  --color-card-text-50: rgba(255, 255, 255, 0.5);
   --background-button: #bedbb0;
+  --background-hover-button: #9dc888;
   --background-input: #1f1f1f;
   --background-modal: #151515;
 
