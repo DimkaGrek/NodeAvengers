@@ -60,5 +60,9 @@
     <symbol id="icon-filter" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M29.334 4H2.667l10.667 12.613v8.72L18.667 28V16.613L29.334 4z"/>
     </symbol>
+    <symbol id="icon-close" viewBox="0 0 18 18">
+      <path d="M13.5 4.5L4.5 13.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.5 4.5L13.5 13.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
   </defs>
 </svg>
