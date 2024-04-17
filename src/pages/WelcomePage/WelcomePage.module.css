@@ -1,6 +1,10 @@
 .wrapper {
   height: 100vh;
-  background: linear-gradient(to bottom, #ffffff, #bedbb0);
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    rgb(190, 219, 176) 92.188%
+  );
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -9,7 +13,20 @@
   padding-right: 20px;
 }
 
-.link_registration {
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding-left: 147px;
+    padding-right: 148px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    padding-left: 483px;
+    padding-right: 484px;
+  }
+}
+
+.btn_registration {
   background-color: rgb(22, 22, 22);
   width: 100%;
   height: 49px;
@@ -19,6 +36,20 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 14px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767.99px) {
+  .btn_registration {
+    width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .btn_registration {
+    width: 344px;
+  }
 }
 
 .description {
@@ -26,15 +57,81 @@
   line-height: 18px;
   color: rgb(22, 22, 22);
   text-align: center;
-  letter-spacing: -2%;
+  letter-spacing: 0.02em;
   margin-bottom: 48px;
 }
+@media screen and (min-width: 375px) and (max-width: 767.99px) {
+  .description {
+    width: 335px;
+  }
+}
 
-.link_login {
+@media screen and (min-width: 768px) {
+  .description {
+    width: 473px;
+  }
+}
+.btn_login {
   color: rgb(22, 22, 22);
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
-  letter-spacing: -2%;
+  letter-spacing: 0.02em;
   text-align: center;
+  background-color: transparent;
+  max-width: 335px;
+}
+
+.logo_text {
+  color: rgb(22, 22, 22);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 42px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+  .logo_text {
+    font-size: 40px;
+    line-height: 60px;
+    letter-spacing: 0.04em;
+  }
+}
+
+.logo_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.userPhoto {
+  width: 124px;
+  height: 124px;
+  margin-bottom: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .userPhoto {
+    width: 162px;
+    height: 162px;
+    margin-bottom: 24px;
+  }
+}
+
+.icon {
+  border-radius: 8px;
+  background: rgb(22, 22, 22);
+  fill: white;
+  padding: 10px 12.5px;
+}
+
+@media screen and (min-width: 768px) {
+  .icon {
+    padding: 12px 15px;
+    width: 48px;
+    height: 48px;
+  }
 }

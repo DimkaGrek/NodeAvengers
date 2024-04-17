@@ -1,4 +1,4 @@
-import Icons from "./sprite.svg";
+import Icons from "../../assets/sprite.svg";
 
 // Example: <Icon id="logo" className="icon" size={20} />
 
