@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import s from "./Modal.module.css";
+import { Icon } from "../Icon/Icon";
 
 const modalRoot = document.querySelector("#modalRoot");
 
-export const Modal = ({ children, toggleModal }) => {
+export const Modal = ({ children, toggleModal, title }) => {
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.code === "Escape") {
@@ -29,11 +30,12 @@ export const Modal = ({ children, toggleModal }) => {
   };
 
   return ReactDOM.createPortal(
-    <div onClick={handleClickOnBackdrop} className={s.modalContent}>
+    <div onClick={handleClickOnBackdrop} className={s.modalWrapper}>
       <div className={s.modalContent}>
-        <button type="button" onClick={toggleModal}>
-          close
+        <button className={s.closeModalBtn} type="button" onClick={toggleModal}>
+          <Icon id="close" className={s.closeModalIcon} size={18} />
         </button>
+        <h2 className={s.modalTitle}>{title}</h2>
         {children}
       </div>
     </div>,
