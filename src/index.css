@@ -1,16 +1,14 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
 body {
-    background-color: #000;
-    /* background-image: url('./assets/background.png'); */
-    background-size: auto 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: #111111;
-    width: 100%;
-    height: 100vh;
-    margin: 0;
+  min-height: 100vh;
+  margin: 0;
+  /* background-color: rgb(60, 52, 74); */
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 h1,
 h2,
@@ -19,19 +17,52 @@ h4,
 h5,
 h6,
 p {
-    margin-top: 0;
+  margin: 0;
 }
-a {
-    text-decoration: none;
-}
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-img {
-    display: block;
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 button {
-    cursor: pointer;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fonts */
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-Medium.ttf") format("ttf");
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-SemiBold.ttf") format("ttf");
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+}
+/* ------------------- */
