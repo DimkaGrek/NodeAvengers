@@ -74,7 +74,7 @@ html[data-theme="dark"] {
   --background-main-content: #1f1f1f;
   --color-text: #fff;
   --color-text-50: rgba(255, 255, 255, 0.5);
-  --color-card-text-50: rgba(255, 255, 255, 0.5);
+  --color-card-text: rgba(255, 255, 255, 0.5);
   --background-button: #bedbb0;
   --background-hover-button: #9dc888;
   --background-input: #1f1f1f;
