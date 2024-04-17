@@ -66,27 +66,17 @@ img {
   font-display: swap;
 }
 /* ------------------- */
-:root {
-  /* Background  */
 
-  --main-white-background: #fcfcfc;
-  --main-background-body-light-gray: #f6f6f7;
-  --main-background-button-olive: #bedbb0;
-  --main-background-button-violet: #5255bc;
-  --main-background-violet: #ecedfd;
-
-  /* Colors some elements  */
-
-  --main-black-dark-theme: #151515;
-  --main-black-dark-theme-another: #1f1f1f;
-  --main-black-dark-theme-another-two: #121212;
-
-  /* Color-Text  */
-
-  --main-black-text: #161616;
-  --main-white-text: #ffffff;
-  --main-violet-text: #5255bc;
-  --main-text-inside-input-dark-theme: #fff;
+/* Dark theme */
+html[data-theme="dark"] {
+  --background-header: #161616;
+  --background-sidebar: #121212;
+  --background-main-content: #1f1f1f;
+  --color-text-white: #fff;
+  --color-text-gray: rgba(255, 255, 255, 0.5);
+  --background-button: #bedbb0;
+  --background-input: #1f1f1f;
+  --background-modal: #151515;
 
   /* Color-priority-tasks */
 
