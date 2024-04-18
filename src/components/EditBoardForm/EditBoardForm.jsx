@@ -1,11 +1,10 @@
 import { Formik, Form, Field } from 'formik';
 
 import Button from '../Button/Button';
-import { Icon } from '../Icon/Icon';
-import { AddButton } from '../AddButton/AddButton';
+import { AddButton, Icon } from 'components';
 
-import { getImages } from '../../helpers/getImages';
-import { Schema } from '../../schemas/EditBoardSchema';
+import { getImages } from '../../helpers';
+import { Schema } from '../../schemas';
 
 import s from './EditBoardForm.module.css';
 

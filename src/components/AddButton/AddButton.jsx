@@ -1,15 +1,16 @@
-import classNames from "classnames";
-import { Icon } from "../Icon/Icon";
+import classNames from 'classnames';
 
-import s from "./AddButton.module.css";
+import { Icon } from 'components';
 
-export const AddButton = ({ color = "dark", width, height, iconSize }) => {
-  const spanClass = (color) => {
+import s from './AddButton.module.css';
+
+export const AddButton = ({ color = 'dark', width, height, iconSize }) => {
+  const spanClass = color => {
     return classNames({
       [`${s.iconWrapper}`]: true,
-      [`${s.dark}`]: color === "dark",
-      [`${s.light}`]: color === "light",
-      [`${s.green}`]: color === "green",
+      [`${s.dark}`]: color === 'dark',
+      [`${s.light}`]: color === 'light',
+      [`${s.green}`]: color === 'green',
     });
   };
 
