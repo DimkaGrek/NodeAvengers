@@ -20,4 +20,7 @@
 }
 .green {
   background-color: rgb(190, 219, 176);
+  &:active {
+    background-color: rgb(157, 200, 136);
+  }
 }
