@@ -6,6 +6,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import { PublicRoute, PrivateRoute } from "../routes";
 import SharedLayout from "./SharedLayout/SharedLayout";
 import { TestPage } from "../pages/TestPage/TestPage";
+import TestCardPage from "../pages/TestCardPage/TestCardPage.jsx";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           }
         />
         <Route path="/test" element={<TestPage />} />
+        <Route path="/test-card" element={<TestCardPage />} />
         <Route path="*" element={<Navigate to="welcome" replace />} />
       </Route>
     </Routes>
