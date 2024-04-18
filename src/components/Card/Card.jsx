@@ -12,17 +12,19 @@ const Card = () => {
         trends in watch design.
       </p>
       <div className={s.cardDecorLine}></div>
-      <ul className={s.cardInfoTitlesWrapper}>
-        <li className={s.cardInfoTitle}>Priority</li>
-        <li className={s.cardInfoTitle}>Deadline</li>
-      </ul>
-      <ul className={s.cardInfoStatsWrapper}>
-        <li className={s.cardInfoPriority}>
-          <div className={s.cardInfoPriorityFlag}></div>
-          <p className={s.cardInfoPriorityText}>Without</p>
-        </li>
-        <li className={s.cardInfoDeadline}>12/05/2023</li>
-      </ul>
+      <div className={s.cardInfoWrapper}>
+        <ul className={s.cardInfoPriorityWrapper}>
+          <li className={s.cardInfoTitle}>Priority</li>
+          <li className={s.cardInfoPriority}>
+            <div className={s.cardInfoPriorityFlag}></div>
+            <p className={s.cardInfoPriorityText}>Without</p>
+          </li>
+        </ul>
+        <ul className={s.cardInfoDeadlineWrapper}>
+          <li className={s.cardInfoTitle}>Deadline</li>
+          <li className={s.cardInfoDeadline}>12/05/2023</li>
+        </ul>
+      </div>
       <div className={s.cardIconsWrapper}>
         <button>
           <Icon id="bell" className={s.cardIcon} size={16} />

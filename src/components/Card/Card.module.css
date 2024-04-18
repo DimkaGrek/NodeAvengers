@@ -45,10 +45,14 @@
   background-color: rgba(255, 255, 255, 0.1);
   margin-bottom: 14px;
 }
-.cardInfoTitlesWrapper {
+.cardInfoWrapper {
   display: flex;
-  gap: 23px;
-  margin-bottom: 4px;
+  gap: 14px;
+}
+.cardInfoPriorityWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 .cardInfoTitle {
   font-weight: 400;
@@ -56,10 +60,10 @@
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.5);
 }
-.cardInfoStatsWrapper {
+.cardInfoDeadlineWrapper {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  gap: 4px;
 }
 .cardInfoPriority {
   display: flex;
