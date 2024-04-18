@@ -1,8 +1,7 @@
 .cardWrapper {
   border-radius: 8px;
   width: 335px;
-  /* height: 154px; */
-  background: #121212;
+  background-color: #121212;
   padding: 14px 20px 14px 20px;
   position: relative;
 }
