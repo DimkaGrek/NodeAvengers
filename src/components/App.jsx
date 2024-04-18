@@ -1,11 +1,13 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import WelcomePage from "../pages/WelcomePage/WelcomePage";
-import AuthPage from "../pages/AuthPage/AuthPage";
-import HomePage from "../pages/HomePage/HomePage";
-import { PublicRoute, PrivateRoute } from "../routes";
-import SharedLayout from "./SharedLayout/SharedLayout";
-import { TestPage } from "../pages/TestPage/TestPage";
+import { PublicRoute, PrivateRoute } from '../routes';
+import SharedLayout from './SharedLayout/SharedLayout';
+import { TestPage } from '../pages/TestPage/TestPage';
+import { lazy } from 'react';
+
+const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
+const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
         />
         <Route path="/test" element={<TestPage />} />
         <Route path="*" element={<Navigate to="welcome" replace />} />
+        <Route path="/" element={<Navigate to="welcome" replace />} />
       </Route>
     </Routes>
   );
