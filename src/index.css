@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   margin: 0;
   /* background-color: rgb(60, 52, 74); */
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
 }
 h1,
@@ -44,23 +44,23 @@ img {
 
 /* Fonts */
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-Regular.ttf") format("ttf");
+  font-family: 'Poppins', sans-serif;
+  src: url('./assets/fonts/Poppins-Regular.ttf') format('ttf');
   font-weight: 400;
   font-stretch: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-Medium.ttf") format("ttf");
+  font-family: 'Poppins', sans-serif;
+  src: url('./assets/fonts/Poppins-Medium.ttf') format('ttf');
   font-weight: 500;
   font-stretch: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-SemiBold.ttf") format("ttf");
+  font-family: 'Poppins', sans-serif;
+  src: url('./assets/fonts/Poppins-SemiBold.ttf') format('ttf');
   font-weight: 600;
   font-stretch: normal;
   font-display: swap;
@@ -68,7 +68,7 @@ img {
 /* ------------------- */
 
 /* Dark theme */
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --background-header: #161616;
   --background-sidebar: #121212;
   --background-main-content: #1f1f1f;
@@ -85,4 +85,31 @@ html[data-theme="dark"] {
   --main-low-priority: #8fa1d0;
   --main-medium-priority: #e09cb5;
   --main-high-priority: #bedbb0;
+}
+
+/* Container */
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media only screen and (max-width: 375px) {
+  .container {
+    min-width: 320px;
+    max-width: 375px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    padding: 0 24px;
+  }
 }

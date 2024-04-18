@@ -1,13 +1,18 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import WelcomePage from "../pages/WelcomePage/WelcomePage";
-import AuthPage from "../pages/AuthPage/AuthPage";
-import HomePage from "../pages/HomePage/HomePage";
-import { PublicRoute, PrivateRoute } from "../routes";
-import SharedLayout from "./SharedLayout/SharedLayout";
-import { TestPage } from "../pages/TestPage/TestPage";
+import { PublicRoute, PrivateRoute } from '../routes';
+import { TestPage } from '../pages/TestPage/TestPage';
+import { lazy } from 'react';
+import SharedLayout from './SharedLayout/SharedLayout';
 
-function App() {
+const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
+const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+
+const App = () => {
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isLoggedIn = true;
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
@@ -45,8 +50,12 @@ function App() {
         />
         <Route path="/test" element={<TestPage />} />
         <Route path="*" element={<Navigate to="welcome" replace />} />
+        <Route
+          path="/"
+          element={<Navigate to={isLoggedIn ? 'home' : 'welcome'} replace />}
+        />
       </Route>
     </Routes>
   );
-}
+};
 export default App;
