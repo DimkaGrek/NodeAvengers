@@ -22,10 +22,12 @@ const SharedLayout = () => {
     <div className={s.layout}>
       <Header />
       <aside>Sidebar</aside>
-      <main className="container">
-        <Suspense fallback={null}>
-          <Outlet />
-        </Suspense>
+      <main>
+        <div>
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
+        </div>
       </main>
     </div>
   );
