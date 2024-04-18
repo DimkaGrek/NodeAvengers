@@ -7,7 +7,7 @@ export const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (!isLoggedIn) {
-    return <Navigate to="/auth/login" state={{ from: location }} />;
+    return <Navigate to="/welcome" state={{ from: location }} />;
   }
 
   return children;
