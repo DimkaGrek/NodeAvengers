@@ -1,0 +1,84 @@
+.cardWrapper {
+  border-radius: 8px;
+  width: 335px;
+  height: 154px;
+  background: #121212;
+  padding: 14px 20px 14px 20px;
+  position: relative;
+}
+.cardWrapper::before {
+  content: "";
+  width: 4px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px 0 0 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.cardTitle {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.cardDescr {
+  height: 30px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* start showing ellipsis when 2rd line is reached */
+  white-space: pre-wrap; /* let the text wrap preserving spaces */
+
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1, 3%;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.5);
+
+  margin-bottom: 20px;
+}
+.cardDecorLine {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 14px;
+}
+.cardInfoTitlesWrapper {
+  display: flex;
+  gap: 23px;
+  margin-bottom: 4px;
+}
+.cardInfoTitle {
+  font-weight: 400;
+  font-size: 8px;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.5);
+}
+.cardInfoStatsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cardInfoPriority {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cardInfoPriorityFlag {
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.cardInfoPriorityText {
+  font-size: 10px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.cardInfoDeadline {
+  font-size: 10px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
