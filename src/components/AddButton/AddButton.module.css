@@ -1,5 +1,5 @@
 .iconWrapper {
-  padding: 2px;
+  padding: 7px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -19,8 +19,14 @@
   stroke: rgb(18, 18, 18);
 }
 .green {
+  padding: 8px 10px;
   background-color: rgb(190, 219, 176);
   &:active {
+    background-color: rgb(157, 200, 136);
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .green:hover {
     background-color: rgb(157, 200, 136);
   }
 }

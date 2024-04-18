@@ -76,6 +76,11 @@
     background-color: rgb(157, 200, 136);
   }
 }
+@media only screen and (min-width: 1440px) {
+  .button:hover {
+    background-color: rgb(157, 200, 136);
+  }
+}
 @media only screen and (max-width: 375px) {
   .button {
     width: 90%;
