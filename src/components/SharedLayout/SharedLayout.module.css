@@ -1,0 +1,53 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+header {
+  height: 60px;
+  background-color: #161616;
+}
+
+main {
+  flex: 1;
+  background-color: #1f1f1f;
+  height: auto;
+}
+
+@media only screen and (min-width: 768px) {
+  header {
+    height: 68px;
+  }
+}
+
+aside {
+  display: none;
+  background-color: #121212;
+}
+
+@media only screen and (min-width: 1440px) {
+  .layout {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-areas:
+      'aside head'
+      'aside  main';
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 68px 1fr;
+  }
+
+  .layout header {
+    grid-area: head;
+  }
+
+  .layout aside {
+    display: flex;
+    grid-area: aside;
+  }
+
+  .layout main {
+    grid-area: main;
+  }
+}
