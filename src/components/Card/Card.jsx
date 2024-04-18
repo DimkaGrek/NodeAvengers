@@ -1,3 +1,4 @@
+import { Icon } from "../Icon/Icon.jsx";
 import s from "./Card.module.css";
 
 const Card = () => {
@@ -22,6 +23,24 @@ const Card = () => {
         </li>
         <li className={s.cardInfoDeadline}>12/05/2023</li>
       </ul>
+      <div className={s.cardIconsWrapper}>
+        <button>
+          <Icon id="bell" className={s.cardIcon} size={16} />
+        </button>
+        <button>
+          <Icon
+            id="arrow-circle-broken-right"
+            className={s.cardIcon}
+            size={16}
+          />
+        </button>
+        <button>
+          <Icon id="pencil" className={s.cardIcon} size={16} />
+        </button>
+        <button>
+          <Icon id="trash" className={s.cardIcon} size={16} />
+        </button>
+      </div>
     </div>
   );
 };
