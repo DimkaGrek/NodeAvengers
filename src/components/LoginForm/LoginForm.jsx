@@ -1,30 +1,20 @@
-import Button from "../../components/Button/Button";
-import s from "./LoginForm.module.css";
-import { useState } from "react";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import { Icon } from "../Icon/Icon";
-import { Link, useNavigate } from "react-router-dom";
+import Button from '../../components/Button/Button';
+import s from './LoginForm.module.css';
+import { useState } from 'react';
+import { Formik, Form, Field } from 'formik';
 
-const LoginFormShema = Yup.object().shape({
-  password: Yup.string()
-    .min(8, "Your password should be 8 or more characters.")
-    .max(64, "Your password should not be more than 64 characters.")
-    .matches(/^\S*$/, "Your password should not contain spaces.")
-    .required("This field is required."),
-  email: Yup.string()
-    .matches(
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}$/,
-      "Email is not valid."
-    )
-    .required("This field is required."),
-});
+import { Icon } from '../Icon/Icon';
+import { Link, useNavigate } from 'react-router-dom';
+import { LoginFormShema } from '../../schemas/LoginSchema';
+import { loginThunk } from '../../redux/auth/operations';
+import { useDispatch } from 'react-redux';
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const passVisibility = () => {
-    setShowPass((prevState) => !prevState);
+    setShowPass(prevState => !prevState);
   };
   return (
     <div className={s.form_wrapper}>
@@ -36,13 +26,13 @@ export const LoginForm = () => {
       </div>
       <Formik
         initialValues={{
-          password: "",
-          email: "",
+          password: '',
+          email: '',
         }}
         validationSchema={LoginFormShema}
-        onSubmit={(values) => {
-          // same shape as initial values
-          console.log(values);
+        onSubmit={values => {
+          dispatch(loginThunk(values));
+          navigate('/home');
         }}
       >
         {({ errors, touched }) => (
@@ -57,7 +47,7 @@ export const LoginForm = () => {
               <Field
                 placeholder="Confirm a password"
                 name="password"
-                type={showPass ? "text" : "password"}
+                type={showPass ? 'text' : 'password'}
               />
               {errors.password && touched.password ? (
                 <div className={s.input_error}>{errors.password}</div>
@@ -74,11 +64,7 @@ export const LoginForm = () => {
                 )}
               </Button>
             </div>
-            <Button
-              className={s.btn_submit}
-              type="submit"
-              onClick={() => navigate("/home")}
-            >
+            <Button className={s.btn_submit} type="submit">
               Log In Now
             </Button>
           </Form>

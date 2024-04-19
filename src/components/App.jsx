@@ -5,6 +5,7 @@ import { TestPage } from '../pages/TestPage/TestPage';
 import { lazy } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
 import DashboardPage from '../pages/DashboardPage/DashboardPage.jsx';
+// import VerifyPage from '../pages/VerifyPage/VerifyPage';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/home/:boardName" element={<DashboardPage />} />
         <Route path="/test" element={<TestPage />} />
+        {/* <Route path="/auth/verifyLogin/:messageCode" element={<VerifyPage />} /> */}
         <Route path="*" element={<Navigate to="welcome" replace />} />
         <Route path="/" element={<Navigate to="welcome" replace />} />
         {/* <Route
