@@ -23,11 +23,9 @@ const SharedLayout = () => {
       <Header />
       <aside>Sidebar</aside>
       <main>
-        <div>
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
-        </div>
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </main>
     </div>
   );

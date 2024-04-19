@@ -26,7 +26,12 @@ export const EditBoardForm = ({ isEdit = false }) => {
       {({ errors, touched, setFieldValue }) => (
         <Form className={s.form}>
           <div className={s.wrapper}>
-            <Field type="text" name="title" placeholder="Title" />
+            <Field
+              type="text"
+              name="title"
+              placeholder="Title"
+              className={s.titleField}
+            />
             {errors.title && touched.title ? (
               <p className={s.descrError}>{errors.title}</p>
             ) : null}
