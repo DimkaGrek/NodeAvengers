@@ -6,7 +6,7 @@
   position: relative;
 }
 .cardWrapper::before {
-  content: "";
+  content: '';
   width: 4px;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.3);
@@ -23,7 +23,7 @@
   margin-bottom: 8px;
 }
 .cardDescr {
-  height: 30px;
+  height: 29px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;

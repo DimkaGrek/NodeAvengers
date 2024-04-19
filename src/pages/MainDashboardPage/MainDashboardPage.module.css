@@ -1,0 +1,24 @@
+.topWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.boardTitle {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: transparent;
+}
+.filterIcon {
+  stroke: #fff;
+  stroke-opacity: 0.8;
+}
