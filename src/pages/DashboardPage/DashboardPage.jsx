@@ -3,8 +3,9 @@ import { AddButton } from '../../components/AddButton/AddButton.jsx';
 import DashboardHeader from '../../components/DashboardHeader/DashboardHeader.jsx';
 import { useState } from 'react';
 import { Icon } from '../../components/Icon/Icon.jsx';
+import Card from '../../components/Card/Card.jsx';
 
-const MainDashboardPage = () => {
+const DashboardPage = () => {
   const [isAddColBtn, setIsAddColBtn] = useState(false);
 
   const emptyBoardAddButtonTitle = 'Add column';
@@ -35,9 +36,20 @@ const MainDashboardPage = () => {
             </button>
           </div>
         </div>
+
+        <div className={s.cardsContainer}>
+          <Card />
+          <Card />
+          <Card />
+        </div>
+
+        <button className={s.addCardBtn}>
+          <AddButton color="dark" width={28} height={28} iconSize={14} />
+          Add another card
+        </button>
       </div>
     </div>
   );
 };
 
-export default MainDashboardPage;
+export default DashboardPage;

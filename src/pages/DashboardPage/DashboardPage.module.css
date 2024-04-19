@@ -12,6 +12,10 @@
   letter-spacing: -0.02em;
   color: #fff;
 }
+
+.columnContainer {
+  margin-bottom: 60px;
+}
 .columnTitleWrapper {
   padding: 0 20px;
   display: flex;
@@ -21,6 +25,7 @@
   width: 335px;
   height: 56px;
   background-color: #121212;
+  margin-bottom: 14px;
 }
 .columnTitle {
   font-weight: 500;
@@ -39,4 +44,20 @@
 .columnTitleIcon {
   stroke: white;
   stroke-opacity: 0.5;
+}
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.addCardBtn {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  border-radius: 8px;
+  width: 335px;
+  height: 56px;
+  background-color: #bedbb0;
 }
