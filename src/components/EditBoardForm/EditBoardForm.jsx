@@ -77,7 +77,7 @@ export const EditBoardForm = ({ isEdit = false }) => {
             </ul>
           </div>
           <Button type="submit" className={s.button}>
-            {!isEdit && <AddButton width={28} height={28} iconSize={18} />}
+            {!isEdit && <AddButton width={28} height={28} iconSize={10} />}
             Create
           </Button>
         </Form>
