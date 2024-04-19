@@ -92,17 +92,80 @@ input {
 /* ------------------- */
 
 /* Dark theme */
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --background-header: #161616;
   --background-sidebar: #121212;
   --background-main-content: #1f1f1f;
   --color-text: #fff;
   --color-text-50: rgba(255, 255, 255, 0.5);
+  --color-text-80: rgba(255, 255, 255, 0.8);
   --color-card-text: rgba(255, 255, 255, 0.5);
+  --color-text-list-theme: rgba(255, 255, 255, 0.5);
+  --color-text-list-theme-hover: #bedbb0;
+  --background-list-theme: #151515;
   --background-button: #bedbb0;
   --background-hover-button: #9dc888;
   --background-input: #1f1f1f;
   --background-modal: #151515;
+  --text-inside-sidebar: #ffffff;
+  --user-image-default-background: #1f1f1f;
+  --stroke-svg-user-default: #151515;
+  --scroll-color: RGB(255, 255, 255, 0.1);
+  /* Color-priority-tasks */
+
+  --main-low-priority: #8fa1d0;
+  --main-medium-priority: #e09cb5;
+  --main-high-priority: #bedbb0;
+}
+
+/* Light theme */
+html[data-theme="light"] {
+  --background-header: #fcfcfc;
+  --background-sidebar: #ffffff;
+  --background-main-content: #f6f6f7;
+  --color-text: #161616;
+  --color-text-50: rgba(22, 22, 22, 0.5);
+  --color-text-80: rgba(22, 22, 22, 0.8);
+  --color-card-text: rgba(22, 22, 22, 0.7);
+  --color-text-list-theme: #161616;
+  --color-text-list-theme-hover: #bedbb0;
+  --background-list-theme: #fcfcfc;
+  --background-button: #bedbb0;
+  --background-hover-button: #9dc888;
+  --background-input: #ffffff;
+  --background-modal: #ffffff;
+  --text-inside-sidebar: #161616;
+  --user-image-default-background: #f6f6f7;
+  --stroke-svg-user-default: #ffffff;
+  --scroll-color: #e8e8e8;
+
+  /* Color-priority-tasks */
+
+  --main-low-priority: #8fa1d0;
+  --main-medium-priority: #e09cb5;
+  --main-high-priority: #bedbb0;
+}
+
+/* Violet theme */
+html[data-theme="violet"] {
+  --background-header: #ffffff;
+  --background-sidebar: #5255bc;
+  --background-main-content: #f6f6f7;
+  --color-text: #161616;
+  --color-text-50: rgba(22, 22, 22, 0.5);
+  --color-text-80: rgba(22, 22, 22, 0.8);
+  --color-card-text: rgba(22, 22, 22, 0.7);
+  --color-text-list-theme: #161616;
+  --color-text-list-theme-hover: #bedbb0;
+  --background-list-theme: #ecedfd;
+  --background-button: #bedbb0;
+  --background-hover-button: #9dc888;
+  --background-input: #ffffff;
+  --background-modal: #5255bc;
+  --text-inside-sidebar: #ffffff;
+  --user-image-default-background: #ecedfd;
+  --stroke-svg-user-default: #ffffff;
+  --scroll-color: #b8bcfd;
 
   /* Color-priority-tasks */
 

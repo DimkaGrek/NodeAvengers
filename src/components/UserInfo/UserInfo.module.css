@@ -1,0 +1,34 @@
+.wrapperUserBar {
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.userName {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.avatarUserBox {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  background-color: var(--user-image-default-background);
+}
+
+.defaultUserSvg {
+  stroke: var(--stroke-svg-user-default);
+  fill: var(--stroke-svg-user-default);
+}
+
+.buttonUserBar {
+  background-color: var(--user-image-default-background);
+}
