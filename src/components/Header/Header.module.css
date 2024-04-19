@@ -1,0 +1,118 @@
+.sectionStyleHeader {
+  width: 100%;
+  height: 68px;
+  background-color: var(--background-header);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 1440px) {
+  .sectionStyleHeader {
+    justify-content: flex-end;
+  }
+}
+
+.burgerButton {
+  background-color: var(--background-header);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  margin-left: 20px;
+}
+
+@media only screen and (min-width: 1440px) {
+  .burgerButton {
+    display: none;
+  }
+}
+
+.burgerIconStyles {
+  stroke: var(--color-text);
+}
+
+.textThemeStyle {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--color-text-80);
+}
+
+.buttonDropDown {
+  background-color: var(--background-header);
+  cursor: pointer;
+  width: 16px;
+  height: 17px;
+  margin-right: 14px;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.dropIconStyles {
+  fill: none;
+  stroke: var(--color-text);
+}
+
+.wrapperDrop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: var(--background-header);
+}
+
+.listDrop {
+  display: flex;
+  gap: 4px;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid #bedbb0;
+  border-radius: 8px;
+  width: 100px;
+  height: 107px;
+  padding: 14px 44px 14px 14px;
+  background-color: var(--background-list-theme);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: auto;
+  transform: translateY(8px);
+  opacity: 1;
+  transition: opacity 1.3s ease;
+  z-index: 999;
+}
+
+.listNone {
+  opacity: 0;
+  position: fixed;
+  visibility: hidden;
+}
+
+.itemTheme {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--color-text-list-theme);
+}
+
+.buttonItem {
+  background-color: var(--background-list-theme);
+  &:hover {
+    color: var(--color-text-list-theme-hover);
+  }
+  &:focus {
+    color: var(--color-text-list-theme-hover);
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
