@@ -1,0 +1,32 @@
+.pageWrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  width: 320px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px; /* 133.333% */
+  letter-spacing: 0.02em;
+}
+
+@media only screen and (min-width: 768px) {
+  .text {
+    width: 471px;
+    font-size: 14px;
+    line-height: 18px; /* 128.571% */
+  }
+}
+
+.highlightedText {
+  color: #bedbb0;
+  cursor: pointer;
+}
+
+.highlightedText:hover {
+  text-decoration: underline;
+}
