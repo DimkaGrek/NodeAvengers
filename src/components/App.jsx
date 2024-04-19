@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { PublicRoute, PrivateRoute } from '../routes';
+// import { PublicRoute, PrivateRoute } from '../routes';
 import { TestPage } from '../pages/TestPage/TestPage';
 import { lazy } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
-import MainDashboardPage from '../pages/MainDashboardPage/MainDashboardPage.jsx';
+import DashboardPage from '../pages/DashboardPage/DashboardPage.jsx';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/auth/:id" element={<AuthPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/home/:boardName" element={<MainDashboardPage />} />
+        <Route path="/home/:boardName" element={<DashboardPage />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="*" element={<Navigate to="welcome" replace />} />
         <Route path="/" element={<Navigate to="welcome" replace />} />
