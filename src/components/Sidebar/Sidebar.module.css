@@ -1,0 +1,260 @@
+.SidebarBlock {
+  display: flex;
+  flex-direction: column;
+  width: 225px;
+  height: 100vh;
+  padding: 14px;
+
+  background-color: var(--background-sidebar);
+  color: var(--color-text);
+
+  @media (min-width: 768px) {
+    width: 260px;
+    padding: 24px;
+  }
+  @media (max-width: 1439px) {
+    /* display: none; */
+  }
+  &.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+.TitleHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.SvgLightning {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  border-radius: 6px;
+  fill: var(--background-sidebar);
+  background-color: black;
+  fill: white;
+}
+.NavLogo {
+  display: flex;
+  align-items: center;
+}
+.Title {
+  color: var(--color-text);
+  text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.64px;
+}
+.Section {
+  padding-top: 70px;
+  padding-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+  }
+}
+.MyBoardTitle {
+  margin-bottom: 8px;
+  color: var(--color-text-50);
+  /* color: red; */
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: -0.24px;
+}
+.BoardTitleBlock {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-color);
+  border-bottom: 1px solid var(--line-color);
+
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+}
+.ButtonAdd {
+  width: 40px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 10px 8px;
+  border-radius: 6px;
+  border: none;
+
+  background-color: var(--background-button);
+  &:hover {
+    background-color: var(--background-hover-button);
+  }
+}
+.SvgPlus {
+  stroke: green;
+  fill: red;
+}
+.MainBoard {
+  padding: 0;
+  margin: 40px -14px 0 -14px;
+  max-height: 130px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--background-button);
+    border-radius: 4px 0px 0px 4px;
+    height: 61px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 40px -24px 0 -24px;
+  }
+}
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  &.active {
+    color: var(--board_main_color);
+    background-color: var(--board_active_bgc);
+
+    div {
+      display: flex;
+    }
+    p {
+      color: var(--text-inside-sidebar);
+    }
+    svg {
+      stroke: var(--text-inside-sidebar);
+    }
+  }
+}
+.BoardList {
+  display: flex;
+  font-weight: 500;
+
+  align-items: center;
+  letter-spacing: -0.28px;
+  margin-bottom: 4px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.TitleBoard {
+  display: flex;
+  align-items: center;
+  svg {
+    stroke: var(--color-text);
+    fill: transparent;
+    margin-right: 8px;
+    margin-left: 24px;
+  }
+}
+.BoardTitle {
+  color: var(--color-text);
+}
+.BoardIcons {
+  /* display: none; */
+  margin-left: auto;
+  margin-right: 20px;
+}
+.ButtonIcon {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin-right: 8px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.EditIcon {
+  width: 16px;
+  height: 16px;
+
+  stroke: var(--color-text-50);
+  opacity: 0.5;
+  fill: transparent;
+}
+.NeedHelpBlock {
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-top: auto;
+
+  padding: 20px;
+  background-color: var(--background-help);
+  color: var(--nav_main_color);
+  @media screen and (max-width: 768px) {
+    padding: 14px;
+  }
+}
+.Flower {
+  margin-bottom: 14px;
+  display: block;
+}
+.HelpContent {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.24px;
+  color: var(--text-inside-sidebar);
+  > span {
+    color: var(--main-high-priority);
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+  }
+}
+
+.NeedHelpButton {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  margin-top: 20px;
+  padding: 0;
+
+  color: var(--text-inside-sidebar);
+}
+.SvgHelp {
+  stroke: var(--text-inside-sidebar);
+  fill: rgba(0, 0, 0, 0);
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.LogoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: none;
+
+  color: var(--text-inside-sidebar);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: transparent;
+  padding: 0;
+}
+
+.SvgLogout {
+  stroke: red;
+  &:hover {
+    stroke: black;
+  }
+}

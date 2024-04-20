@@ -92,7 +92,7 @@ input {
 /* ------------------- */
 
 /* Dark theme */
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --background-header: #161616;
   --background-sidebar: #121212;
   --background-main-content: #1f1f1f;
@@ -107,6 +107,7 @@ html[data-theme="dark"] {
   --background-hover-button: #9dc888;
   --background-input: #1f1f1f;
   --background-modal: #151515;
+  --background-help: #1f1f1f;
   --text-inside-sidebar: #ffffff;
   --user-image-default-background: #1f1f1f;
   --stroke-svg-user-default: #151515;
@@ -119,7 +120,7 @@ html[data-theme="dark"] {
 }
 
 /* Light theme */
-html[data-theme="light"] {
+html[data-theme='light'] {
   --background-header: #fcfcfc;
   --background-sidebar: #ffffff;
   --background-main-content: #f6f6f7;
@@ -134,6 +135,7 @@ html[data-theme="light"] {
   --background-hover-button: #9dc888;
   --background-input: #ffffff;
   --background-modal: #ffffff;
+  --background-help: #f6f6f7;
   --text-inside-sidebar: #161616;
   --user-image-default-background: #f6f6f7;
   --stroke-svg-user-default: #ffffff;
@@ -147,7 +149,7 @@ html[data-theme="light"] {
 }
 
 /* Violet theme */
-html[data-theme="violet"] {
+html[data-theme='violet'] {
   --background-header: #ffffff;
   --background-sidebar: #5255bc;
   --background-main-content: #f6f6f7;
@@ -162,6 +164,7 @@ html[data-theme="violet"] {
   --background-hover-button: #9dc888;
   --background-input: #ffffff;
   --background-modal: #5255bc;
+  --background-help: rgba(236, 237, 253, 0.4);
   --text-inside-sidebar: #ffffff;
   --user-image-default-background: #ecedfd;
   --stroke-svg-user-default: #ffffff;
