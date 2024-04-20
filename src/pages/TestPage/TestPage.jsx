@@ -1,5 +1,5 @@
+import { ColumnForm } from '../../components/ColumnForm/ColumnForm';
 import { Modal } from '../../components/Modal/Modal';
-import { NeedHelpForm } from '../../components/NeedHelpForm/NeedHelpForm';
 import { useModal } from '../../hooks/useModal';
 
 export const TestPage = () => {
@@ -14,8 +14,8 @@ export const TestPage = () => {
         Open modal
       </button>
       {isModal && (
-        <Modal toggleModal={toggleIsModal} title="Need help">
-          <NeedHelpForm />
+        <Modal toggleModal={toggleIsModal} title="Add column">
+          <ColumnForm />
         </Modal>
       )}
     </>
