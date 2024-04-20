@@ -1,0 +1,35 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+  .form {
+    width: 352px;
+  }
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.comment {
+  height: 100%;
+  position: relative;
+}
+
+.commentWrapper {
+  height: 120px;
+}
+
+.descrError {
+  position: absolute;
+  color: #f16b6b;
+  text-align: left;
+  font-size: 10px;
+  padding-left: 14px;
+}
