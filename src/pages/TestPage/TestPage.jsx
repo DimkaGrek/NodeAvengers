@@ -1,6 +1,6 @@
-import { EditBoardForm } from "../../components/EditBoardForm/EditBoardForm";
-import { Modal } from "../../components/Modal/Modal";
-import { useModal } from "../../hooks/useModal";
+import { Modal } from '../../components/Modal/Modal';
+import { NeedHelpForm } from '../../components/NeedHelpForm/NeedHelpForm';
+import { useModal } from '../../hooks/useModal';
 
 export const TestPage = () => {
   const [isModal, toggleIsModal] = useModal();
@@ -8,14 +8,14 @@ export const TestPage = () => {
   return (
     <>
       <button
-        style={{ backgroundColor: "blue", padding: "10px" }}
+        style={{ backgroundColor: 'blue', padding: '10px' }}
         onClick={toggleIsModal}
       >
         Open modal
       </button>
       {isModal && (
-        <Modal toggleModal={toggleIsModal} title="New board">
-          <EditBoardForm />
+        <Modal toggleModal={toggleIsModal} title="Need help">
+          <NeedHelpForm />
         </Modal>
       )}
     </>
