@@ -114,3 +114,7 @@ input {
 .icon {
   fill: rgba(255, 255, 255, 0.3);
 }
+
+.description_google {
+  color: #ffffff;
+}

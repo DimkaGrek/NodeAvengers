@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { SignupSchema } from '../../schemas/RegisterSchema';
 import { registerThunk } from '../../redux/auth/operations';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 export const RegisterForm = () => {
@@ -37,12 +36,13 @@ export const RegisterForm = () => {
         </div>
         <Formik
           initialValues={{
-            firstName: '',
+            name: '',
             password: '',
             email: '',
           }}
           validationSchema={SignupSchema}
           onSubmit={async data => {
+            console.log(data);
             await dispatch(registerThunk(data))
               .unwrap()
               .then()
@@ -54,14 +54,13 @@ export const RegisterForm = () => {
         >
           {({ errors, touched }) => (
             <Form className={s.form}>
+              <Link to="https://nodeavengers-back.onrender.com/api/auth/google">
+                LINK GOGLE{' '}
+              </Link>
               <div>
-                <Field
-                  name="firstName"
-                  placeholder="Enter your name"
-                  type="text"
-                />
-                {errors.firstName && touched.firstName ? (
-                  <div className={s.input_error}>{errors.firstName}</div>
+                <Field name="name" placeholder="Enter your name" type="text" />
+                {errors.name && touched.name ? (
+                  <div className={s.input_error}>{errors.name}</div>
                 ) : null}
               </div>
               <div>

@@ -1,8 +1,13 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { loginThunk, verifyLoginThunk, registerThunk } from './operations';
+import {
+  loginThunk,
+  verifyLoginThunk,
+  registerThunk,
+  logoutThunk,
+} from './operations';
 
 const initialState = {
-  sid: null,
+  id: null,
   accessToken: null,
   refreshToken: null,
   isLoggedIn: false,
@@ -17,17 +22,20 @@ const slice = createSlice({
     builder
       .addCase(
         loginThunk.fulfilled,
-        (state, { payload: { sid, accessToken, refreshToken } }) => {
-          state.sid = sid;
+        (state, { payload: { user, accessToken, refreshToken } }) => {
+          state.id = user.id;
           state.accessToken = accessToken;
           state.refreshToken = refreshToken;
           state.isLoggedIn = true;
         }
       )
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
+      })
       .addCase(
         verifyLoginThunk.fulfilled,
-        (state, { payload: { sid, accessToken, refreshToken } }) => {
-          state.sid = sid;
+        (state, { payload: { id, accessToken, refreshToken } }) => {
+          state.id = id;
           state.accessToken = accessToken;
           state.refreshToken = refreshToken;
           state.isLoggedIn = true;
@@ -37,7 +45,8 @@ const slice = createSlice({
         isAnyOf(
           registerThunk.pending,
           loginThunk.pending,
-          verifyLoginThunk.pending
+          verifyLoginThunk.pending,
+          logoutThunk.pending
         ),
         state => {
           state.isLoading = true;
@@ -48,7 +57,8 @@ const slice = createSlice({
         isAnyOf(
           registerThunk.fulfilled,
           loginThunk.fulfilled,
-          verifyLoginThunk.fulfilled
+          verifyLoginThunk.fulfilled,
+          logoutThunk.fulfilled
         ),
         state => {
           state.isLoading = false;
@@ -58,7 +68,8 @@ const slice = createSlice({
         isAnyOf(
           loginThunk.rejected,
           registerThunk.rejected,
-          verifyLoginThunk.rejected
+          verifyLoginThunk.rejected,
+          logoutThunk.rejected
         ),
         (state, { payload }) => {
           state.error = payload;
@@ -67,7 +78,7 @@ const slice = createSlice({
       );
   },
   selectors: {
-    selectSid: state => state.sid,
+    selectId: state => state.id,
     selectAccessToken: state => state.accessToken,
     selectRefreshToken: state => state.refreshToken,
     selectIsLoggedIn: state => state.isLoggedIn,
@@ -79,7 +90,7 @@ const slice = createSlice({
 export const authReducer = slice.reducer;
 
 export const {
-  selectSid,
+  selectId,
   selectAccessToken,
   selectRefreshToken,
   selectIsLoggedIn,
