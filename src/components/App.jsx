@@ -22,12 +22,9 @@ const App = () => {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/auth/:id" element={<AuthPage />} />
         <Route path="/home" element={<HomePage />} />
-<<<<<<< Updated upstream
         <Route path="/home/:boardName" element={<DashboardPage />} />
-=======
         {/* <Route path="/sidebar" element={<Sidebar />} /> */}
         <Route path="/home/:boardName" element={<h2>ScreensPage</h2>} />
->>>>>>> Stashed changes
         <Route path="/test" element={<TestPage />} />
         {/* <Route path="/auth/verifyLogin/:messageCode" element={<VerifyPage />} /> */}
         <Route path="*" element={<Navigate to="welcome" replace />} />
