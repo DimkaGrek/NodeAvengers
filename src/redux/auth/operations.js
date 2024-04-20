@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api, setToken } from '../../api/api';
+import { api, clearToken, setToken } from '../../api/api';
 
 export const registerThunk = createAsyncThunk(
   'register',
@@ -35,12 +35,23 @@ export const loginThunk = createAsyncThunk(
 );
 
 export const verifyLoginThunk = createAsyncThunk(
-  'auth/verifyLogin',
-  async (credentials, thunkAPI) => {
+  'verifyLogin',
+  async (token, thunkAPI) => {
     try {
-      const { data } = await api.post('auth/verifyLogin', credentials);
-      console.log(data);
+      const { data } = await api.post('/auth/verifyLogin', { token });
       return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logoutThunk = createAsyncThunk(
+  'logout',
+  async (refreshToken, thunkAPI) => {
+    try {
+      await api.post('/auth/logout', refreshToken);
+      clearToken();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
