@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { TestPage } from '../pages/TestPage/TestPage';
 import { lazy } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
+import DashboardPage from '../pages/DashboardPage/DashboardPage.jsx';
 // import VerifyPage from '../pages/VerifyPage/VerifyPage';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
@@ -20,7 +21,7 @@ const App = () => {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/auth/:id" element={<AuthPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/home/:boardName" element={<h2>ScreensPage</h2>} />
+        <Route path="/home/:boardName" element={<DashboardPage />} />
         <Route path="/test" element={<TestPage />} />
         {/* <Route path="/auth/verifyLogin/:messageCode" element={<VerifyPage />} /> */}
         <Route path="*" element={<Navigate to="welcome" replace />} />
