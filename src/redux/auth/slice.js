@@ -4,6 +4,7 @@ import {
   verifyLoginThunk,
   registerThunk,
   logoutThunk,
+  refreshThunk,
 } from './operations';
 
 const initialState = {
@@ -41,12 +42,22 @@ const slice = createSlice({
           state.isLoggedIn = true;
         }
       )
+      .addCase(
+        refreshThunk.fulfilled,
+        (state, { payload: { user, accessToken, refreshToken } }) => {
+          state.id = user.id;
+          state.accessToken = accessToken;
+          state.refreshToken = refreshToken;
+          state.isLoggedIn = true;
+        }
+      )
       .addMatcher(
         isAnyOf(
           registerThunk.pending,
           loginThunk.pending,
           verifyLoginThunk.pending,
-          logoutThunk.pending
+          logoutThunk.pending,
+          refreshThunk.pending
         ),
         state => {
           state.isLoading = true;
@@ -69,7 +80,8 @@ const slice = createSlice({
           loginThunk.rejected,
           registerThunk.rejected,
           verifyLoginThunk.rejected,
-          logoutThunk.rejected
+          logoutThunk.rejected,
+          refreshThunk.rejected
         ),
         (state, { payload }) => {
           state.error = payload;
