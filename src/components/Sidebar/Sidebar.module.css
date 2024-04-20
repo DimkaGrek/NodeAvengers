@@ -195,7 +195,7 @@
   margin-top: auto;
 
   padding: 20px;
-  background-color: var(--background-main-content);
+  background-color: var(--background-help);
   color: var(--nav_main_color);
   @media screen and (max-width: 768px) {
     padding: 14px;
