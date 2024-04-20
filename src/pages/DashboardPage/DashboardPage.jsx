@@ -6,16 +6,25 @@ import CardsColumn from '../../components/CardsColumn/CardsColumn.jsx';
 import AddColumnButton from '../../components/AddColumnButton/AddColumnButton.jsx';
 
 const DashboardPage = () => {
-  const [isAddColBtn, setIsAddColBtn] = useState(true);
+  const [сardsColumns, setCardsColumns] = useState([]);
+
+  const handleAddColumn = () => {
+    setCardsColumns([
+      ...сardsColumns,
+      <CardsColumn key={сardsColumns.length} />,
+    ]);
+  };
 
   return (
     <div className="container">
       <DashboardHeader />
 
       <div className={s.columnsContainer}>
-        <CardsColumn />
-        <CardsColumn />
-        {isAddColBtn && <AddColumnButton />}
+        {сardsColumns.map((column, index) => (
+          <div key={index}>{column}</div>
+        ))}
+
+        <AddColumnButton handleAddColumn={handleAddColumn} />
       </div>
     </div>
   );
