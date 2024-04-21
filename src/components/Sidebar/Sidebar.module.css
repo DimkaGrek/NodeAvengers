@@ -1,4 +1,4 @@
-.SidebarBlock {
+.sideBarBlock {
   display: flex;
   flex-direction: column;
   width: 225px;
@@ -6,7 +6,7 @@
   padding: 14px;
 
   background-color: var(--background-sidebar);
-  color: var(--color-text);
+  color: var(--text-inside-sidebar);
 
   @media (min-width: 768px) {
     width: 260px;
@@ -25,7 +25,7 @@
   }
 }
 
-.TitleHidden {
+.titleHidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -38,43 +38,39 @@
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-.SvgLightning {
-  width: 32px;
-  height: 32px;
+.svgLightning {
   margin-right: 8px;
   border-radius: 6px;
   fill: var(--background-sidebar);
-  background-color: black;
-  fill: white;
+  background-color: var(--background-main-content);
 }
-.NavLogo {
+.navLogo {
   display: flex;
   align-items: center;
 }
-.Title {
-  color: var(--color-text);
+.title {
+  color: var(--text-inside-sidebar);
   text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: -0.64px;
 }
-.Section {
+.section {
   padding-top: 70px;
   padding-bottom: 20px;
   @media screen and (min-width: 768px) {
     padding-top: 60px;
   }
 }
-.MyBoardTitle {
+.myBoardTitle {
   margin-bottom: 8px;
-  color: var(--color-text-50);
-  /* color: red; */
+  color: var(--text-inside-sidebar-50);
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   letter-spacing: -0.24px;
 }
-.BoardTitleBlock {
+.boardTitleBlock {
   display: flex;
   gap: 50px;
   align-items: center;
@@ -86,25 +82,26 @@
   font-weight: 500;
   letter-spacing: -0.28px;
 }
-.ButtonAdd {
+.buttonAdd {
   width: 40px;
   height: 36px;
   display: flex;
   align-items: center;
-  padding: 10px 8px;
+  padding: 10px 10px;
   border-radius: 6px;
   border: none;
 
-  background-color: var(--background-button);
+  background-color: var(--background-main-content);
+  /* background-color: red; */
   &:hover {
     background-color: var(--background-hover-button);
   }
 }
-.SvgPlus {
-  stroke: green;
+.svgPlus {
   fill: red;
+  stroke: red;
 }
-.MainBoard {
+.mainBoard {
   padding: 0;
   margin: 40px -14px 0 -14px;
   max-height: 130px;
@@ -123,11 +120,12 @@
     margin: 40px -24px 0 -24px;
   }
 }
-.Nav {
+.nav {
   display: flex;
   justify-content: space-between;
   width: 100%;
   height: 60px;
+  align-items: center;
   &.active {
     color: var(--board_main_color);
     background-color: var(--board_active_bgc);
@@ -143,7 +141,7 @@
     }
   }
 }
-.BoardList {
+.boardList {
   display: flex;
   font-weight: 500;
 
@@ -154,7 +152,7 @@
     margin-bottom: 0;
   }
 }
-.TitleBoard {
+.titleBoard {
   display: flex;
   align-items: center;
   svg {
@@ -164,15 +162,20 @@
     margin-left: 24px;
   }
 }
-.BoardTitle {
-  color: var(--color-text);
+.svgProject {
+  fill: red;
+  stroke: red;
+  background-color: green;
 }
-.BoardIcons {
+.boardTitle {
+  color: var(--text-inside-sidebar);
+}
+.boardIcons {
   /* display: none; */
   margin-left: auto;
   margin-right: 20px;
 }
-.ButtonIcon {
+.buttonIcon {
   outline: none;
   border: none;
   background-color: transparent;
@@ -181,37 +184,34 @@
     margin-right: 0;
   }
 }
-.EditIcon {
-  width: 16px;
-  height: 16px;
-
-  stroke: var(--color-text-50);
-  opacity: 0.5;
-  fill: transparent;
+.editIcon {
+  fill: red;
+  stroke: red;
+  background-color: green;
 }
-.NeedHelpBlock {
+.needHelpBlock {
   border-radius: 8px;
   margin-bottom: 24px;
   margin-top: auto;
 
   padding: 20px;
   background-color: var(--background-help);
-  color: var(--nav_main_color);
+  color: var(--text-inside-sidebar);
   @media screen and (max-width: 768px) {
     padding: 14px;
   }
 }
-.Flower {
+.flower {
   margin-bottom: 14px;
   display: block;
 }
-.HelpContent {
+.helpContent {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: -0.24px;
   color: var(--text-inside-sidebar);
   > span {
-    color: var(--main-high-priority);
+    color: var(--span-color);
   }
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -220,25 +220,25 @@
   }
 }
 
-.NeedHelpButton {
+.needHelpButton {
   display: flex;
   align-items: center;
   background-color: transparent;
   border: none;
   margin-top: 20px;
   padding: 0;
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
 
   color: var(--text-inside-sidebar);
 }
-.SvgHelp {
+.svgHelp {
   stroke: var(--text-inside-sidebar);
   fill: rgba(0, 0, 0, 0);
-  width: 20px;
-  height: 20px;
   margin-right: 8px;
 }
 
-.LogoutBtn {
+.logoutBtn {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -252,9 +252,8 @@
   padding: 0;
 }
 
-.SvgLogout {
+.svgLogout {
   stroke: red;
-  &:hover {
-    stroke: black;
-  }
+  fill: red;
+  background-color: #fff;
 }
