@@ -69,10 +69,7 @@ const App = () => {
             }
           />
           <Route path="/test" element={<TestPage />} />
-          <Route
-            path="/auth/verifyLogin/:messageCode"
-            element={<VerifyPage />}
-          />
+          <Route path="/verifyLogin/:messageCode" element={<VerifyPage />} />
           <Route path="*" element={<Navigate to="welcome" replace />} />
           <Route path="/" element={<Navigate to="welcome" replace />} />
         </Route>
