@@ -15,9 +15,9 @@ export const getBoards = createAsyncThunk(
 
 export const getBoard = createAsyncThunk(
   'boards/getBoard',
-  async (_id, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const { data } = await api.get(`/board/${_id}`);
+      const { data } = await api.get(`/board/${id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -36,6 +36,18 @@ export const editBoard = createAsyncThunk(
         userId,
       });
       return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteBoard = createAsyncThunk(
+  'boads/deleteBoard',
+  async (id, thunkAPI) => {
+    try {
+      await api.delete(`/board/${id}`);
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

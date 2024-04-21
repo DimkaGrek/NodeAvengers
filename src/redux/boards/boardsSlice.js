@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { editBoard, getBoard, getBoards } from './boardsOperations';
+import {
+  deleteBoard,
+  editBoard,
+  getBoard,
+  getBoards,
+} from './boardsOperations';
 
 const initialState = {
   boards: [],
@@ -22,6 +27,22 @@ const boardsSlice = createSlice({
       })
       .addCase(editBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;
+      })
+      .addCase(deleteBoard.fulfilled, (state, { payload }) => {
+        const board = state.boards.find(item => item._id === payload);
+        const index = state.boards.findIndex(board => board._id === payload);
+
+        if (board._id === state.currentBoard._id) {
+          if (index === 0) {
+            state.boards.splice(index, 1);
+            state.currentBoard = state.boards[0];
+          } else {
+            state.currentBoard = state.boards[index - 1];
+            state.boards.splice(index, 1);
+          }
+        } else {
+          state.boards.splice(index, 1);
+        }
       });
   },
   selectors: {
