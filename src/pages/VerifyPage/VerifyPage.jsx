@@ -4,7 +4,7 @@ import {
   resendEmailThunk,
   verifyLoginThunk,
 } from '../../redux/auth/operations';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../../components/Button/Button';
 import { toast } from 'react-toastify';
 import s from './VerifyPage.module.css';
@@ -30,7 +30,7 @@ const VerifyPage = () => {
   const dispatch = useDispatch();
   const { messageCode } = useParams();
   const [searchParams] = useSearchParams();
-
+  const [isVerified, setIsVerified] = useState(false);
   const token = searchParams.get('token');
 
   useEffect(() => {
@@ -39,21 +39,24 @@ const VerifyPage = () => {
         await dispatch(verifyLoginThunk(token))
           .unwrap()
           .then(() => {
-            toast.success(`Verification and log in success.`);
-            navigate('/home');
+            if (!isVerified) {
+              toast.success(`Verification and log in success.`);
+              navigate('/home');
+              setIsVerified(true);
+            }
           });
       }
     };
 
     verifyLogin();
-  }, [dispatch, token, navigate]);
+  }, [dispatch, token, navigate, isVerified]);
 
   return (
     <>
       {' '}
       {messageCode === '1' ? (
         <Loader />
-      ) : messageCode === '2' ? (
+      ) : messageCode === '2' && !isVerified ? (
         <div className={s.error_wrapper}>
           <div className={s.inside_wrapper}>
             {' '}
@@ -75,7 +78,6 @@ const VerifyPage = () => {
                   .catch(error => {
                     toast.error(error);
                   });
-                console.log(data);
               }}
             >
               {({ errors, touched }) => (
@@ -91,7 +93,6 @@ const VerifyPage = () => {
                       <div className={s.input_error}>{errors.email}</div>
                     ) : null}
                   </div>
-
                   <Button className={s.resend_btn} type="submit">
                     Resend
                   </Button>
@@ -101,6 +102,7 @@ const VerifyPage = () => {
           </div>
         </div>
       ) : null}
+      {messageCode === '2' && !isVerified && navigate('/auth/login')}
     </>
   );
 };
