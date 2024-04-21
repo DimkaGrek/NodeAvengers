@@ -77,3 +77,14 @@ export const logoutThunk = createAsyncThunk(
     }
   }
 );
+
+export const resendEmailThunk = createAsyncThunk(
+  'resendEmail',
+  async (credentials, thunkAPI) => {
+    try {
+      await api.post('/auth/resendEmail', credentials);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

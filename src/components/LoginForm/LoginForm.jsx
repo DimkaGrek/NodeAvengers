@@ -38,14 +38,6 @@ export const LoginForm = () => {
         {({ errors, touched }) => (
           <Form className={s.form}>
             <div>
-              <p className={s.description_google}>
-                You can log in with your Google Account:
-              </p>
-            </div>
-            <Link to="https://nodeavengers-back.onrender.com/api/auth/google">
-              LINK GOOGLE
-            </Link>
-            <div>
               <Field name="email" type="email" placeholder="Enter your email" />
               {errors.email && touched.email ? (
                 <div className={s.input_error}>{errors.email}</div>
@@ -78,6 +70,18 @@ export const LoginForm = () => {
           </Form>
         )}
       </Formik>
+      <div className={s.wrapper_google}>
+        <p className={s.description_google}>
+          You can log in with your Google Account:
+        </p>
+        <Link
+          to="https://nodeavengers-back.onrender.com/api/auth/google"
+          className={s.google_link}
+        >
+          <Icon id="google" size={18} />
+          Google
+        </Link>
+      </div>
     </div>
   );
 };

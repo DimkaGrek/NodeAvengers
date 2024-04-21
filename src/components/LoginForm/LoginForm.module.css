@@ -66,6 +66,7 @@ input {
   line-height: 21px;
   letter-spacing: 0.02em;
   transition: background-color 250ms ease;
+  margin-bottom: 10px;
 }
 
 .btn_submit:hover,
@@ -115,6 +116,45 @@ input {
   fill: rgba(255, 255, 255, 0.3);
 }
 
+.wrapper_google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .description_google {
   color: #ffffff;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.wrapper_google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.google_link {
+  background-color: #ffffff;
+  height: 40px;
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 14px;
+  gap: 10px;
+  transition: background-color 250ms ease;
+}
+
+.google_link:hover,
+.google_link:focus {
+  background-color: rgb(157, 200, 136);
 }
