@@ -6,8 +6,10 @@ export const getBoards = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await api.get('/board/');
+      console.log('REQUEST', data);
       return data;
     } catch (error) {
+      console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
