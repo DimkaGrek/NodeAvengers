@@ -158,3 +158,102 @@ input {
 .google_link:focus {
   background-color: rgb(157, 200, 136);
 }
+
+/**
+  |============================
+  | 
+  |============================
+*/
+
+.error_wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.resend_btn {
+  height: 49px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 14px;
+  transition: background-color 250ms ease;
+  background: rgb(190, 219, 176);
+}
+.resend_btn:hover,
+.resend_btn:focus {
+  background-color: rgb(157, 200, 136);
+}
+
+.error_title {
+  color: #ffffff;
+  text-align: center;
+}
+
+.input_field {
+  box-sizing: border-box;
+  border: 1px solid rgb(190, 219, 176);
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  background: rgb(31, 31, 31);
+  opacity: 0.4;
+  width: 100%;
+  height: 49px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  outline: none;
+  transition: opacity 250ms ease;
+}
+
+.input_field:hover,
+.input_field:focus {
+  opacity: 1;
+  color: #ffffff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.input_error {
+  color: #f16b6b;
+  text-align: left;
+  font-size: 10px;
+  margin-top: 3px;
+  padding-left: 14px;
+}
+
+.inside_wrapper_verify {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 8px;
+  background: rgb(21, 21, 21, 0.5);
+  padding: 24px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 767.99px) {
+  .inside_wrapper_verify {
+    width: 335px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .inside_wrapper_verify {
+    width: 424px;
+    padding: 40px;
+  }
+}
