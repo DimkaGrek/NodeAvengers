@@ -13,6 +13,7 @@ const initialState = {
   accessToken: null,
   refreshToken: null,
   isLoggedIn: false,
+  isRefreshing: false,
   error: null,
   isLoading: false,
 };
@@ -43,6 +44,12 @@ const slice = createSlice({
           state.isLoggedIn = true;
         }
       )
+      .addCase(refreshThunk.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshThunk.rejected, state => {
+        state.isRefreshing = false;
+      })
       .addCase(
         refreshThunk.fulfilled,
         (state, { payload: { user, accessToken, refreshToken } }) => {
@@ -50,16 +57,17 @@ const slice = createSlice({
           state.accessToken = accessToken;
           state.refreshToken = refreshToken;
           state.isLoggedIn = true;
+          state.isRefreshing = false;
         }
       )
+
       .addMatcher(
         isAnyOf(
           resendEmailThunk.pending,
           registerThunk.pending,
           loginThunk.pending,
           verifyLoginThunk.pending,
-          logoutThunk.pending,
-          refreshThunk.pending
+          logoutThunk.pending
         ),
         state => {
           state.isLoading = true;
@@ -72,8 +80,7 @@ const slice = createSlice({
           registerThunk.fulfilled,
           loginThunk.fulfilled,
           verifyLoginThunk.fulfilled,
-          logoutThunk.fulfilled,
-          refreshThunk.fulfilled
+          logoutThunk.fulfilled
         ),
         state => {
           state.isLoading = false;
@@ -101,6 +108,7 @@ const slice = createSlice({
     selectIsLoggedIn: state => state.isLoggedIn,
     selectError: state => state.error,
     selectIsLoading: state => state.isLoading,
+    selectIsRefreshing: state => state.isRefreshing,
   },
 });
 
@@ -113,4 +121,5 @@ export const {
   selectIsLoggedIn,
   selectError,
   selectIsLoading,
+  selectIsRefreshing,
 } = slice.selectors;
