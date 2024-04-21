@@ -4,14 +4,13 @@ import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 
 import { Icon } from '../Icon/Icon';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { LoginFormShema } from '../../schemas/LoginSchema';
 import { loginThunk } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const passVisibility = () => {
     setShowPass(prevState => !prevState);
@@ -32,7 +31,6 @@ export const LoginForm = () => {
         validationSchema={LoginFormShema}
         onSubmit={data => {
           dispatch(loginThunk(data));
-          navigate('/home');
         }}
       >
         {({ errors, touched }) => (
