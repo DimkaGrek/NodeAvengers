@@ -20,9 +20,9 @@ export const loginThunk = createAsyncThunk(
   'login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await api.post('/auth/login', credentials);
-      setToken(data.accessToken);
-      return data;
+      const response = await api.post('/auth/login', credentials);
+      setToken(response.data.accessToken);
+      return response.data;
     } catch (error) {
       if (error.request.status === 403) {
         return thunkAPI.rejectWithValue(
@@ -48,6 +48,7 @@ export const verifyLoginThunk = createAsyncThunk(
 
 export const refreshThunk = createAsyncThunk('refresh', async (_, thunkAPI) => {
   const { auth } = thunkAPI.getState();
+
   const refreshToken = auth.refreshToken;
 
   if (!refreshToken) {
@@ -55,7 +56,7 @@ export const refreshThunk = createAsyncThunk('refresh', async (_, thunkAPI) => {
   }
 
   try {
-    const { data } = await api.post('/auth/refresh', refreshToken);
+    const { data } = await api.post('/auth/refresh', { refreshToken });
 
     setToken(data.accessToken);
 
