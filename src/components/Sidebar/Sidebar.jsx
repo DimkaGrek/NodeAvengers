@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useTheme } from '../../hooks/useTheme';
 import s from './Sidebar.module.css';
-import { Icon } from '../Icon/Icon';
+import { Icon } from 'components';
 import flower from '../../assets/images/flower.png';
 import { AddButton } from '../AddButton/AddButton';
 import { useDispatch, useSelector } from 'react-redux';
