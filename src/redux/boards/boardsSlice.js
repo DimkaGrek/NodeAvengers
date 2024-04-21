@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  addBoard,
   deleteBoard,
   editBoard,
   getBoard,
@@ -21,6 +22,10 @@ const boardsSlice = createSlice({
       .addCase(getBoards.fulfilled, (state, { payload }) => {
         state.boards = payload;
         state.currentBoard = payload[0];
+      })
+      .addCase(addBoard.fulfilled, (state, { payload }) => {
+        state.boards.push(payload);
+        state.currentBoard = payload;
       })
       .addCase(getBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;

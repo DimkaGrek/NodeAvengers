@@ -13,6 +13,18 @@ export const getBoards = createAsyncThunk(
   }
 );
 
+export const addBoard = createAsyncThunk(
+  'boards/addBoard',
+  async (board, thunkAPI) => {
+    try {
+      const { data } = await api.post(`/board/`, board);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getBoard = createAsyncThunk(
   'boards/getBoard',
   async (id, thunkAPI) => {
