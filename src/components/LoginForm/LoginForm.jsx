@@ -30,13 +30,21 @@ export const LoginForm = () => {
           email: '',
         }}
         validationSchema={LoginFormShema}
-        onSubmit={values => {
-          dispatch(loginThunk(values));
+        onSubmit={data => {
+          dispatch(loginThunk(data));
           navigate('/home');
         }}
       >
         {({ errors, touched }) => (
           <Form className={s.form}>
+            <div>
+              <p className={s.description_google}>
+                You can log in with your Google Account:
+              </p>
+            </div>
+            <Link to="https://nodeavengers-back.onrender.com/api/auth/google">
+              LINK GOOGLE
+            </Link>
             <div>
               <Field name="email" type="email" placeholder="Enter your email" />
               {errors.email && touched.email ? (
