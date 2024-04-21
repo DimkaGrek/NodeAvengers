@@ -69,7 +69,8 @@ const slice = createSlice({
           registerThunk.fulfilled,
           loginThunk.fulfilled,
           verifyLoginThunk.fulfilled,
-          logoutThunk.fulfilled
+          logoutThunk.fulfilled,
+          refreshThunk.fulfilled
         ),
         state => {
           state.isLoading = false;
