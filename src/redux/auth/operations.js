@@ -49,14 +49,13 @@ export const verifyLoginThunk = createAsyncThunk(
 export const refreshThunk = createAsyncThunk('refresh', async (_, thunkAPI) => {
   const { auth } = thunkAPI.getState();
   const refreshToken = auth.refreshToken;
+
   if (!refreshToken) {
     return thunkAPI.rejectWithValue('No refresh token.');
   }
-  // document.cookie = `refreshToken=${refreshToken}; Max-Age=2592000; Path=/; Expires=Mon, 20 May 2024 21:26:36 GMT; HttpOnly`;
-  try {
-    setToken(refreshToken);
 
-    const { data } = await api.get('/auth/refresh');
+  try {
+    const { data } = await api.post('/auth/refresh', refreshToken);
 
     setToken(data.accessToken);
 
