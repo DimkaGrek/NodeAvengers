@@ -13,6 +13,8 @@ const CardsColumn = () => {
     setAddCard([...addCard, <Card key={addCard.length} />]);
   };
 
+  const addCardButtonLabel = !addCard.length ? 'Add card' : 'Add another card';
+
   return (
     <div className={s.singleColumnWrapper}>
       <div className={s.columnTitleWrapper}>
@@ -35,7 +37,7 @@ const CardsColumn = () => {
 
       <button className={s.addCardBtn} onClick={handleAddCardButton}>
         <AddButton color="dark" width={28} height={28} iconSize={14} />
-        Add another card
+        {addCardButtonLabel}
       </button>
     </div>
   );
