@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from 'components/Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
 
 import s from './SharedLayout.module.css';
 
@@ -21,7 +22,7 @@ const SharedLayout = () => {
   return (
     <div className={s.layout}>
       <Header />
-      <aside>Sidebar</aside>
+      <Sidebar />
       <main>
         <Suspense fallback={null}>
           <Outlet />
