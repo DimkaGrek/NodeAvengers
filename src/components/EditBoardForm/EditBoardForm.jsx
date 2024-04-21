@@ -14,7 +14,7 @@ export const EditBoardForm = ({ isEdit = false }) => {
   return (
     <Formik
       initialValues={{
-        title: '',
+        name: '',
         icon: 0,
         backgroundImage: 0,
       }}
@@ -28,12 +28,12 @@ export const EditBoardForm = ({ isEdit = false }) => {
           <div className={s.wrapper}>
             <Field
               type="text"
-              name="title"
+              name="name"
               placeholder="Title"
               className={s.titleField}
             />
-            {errors.title && touched.title ? (
-              <p className={s.descrError}>{errors.title}</p>
+            {errors.name && touched.name ? (
+              <p className={s.descrError}>{errors.name}</p>
             ) : null}
           </div>
           <div className={s.wrapper}>

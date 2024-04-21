@@ -5,6 +5,7 @@ import {
   registerThunk,
   logoutThunk,
   refreshThunk,
+  resendEmailThunk,
 } from './operations';
 
 const initialState = {
@@ -53,6 +54,7 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
+          resendEmailThunk.pending,
           registerThunk.pending,
           loginThunk.pending,
           verifyLoginThunk.pending,
@@ -66,10 +68,12 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
+          resendEmailThunk.fulfilled,
           registerThunk.fulfilled,
           loginThunk.fulfilled,
           verifyLoginThunk.fulfilled,
-          logoutThunk.fulfilled
+          logoutThunk.fulfilled,
+          refreshThunk.fulfilled
         ),
         state => {
           state.isLoading = false;
@@ -77,6 +81,7 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
+          resendEmailThunk.rejected,
           loginThunk.rejected,
           registerThunk.rejected,
           verifyLoginThunk.rejected,
