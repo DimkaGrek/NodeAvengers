@@ -7,7 +7,7 @@ export const UserInfo = () => {
       <p className={styles.userName}>UserName</p>
       <div className={styles.avatarUserBox}>
         <button className={styles.buttonUserBar}>
-          <Icon id="man" className={styles.defaultUserSvg} size="26" />
+          <Icon id="man" className={styles.defaultUserSvg} size="24" />
         </button>
       </div>
     </div>
