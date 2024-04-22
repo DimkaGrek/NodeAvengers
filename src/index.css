@@ -134,6 +134,7 @@ html[data-theme='dark'] {
   --stroke-svg: #fff;
   --box-shadow: rgba(22, 22, 22, 0.05);
   --backdrop: rgba(21, 21, 21, 0.5);
+  --eye-button-stroke: rgba(255, 255, 255, 0.3);
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -181,6 +182,7 @@ html[data-theme='light'] {
   --stroke-svg: #161616;
   --box-shadow: rgba(22, 22, 22, 0.05);
   --backdrop: rgba(21, 21, 21, 0.5);
+  --eye-button-stroke: rgba(21, 21, 21, 0.5);
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -202,7 +204,7 @@ html[data-theme='violet'] {
   --color-text-80: rgba(22, 22, 22, 0.8);
   --color-card-text: rgba(22, 22, 22, 0.7);
   --color-text-list-theme: #161616;
-  --color-text-list-theme-hover: #bedbb0;
+  --color-text-list-theme-hover: #5255bc;
   --background-list-theme: #ecedfd;
   --background-button: #7b7ede;
   --background-hover-button: #5255bc;
@@ -225,6 +227,7 @@ html[data-theme='violet'] {
   --stroke-svg: #161616;
   --box-shadow: rgba(22, 22, 22, 0.05);
   --backdrop: rgba(21, 21, 21, 0.5);
+  --eye-button-stroke: rgba(21, 21, 21, 0.5);
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;

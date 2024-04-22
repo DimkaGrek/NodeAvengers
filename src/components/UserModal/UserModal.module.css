@@ -1,15 +1,3 @@
-.backdrop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: var(--backdrop);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
 .wrapperModal {
   position: fixed;
   border-radius: 8px;
@@ -55,6 +43,7 @@
   justify-content: center;
   align-items: center;
   height: 79px;
+  width: 100%;
 }
 
 .updateImageButton {
@@ -104,6 +93,38 @@
   }
 }
 
+.inputStylePassword {
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  background-color: var(--background-modal);
+}
+
+@media only screen and (min-width: 768px) {
+  .inputStylePassword {
+    width: 352px;
+  }
+}
+
+.eyeIconBtn {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 142px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: transparent;
+  background-color: transparent;
+}
+
+.icon {
+  fill: var(--eye-button-stroke);
+}
+
 .boxForInput {
   display: flex;
   justify-content: center;
@@ -112,29 +133,37 @@
   margin: 14px 0 24px 0;
 }
 
-.sendButtonStyles {
+.submitButton {
   border-radius: 8px;
   width: 287px;
   height: 49px;
   color: var(--color-text);
   background-color: var(--background-button);
-  margin: 0 24px 24px 24px;
   &:hover {
     background-color: var(--background-hover-button);
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .sendButtonStyles {
+  .submitButton {
     width: 352px;
   }
 }
 
-.textButton {
+.sendText {
   color: var(--color-text-button);
 }
 
 .iconUserModal {
   stroke: var(--stroke-svg-user-default);
   fill: var(--stroke-svg-user-default);
+}
+
+.stylesForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
+  position: relative;
 }

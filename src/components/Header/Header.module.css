@@ -83,7 +83,7 @@
   margin: auto;
   transform: translateY(8px);
   opacity: 1;
-  transition: opacity 1.3s ease;
+  transition: opacity 1.3s;
   z-index: 999;
 }
 
