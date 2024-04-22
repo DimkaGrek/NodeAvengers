@@ -1,52 +1,60 @@
 import s from './DashboardPage.module.css';
-import { AddButton } from '../../components/AddButton/AddButton.jsx';
+
 import DashboardHeader from '../../components/DashboardHeader/DashboardHeader.jsx';
-import { useState } from 'react';
-import { Icon } from '../../components/Icon/Icon.jsx';
-import Card from '../../components/Card/Card.jsx';
+import CardsColumn from '../../components/CardsColumn/CardsColumn.jsx';
+import AddColumnButton from '../../components/AddColumnButton/AddColumnButton.jsx';
+
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getBoards } from '../../redux/boards/boardsOperations';
+import { getBoard } from '../../redux/boards/boardsOperations';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardPage = () => {
-  const [isAddColBtn, setIsAddColBtn] = useState(false);
+  const [cardsColumns, setCardsColumns] = useState([]);
+  const { boardName } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const emptyBoardAddButtonTitle = 'Add column';
-  // const fillBoardAddButtonTitle = 'Add another column';
+  useEffect(() => {
+    dispatch(getBoards())
+      .unwrap()
+      .then(res => {
+        console.log(res);
+        const selectedBoard = res.find(board => board.name === boardName);
 
-  const columnTitle = 'To Do';
+        if (!selectedBoard) {
+          navigate('/404');
+          return;
+        }
+
+        dispatch(getBoard(selectedBoard._id));
+      });
+  }, [boardName, dispatch, navigate]);
+
+  const handleAddColumn = () => {
+    setCardsColumns([
+      ...cardsColumns,
+      <CardsColumn key={cardsColumns.length} />,
+    ]);
+  };
+
+  const buttonLabel = cardsColumns.length ? 'Add another column' : 'Add column';
 
   return (
     <div className="container">
       <DashboardHeader />
 
-      {isAddColBtn && (
-        <button className={s.addColBtn}>
-          <AddButton color="light" width={28} height={28} iconSize={14} />
-          {emptyBoardAddButtonTitle}
-        </button>
-      )}
+      <div className={s.columnsContainer}>
+        {cardsColumns.map((column, index) => (
+          <div key={index}>{column}</div>
+        ))}
 
-      <div className={s.columnContainer}>
-        <div className={s.columnTitleWrapper}>
-          <p className={s.columnTitle}>{columnTitle}</p>
-          <div className={s.columnTitleBtns}>
-            <button>
-              <Icon id="pencil" className={s.columnTitleIcon} size={16} />
-            </button>
-            <button>
-              <Icon id="trash" className={s.columnTitleIcon} size={16} />
-            </button>
-          </div>
-        </div>
-
-        <div className={s.cardsContainer}>
-          <Card />
-          <Card />
-          <Card />
-        </div>
-
-        <button className={s.addCardBtn}>
-          <AddButton color="dark" width={28} height={28} iconSize={14} />
-          Add another card
-        </button>
+        <AddColumnButton
+          handleAddColumn={handleAddColumn}
+          buttonLabel={buttonLabel}
+        />
       </div>
     </div>
   );

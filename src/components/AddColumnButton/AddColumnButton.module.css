@@ -1,0 +1,15 @@
+.addColBtn {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  width: 335px;
+  height: 56px;
+  background-color: #121212;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
