@@ -6,14 +6,34 @@ import { useState } from 'react';
 
 const CardsColumn = () => {
   const [addCard, setAddCard] = useState([]);
+  console.log('card1', addCard);
 
   const columnTitle = 'To Do';
 
+  const uniqueId = () => {
+    return Date.now().toString();
+  };
+
   const handleAddCardButton = () => {
-    setAddCard([...addCard, <Card key={addCard.length} />]);
+    setAddCard([
+      ...addCard,
+      <Card
+        key={uniqueId()}
+        index={addCard.length}
+        moveCardRight={moveCardRight}
+      />,
+    ]);
   };
 
   const addCardButtonLabel = !addCard.length ? 'Add card' : 'Add another card';
+
+  const moveCardRight = index => {
+    const updatedCards = [...addCard];
+    const movedCard = updatedCards.splice(index, 1)[0];
+    const targetIndex = Math.min(index + 1, updatedCards.length);
+    updatedCards.splice(targetIndex, 0, movedCard);
+    setAddCard(updatedCards);
+  };
 
   return (
     <div className={s.singleColumnWrapper}>

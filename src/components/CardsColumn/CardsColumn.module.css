@@ -1,3 +1,5 @@
+.singleColumnWrapper {
+}
 .columnTitleWrapper {
   padding: 0 20px;
   display: flex;
@@ -38,8 +40,8 @@
 .addCardBtn {
   display: flex;
   justify-content: center;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
   border-radius: 8px;
   width: 335px;
   height: 56px;
