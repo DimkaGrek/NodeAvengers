@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import styles from './Header.module.css';
-import clsx from 'clsx';
 import { Icon } from '../Icon/Icon';
 import { useTheme } from '../../hooks/useTheme';
 import { UserInfo } from '../UserInfo/UserInfo';
+
+import styles from './Header.module.css';
+import clsx from 'clsx';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

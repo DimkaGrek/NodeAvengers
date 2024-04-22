@@ -1,0 +1,140 @@
+.backdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--backdrop);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.wrapperModal {
+  position: fixed;
+  border-radius: 8px;
+  width: 335px;
+  height: 440px;
+  box-shadow: 0 4px 16px 0 var(--box-shadow);
+  background-color: var(--background-modal);
+}
+
+@media only screen and (min-width: 768px) {
+  .wrapperModal {
+    width: 400px;
+  }
+}
+
+.closeModal {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+  background-color: var(--background-modal);
+  border: none;
+}
+
+.iconCloseModal {
+  stroke: var(--stroke-svg);
+}
+
+.titleModal {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  width: 96px;
+  height: 27px;
+  margin: 24px auto 24px 24px;
+}
+
+.wrapperUserImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 79px;
+}
+
+.updateImageButton {
+  width: 24px;
+  height: 24px;
+  background-color: var(--background-button);
+  border-radius: 6px;
+  position: absolute;
+  top: 130px;
+  left: 156px;
+  &:hover {
+    background-color: var(--button-add-color-hover);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .updateImageButton {
+    left: 188px;
+  }
+}
+
+.iconUpdateAvatar {
+  stroke: var(--stroke-icon-plus);
+}
+
+.spanStyles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--user-image-default-background);
+  border-radius: 8px;
+  width: 68px;
+  height: 68px;
+}
+
+.inputStyle {
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  background-color: var(--background-modal);
+}
+
+@media only screen and (min-width: 768px) {
+  .inputStyle {
+    width: 352px;
+  }
+}
+
+.boxForInput {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 14px 0 24px 0;
+}
+
+.sendButtonStyles {
+  border-radius: 8px;
+  width: 287px;
+  height: 49px;
+  color: var(--color-text);
+  background-color: var(--background-button);
+  margin: 0 24px 24px 24px;
+  &:hover {
+    background-color: var(--background-hover-button);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .sendButtonStyles {
+    width: 352px;
+  }
+}
+
+.textButton {
+  color: var(--color-text-button);
+}
+
+.iconUserModal {
+  stroke: var(--stroke-svg-user-default);
+  fill: var(--stroke-svg-user-default);
+}

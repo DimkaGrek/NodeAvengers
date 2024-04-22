@@ -71,7 +71,7 @@
   align-items: start;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid #bedbb0;
+  border: 1px solid var(--border-list-drop);
   border-radius: 8px;
   width: 100px;
   height: 107px;
