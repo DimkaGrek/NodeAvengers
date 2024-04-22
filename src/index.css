@@ -103,6 +103,9 @@ textarea {
 html[data-theme='dark'] {
   --background-header: #161616;
   --background-sidebar: #121212;
+  --fill-sidebar-logo: #ffffff;
+  --stroke-sidebar-plus: #121212;
+  --background-sidebar-logo: #1f1f1f;
   --background-main-content: #1f1f1f;
   --color-text: #fff;
   --color-text-50: rgba(255, 255, 255, 0.5);
@@ -126,6 +129,8 @@ html[data-theme='dark'] {
   --main-low-priority: #8fa1d0;
   --main-medium-priority: #e09cb5;
   --main-high-priority: #bedbb0;
+  --button-add-color: #bedbb0;
+  --button-logout-color: #bedbb0;
   --span-color: #bedbb0;
 }
 
@@ -133,6 +138,9 @@ html[data-theme='dark'] {
 html[data-theme='light'] {
   --background-header: #fcfcfc;
   --background-sidebar: #ffffff;
+  --fill-sidebar-logo: #ffffff;
+  --stroke-sidebar-plus: #121212;
+  --background-sidebar-logo: #1f1f1f;
   --background-main-content: #f6f6f7;
   --color-text: #161616;
   --color-text-50: rgba(22, 22, 22, 0.5);
@@ -151,6 +159,8 @@ html[data-theme='light'] {
   --user-image-default-background: #f6f6f7;
   --stroke-svg-user-default: #ffffff;
   --scroll-color: #e8e8e8;
+  --button-add-color: #bedbb0;
+  --button-logout-color: #bedbb0;
   --span-color: #bedbb0;
   /* Color-priority-tasks */
 
@@ -163,6 +173,9 @@ html[data-theme='light'] {
 html[data-theme='violet'] {
   --background-header: #ffffff;
   --background-sidebar: #5255bc;
+  --background-sidebar-logo: #ffffff;
+  --fill-sidebar-logo: #5255bc;
+  --stroke-sidebar-plus: #ffffff;
   --background-main-content: #f6f6f7;
   --color-text: #161616;
   --color-text-50: rgba(22, 22, 22, 0.5);
@@ -181,6 +194,8 @@ html[data-theme='violet'] {
   --user-image-default-background: #ecedfd;
   --stroke-svg-user-default: #ffffff;
   --scroll-color: #b8bcfd;
+  --button-add-color: #b8bcfd;
+  --button-logout-color: #ffffff;
   --span-color: #5255bc;
 
   /* Color-priority-tasks */

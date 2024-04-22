@@ -41,8 +41,9 @@
 .svgLightning {
   margin-right: 8px;
   border-radius: 6px;
-  fill: var(--background-sidebar);
-  background-color: var(--background-main-content);
+  fill: var(--fill-sidebar-logo);
+  background-color: var(--background-sidebar-logo);
+  padding: 8px 10px;
 }
 .navLogo {
   display: flex;
@@ -86,20 +87,19 @@
   width: 40px;
   height: 36px;
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 10px 10px;
   border-radius: 6px;
   border: none;
 
-  background-color: var(--background-main-content);
-  /* background-color: red; */
+  background-color: var(--button-add-color);
   &:hover {
     background-color: var(--background-hover-button);
   }
 }
 .svgPlus {
-  fill: red;
-  stroke: red;
+  stroke: var(--stroke-sidebar-plus);
 }
 .mainBoard {
   padding: 0;
@@ -123,6 +123,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 60px;
   align-items: center;
@@ -144,7 +145,7 @@
 .boardList {
   display: flex;
   font-weight: 500;
-
+  background-color: var(--background-help);
   align-items: center;
   letter-spacing: -0.28px;
   margin-bottom: 4px;
@@ -155,17 +156,12 @@
 .titleBoard {
   display: flex;
   align-items: center;
-  svg {
-    stroke: var(--color-text);
-    fill: transparent;
-    margin-right: 8px;
-    margin-left: 24px;
-  }
 }
 .svgProject {
-  fill: red;
-  stroke: red;
-  background-color: green;
+  fill: transparent;
+  stroke: var(--text-inside-sidebar);
+  margin-right: 8px;
+  margin-left: 24px;
 }
 .boardTitle {
   color: var(--text-inside-sidebar);
@@ -185,9 +181,9 @@
   }
 }
 .editIcon {
-  fill: red;
-  stroke: red;
-  background-color: green;
+  fill: transparent;
+  stroke: var(--text-inside-sidebar-50);
+  /* background-color: green; */
 }
 .needHelpBlock {
   border-radius: 8px;
@@ -253,7 +249,7 @@
 }
 
 .svgLogout {
-  stroke: red;
-  fill: red;
-  background-color: #fff;
+  stroke: var(--button-logout-color);
+  fill: transparent;
+  /* background-color: #fff; */
 }
