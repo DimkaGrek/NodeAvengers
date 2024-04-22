@@ -10,6 +10,7 @@ import Loader from './Loader/Loader.jsx';
 import { PublicRoute, PrivateRoute } from '../routes';
 import { refreshThunk } from '../redux/auth/operations.js';
 import { selectIsLoggedIn, selectIsRefreshing } from '../redux/auth/slice.js';
+import NotFound from '../pages/NotFound/NotFound.jsx';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
@@ -72,6 +73,14 @@ const App = () => {
         />
         <Route path="*" element={<Navigate to={link} replace />} />
         <Route path="/" element={<Navigate to={link} replace />} />
+        <Route
+          path="/404"
+          element={
+            <PrivateRoute>
+              <NotFound />
+            </PrivateRoute>
+          }
+        />
       </Route>
     </Routes>
   );

@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 export const SignupSchema = Yup.object().shape({
-  firstName: Yup.string()
+  name: Yup.string()
     .min(2, 'Your name should be 2 or more characters.')
     .max(32, 'Your name should not be more than 32 characters.'),
   password: Yup.string()

@@ -49,7 +49,7 @@ const HomePage = () => {
       </div>
       {isModalAddBoard && (
         <Modal toggleModal={toggleIsModalAddBoard} title="New board">
-          <EditBoardForm />
+          <EditBoardForm toggleModal={toggleIsModalAddBoard} />
         </Modal>
       )}
     </>
