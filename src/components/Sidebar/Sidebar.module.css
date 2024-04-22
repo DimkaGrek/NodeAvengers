@@ -43,7 +43,7 @@
   border-radius: 6px;
   fill: var(--fill-sidebar-logo);
   background-color: var(--background-sidebar-logo);
-  padding: 8px 10px;
+  padding: 6px 8px;
 }
 .navLogo {
   display: flex;
