@@ -5,7 +5,7 @@ export const addColumn = createAsyncThunk(
   'column/addColumn',
   async (column, thunkAPI) => {
     try {
-      const { data } = await api.post('/colum/', column);
+      const { data } = await api.post('/colum', column);
       //   thunkAPI.dispatch(getColumn(res.data._id));
       return data;
     } catch (error) {

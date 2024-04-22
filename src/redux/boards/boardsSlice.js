@@ -7,6 +7,7 @@ import {
   getBoards,
 } from './boardsOperations';
 import { addColumn, deleteColumn, editColumn } from './columnOperations';
+import { addCard, editCard } from './cardOperations';
 
 const initialState = {
   boards: [],
@@ -28,24 +29,11 @@ const boardsSlice = createSlice({
         state.boards.push(payload);
         state.currentBoard = payload;
       })
-      .addCase(addColumn.fulfilled, (state, { payload }) => {
-        state.currentBoard.columns.push(payload);
-      })
       .addCase(getBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;
       })
-      // .addCase(getColumn.fulfilled, (state, { payload }) => {
-      //   state.currentBoard.columns.push(payload);
-      // })
       .addCase(editBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;
-      })
-      .addCase(editColumn.fulfilled, (state, { payload }) => {
-        const indexColumn = state.currentBoard.columns.findIndex(
-          item => item._id === payload._id
-        );
-        console.log(indexColumn);
-        state.currentBoard.columns[indexColumn] = payload;
       })
       .addCase(deleteBoard.fulfilled, (state, { payload }) => {
         const board = state.boards.find(item => item._id === payload);
@@ -63,11 +51,67 @@ const boardsSlice = createSlice({
           state.boards.splice(index, 1);
         }
       })
+      // .addCase(getColumn.fulfilled, (state, { payload }) => {
+      //   state.currentBoard.columns.push(payload);
+      // })
+      .addCase(addColumn.fulfilled, (state, { payload }) => {
+        state.currentBoard.columns.push(payload);
+      })
+      .addCase(editColumn.fulfilled, (state, { payload }) => {
+        const indexColumn = state.currentBoard.columns.findIndex(
+          item => item._id === payload._id
+        );
+        state.currentBoard.columns[indexColumn] = payload;
+      })
       .addCase(deleteColumn.fulfilled, (state, { payload }) => {
         const index = state.currentBoard.columns.findIndex(
           column => column._id === payload
         );
         state.currentBoard.columns.splice(index, 1);
+      })
+      .addCase(addCard.fulfilled, (state, { payload }) => {
+        const index = state.currentBoard.columns.findIndex(
+          column => column._id === payload.columnId
+        );
+        state.currentBoard.columns[index].cards.push(payload);
+      })
+      .addCase(editCard.fulfilled, (state, { payload }) => {
+        const indexColumn = state.currentBoard.columns.findIndex(
+          column => column._id === payload.columnId
+        );
+
+        // const indexCard = state.currentBoard.columns[
+        //   indexColumn
+        // ].cards.findIndex(card => card._id === payload._id);
+
+        // state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
+
+        const condition = state.currentBoard.columns[indexColumn].cards.some(
+          card => card._id === payload.columnId
+        );
+
+        if (condition) {
+          const indexCard = state.currentBoard.columns[
+            indexColumn
+          ].cards.findIndex(card => card._id === payload._id);
+
+          state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
+        }
+
+        // else {
+        //   const pastColumn = state.currentBoard.columns.find(column =>
+        //     column.cards.some(card => card._id === payload._id)
+        //   );
+        //   const pastCard = state.currentBoard.columns[
+        //     pastColumn
+        //   ].cards.findIndex(card => card._id === payload._id);
+
+        //   state.currentBoard.columns[pastColumn].cards[pastCard].splice(
+        //     pastCard,
+        //     1
+        //   );
+        //   state.currentBoard.columns[indexColumn].cards.push(payload);
+        // }
       });
   },
   selectors: {

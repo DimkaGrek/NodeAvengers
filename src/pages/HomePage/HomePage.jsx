@@ -10,6 +10,7 @@ import {
   selectCurrentBoard,
 } from '../../redux/boards/boardsSlice';
 import { editColumn } from '../../redux/boards/columnOperations';
+import { addCard, editCard } from '../../redux/boards/cardOperations';
 
 const HomePage = () => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
@@ -24,8 +25,13 @@ const HomePage = () => {
   console.log(boards);
   console.log(board);
 
+  const card = {
+    title: 'tatYANA',
+    _id: '6626967e6b4e6843106790b5',
+    columnId: '6626881e6b4e684310678e05',
+  };
   const addCol = () => {
-    dispatch(editColumn({ id: '662648226b4e684310677dd6', name: 'hollywood' }));
+    dispatch(editCard(card));
   };
 
   return (

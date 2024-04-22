@@ -5,7 +5,7 @@ export const getBoards = createAsyncThunk(
   'boards/getBoards',
   async (_, thunkAPI) => {
     try {
-      const { data } = await api.get('/board/');
+      const { data } = await api.get('/board');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -17,7 +17,7 @@ export const addBoard = createAsyncThunk(
   'boards/addBoard',
   async (board, thunkAPI) => {
     try {
-      const { data } = await api.post(`/board/`, board);
+      const { data } = await api.post(`/board`, board);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
