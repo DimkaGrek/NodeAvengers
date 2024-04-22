@@ -56,14 +56,17 @@ export const Header = () => {
           />
         </button>
         <div className={styles.container}>
-          <div className={styles.wrapperDrop} ref={dropdownRef}>
+          <div
+            className={styles.wrapperDrop}
+            ref={dropdownRef}
+            onClick={() => handleChangeDrop()}
+          >
             <p className={styles.textThemeStyle}>Theme</p>
             <button
               className={clsx({
                 [styles.buttonDropDown]: true,
                 [styles.rotated]: isOpen,
               })}
-              onClick={() => handleChangeDrop()}
             >
               <Icon
                 id="chevron-down"
@@ -71,7 +74,10 @@ export const Header = () => {
                 size="16"
               />
             </button>
-            <ul className={isOpen ? styles.listDrop : styles.listNone}>
+            <ul
+              className={isOpen ? styles.listDrop : styles.listNone}
+              onClick={event => event.stopPropagation()}
+            >
               <li className={styles.itemTheme}>
                 <button
                   className={styles.buttonItem}
