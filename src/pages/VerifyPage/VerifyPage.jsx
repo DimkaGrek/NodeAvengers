@@ -11,6 +11,7 @@ import s from './VerifyPage.module.css';
 import { Formik, Form, Field } from 'formik';
 import Loader from '../../components/Loader/Loader';
 import * as Yup from 'yup';
+
 const schema = Yup.object().shape({
   email: Yup.string()
     .matches(
@@ -39,24 +40,32 @@ const VerifyPage = () => {
         await dispatch(verifyLoginThunk(token))
           .unwrap()
           .then(() => {
-            if (!isVerified) {
+            {
               toast.success(`Verification and log in success.`);
-              navigate('/home');
               setIsVerified(true);
+              navigate('/home');
             }
           });
       }
     };
 
     verifyLogin();
-  }, [dispatch, token, navigate, isVerified]);
+  }, [dispatch, token, navigate]);
+
+  useEffect(() => {
+    if (messageCode === '2' && !isVerified) {
+      toast.info(
+        `Your email has already been verified. Please log in to your account.`
+      );
+      navigate('/auth/login');
+    }
+  }, [messageCode, isVerified, navigate]);
 
   return (
     <>
-      {' '}
       {messageCode === '1' ? (
         <Loader />
-      ) : messageCode === '2' && !isVerified ? (
+      ) : messageCode === '2' && isVerified ? (
         <div className={s.error_wrapper}>
           <div className={s.inside_wrapper}>
             {' '}
@@ -102,7 +111,6 @@ const VerifyPage = () => {
           </div>
         </div>
       ) : null}
-      {messageCode === '2' && !isVerified && navigate('/auth/login')}
     </>
   );
 };
