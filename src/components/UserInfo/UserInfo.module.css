@@ -30,6 +30,7 @@
 }
 
 .buttonUserBar {
-  height: 24px;
+  padding: 2px;
+  height: 26px;
   background-color: transparent;
 }

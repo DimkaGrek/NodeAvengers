@@ -1,9 +1,10 @@
-// import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 
+import { selectIsLoggedIn } from '../redux/auth/slice';
+
 export const PrivateRoute = ({ children }) => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const location = useLocation();
 
   if (!isLoggedIn) {

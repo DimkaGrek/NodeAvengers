@@ -1,12 +1,15 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from 'components/Header/Header';
+import Sidebar from '../Sidebar/Sidebar';
+
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '../../redux/auth/slice';
 
 import s from './SharedLayout.module.css';
 
 const SharedLayout = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   if (!isLoggedIn) {
     return (
@@ -21,7 +24,7 @@ const SharedLayout = () => {
   return (
     <div className={s.layout}>
       <Header />
-      <aside>Sidebar</aside>
+      <Sidebar />
       <main>
         <Suspense fallback={null}>
           <Outlet />

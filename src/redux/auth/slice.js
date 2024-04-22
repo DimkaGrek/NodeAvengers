@@ -4,6 +4,8 @@ import {
   verifyLoginThunk,
   registerThunk,
   logoutThunk,
+  refreshThunk,
+  resendEmailThunk,
 } from './operations';
 
 const initialState = {
@@ -11,6 +13,7 @@ const initialState = {
   accessToken: null,
   refreshToken: null,
   isLoggedIn: false,
+  isRefreshing: false,
   error: null,
   isLoading: false,
 };
@@ -41,8 +44,26 @@ const slice = createSlice({
           state.isLoggedIn = true;
         }
       )
+      .addCase(refreshThunk.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshThunk.rejected, state => {
+        state.isRefreshing = false;
+      })
+      .addCase(
+        refreshThunk.fulfilled,
+        (state, { payload: { user, accessToken, refreshToken } }) => {
+          state.id = user.id;
+          state.accessToken = accessToken;
+          state.refreshToken = refreshToken;
+          state.isLoggedIn = true;
+          state.isRefreshing = false;
+        }
+      )
+
       .addMatcher(
         isAnyOf(
+          resendEmailThunk.pending,
           registerThunk.pending,
           loginThunk.pending,
           verifyLoginThunk.pending,
@@ -55,6 +76,7 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
+          resendEmailThunk.fulfilled,
           registerThunk.fulfilled,
           loginThunk.fulfilled,
           verifyLoginThunk.fulfilled,
@@ -66,10 +88,12 @@ const slice = createSlice({
       )
       .addMatcher(
         isAnyOf(
+          resendEmailThunk.rejected,
           loginThunk.rejected,
           registerThunk.rejected,
           verifyLoginThunk.rejected,
-          logoutThunk.rejected
+          logoutThunk.rejected,
+          refreshThunk.rejected
         ),
         (state, { payload }) => {
           state.error = payload;
@@ -84,6 +108,7 @@ const slice = createSlice({
     selectIsLoggedIn: state => state.isLoggedIn,
     selectError: state => state.error,
     selectIsLoading: state => state.isLoading,
+    selectIsRefreshing: state => state.isRefreshing,
   },
 });
 
@@ -96,4 +121,5 @@ export const {
   selectIsLoggedIn,
   selectError,
   selectIsLoading,
+  selectIsRefreshing,
 } = slice.selectors;

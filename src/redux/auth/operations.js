@@ -20,9 +20,9 @@ export const loginThunk = createAsyncThunk(
   'login',
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await api.post('/auth/login', credentials);
-      setToken(data.accessToken);
-      return data;
+      const response = await api.post('/auth/login', credentials);
+      setToken(response.data.accessToken);
+      return response.data;
     } catch (error) {
       if (error.request.status === 403) {
         return thunkAPI.rejectWithValue(
@@ -46,12 +46,43 @@ export const verifyLoginThunk = createAsyncThunk(
   }
 );
 
+export const refreshThunk = createAsyncThunk('refresh', async (_, thunkAPI) => {
+  const { auth } = thunkAPI.getState();
+
+  const refreshToken = auth.refreshToken;
+
+  if (!refreshToken) {
+    return thunkAPI.rejectWithValue('No refresh token.');
+  }
+
+  try {
+    const { data } = await api.post('/auth/refresh', { refreshToken });
+
+    setToken(data.accessToken);
+
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 export const logoutThunk = createAsyncThunk(
   'logout',
   async (refreshToken, thunkAPI) => {
     try {
       await api.post('/auth/logout', refreshToken);
       clearToken();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resendEmailThunk = createAsyncThunk(
+  'resendEmail',
+  async (credentials, thunkAPI) => {
+    try {
+      await api.post('/auth/resendEmail', credentials);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

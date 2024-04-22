@@ -117,6 +117,7 @@ html[data-theme='dark'] {
   --background-modal: #151515;
   --background-help: #1f1f1f;
   --text-inside-sidebar: #ffffff;
+  --text-inside-sidebar-50: rgba(255, 255, 255, 0.5);
   --user-image-default-background: #1f1f1f;
   --stroke-svg-user-default: #151515;
   --scroll-color: RGB(255, 255, 255, 0.1);
@@ -125,6 +126,7 @@ html[data-theme='dark'] {
   --main-low-priority: #8fa1d0;
   --main-medium-priority: #e09cb5;
   --main-high-priority: #bedbb0;
+  --span-color: #bedbb0;
 }
 
 /* Light theme */
@@ -145,10 +147,11 @@ html[data-theme='light'] {
   --background-modal: #ffffff;
   --background-help: #f6f6f7;
   --text-inside-sidebar: #161616;
+  --text-inside-sidebar-50: rgba(22, 22, 22, 0.5);
   --user-image-default-background: #f6f6f7;
   --stroke-svg-user-default: #ffffff;
   --scroll-color: #e8e8e8;
-
+  --span-color: #bedbb0;
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -174,9 +177,11 @@ html[data-theme='violet'] {
   --background-modal: #5255bc;
   --background-help: rgba(236, 237, 253, 0.4);
   --text-inside-sidebar: #ffffff;
+  --text-inside-sidebar-50: rgba(255, 255, 255, 0.5);
   --user-image-default-background: #ecedfd;
   --stroke-svg-user-default: #ffffff;
   --scroll-color: #b8bcfd;
+  --span-color: #5255bc;
 
   /* Color-priority-tasks */
 
