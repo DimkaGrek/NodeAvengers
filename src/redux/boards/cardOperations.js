@@ -33,3 +33,16 @@ export const editCard = createAsyncThunk(
     }
   }
 );
+
+export const deleteCard = createAsyncThunk(
+  'card/deleteCard',
+  async ({ cardId, columnId }, thunkAPI) => {
+    try {
+      await api.delete(`/card/${cardId}`);
+      return { cardId, columnId };
+    } catch (error) {
+      console.log(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -6,7 +6,6 @@ export const addColumn = createAsyncThunk(
   async (column, thunkAPI) => {
     try {
       const { data } = await api.post('/colum', column);
-      //   thunkAPI.dispatch(getColumn(res.data._id));
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -14,17 +13,6 @@ export const addColumn = createAsyncThunk(
   }
 );
 
-// export const getColumn = createAsyncThunk(
-//   'column/getColumn',
-//   async (id, thunkAPI) => {
-//     try {
-//       const { data } = await api.get(`/colum/${id}`);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 export const editColumn = createAsyncThunk(
   'column/editColumn',
   async ({ id, name }, thunkAPI) => {

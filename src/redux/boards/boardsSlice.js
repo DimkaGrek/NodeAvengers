@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import {
   addBoard,
   deleteBoard,
@@ -7,7 +7,7 @@ import {
   getBoards,
 } from './boardsOperations';
 import { addColumn, deleteColumn, editColumn } from './columnOperations';
-import { addCard, editCard } from './cardOperations';
+import { addCard, deleteCard, editCard } from './cardOperations';
 
 const initialState = {
   boards: [],
@@ -24,16 +24,20 @@ const boardsSlice = createSlice({
       .addCase(getBoards.fulfilled, (state, { payload }) => {
         state.boards = payload;
         state.currentBoard = payload[0];
+        state.isLoading = false;
       })
       .addCase(addBoard.fulfilled, (state, { payload }) => {
         state.boards.push(payload);
         state.currentBoard = payload;
+        state.isLoading = false;
       })
       .addCase(getBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;
+        state.isLoading = false;
       })
       .addCase(editBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;
+        state.isLoading = false;
       })
       .addCase(deleteBoard.fulfilled, (state, { payload }) => {
         const board = state.boards.find(item => item._id === payload);
@@ -50,69 +54,100 @@ const boardsSlice = createSlice({
         } else {
           state.boards.splice(index, 1);
         }
+
+        state.isLoading = false;
       })
-      // .addCase(getColumn.fulfilled, (state, { payload }) => {
-      //   state.currentBoard.columns.push(payload);
-      // })
       .addCase(addColumn.fulfilled, (state, { payload }) => {
         state.currentBoard.columns.push(payload);
+        state.isLoading = false;
       })
       .addCase(editColumn.fulfilled, (state, { payload }) => {
         const indexColumn = state.currentBoard.columns.findIndex(
           item => item._id === payload._id
         );
+
         state.currentBoard.columns[indexColumn] = payload;
+        state.isLoading = false;
       })
       .addCase(deleteColumn.fulfilled, (state, { payload }) => {
         const index = state.currentBoard.columns.findIndex(
           column => column._id === payload
         );
+
         state.currentBoard.columns.splice(index, 1);
+        state.isLoading = false;
       })
       .addCase(addCard.fulfilled, (state, { payload }) => {
         const index = state.currentBoard.columns.findIndex(
           column => column._id === payload.columnId
         );
+
         state.currentBoard.columns[index].cards.push(payload);
+        state.isLoading = false;
       })
       .addCase(editCard.fulfilled, (state, { payload }) => {
         const indexColumn = state.currentBoard.columns.findIndex(
           column => column._id === payload.columnId
         );
 
-        // const indexCard = state.currentBoard.columns[
-        //   indexColumn
-        // ].cards.findIndex(card => card._id === payload._id);
+        const indexCard = state.currentBoard.columns[
+          indexColumn
+        ].cards.findIndex(card => card._id === payload._id);
 
-        // state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
-
-        const condition = state.currentBoard.columns[indexColumn].cards.some(
-          card => card._id === payload.columnId
+        state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
+        state.isLoading = false;
+      })
+      .addCase(deleteCard.fulfilled, (state, { payload }) => {
+        console.log(payload);
+        const indexColumn = state.currentBoard.columns.findIndex(
+          column => column._id === payload.columnId
         );
 
-        if (condition) {
-          const indexCard = state.currentBoard.columns[
-            indexColumn
-          ].cards.findIndex(card => card._id === payload._id);
+        const indexCard = state.currentBoard.columns[
+          indexColumn
+        ].cards.findIndex(card => card._id === payload.cardId);
 
-          state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
+        state.currentBoard.columns[indexColumn].cards.splice(indexCard, 1);
+        state.isLoading = false;
+      })
+      .addMatcher(
+        isAnyOf(
+          getBoards.pending,
+          addBoard.pending,
+          getBoard.pending,
+          editBoard.pending,
+          deleteBoard.pending,
+          addColumn.pending,
+          editColumn.pending,
+          deleteColumn.pending,
+          addCard.pending,
+          editCard.pending,
+          deleteCard.pending
+        ),
+        state => {
+          state.isLoading = true;
+          state.isError = null;
         }
-
-        // else {
-        //   const pastColumn = state.currentBoard.columns.find(column =>
-        //     column.cards.some(card => card._id === payload._id)
-        //   );
-        //   const pastCard = state.currentBoard.columns[
-        //     pastColumn
-        //   ].cards.findIndex(card => card._id === payload._id);
-
-        //   state.currentBoard.columns[pastColumn].cards[pastCard].splice(
-        //     pastCard,
-        //     1
-        //   );
-        //   state.currentBoard.columns[indexColumn].cards.push(payload);
-        // }
-      });
+      )
+      .addMatcher(
+        isAnyOf(
+          getBoards.rejected,
+          addBoard.rejected,
+          getBoard.rejected,
+          editBoard.rejected,
+          deleteBoard.rejected,
+          addColumn.rejected,
+          editColumn.rejected,
+          deleteColumn.rejected,
+          addCard.rejected,
+          editCard.rejected,
+          deleteCard.rejected
+        ),
+        state => {
+          state.isLoading = false;
+          state.isError = true;
+        }
+      );
   },
   selectors: {
     selectBoards: state => state.boards,
