@@ -3,7 +3,6 @@ import { useTheme } from '../../hooks/useTheme';
 import s from './Sidebar.module.css';
 import { Icon } from 'components';
 import flower from '../../assets/images/flower.png';
-import { AddButton } from '../AddButton/AddButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
@@ -27,13 +26,7 @@ const Sidebar = () => {
     <aside className={s.sideBarBlock}>
       <h1 className={s.titleHidden}>Task boards page</h1>
       <NavLink className={s.navLogo} to="/">
-        <Icon
-          id="logo"
-          className={s.svgLightning}
-          width={32}
-          height={32}
-          size={32}
-        />
+        <Icon id="logo" className={s.svgLightning} size={32} />
         <p className={s.title}>Task Pro</p>
       </NavLink>
       <div className={s.section}>
@@ -100,7 +93,7 @@ const Sidebar = () => {
         name="logout"
         onClick={handleLogOut}
       >
-        <Icon id="login" className={s.svgLogout} size={18} />
+        <Icon id="login" className={s.svgLogout} size={32} />
         Log out
       </button>
     </aside>
