@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter basename="/NodeAvengers">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ToastContainer autoClose={2000} />
+        <ToastContainer autoClose={3000} />
         <App />
       </PersistGate>
     </Provider>
