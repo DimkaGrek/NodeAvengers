@@ -6,6 +6,7 @@ import {
   getBoard,
   getBoards,
 } from './boardsOperations';
+import { addColumn, deleteColumn, editColumn } from './columnOperations';
 
 const initialState = {
   boards: [],
@@ -27,11 +28,24 @@ const boardsSlice = createSlice({
         state.boards.push(payload);
         state.currentBoard = payload;
       })
+      .addCase(addColumn.fulfilled, (state, { payload }) => {
+        state.currentBoard.columns.push(payload);
+      })
       .addCase(getBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;
       })
+      // .addCase(getColumn.fulfilled, (state, { payload }) => {
+      //   state.currentBoard.columns.push(payload);
+      // })
       .addCase(editBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;
+      })
+      .addCase(editColumn.fulfilled, (state, { payload }) => {
+        const indexColumn = state.currentBoard.columns.findIndex(
+          item => item._id === payload._id
+        );
+        console.log(indexColumn);
+        state.currentBoard.columns[indexColumn] = payload;
       })
       .addCase(deleteBoard.fulfilled, (state, { payload }) => {
         const board = state.boards.find(item => item._id === payload);
@@ -48,6 +62,12 @@ const boardsSlice = createSlice({
         } else {
           state.boards.splice(index, 1);
         }
+      })
+      .addCase(deleteColumn.fulfilled, (state, { payload }) => {
+        const index = state.currentBoard.columns.findIndex(
+          column => column._id === payload
+        );
+        state.currentBoard.columns.splice(index, 1);
       });
   },
   selectors: {
