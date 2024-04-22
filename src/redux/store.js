@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from './auth/slice';
 import { boardsReducer } from './boards/boardsSlice';
+import { userReducer } from './user/slice';
 
 const persistConfig = {
   key: 'auth',
@@ -24,6 +25,7 @@ const persistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
+    user: userReducer,
     boards: boardsReducer,
   },
 
