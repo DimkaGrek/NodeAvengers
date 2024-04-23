@@ -1,32 +1,40 @@
 import { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
 import Resizer from 'react-image-file-resizer';
+import Switch from 'react-switch';
 
 import { Icon } from 'components';
 import Button from '../Button/Button';
+import Loader from '../Loader/Loader';
 
-import { SignupSchema } from '../../schemas/RegisterSchema';
-import styles from './UserModal.module.css';
-import { updateUserThunk } from '../../redux/user/operations';
 import { useUser } from '../../hooks/useUser';
+import { updateUserThunk } from '../../redux/user/operations';
+import { EditUserPassSchema, EditUserSchema } from '../../schemas';
+
+import styles from './UserModal.module.css';
+import { toast } from 'react-toastify';
 
 export const UserModal = () => {
   const [isEditPassword, setIsEditPassword] = useState(false);
   const [showPass, setShowPass] = useState(false);
+  const [showNewPass, setShowNewPass] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [avatarFile, setAvatarFile] = useState(null);
 
-  const { id, userName, userEmail, userAvatar } = useUser();
-
+  const { id, userName, userEmail, userAvatar, isLoading } = useUser();
   const dispatch = useDispatch();
 
   const fileInput = useRef(null);
 
   let avatar = userAvatar.includes('gravatar') ? null : userAvatar;
-  console.log(avatar);
+
   const passVisibility = () => {
-    setShowPass(prevState => !prevState);
+    setShowPass(!showPass);
+  };
+
+  const newPassVisibility = () => {
+    setShowNewPass(!showNewPass);
   };
 
   const resizeFile = file =>
@@ -89,7 +97,7 @@ export const UserModal = () => {
         {(avatarPreview || avatar) && (
           <img
             src={avatarPreview || avatar}
-            alt="user avatar"
+            alt={userName}
             width={64}
             height={64}
           />
@@ -108,69 +116,123 @@ export const UserModal = () => {
         initialValues={{
           name: userName,
           email: userEmail,
+          password: '',
+          newPassword: '',
         }}
-        // validationSchema={SignupSchema}
+        validationSchema={!isEditPassword ? EditUserSchema : EditUserPassSchema}
         onSubmit={data => {
-          const user = { ...data, avatarFile, id };
-          console.log(user);
-          dispatch(updateUserThunk(user));
-
-          // dispatch(resendEmailThunk(data))
-          //   .unwrap()
-          //   .then(
-          //     toast.success(
-          //       `Verification link was sent successfully. Please check your email.`
-          //     )
-          //   )
-          //   .catch(error => {
-          //     toast.error(error);
-          //   });
+          const user = avatarFile
+            ? { ...data, avatarFile, id }
+            : { ...data, id };
+          dispatch(updateUserThunk(user))
+            .unwrap()
+            .then(res => {
+              res.errors[0] && toast.error(res.errors[0][403]);
+            });
         }}
       >
-        <Form className={styles.stylesForm}>
-          <Field
-            className={styles.inputStyle}
-            type="text"
-            name="name"
-            placeholder="Name"
-          />
-          <Field
-            className={styles.inputStyle}
-            type="email"
-            name="email"
-            placeholder="Email"
-          />
-          {isEditPassword && (
-            <>
+        {({ errors, touched, setFieldValue }) => (
+          <Form className={styles.stylesForm}>
+            <div className={styles.inputWrapper}>
               <Field
-                className={styles.inputStylePassword}
-                type={showPass ? 'text' : 'password'}
-                name="password"
-                placeholder="Password"
+                className={styles.inputStyle}
+                type="text"
+                name="name"
+                placeholder="Name"
               />
+              {errors.name && touched.name ? (
+                <p className={styles.descrError}>{errors.name}</p>
+              ) : null}
+            </div>
+            <div className={styles.inputWrapper}>
               <Field
-                className={styles.inputStylePassword}
-                type={showPass ? 'text' : 'password'}
-                name="password"
-                placeholder="New password"
+                className={styles.inputStyle}
+                type="email"
+                name="email"
+                placeholder="Email"
               />
-            </>
-          )}
-          <Button
-            type="button"
-            className={styles.eyeIconBtn}
-            onClick={passVisibility}
-          >
-            {showPass ? (
-              <Icon id="eye" className={styles.icon} size={18} />
-            ) : (
-              <Icon id="eye-off" className={styles.icon} size={18} />
+              {errors.email && touched.email ? (
+                <p className={styles.descrError}>{errors.email}</p>
+              ) : null}
+            </div>
+
+            {isEditPassword && (
+              <>
+                <div className={styles.inputWrapper}>
+                  <Field
+                    className={styles.inputStylePassword}
+                    type={showPass ? 'text' : 'password'}
+                    name="password"
+                    placeholder="Password"
+                  />
+                  <Button
+                    type="button"
+                    className={styles.eyeIconBtn}
+                    onClick={passVisibility}
+                  >
+                    {showPass ? (
+                      <Icon id="eye" className={styles.icon} size={18} />
+                    ) : (
+                      <Icon id="eye-off" className={styles.icon} size={18} />
+                    )}
+                  </Button>
+                  {errors.password && touched.password ? (
+                    <p className={styles.descrError}>{errors.password}</p>
+                  ) : null}
+                </div>
+                <div className={styles.inputWrapper}>
+                  <Field
+                    className={styles.inputStylePassword}
+                    type={showNewPass ? 'text' : 'password'}
+                    name="newPassword"
+                    placeholder="New password"
+                  />
+                  <Button
+                    type="button"
+                    className={styles.eyeIconBtn}
+                    onClick={newPassVisibility}
+                  >
+                    {showNewPass ? (
+                      <Icon id="eye" className={styles.icon} size={18} />
+                    ) : (
+                      <Icon id="eye-off" className={styles.icon} size={18} />
+                    )}
+                  </Button>
+                  {errors.newPassword && touched.newPassword ? (
+                    <p className={styles.descrError}>{errors.newPassword}</p>
+                  ) : null}
+                </div>
+              </>
             )}
-          </Button>
-          <Button type="submit" className={styles.submitButton}>
-            <p className={styles.sendText}>Send</p>
-          </Button>
-        </Form>
+            <div className={styles.switchWrapper}>
+              <p className={styles.descr}>Change password</p>
+              <Switch
+                className="react-switch"
+                onChange={() => {
+                  setIsEditPassword(!isEditPassword);
+                  setFieldValue('password', '');
+                  setFieldValue('newPassword', '');
+                }}
+                checked={isEditPassword}
+                height={20}
+                width={35}
+                offColor="#615e5e"
+                onColor="#9DC888"
+                uncheckedIcon={false}
+                checkedIcon={false}
+                activeBoxShadow="none"
+              />
+            </div>
+            <Button
+              type="submit"
+              className={styles.submitButton}
+              disabled={isLoading}
+            >
+              {isLoading && <Loader size={20} classTitle="insideButton" />}
+              Send
+            </Button>
+          </Form>
+        )}
       </Formik>
     </>
   );

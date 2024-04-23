@@ -5,6 +5,7 @@ import {
   selectEmail,
   selectError,
   selectId,
+  selectIsLoading,
   selectName,
   selectThemeId,
 } from '../redux/user/slice';
@@ -15,6 +16,7 @@ export const useUser = () => {
   const userEmail = useSelector(selectEmail);
   const userAvatar = useSelector(selectAvatarURL);
   const userTheme = useSelector(selectThemeId);
+  const isLoading = useSelector(selectIsLoading);
   const userError = useSelector(selectError);
 
   return {
@@ -23,6 +25,7 @@ export const useUser = () => {
     userEmail,
     userAvatar,
     userTheme,
+    isLoading,
     userError,
   };
 };
