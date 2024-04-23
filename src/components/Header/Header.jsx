@@ -8,17 +8,21 @@ import clsx from 'clsx';
 import { UserModal } from '../UserModal/UserModal';
 import { Modal } from '../Modal/Modal';
 import { useModal } from '../../hooks/useModal';
+import Sidebar from '../Sidebar/Sidebar';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isUserModal, toggleIsUserModal] = useModal();
+  const [isSidebarModal, setIsSidebarModal] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
+    document.addEventListener('keydown', handleKeyPress);
 
     return () => {
       document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
 
@@ -28,9 +32,20 @@ export const Header = () => {
     }
   };
 
+  const handleOpenModalSidebar = () => {
+    setIsSidebarModal(!isSidebarModal);
+  };
+
   const handleChangeDrop = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleKeyPress = event => {
+    if (event.key === 'Escape') {
+      setIsSidebarModal(false);
+    }
+  };
+
   const { setTheme } = useTheme();
 
   const handleDarkThemeClick = () => {
@@ -46,13 +61,29 @@ export const Header = () => {
   return (
     <>
       <header className={styles.sectionStyleHeader}>
-        <button className={styles.burgerButton}>
+        <button
+          className={styles.burgerButton}
+          onClick={() => handleOpenModalSidebar()}
+        >
           <Icon
             id="burger-menu"
             className={styles.burgerIconStyles}
             size="20"
           />
         </button>
+        {isSidebarModal && (
+          <div
+            className={styles.backdrop}
+            onClick={() => handleOpenModalSidebar()}
+          >
+            <div
+              className={styles.wrapperSidebarContent}
+              onClick={event => event.stopPropagation()}
+            >
+              <Sidebar />
+            </div>
+          </div>
+        )}
         <div className={styles.container}>
           <div
             className={styles.wrapperDrop}
