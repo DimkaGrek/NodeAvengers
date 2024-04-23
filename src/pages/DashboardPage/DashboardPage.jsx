@@ -68,8 +68,11 @@ const DashboardPage = () => {
 
       <div>
         {isModal && (
-          <Modal toggleModal={toggleIsModal}>
-            <ColumnForm />
+          <Modal title={'Add column'} toggleModal={toggleIsModal}>
+            <ColumnForm
+              toggleModal={toggleIsModal}
+              handleAddColumn={handleAddColumn}
+            />
           </Modal>
         )}
       </div>
