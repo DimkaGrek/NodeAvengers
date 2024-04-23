@@ -24,7 +24,9 @@ const SharedLayout = () => {
   return (
     <div className={s.layout}>
       <Header />
-      <Sidebar />
+      <aside>
+        <Sidebar />
+      </aside>
       <main>
         <Suspense fallback={null}>
           <Outlet />

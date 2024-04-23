@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 225px;
-  height: 100vh;
+  height: 100%;
   padding: 14px;
 
   background-color: var(--background-sidebar);
@@ -11,17 +11,6 @@
   @media (min-width: 768px) {
     width: 260px;
     padding: 24px;
-  }
-  @media (max-width: 1439px) {
-    /* display: none; */
-  }
-  &.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
   }
 }
 
