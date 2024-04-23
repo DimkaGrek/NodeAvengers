@@ -138,7 +138,7 @@ export const Header = () => {
       </header>
       {isUserModal && (
         <Modal title="Edit profile" toggleModal={toggleIsUserModal}>
-          <UserModal />
+          <UserModal toggleModal={toggleIsUserModal} />
         </Modal>
       )}
     </>
