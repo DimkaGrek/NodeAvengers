@@ -26,14 +26,12 @@ export const EditBoardForm = ({ isEdit = false, toggleModal }) => {
       }}
       validationSchema={Schema}
       onSubmit={values => {
-        console.log(values.name);
         dispatch(addBoard(values))
           .unwrap()
           .then(() => {
             toggleModal();
             navigate(`/home/${values.name}`);
           });
-        console.log(values);
       }}
     >
       {({ errors, touched, setFieldValue }) => (

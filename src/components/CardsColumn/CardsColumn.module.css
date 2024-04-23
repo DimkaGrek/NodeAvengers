@@ -1,4 +1,5 @@
 .singleColumnWrapper {
+  height: 100%;
 }
 .columnTitleWrapper {
   padding: 0 20px;
@@ -34,6 +35,7 @@
   flex-direction: column;
   gap: 8px;
   height: calc((142px + 8px) * 3);
+
   overflow: scroll;
   margin-bottom: 14px;
 }
