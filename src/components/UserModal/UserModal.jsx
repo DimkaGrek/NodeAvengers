@@ -15,7 +15,7 @@ import { EditUserPassSchema, EditUserSchema } from '../../schemas';
 import styles from './UserModal.module.css';
 import { toast } from 'react-toastify';
 
-export const UserModal = () => {
+export const UserModal = ({ toggleModal }) => {
   const [isEditPassword, setIsEditPassword] = useState(false);
   const [showPass, setShowPass] = useState(false);
   const [showNewPass, setShowNewPass] = useState(false);
@@ -121,14 +121,30 @@ export const UserModal = () => {
         }}
         validationSchema={!isEditPassword ? EditUserSchema : EditUserPassSchema}
         onSubmit={data => {
-          const user = avatarFile
-            ? { ...data, avatarFile, id }
-            : { ...data, id };
-          dispatch(updateUserThunk(user))
-            .unwrap()
-            .then(res => {
-              res.errors[0] && toast.error(res.errors[0][403]);
-            });
+          const user = {
+            id,
+            ...(data.name !== userName && { name: data.name }),
+            ...(data.email !== userEmail && { email: data.email }),
+            ...(avatarFile && { avatarFile }),
+            ...(data.password && { password: data.password }),
+            ...(data.newPassword && { newPassword: data.newPassword }),
+          };
+
+          const hasOtherProperties = Object.keys(user).some(
+            key => key !== 'id'
+          );
+
+          if (hasOtherProperties) {
+            dispatch(updateUserThunk(user))
+              .unwrap()
+              .then(res => {
+                if (res.errors[0]) {
+                  throw new Error('Your current password is not valid.');
+                }
+                toggleModal();
+              })
+              .catch(error => toast.error(error));
+          }
         }}
       >
         {({ errors, touched, setFieldValue }) => (
