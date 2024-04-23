@@ -23,8 +23,6 @@ export const Header = () => {
   }, []);
 
   const handleClickOutside = event => {
-    console.log(dropdownRef.current);
-    console.log(dropdownRef.current.contains(event.target));
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }

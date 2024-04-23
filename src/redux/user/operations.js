@@ -18,7 +18,7 @@ export const getUserThunk = createAsyncThunk(
 export const updateUserThunk = createAsyncThunk(
   'updateUser',
   async (credentials, thunkAPI) => {
-    const { id, avatarURL, name, email, password, newPassword } = credentials;
+    const { id, avatarFile, name, email, password, newPassword } = credentials;
     const user = {};
 
     if (name) {
@@ -40,8 +40,8 @@ export const updateUserThunk = createAsyncThunk(
       formData.append('userData', JSON.stringify(user));
     }
 
-    if (avatarURL) {
-      formData.append('avatar', avatarURL);
+    if (avatarFile) {
+      formData.append('avatar', avatarFile);
     }
 
     try {

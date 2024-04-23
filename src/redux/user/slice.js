@@ -77,7 +77,7 @@ const slice = createSlice({
 export const userReducer = slice.reducer;
 
 export const {
-  selecId,
+  selectId,
   selectName,
   selectEmail,
   selectAvatarURL,
