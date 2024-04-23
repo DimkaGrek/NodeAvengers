@@ -13,7 +13,7 @@ const initialState = {
   boards: [],
   currentBoard: [],
   isLoading: false,
-  isError: null,
+  error: null,
 };
 
 const boardsSlice = createSlice({
@@ -126,7 +126,7 @@ const boardsSlice = createSlice({
         ),
         state => {
           state.isLoading = true;
-          state.isError = null;
+          state.error = null;
         }
       )
       .addMatcher(
@@ -143,9 +143,9 @@ const boardsSlice = createSlice({
           editCard.rejected,
           deleteCard.rejected
         ),
-        state => {
+        (state, { payload }) => {
           state.isLoading = false;
-          state.isError = true;
+          state.error = payload;
         }
       );
   },
