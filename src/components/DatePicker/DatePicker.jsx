@@ -5,7 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { Icon } from '../Icon/Icon';
 
-const DatePickerForm = () => {
+const DatePickerForm = ({ onDateChange }) => {
   const [selectedDate, setSelectedDate] = useState(Date.now());
 
   const CustomInput = forwardRef(({ onClick }, ref) => {
@@ -17,15 +17,23 @@ const DatePickerForm = () => {
     );
   });
   CustomInput.displayName = 'CustomInput';
+
+  const formatDateToISOString = date => {
+    return date.toISOString();
+  };
+
+  const handleDateChange = date => {
+    setSelectedDate(date);
+    const formattedDate = formatDateToISOString(date);
+    onDateChange(formattedDate);
+  };
   return (
     <>
       <DatePicker
         toggleCalendarOnIconClick
         calendarClassName={s.datapicker}
         selected={selectedDate}
-        onChange={date => {
-          setSelectedDate(date);
-        }}
+        onChange={handleDateChange}
         customInput={<CustomInput />}
         dateFormat={'EEEE, MMMM d'}
         calendarStartDay={1}

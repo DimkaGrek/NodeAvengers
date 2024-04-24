@@ -1,12 +1,12 @@
 export const getColors = () => {
   return {
-    colors: ['color-violet', 'color-pink', 'color-green', 'color-black'],
+    colors: ['low', 'medium', 'high', 'without'],
   };
 };
 
 export const ICON_COLORS = {
-  'color-violet': 'violet',
-  'color-pink': 'pink',
-  'color-green': 'green',
-  'color-black': 'black',
+  low: 'violet',
+  medium: 'pink',
+  high: 'green',
+  without: 'black',
 };

@@ -7,11 +7,14 @@ import s from './EditCardForm.module.css';
 import { Icon } from '../Icon/Icon.jsx';
 import { getColors, ICON_COLORS } from '../../helpers';
 import { useState } from 'react';
-import { AddButton } from '../AddButton/AddButton.jsx';
-import DatePickerForm from '../DatePicker/DatePicker.jsx';
+
+import DatePickerForm from '../../components/DatePicker/DatePicker.jsx';
+import { useTheme } from '../../hooks/useTheme.js';
+import { toast } from 'react-toastify';
 const EditCardForm = ({ toggleModal }) => {
+  const { theme } = useTheme();
+  const { colors } = getColors(theme);
   const dispatch = useDispatch();
-  const { colors } = getColors();
   const [selectedColor, setSelectedColor] = useState(null);
   return (
     <Formik
@@ -28,6 +31,9 @@ const EditCardForm = ({ toggleModal }) => {
           .unwrap()
           .then(() => {
             toggleModal();
+          })
+          .catch(error => {
+            toast.info(error.meassage);
           });
         console.log(values);
       }}
@@ -66,10 +72,10 @@ const EditCardForm = ({ toggleModal }) => {
                       className={s.radioBtn}
                       type="radio"
                       name="priority"
-                      value={index}
+                      value={color}
                       onChange={() => {
-                        setFieldValue('priority', index),
-                          setSelectedColor(color);
+                        setFieldValue('priority', color);
+                        setSelectedColor(color);
                       }}
                     />
                     <Icon
@@ -88,10 +94,14 @@ const EditCardForm = ({ toggleModal }) => {
           </div>
           <div className={s.wrapper_deadline}>
             <p className={s.description}>Deadline</p>
-            <DatePickerForm />
+            <DatePickerForm
+              onDateChange={date => setFieldValue('deadline', date)}
+            />
           </div>
           <Button type="submit" className={s.button}>
-            <AddButton width={28} height={28} iconSize={10} />
+            <span className={s.color_addbtn}>
+              <Icon id="plus" className={s.iconPlus} size={10} />
+            </span>
             Add
           </Button>
         </Form>
