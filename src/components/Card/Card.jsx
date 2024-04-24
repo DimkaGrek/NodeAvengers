@@ -4,7 +4,7 @@ import s from './Card.module.css';
 const Card = ({ moveCardRight, index }) => {
   return (
     <div className={s.cardWrapper}>
-      <h3 className={s.cardTitle}>The Watch Spot Design</h3>
+      <h4 className={s.cardTitle}>The Watch Spot Design</h4>
       <p className={s.cardDescr}>
         Create a visually stunning and eye-catching watch dial design that
         embodies our brand`s essence of sleek aesthetics and modern elegance.
