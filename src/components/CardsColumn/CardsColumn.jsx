@@ -4,41 +4,27 @@ import Card from '../../components/Card/Card.jsx';
 import { AddButton } from '../../components/AddButton/AddButton.jsx';
 import { useState } from 'react';
 
-const CardsColumn = () => {
+const CardsColumn = ({ column }) => {
   const [addCard, setAddCard] = useState([]);
   console.log('card1', addCard);
 
-  const columnTitle = 'To Do';
-
-  const uniqueId = () => {
-    return Date.now().toString();
-  };
-
-  const handleAddCardButton = () => {
-    setAddCard([
-      ...addCard,
-      <Card
-        key={uniqueId()}
-        index={addCard.length}
-        moveCardRight={moveCardRight}
-      />,
-    ]);
-  };
+  // const handleAddCardButton = () => {
+  //   setAddCard([
+  //     ...addCard,
+  //     <Card
+  //       key={uniqueId()}
+  //       index={addCard.length}
+  //       moveCardRight={moveCardRight}
+  //     />,
+  //   ]);
+  // };
 
   const addCardButtonLabel = !addCard.length ? 'Add card' : 'Add another card';
-
-  const moveCardRight = index => {
-    const updatedCards = [...addCard];
-    const movedCard = updatedCards.splice(index, 1)[0];
-    const targetIndex = Math.min(index + 1, updatedCards.length);
-    updatedCards.splice(targetIndex, 0, movedCard);
-    setAddCard(updatedCards);
-  };
 
   return (
     <div className={s.singleColumnWrapper}>
       <div className={s.columnTitleWrapper}>
-        <p className={s.columnTitle}>{columnTitle}</p>
+        <p className={s.columnTitle}>{column.name}</p>
         <div className={s.columnTitleBtns}>
           <button>
             <Icon id="pencil" className={s.columnTitleIcon} size={16} />
@@ -50,12 +36,12 @@ const CardsColumn = () => {
       </div>
 
       <div className={s.cardsContainer}>
-        {addCard.map((card, index) => (
-          <div key={index}>{card}</div>
+        {column.cards.map(card => (
+          <Card key={card._id} card={card} />
         ))}
       </div>
 
-      <button className={s.addCardBtn} onClick={handleAddCardButton}>
+      <button className={s.addCardBtn}>
         <AddButton color="dark" width={28} height={28} iconSize={14} />
         {addCardButtonLabel}
       </button>
