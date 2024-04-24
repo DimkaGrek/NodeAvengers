@@ -1,5 +1,9 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { updateUserThemeThunk, updateUserThunk } from './operations';
+import {
+  needHelpThunk,
+  updateUserThemeThunk,
+  updateUserThunk,
+} from './operations';
 import { loginThunk, refreshThunk } from '../auth/operations';
 
 const initialState = {
@@ -48,11 +52,15 @@ const slice = createSlice({
         state.themeId = payload;
         state.isLoading = false;
       })
+      .addCase(needHelpThunk.fulfilled, state => {
+        state.isLoading = false;
+      })
       .addMatcher(
         isAnyOf(
           refreshThunk.pending,
           updateUserThunk.pending,
-          updateUserThemeThunk.pending
+          updateUserThemeThunk.pending,
+          needHelpThunk.pending
         ),
         state => {
           state.error = null;
@@ -63,7 +71,8 @@ const slice = createSlice({
         isAnyOf(
           refreshThunk.rejected,
           updateUserThunk.rejected,
-          updateUserThemeThunk.rejected
+          updateUserThemeThunk.rejected,
+          needHelpThunk.rejected
         ),
         (state, { payload }) => {
           state.error = payload;

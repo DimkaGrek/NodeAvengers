@@ -1,13 +1,10 @@
 import * as Yup from 'yup';
 
 export const NeedHelpFormSchema = Yup.object().shape({
-  email: Yup.string()
-    .matches(
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}$/,
-      'Email is not valid.'
-    )
+  title: Yup.string()
+    .min(3, 'Your title should be 3 or more characters.')
     .required('This field is required.'),
-  comment: Yup.string()
-    .min(8, 'Your comment hould be 3 or more characters.')
+  description: Yup.string()
+    .min(8, 'Your description should be 8 or more characters.')
     .required('This field is required.'),
 });

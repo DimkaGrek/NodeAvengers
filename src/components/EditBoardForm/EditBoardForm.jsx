@@ -19,7 +19,6 @@ export const EditBoardForm = ({ board, toggleModal }) => {
   const navigate = useNavigate();
   const { images, icons } = getImages();
   const userId = useSelector(selectId);
-  console.log(board);
   return (
     <Formik
       initialValues={
