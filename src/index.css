@@ -143,6 +143,15 @@ html[data-theme='dark'] {
   --button-add-color: #bedbb0;
   --button-logout-color: #bedbb0;
   --span-color: #bedbb0;
+
+  /* Calendar-colors */
+  --calendar-text: #fff;
+  --selected-day: #bedbb0;
+  --selected-day-hover: #9dc888;
+  --prevmonth-day: rgba(255, 255, 255, 0.2);
+  --prev-next-btn: rgba(255, 255, 255, 0.8);
+  --month-day: rgba(255, 255, 255, 0.5);
+  --selected-day-color-text: #161616;
 }
 
 /* Light theme */
@@ -188,6 +197,15 @@ html[data-theme='light'] {
   --main-low-priority: #8fa1d0;
   --main-medium-priority: #e09cb5;
   --main-high-priority: #bedbb0;
+
+  /* Calendar-colors */
+  --calendar-text: #161616;
+  --selected-day: #bedbb0;
+  --selected-day-hover: #9dc888;
+  --prevmonth-day: rgba(22, 22, 22, 0.2);
+  --prev-next-btn: #bedbb0;
+  --month-day: rgba(22, 22, 22, 0.5);
+  --selected-day-color-text: #161616;
 }
 
 /* Violet theme */
@@ -233,6 +251,15 @@ html[data-theme='violet'] {
   --main-low-priority: #8fa1d0;
   --main-medium-priority: #e09cb5;
   --main-high-priority: #bedbb0;
+
+  /* Calendar-colors */
+  --calendar-text: #161616;
+  --selected-day: #5255bc;
+  --selected-day-color-text: #fff;
+  --selected-day-hover: #979cea;
+  --prevmonth-day: rgba(22, 22, 22, 0.2);
+  --prev-next-btn: #5255bc;
+  --month-day: rgba(22, 22, 22, 0.5);
 }
 
 /* Container */
