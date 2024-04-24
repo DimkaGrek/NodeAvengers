@@ -17,13 +17,6 @@ export const RegisterForm = () => {
   const passVisibility = () => {
     setShowPass(prevState => !prevState);
   };
-  // useEffect(() => {
-  //   if (isRegistered) {
-  //     toast.info(`Please check your email for activate your account.`, {
-  //       autoClose: false,
-  //     });
-  //   }
-  // }, [isRegistered]);
 
   return (
     <>

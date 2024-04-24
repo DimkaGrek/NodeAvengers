@@ -25,7 +25,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  gap: 14px;
+  gap: 18px;
 }
 
 input {
@@ -46,6 +46,7 @@ input {
   letter-spacing: 0.02em;
   outline: none;
   transition: opacity 250ms ease;
+  position: relative;
 }
 
 .input_error {
@@ -54,6 +55,7 @@ input {
   font-size: 10px;
   margin-top: 3px;
   padding-left: 14px;
+  position: absolute;
 }
 .btn_submit {
   margin-top: 10px;
@@ -224,7 +226,7 @@ input {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  gap: 14px;
+  gap: 20px;
 }
 
 .input_error {

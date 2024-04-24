@@ -2,10 +2,11 @@
   background-color: transparent;
   color: var(--background-button);
   text-align: left;
-
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
   font-size: 14px;
-  position: relative;
-  width: 127px;
 }
 
 :global(.react-datepicker__triangle) {
@@ -94,7 +95,6 @@
   :global(.react-datepicker__day:hover) {
     border-radius: 50%;
     background-color: var(--selected-day-hover);
-    /* padding: 3px 7px; */
     width: 24px;
     height: 24px;
   }
@@ -109,7 +109,6 @@
     align-items: center;
     width: 24px;
     height: 24px;
-    /* padding: 3px 7px; */
     background-color: var(--selected-day);
     border-radius: 50%;
   }
@@ -142,8 +141,5 @@
 }
 
 .icon {
-  position: absolute;
-  top: 4px;
-  right: -3px;
-  stroke: red;
+  stroke: var(--background-button);
 }

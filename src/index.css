@@ -135,6 +135,7 @@ html[data-theme='dark'] {
   --box-shadow: rgba(22, 22, 22, 0.05);
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(255, 255, 255, 0.3);
+  --stroke-add-card-icon: #fff;
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -192,6 +193,7 @@ html[data-theme='light'] {
   --box-shadow: rgba(22, 22, 22, 0.05);
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
+  --stroke-add-card-icon: #fff;
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -246,6 +248,7 @@ html[data-theme='violet'] {
   --box-shadow: rgba(22, 22, 22, 0.05);
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
+  --stroke-add-card-icon: #161616;
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
