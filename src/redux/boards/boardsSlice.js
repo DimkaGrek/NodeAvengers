@@ -23,12 +23,12 @@ const boardsSlice = createSlice({
     builder
       .addCase(getBoards.fulfilled, (state, { payload }) => {
         state.boards = payload;
-        // state.currentBoard = payload[0];
+        state.currentBoard = payload[0];
         state.isLoading = false;
       })
       .addCase(addBoard.fulfilled, (state, { payload }) => {
         state.boards.push(payload);
-        state.currentBoard = [...payload];
+        state.currentBoard = payload;
         state.isLoading = false;
       })
       .addCase(getBoard.fulfilled, (state, { payload }) => {
@@ -37,6 +37,10 @@ const boardsSlice = createSlice({
       })
       .addCase(editBoard.fulfilled, (state, { payload }) => {
         state.currentBoard = payload;
+        const index = state.boards.findIndex(
+          board => board._id === payload._id
+        );
+        state.boards[index] = payload;
         state.isLoading = false;
       })
       .addCase(deleteBoard.fulfilled, (state, { payload }) => {
