@@ -93,5 +93,36 @@
     </clipPath>
   </defs>
 </symbol>
+<symbol id="icon-color-violet" width="14" height="14" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="4" cy="4" r="4" fill="#8FA1D0" />
+</symbol>
+<symbol  id="icon-color-pink" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="7" cy="7" r="7" fill="#E09CB5" />
+</symbol>
+<symbol id="icon-color-green" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="7" cy="7" r="7" fill="#BEDBB0" />
+</symbol>
+<symbol id="icon-color-black" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="7" cy="7" r="7" fill="white" fill-opacity="0.3" />
+</symbol>
+<symbol id="icon-check-color-violet" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="7" cy="7" r="4" fill="#8FA1D0" />
+  <circle cx="7" cy="7" r="6.5" stroke="#8FA1D0" />
+</symbol>
+<symbol id="icon-check-color-pink" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="7" cy="7" r="4" fill="#E09CB5" />
+  <circle cx="7" cy="7" r="6.5" stroke="#E09CB5" />
+</symbol>
+<symbol id="icon-check-color-green" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="7" cy="7" r="4" fill="#BEDBB0" />
+  <circle cx="7" cy="7" r="6.5" stroke="#BEDBB0" />
+</symbol>
+<symbol id="icon-check-color-black" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="7" cy="7" r="4" fill="white" fill-opacity="0.3" />
+  <circle cx="7" cy="7" r="6.5"   stroke="white" stroke-opacity="0.3"/>
+</symbol>
+<symbol id="icon-down" width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.5 1.25L6 5.75L10.5 1.25" stroke="#BEDBB0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
   </defs>
 </svg>
