@@ -14,13 +14,16 @@ import { useModal } from '../../hooks/useModal.jsx';
 import { Modal } from '../../components/Modal/Modal.jsx';
 import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
 import { AddButton } from '../../components/AddButton/AddButton.jsx';
-
+import { selectCurrentBoard } from '../../redux/boards/boardsSlice.js';
+import { useSelector } from 'react-redux';
 const DashboardPage = () => {
   const [isModal, toggleIsModal] = useModal();
   const [cardsColumns, setCardsColumns] = useState([]);
   const { boardName } = useParams();
+  const currentBoard = useSelector(selectCurrentBoard);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(currentBoard);
 
   useEffect(() => {
     dispatch(getBoards())
@@ -38,12 +41,12 @@ const DashboardPage = () => {
       });
   }, [boardName, dispatch, navigate]);
 
-  const handleAddColumn = () => {
-    setCardsColumns([
-      ...cardsColumns,
-      <CardsColumn key={cardsColumns.length} />,
-    ]);
-  };
+  // const handleAddColumn = () => {
+  //   setCardsColumns([
+  //     ...cardsColumns,
+  //     <CardsColumn key={currentBoard.columns} />,
+  //   ]);
+  // };
 
   const buttonLabel = cardsColumns.length ? 'Add another column' : 'Add column';
 
@@ -52,9 +55,10 @@ const DashboardPage = () => {
       <DashboardHeader />
 
       <div className={s.columnsContainer}>
-        {cardsColumns.map((column, index) => (
-          <div key={index}>{column}</div>
-        ))}
+        {currentBoard.columns &&
+          currentBoard.columns.map(column => (
+            <CardsColumn key={column._id} column={column} />
+          ))}
 
         <Button
           className={s.addColBtn}
@@ -71,7 +75,7 @@ const DashboardPage = () => {
           <Modal title={'Add column'} toggleModal={toggleIsModal}>
             <ColumnForm
               toggleModal={toggleIsModal}
-              handleAddColumn={handleAddColumn}
+              // handleAddColumn={handleAddColumn}
             />
           </Modal>
         )}

@@ -25,8 +25,6 @@ export const ColumnForm = ({ title, handleAddColumn, toggleModal }) => {
       }}
       validationSchema={Schema}
       onSubmit={values => {
-        console.log(values);
-        console.log({ ...values, boardId: currentBoard._id });
         dispatch(addColumn({ ...values, boardId: currentBoard._id }))
           .unwrap()
           .then(() => {

@@ -11,15 +11,19 @@ import { useDispatch } from 'react-redux';
 import s from './EditBoardForm.module.css';
 import { addBoard } from '../../redux/boards/boardsOperations.js';
 import { useNavigate } from 'react-router-dom';
+import { selectId } from '../../redux/auth/slice';
+import { useSelector } from 'react-redux';
 
 export const EditBoardForm = ({ isEdit = false, toggleModal }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { images, icons } = getImages();
+  const userId = useSelector(selectId);
 
   return (
     <Formik
       initialValues={{
+        userId,
         name: '',
         icon: 0,
         backgroundImage: 0,
