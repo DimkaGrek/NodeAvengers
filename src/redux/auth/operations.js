@@ -89,3 +89,27 @@ export const resendEmailThunk = createAsyncThunk(
     }
   }
 );
+
+export const resetPasswordThunk = createAsyncThunk(
+  'sendCode',
+  async (email, thunkAPI) => {
+    try {
+      const result = await api.post('/auth/resendPassword', email);
+      return result.data.message;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const verifyResendPassword = createAsyncThunk(
+  'changePassword',
+  async (data, thunkAPI) => {
+    try {
+      const result = await api.patch('/auth/verifyResendPassword', data);
+      return result.data.message;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  }
+);
