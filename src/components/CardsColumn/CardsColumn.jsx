@@ -2,34 +2,32 @@ import s from './CardsColumn.module.css';
 import { Icon } from '../../components/Icon/Icon.jsx';
 import Card from '../../components/Card/Card.jsx';
 import { AddButton } from '../../components/AddButton/AddButton.jsx';
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteColumn } from '../../redux/boards/columnOperations.js';
+import { useModal } from '../../hooks/useModal.jsx';
+import { Modal } from '../../components/Modal/Modal.jsx';
+import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
 
 const CardsColumn = ({ column }) => {
-  const [addCard, setAddCard] = useState([]);
-  console.log('card1', addCard);
+  const [isEditColumnModal, toggleIsEditColumnModal] = useModal();
+  const dispatch = useDispatch();
+  console.log('is Array column?', typeof column);
 
-  // const handleAddCardButton = () => {
-  //   setAddCard([
-  //     ...addCard,
-  //     <Card
-  //       key={uniqueId()}
-  //       index={addCard.length}
-  //       moveCardRight={moveCardRight}
-  //     />,
-  //   ]);
-  // };
+  const handleDeleteColumn = id => {
+    dispatch(deleteColumn(id));
+  };
 
-  const addCardButtonLabel = !addCard.length ? 'Add card' : 'Add another card';
+  const addCardButtonLabel = !column.length ? 'Add card' : 'Add another card';
 
   return (
     <div className={s.singleColumnWrapper}>
       <div className={s.columnTitleWrapper}>
         <p className={s.columnTitle}>{column.name}</p>
         <div className={s.columnTitleBtns}>
-          <button>
+          <button onClick={toggleIsEditColumnModal}>
             <Icon id="pencil" className={s.columnTitleIcon} size={16} />
           </button>
-          <button>
+          <button onClick={() => handleDeleteColumn(column._id)}>
             <Icon id="trash" className={s.columnTitleIcon} size={16} />
           </button>
         </div>
@@ -45,6 +43,14 @@ const CardsColumn = ({ column }) => {
         <AddButton color="dark" width={28} height={28} iconSize={14} />
         {addCardButtonLabel}
       </button>
+
+      <div>
+        {isEditColumnModal && (
+          <Modal title={'Edit column'} toggleModal={toggleIsEditColumnModal}>
+            <ColumnForm toggleModal={toggleIsEditColumnModal} column={column} />
+          </Modal>
+        )}
+      </div>
     </div>
   );
 };
