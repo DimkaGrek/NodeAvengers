@@ -40,13 +40,15 @@ export const getBoard = createAsyncThunk(
 
 export const editBoard = createAsyncThunk(
   'boards/editBoard',
-  async ({ _id, name, columns, userId }, thunkAPI) => {
+  async ({ _id, name, columns, userId, icon, backgroundImage }, thunkAPI) => {
     try {
       const { data } = await api.put(`/board/${_id}`, {
         _id,
         name,
         columns,
         userId,
+        icon,
+        backgroundImage,
       });
       return data;
     } catch (error) {

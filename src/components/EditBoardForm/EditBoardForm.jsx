@@ -9,33 +9,50 @@ import { Schema } from '../../schemas';
 import { useDispatch } from 'react-redux';
 
 import s from './EditBoardForm.module.css';
-import { addBoard } from '../../redux/boards/boardsOperations.js';
+import { addBoard, editBoard } from '../../redux/boards/boardsOperations.js';
 import { useNavigate } from 'react-router-dom';
 import { selectId } from '../../redux/auth/slice';
 import { useSelector } from 'react-redux';
 
-export const EditBoardForm = ({ isEdit = false, toggleModal }) => {
+export const EditBoardForm = ({ board, toggleModal }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { images, icons } = getImages();
   const userId = useSelector(selectId);
-
+  console.log(board);
   return (
     <Formik
-      initialValues={{
-        userId,
-        name: '',
-        icon: 0,
-        backgroundImage: 0,
-      }}
+      initialValues={
+        board
+          ? {
+              userId,
+              _id: board._id,
+              name: board.name,
+              icon: board.icon,
+              backgroundImage: board.backgroundImage,
+            }
+          : {
+              userId,
+              name: '',
+              icon: 0,
+              backgroundImage: 0,
+            }
+      }
       validationSchema={Schema}
       onSubmit={values => {
-        dispatch(addBoard(values))
-          .unwrap()
-          .then(() => {
-            toggleModal();
-            navigate(`/home/${values.name}`);
-          });
+        board
+          ? dispatch(editBoard(values))
+              .unwrap()
+              .then(() => {
+                toggleModal();
+                navigate(`/home`);
+              })
+          : dispatch(addBoard(values))
+              .unwrap()
+              .then(() => {
+                toggleModal();
+                navigate(`/home/${values.name}`);
+              });
       }}
     >
       {({ errors, touched, setFieldValue }) => (
@@ -97,8 +114,8 @@ export const EditBoardForm = ({ isEdit = false, toggleModal }) => {
             </ul>
           </div>
           <Button type="submit" className={s.button}>
-            {!isEdit && <AddButton width={28} height={28} iconSize={10} />}
-            Create
+            {<AddButton width={28} height={28} iconSize={10} />}
+            {board ? 'Edit' : 'Create'}
           </Button>
         </Form>
       )}
