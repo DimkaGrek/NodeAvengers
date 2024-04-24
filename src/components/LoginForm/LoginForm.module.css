@@ -113,6 +113,7 @@ input {
 
 .pass_input_wrapper {
   position: relative;
+  text-align: end;
 }
 .icon {
   fill: rgba(255, 255, 255, 0.3);
@@ -258,4 +259,12 @@ input {
     width: 424px;
     padding: 40px;
   }
+}
+
+.link{
+  color: white;
+  text-align: end;
+  font-size: 13px;
+  
+  
 }

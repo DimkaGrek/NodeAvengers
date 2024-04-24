@@ -6,6 +6,7 @@ import {
   logoutThunk,
   refreshThunk,
   resendEmailThunk,
+  resetPasswordThunk,
 } from './operations';
 
 const initialState = {
@@ -60,7 +61,6 @@ const slice = createSlice({
           state.isRefreshing = false;
         }
       )
-
       .addMatcher(
         isAnyOf(
           resendEmailThunk.pending,

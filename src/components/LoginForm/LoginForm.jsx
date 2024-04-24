@@ -136,6 +136,9 @@ export const LoginForm = () => {
                       <Icon id="eye-off" className={s.icon} size={18} />
                     )}
                   </Button>
+                  <Link className={s.link} to="/auth/forgot">
+                    forgot password?
+                  </Link>
                 </div>
                 <Button className={s.btn_submit} type="submit">
                   Log In Now
