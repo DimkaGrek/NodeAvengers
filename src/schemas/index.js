@@ -1,2 +1,5 @@
 export * from './EditBoardSchema';
-export * from './EditCardSchema';
+export * from './LoginSchema';
+export * from './RegisterSchema';
+export * from './NeedHelpSchema';
+export * from './EditUserSchema';
