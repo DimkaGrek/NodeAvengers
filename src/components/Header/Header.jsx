@@ -32,8 +32,6 @@ export const Header = () => {
   const { setTheme } = useTheme();
 
   useEffect(() => {
-    dispatch(getThemesList());
-    setTheme(currentTheme);
     document.addEventListener('click', handleClickOutside);
     document.addEventListener('keydown', handleKeyPress);
 
@@ -41,6 +39,13 @@ export const Header = () => {
       document.removeEventListener('click', handleClickOutside);
       document.removeEventListener('keydown', handleKeyPress);
     };
+  }, []);
+
+  useEffect(() => {
+    dispatch(getThemesList());
+    if (currentTheme) {
+      setTheme(currentTheme);
+    }
   }, [dispatch, currentTheme, setTheme]);
 
   const handleClickOutside = event => {
