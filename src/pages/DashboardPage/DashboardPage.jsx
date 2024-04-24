@@ -16,8 +16,10 @@ import { useSelector } from 'react-redux';
 import { useModal } from '../../hooks/useModal.jsx';
 import { Modal } from '../../components/Modal/Modal.jsx';
 import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
+
 const DashboardPage = () => {
   const [isAddColumnModal, toggleIsAddColumnModal] = useModal();
+
   const { boardName } = useParams();
   const currentBoard = useSelector(selectCurrentBoard);
   const dispatch = useDispatch();
@@ -39,7 +41,7 @@ const DashboardPage = () => {
       });
   }, [boardName, dispatch, navigate]);
 
-  const buttonLabel = !currentBoard?.columns?.length
+  const buttonLabel = currentBoard?.columns?.length
     ? 'Add another column'
     : 'Add column';
 

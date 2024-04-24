@@ -7,9 +7,11 @@ import { deleteColumn } from '../../redux/boards/columnOperations.js';
 import { useModal } from '../../hooks/useModal.jsx';
 import { Modal } from '../../components/Modal/Modal.jsx';
 import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
+import { EditCardForm } from '../../components/EditCardForm/EditCardForm.jsx';
 
 const CardsColumn = ({ column }) => {
   const [isEditColumnModal, toggleIsEditColumnModal] = useModal();
+  const [isAddCardModal, toggleIsAddCardModal] = useModal();
   const dispatch = useDispatch();
   console.log('is Array column?', typeof column);
 
@@ -39,7 +41,7 @@ const CardsColumn = ({ column }) => {
         ))}
       </div>
 
-      <button className={s.addCardBtn}>
+      <button className={s.addCardBtn} onClick={toggleIsAddCardModal}>
         <AddButton color="dark" width={28} height={28} iconSize={14} />
         {addCardButtonLabel}
       </button>
@@ -48,6 +50,15 @@ const CardsColumn = ({ column }) => {
         {isEditColumnModal && (
           <Modal title={'Edit column'} toggleModal={toggleIsEditColumnModal}>
             <ColumnForm toggleModal={toggleIsEditColumnModal} column={column} />
+          </Modal>
+        )}
+
+        {isAddCardModal && (
+          <Modal title={'Add card'} toggleModal={toggleIsAddCardModal}>
+            <EditCardForm
+              toggleModal={toggleIsAddCardModal}
+              columnId={column._id}
+            />
           </Modal>
         )}
       </div>

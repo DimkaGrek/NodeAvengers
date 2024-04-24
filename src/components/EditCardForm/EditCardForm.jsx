@@ -11,7 +11,7 @@ import { useState } from 'react';
 import DatePickerForm from '../../components/DatePicker/DatePicker.jsx';
 import { useTheme } from '../../hooks/useTheme.js';
 import { toast } from 'react-toastify';
-const EditCardForm = ({ toggleModal }) => {
+export const EditCardForm = ({ toggleModal, columnId }) => {
   const { theme } = useTheme();
   const { colors } = getColors(theme);
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const EditCardForm = ({ toggleModal }) => {
         description: '',
         priority: '',
         deadline: '',
-        columnId: '',
+        columnId,
       }}
       validationSchema={schema}
       onSubmit={values => {
@@ -109,5 +109,3 @@ const EditCardForm = ({ toggleModal }) => {
     </Formik>
   );
 };
-
-export default EditCardForm;
