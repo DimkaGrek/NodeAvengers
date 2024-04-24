@@ -11,6 +11,7 @@ import { PublicRoute, PrivateRoute } from '../routes';
 import { refreshThunk } from '../redux/auth/operations.js';
 import { selectIsLoggedIn, selectIsRefreshing } from '../redux/auth/slice.js';
 import NotFound from '../pages/NotFound/NotFound.jsx';
+import { getThemesList } from '../redux/themes/operations.js';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
@@ -24,6 +25,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(refreshThunk());
+    dispatch(getThemesList());
   }, [dispatch]);
 
   return isRefreshing ? (

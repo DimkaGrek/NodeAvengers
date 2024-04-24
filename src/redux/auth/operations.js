@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, clearToken, setToken } from '../../api/api';
+import { getThemesList } from '../themes/operations';
 
 export const registerThunk = createAsyncThunk(
   'register',
@@ -59,7 +60,7 @@ export const refreshThunk = createAsyncThunk('refresh', async (_, thunkAPI) => {
     const { data } = await api.post('/auth/refresh', { refreshToken });
 
     setToken(data.accessToken);
-
+    await thunkAPI.dispatch(getThemesList());
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
