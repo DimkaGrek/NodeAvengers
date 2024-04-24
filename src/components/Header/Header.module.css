@@ -1,4 +1,5 @@
 .sectionStyleHeader {
+  position: relative;
   width: 100%;
   height: 68px;
   background-color: var(--background-header);
@@ -45,7 +46,6 @@
   cursor: pointer;
   width: 16px;
   height: 17px;
-  margin-right: 14px;
 }
 
 .rotated {
@@ -63,6 +63,7 @@
   align-items: center;
   flex-direction: row;
   background-color: var(--background-header);
+  cursor: pointer;
 }
 
 .listDrop {
@@ -71,7 +72,7 @@
   align-items: start;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid #bedbb0;
+  border: 1px solid var(--border-list-drop);
   border-radius: 8px;
   width: 100px;
   height: 107px;
@@ -83,7 +84,7 @@
   margin: auto;
   transform: translateY(8px);
   opacity: 1;
-  transition: opacity 1.3s ease;
+  transition: opacity 1.3s;
   z-index: 999;
 }
 
@@ -115,4 +116,23 @@
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(21, 21, 21, 0.5);
+  z-index: 1;
+}
+
+.wrapperSidebarContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 1.3s;
 }

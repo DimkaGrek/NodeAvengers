@@ -17,7 +17,7 @@
   padding: 24px;
   border-radius: 8px;
   color: white;
-  background: #151515;
+  background: var(--background-modal);
   width: 335px;
   display: flex;
   flex-direction: column;
@@ -48,11 +48,11 @@
 }
 
 .closeModalIcon {
-  stroke: #ffffff;
+  stroke: var(--stroke-svg);
 }
 
 .modalTitle {
-  color: #fff;
+  color: var(--color-text);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.5;

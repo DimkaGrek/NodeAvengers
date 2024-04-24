@@ -1,0 +1,49 @@
+.singleColumnWrapper {
+}
+.columnTitleWrapper {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  width: 335px;
+  height: 56px;
+  background-color: #121212;
+  margin-bottom: 14px;
+}
+.columnTitle {
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.columnTitleBtns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  button {
+    background-color: transparent;
+  }
+}
+.columnTitleIcon {
+  stroke: white;
+  stroke-opacity: 0.5;
+}
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: calc((142px + 8px) * 3);
+  overflow: scroll;
+  margin-bottom: 14px;
+}
+.addCardBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  width: 335px;
+  height: 56px;
+  background-color: #bedbb0;
+}

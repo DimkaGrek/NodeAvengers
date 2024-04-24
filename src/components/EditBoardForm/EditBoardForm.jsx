@@ -6,9 +6,15 @@ import { AddButton, Icon } from 'components';
 import { getImages } from '../../helpers';
 import { Schema } from '../../schemas';
 
-import s from './EditBoardForm.module.css';
+import { useDispatch } from 'react-redux';
 
-export const EditBoardForm = ({ isEdit = false }) => {
+import s from './EditBoardForm.module.css';
+import { addBoard } from '../../redux/boards/boardsOperations.js';
+import { useNavigate } from 'react-router-dom';
+
+export const EditBoardForm = ({ isEdit = false, toggleModal }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { images, icons } = getImages();
 
   return (
@@ -20,6 +26,13 @@ export const EditBoardForm = ({ isEdit = false }) => {
       }}
       validationSchema={Schema}
       onSubmit={values => {
+        console.log(values.name);
+        dispatch(addBoard(values))
+          .unwrap()
+          .then(() => {
+            toggleModal();
+            navigate(`/home/${values.name}`);
+          });
         console.log(values);
       }}
     >

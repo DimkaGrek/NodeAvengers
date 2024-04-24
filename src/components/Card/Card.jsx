@@ -1,7 +1,7 @@
-import { Icon } from "../Icon/Icon.jsx";
-import s from "./Card.module.css";
+import { Icon } from '../Icon/Icon.jsx';
+import s from './Card.module.css';
 
-const Card = () => {
+const Card = ({ moveCardRight, index }) => {
   return (
     <div className={s.cardWrapper}>
       <h3 className={s.cardTitle}>The Watch Spot Design</h3>
@@ -29,7 +29,7 @@ const Card = () => {
         <button>
           <Icon id="bell" className={s.cardIcon} size={16} />
         </button>
-        <button>
+        <button onClick={() => moveCardRight(index)}>
           <Icon
             id="arrow-circle-broken-right"
             className={s.cardIcon}

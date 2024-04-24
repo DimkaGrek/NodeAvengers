@@ -1,22 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { EditBoardForm } from '../../components/EditBoardForm/EditBoardForm';
 import { Modal } from '../../components/Modal/Modal';
 import { useModal } from '../../hooks/useModal';
 import s from './HomePage.module.css';
 import { useEffect } from 'react';
 import { getBoards } from '../../redux/boards/boardsOperations';
-import { selectBoards } from '../../redux/boards/boardsSlice';
 
 const HomePage = () => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
   const dispatch = useDispatch();
-  const boards = useSelector(selectBoards);
 
   useEffect(() => {
     dispatch(getBoards());
   }, [dispatch]);
-
-  console.log(boards);
 
   return (
     <>
@@ -33,7 +29,7 @@ const HomePage = () => {
       </div>
       {isModalAddBoard && (
         <Modal toggleModal={toggleIsModalAddBoard} title="New board">
-          <EditBoardForm />
+          <EditBoardForm toggleModal={toggleIsModalAddBoard} />
         </Modal>
       )}
     </>
