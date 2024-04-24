@@ -10,9 +10,9 @@ import { Modal } from '../Modal/Modal';
 import { useModal } from '../../hooks/useModal';
 import Sidebar from '../Sidebar/Sidebar';
 import { useDispatch, useSelector } from 'react-redux';
-import { getThemesList } from '../../redux/themes/operations';
+// import { getThemesList } from '../../redux/themes/operations';
 import { selectThemesList } from '../../redux/themes/slice';
-import { selectThemeId } from '../../redux/user/slice';
+import { selectId, selectThemeId } from '../../redux/user/slice';
 import { updateUserThemeThunk } from '../../redux/user/operations';
 
 export const Header = () => {
@@ -24,6 +24,7 @@ export const Header = () => {
   const dispatch = useDispatch();
   const themes = useSelector(selectThemesList);
   const userThemeId = useSelector(selectThemeId);
+  const userId = useSelector(selectId);
 
   const currentTheme = themes
     .find(element => element._id === userThemeId)
@@ -42,11 +43,10 @@ export const Header = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getThemesList());
     if (currentTheme) {
       setTheme(currentTheme);
     }
-  }, [dispatch, currentTheme, setTheme]);
+  }, [currentTheme, setTheme]);
 
   const handleClickOutside = event => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -67,10 +67,14 @@ export const Header = () => {
     }
   };
 
-  const handleChangeTheme = id => {
-    dispatch(updateUserThemeThunk(id));
+  const handleChangeTheme = themeId => {
+    const userData = {
+      userId,
+      themeId,
+    };
+    dispatch(updateUserThemeThunk(userData));
     const currentTheme = themes
-      .find(element => element._id === id)
+      .find(element => element._id === themeId)
       ?.name.toLowerCase();
     setTheme(currentTheme);
   };
@@ -128,7 +132,10 @@ export const Header = () => {
                 themes.map(theme => (
                   <li key={theme._id} className={styles.itemTheme}>
                     <button
-                      className={styles.buttonItem}
+                      className={clsx({
+                        [styles.buttonItem]: true,
+                        [styles.buttonItemActive]: theme._id === userThemeId,
+                      })}
                       onClick={() => handleChangeTheme(theme._id)}
                     >
                       {theme.name}

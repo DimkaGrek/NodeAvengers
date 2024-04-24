@@ -111,6 +111,9 @@
     color: var(--color-text-list-theme-hover);
   }
 }
+.buttonItemActive {
+  color: var(--color-text-list-theme-hover);
+}
 
 .container {
   display: flex;

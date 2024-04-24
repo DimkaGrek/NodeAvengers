@@ -58,9 +58,9 @@ export const updateUserThunk = createAsyncThunk(
 
 export const updateUserThemeThunk = createAsyncThunk(
   'updateUserTheme',
-  async (id, thunkAPI) => {
+  async ({ userId, themeId }, thunkAPI) => {
     try {
-      const { data } = await api.patch(`/users/${id}/theme`, { themeId: id });
+      const { data } = await api.patch(`/users/${userId}/theme`, { themeId });
 
       return data;
     } catch (error) {

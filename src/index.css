@@ -130,7 +130,7 @@ html[data-theme='dark'] {
   --button-add-color-hover: #9dc888;
   --border-modal-user: rgba(190, 219, 176, 0.5);
   --border-input: #bedbb0;
-  --border-list-drop: #151515;
+  --border-list-drop: #bedbb0;
   --stroke-svg: #fff;
   --box-shadow: rgba(22, 22, 22, 0.05);
   --backdrop: rgba(21, 21, 21, 0.5);
