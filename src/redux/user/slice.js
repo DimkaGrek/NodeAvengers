@@ -8,6 +8,7 @@ const initialState = {
   email: '',
   avatarURL: null,
   themeId: null,
+  isLoading: false,
   error: null,
 };
 
@@ -22,6 +23,7 @@ const slice = createSlice({
         state.email = user.email;
         state.avatarURL = user.avatarURL;
         state.themeId = user.themeId;
+        state.isLoading = false;
       })
       .addCase(refreshThunk.fulfilled, (state, { payload: { user } }) => {
         state.id = user.id;
@@ -29,6 +31,7 @@ const slice = createSlice({
         state.email = user.email;
         state.avatarURL = user.avatarURL;
         state.themeId = user.themeId;
+        state.isLoading = false;
       })
       .addCase(
         updateUserThunk.fulfilled,
@@ -38,10 +41,12 @@ const slice = createSlice({
           state.avatarURL = avatarURL;
           state.themeId = themeId;
           state.error = errors;
+          state.isLoading = false;
         }
       )
       .addCase(updateUserThemeThunk.fulfilled, (state, { payload }) => {
         state.themeId = payload;
+        state.isLoading = false;
       })
       .addMatcher(
         isAnyOf(
@@ -51,6 +56,7 @@ const slice = createSlice({
         ),
         state => {
           state.error = null;
+          state.isLoading = true;
         }
       )
       .addMatcher(
@@ -61,6 +67,7 @@ const slice = createSlice({
         ),
         (state, { payload }) => {
           state.error = payload;
+          state.isLoading = false;
         }
       );
   },
@@ -70,6 +77,7 @@ const slice = createSlice({
     selectEmail: state => state.email,
     selectAvatarURL: state => state.avatarURL,
     selectThemeId: state => state.themeId,
+    selectIsLoading: state => state.isLoading,
     selectError: state => state.error,
   },
 });
@@ -77,10 +85,11 @@ const slice = createSlice({
 export const userReducer = slice.reducer;
 
 export const {
-  selecId,
+  selectId,
   selectName,
   selectEmail,
   selectAvatarURL,
   selectThemeId,
+  selectIsLoading,
   selectError,
 } = slice.selectors;
