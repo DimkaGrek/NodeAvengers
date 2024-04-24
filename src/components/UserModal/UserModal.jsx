@@ -23,11 +23,12 @@ export const UserModal = ({ toggleModal }) => {
   const [avatarFile, setAvatarFile] = useState(null);
 
   const { id, userName, userEmail, userAvatar, isLoading } = useUser();
+
   const dispatch = useDispatch();
 
   const fileInput = useRef(null);
 
-  let avatar = userAvatar.includes('gravatar') ? null : userAvatar;
+  let avatar = userAvatar;
 
   const passVisibility = () => {
     setShowPass(!showPass);

@@ -9,14 +9,31 @@ import { UserModal } from '../UserModal/UserModal';
 import { Modal } from '../Modal/Modal';
 import { useModal } from '../../hooks/useModal';
 import Sidebar from '../Sidebar/Sidebar';
+import { useDispatch, useSelector } from 'react-redux';
+import { getThemesList } from '../../redux/themes/operations';
+import { selectThemesList } from '../../redux/themes/slice';
+import { selectThemeId } from '../../redux/user/slice';
+import { updateUserThemeThunk } from '../../redux/user/operations';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isUserModal, toggleIsUserModal] = useModal();
   const [isSidebarModal, setIsSidebarModal] = useState(false);
+
   const dropdownRef = useRef(null);
+  const dispatch = useDispatch();
+  const themes = useSelector(selectThemesList);
+  const userThemeId = useSelector(selectThemeId);
+
+  const currentTheme = themes
+    .find(element => element._id === userThemeId)
+    ?.name.toLowerCase();
+
+  const { setTheme } = useTheme();
 
   useEffect(() => {
+    dispatch(getThemesList());
+    setTheme(currentTheme);
     document.addEventListener('click', handleClickOutside);
     document.addEventListener('keydown', handleKeyPress);
 
@@ -24,14 +41,13 @@ export const Header = () => {
       document.removeEventListener('click', handleClickOutside);
       document.removeEventListener('keydown', handleKeyPress);
     };
-  }, []);
+  }, [dispatch, currentTheme, setTheme]);
 
   const handleClickOutside = event => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }
   };
-
   const handleOpenModalSidebar = () => {
     setIsSidebarModal(!isSidebarModal);
   };
@@ -46,16 +62,12 @@ export const Header = () => {
     }
   };
 
-  const { setTheme } = useTheme();
-
-  const handleDarkThemeClick = () => {
-    setTheme('dark');
-  };
-  const handleLightThemeClick = () => {
-    setTheme('light');
-  };
-  const handleVioletThemeClick = () => {
-    setTheme('violet');
+  const handleChangeTheme = id => {
+    dispatch(updateUserThemeThunk(id));
+    const currentTheme = themes
+      .find(element => element._id === id)
+      ?.name.toLowerCase();
+    setTheme(currentTheme);
   };
 
   return (
@@ -107,30 +119,17 @@ export const Header = () => {
               className={isOpen ? styles.listDrop : styles.listNone}
               onClick={event => event.stopPropagation()}
             >
-              <li className={styles.itemTheme}>
-                <button
-                  className={styles.buttonItem}
-                  onClick={handleLightThemeClick}
-                >
-                  Light
-                </button>
-              </li>
-              <li className={styles.itemTheme}>
-                <button
-                  className={styles.buttonItem}
-                  onClick={handleDarkThemeClick}
-                >
-                  Dark
-                </button>
-              </li>
-              <li className={styles.itemTheme}>
-                <button
-                  className={styles.buttonItem}
-                  onClick={handleVioletThemeClick}
-                >
-                  Violet
-                </button>
-              </li>
+              {themes &&
+                themes.map(theme => (
+                  <li key={theme._id} className={styles.itemTheme}>
+                    <button
+                      className={styles.buttonItem}
+                      onClick={() => handleChangeTheme(theme._id)}
+                    >
+                      {theme.name}
+                    </button>
+                  </li>
+                ))}
             </ul>
           </div>
           <UserInfo toggleModal={toggleIsUserModal} />
