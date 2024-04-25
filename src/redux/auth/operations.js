@@ -99,6 +99,10 @@ export const resetPasswordThunk = createAsyncThunk(
     } catch (error) {
       console.log('operations ', error);
       let err;
+      console.log(
+        'error.response.data.message===> ',
+        error.response.data.message
+      );
       if (error.response.data.message) err = error.response.data.message;
       else err = error.message;
       return thunkAPI.rejectWithValue(err);
