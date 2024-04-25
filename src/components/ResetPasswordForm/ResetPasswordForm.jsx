@@ -20,11 +20,14 @@ export const ForgotForm = () => {
   const handleSubmit = async val => {
     dispatch(verifyResendPassword(val))
       .unwrap()
-      .then(() => {
-        data => toast.success(data);
+      .then(data => {
+        toast.success(data);
         navigate('/auth/login');
       })
-      .catch(error => toast.error(error));
+      .catch(error => {
+        console.log('error2 ', error);
+        toast.error(error)
+      });
   };
 
   return (
