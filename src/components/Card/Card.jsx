@@ -27,7 +27,9 @@ const Card = ({ moveCardRight, index, card }) => {
         </ul>
         <ul className={s.cardInfoDeadlineWrapper}>
           <li className={s.cardInfoTitle}>Deadline</li>
-          <li className={s.cardInfoDeadline}>12/05/2023</li>
+          <li className={s.cardInfoDeadline}>
+            {card.deadline && new Date(card.deadline).toLocaleDateString()}
+          </li>
         </ul>
       </div>
       <div className={s.cardIconsWrapper}>
