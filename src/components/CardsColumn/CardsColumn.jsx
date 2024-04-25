@@ -13,7 +13,6 @@ const CardsColumn = ({ column }) => {
   const [isEditColumnModal, toggleIsEditColumnModal] = useModal();
   const [isAddCardModal, toggleIsAddCardModal] = useModal();
   const dispatch = useDispatch();
-  console.log('is Array column?', typeof column);
 
   const handleDeleteColumn = id => {
     dispatch(deleteColumn(id));

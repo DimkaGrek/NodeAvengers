@@ -1,23 +1,28 @@
 import { Icon } from '../Icon/Icon.jsx';
 import s from './Card.module.css';
+import { getColorByPriority } from '../../helpers/getColorByPriority.js';
 
-const Card = ({ moveCardRight, index }) => {
+const Card = ({ moveCardRight, index, card }) => {
+  const cardPriority = card.priority;
+  const priorityColorFlag = getColorByPriority(cardPriority);
+  const priorityFlagStyle = {
+    backgroundColor: priorityColorFlag,
+  };
+
   return (
     <div className={s.cardWrapper}>
-      <h4 className={s.cardTitle}>The Watch Spot Design</h4>
-      <p className={s.cardDescr}>
-        Create a visually stunning and eye-catching watch dial design that
-        embodies our brand`s essence of sleek aesthetics and modern elegance.
-        Your design should be unique, innovative, and reflective of the latest
-        trends in watch design.
-      </p>
+      <h4 className={s.cardTitle}>{card.title}</h4>
+      <p className={s.cardDescr}>{card.description}</p>
       <div className={s.cardDecorLine}></div>
       <div className={s.cardInfoWrapper}>
         <ul className={s.cardInfoPriorityWrapper}>
           <li className={s.cardInfoTitle}>Priority</li>
           <li className={s.cardInfoPriority}>
-            <div className={s.cardInfoPriorityFlag}></div>
-            <p className={s.cardInfoPriorityText}>Without</p>
+            <div
+              className={s.cardInfoPriorityFlag}
+              style={priorityFlagStyle}
+            ></div>
+            <p className={s.cardInfoPriorityText}>{cardPriority}</p>
           </li>
         </ul>
         <ul className={s.cardInfoDeadlineWrapper}>
