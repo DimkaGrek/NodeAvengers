@@ -3,9 +3,8 @@ import s from './ForgotForm.module.css';
 import { Formik, Form, Field } from 'formik';
 import Loader from '../Loader/Loader';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginThunk, resetPasswordThunk } from '../../redux/auth/operations';
+import { resetPasswordThunk } from '../../redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { resendEmailThunk } from '../../redux/auth/operations';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { selectIsLoading } from '../../redux/auth/slice';
@@ -31,7 +30,6 @@ export const ForgotForm = () => {
         navigate('/auth/reset');
       })
       .catch(error => {
-        console.log(error);
         toast.error(error);
       });
   };

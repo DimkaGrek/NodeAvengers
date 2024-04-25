@@ -97,7 +97,11 @@ export const resetPasswordThunk = createAsyncThunk(
       const result = await api.post('/auth/resendPassword', email);
       return result.data.message;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      let err;
+      // eslint-disable-next-line no-prototype-builtins
+      if (error.hasOwnProperty('response')) err = error.response.data.message;
+      else err = error.message;
+      return thunkAPI.rejectWithValue(err);
     }
   }
 );
@@ -109,7 +113,11 @@ export const verifyResendPassword = createAsyncThunk(
       const result = await api.patch('/auth/verifyResendPassword', data);
       return result.data.message;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+      let err;
+      // eslint-disable-next-line no-prototype-builtins
+      if (error.hasOwnProperty('response')) err = error.response.data.message;
+      else err = error.message;
+      return thunkAPI.rejectWithValue(err);
     }
   }
 );

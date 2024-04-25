@@ -20,11 +20,13 @@ export const ForgotForm = () => {
   const handleSubmit = async val => {
     dispatch(verifyResendPassword(val))
       .unwrap()
-      .then(() => {
-        data => toast.success(data);
+      .then(data => {
+        toast.success(data);
         navigate('/auth/login');
       })
-      .catch(error => toast.error(error));
+      .catch(error => {
+        toast.error(error);
+      });
   };
 
   return (
@@ -52,7 +54,7 @@ export const ForgotForm = () => {
           {({ errors, touched }) => (
             <Form className={s.form}>
               <div>
-                <Field name="code" type="code" placeholder="Enter your code" />
+                <Field name="code" type="text" placeholder="Enter your code" />
                 {errors.code && touched.code ? (
                   <div className={s.input_error}>{errors.code}</div>
                 ) : null}
