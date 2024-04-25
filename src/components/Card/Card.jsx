@@ -1,8 +1,11 @@
 import { Icon } from '../Icon/Icon.jsx';
 import s from './Card.module.css';
 import { getColorByPriority } from '../../helpers/getColorByPriority.js';
+import { useState, useEffect } from 'react';
 
 const Card = ({ moveCardRight, index, card }) => {
+  const [isBellActive, setIsBellActive] = useState(false);
+
   const cardPriority = card.priority;
   const priorityColorFlag = getColorByPriority(cardPriority);
 
@@ -13,6 +16,20 @@ const Card = ({ moveCardRight, index, card }) => {
   const priorityFlagStyleBefore = {
     '--priority-color': priorityColorFlag,
   };
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+
+    const deadlineDate = new Date(card.deadline);
+    const deadlineDay = deadlineDate.getDate();
+
+    if (currentDay === deadlineDay) {
+      setIsBellActive(true);
+    } else {
+      setIsBellActive(false);
+    }
+  }, [card.deadline]);
 
   return (
     <div className={s.cardWrapper} style={priorityFlagStyleBefore}>
@@ -39,7 +56,11 @@ const Card = ({ moveCardRight, index, card }) => {
       </div>
       <div className={s.cardIconsWrapper}>
         <button>
-          <Icon id="bell" className={s.cardIcon} size={16} />
+          <Icon
+            id="bell"
+            className={isBellActive ? s.bellIcon : ''}
+            size={16}
+          />
         </button>
         <button onClick={() => moveCardRight(index)}>
           <Icon
