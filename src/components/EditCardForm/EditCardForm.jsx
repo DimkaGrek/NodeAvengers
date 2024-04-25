@@ -16,6 +16,7 @@ export const EditCardForm = ({ toggleModal, columnId }) => {
   const { colors } = getColors(theme);
   const dispatch = useDispatch();
   const [selectedColor, setSelectedColor] = useState(null);
+
   return (
     <Formik
       initialValues={{
