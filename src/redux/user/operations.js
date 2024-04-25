@@ -68,3 +68,20 @@ export const updateUserThemeThunk = createAsyncThunk(
     }
   }
 );
+
+export const needHelpThunk = createAsyncThunk(
+  'needHelp',
+  async ({ userId, title, description }, thunkAPI) => {
+    try {
+      const { data } = await api.post(`/users/${userId}/support`, {
+        title,
+        description,
+      });
+
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
