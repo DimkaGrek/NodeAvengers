@@ -5,12 +5,17 @@ import { getColorByPriority } from '../../helpers/getColorByPriority.js';
 const Card = ({ moveCardRight, index, card }) => {
   const cardPriority = card.priority;
   const priorityColorFlag = getColorByPriority(cardPriority);
+
   const priorityFlagStyle = {
     backgroundColor: priorityColorFlag,
   };
 
+  const priorityFlagStyleBefore = {
+    '--priority-color': priorityColorFlag,
+  };
+
   return (
-    <div className={s.cardWrapper}>
+    <div className={s.cardWrapper} style={priorityFlagStyleBefore}>
       <h4 className={s.cardTitle}>{card.title}</h4>
       <p className={s.cardDescr}>{card.description}</p>
       <div className={s.cardDecorLine}></div>
