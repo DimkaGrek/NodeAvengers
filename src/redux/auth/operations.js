@@ -97,14 +97,11 @@ export const resetPasswordThunk = createAsyncThunk(
       const result = await api.post('/auth/resendPassword', email);
       return result.data.message;
     } catch (error) {
-      console.log(
-        'error.response.data.message===> ',
-        error.response.data.message
-      );
+      console.log('error.response===> ', error.response);
       console.log('operations ', error);
       console.log('kukukuukuukuku');
       let err;
-      if (error.response.data.message) err = error.response.data.message;
+      if (error.response) err = error.response.data.message;
       else err = error.message;
       return thunkAPI.rejectWithValue(err);
     }
