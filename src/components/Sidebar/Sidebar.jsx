@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useTheme } from '../../hooks/useTheme';
+// import { useTheme } from '../../hooks/useTheme';
 import s from './Sidebar.module.css';
 import { Icon } from 'components';
 import flower from '../../assets/images/flower.png';
@@ -18,10 +18,12 @@ import {
 import { useEffect } from 'react';
 import { deleteBoard, getBoards } from '../../redux/boards/boardsOperations';
 import { getImages } from '../../helpers';
+import { NeedHelpForm } from '../NeedHelpForm/NeedHelpForm';
 
 const Sidebar = () => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
   const [isModalEditBoard, toggleIsModalEditBoard] = useModal();
+  const [isModalNeedHelp, toggleIsModalNeedHelp] = useModal();
   const boards = useSelector(selectBoards);
   const currentBoard = useSelector(selectCurrentBoard);
   const dispatch = useDispatch();
@@ -117,7 +119,12 @@ const Sidebar = () => {
             If you need help with <span>TaskPro</span>, check out our support
             resources or reach out to our customer support team.
           </p>
-          <button className={s.needHelpButton} type="button" name="help">
+          <button
+            onClick={toggleIsModalNeedHelp}
+            className={s.needHelpButton}
+            type="button"
+            name="help"
+          >
             <Icon id="help-circle" className={s.svgHelp} size={20} />
             Need help?
           </button>
@@ -143,6 +150,14 @@ const Sidebar = () => {
           <EditBoardForm
             board={currentBoard}
             toggleModal={toggleIsModalEditBoard}
+          />
+        </Modal>
+      )}
+      {isModalNeedHelp && (
+        <Modal toggleModal={toggleIsModalNeedHelp} title="Need help">
+          <NeedHelpForm
+            board={currentBoard}
+            toggleModal={toggleIsModalNeedHelp}
           />
         </Modal>
       )}
