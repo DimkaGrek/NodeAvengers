@@ -25,8 +25,7 @@ export const ForgotForm = () => {
         navigate('/auth/login');
       })
       .catch(error => {
-        console.log('error2 ', error);
-        toast.error(error)
+        toast.error(error);
       });
   };
 

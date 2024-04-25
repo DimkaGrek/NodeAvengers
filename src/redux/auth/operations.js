@@ -97,9 +97,6 @@ export const resetPasswordThunk = createAsyncThunk(
       const result = await api.post('/auth/resendPassword', email);
       return result.data.message;
     } catch (error) {
-      console.log('error.response===> ', error?.response);
-      console.log('operations ', error);
-      console.log('kukukuukuukuku');
       let err;
       // eslint-disable-next-line no-prototype-builtins
       if (error.hasOwnProperty('response')) err = error.response.data.message;
@@ -116,10 +113,9 @@ export const verifyResendPassword = createAsyncThunk(
       const result = await api.patch('/auth/verifyResendPassword', data);
       return result.data.message;
     } catch (error) {
-      console.log('operations2 ', error);
-
       let err;
-      if (error.response.data.message) err = error.response.data.message;
+      // eslint-disable-next-line no-prototype-builtins
+      if (error.hasOwnProperty('response')) err = error.response.data.message;
       else err = error.message;
       return thunkAPI.rejectWithValue(err);
     }

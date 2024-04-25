@@ -30,7 +30,6 @@ export const ForgotForm = () => {
         navigate('/auth/reset');
       })
       .catch(error => {
-        console.log('error ', error);
         toast.error(error);
       });
   };
