@@ -7,6 +7,7 @@ import {
   refreshThunk,
   resendEmailThunk,
   resetPasswordThunk,
+  verifyResendPassword,
 } from './operations';
 
 const initialState = {
@@ -67,7 +68,9 @@ const slice = createSlice({
           registerThunk.pending,
           loginThunk.pending,
           verifyLoginThunk.pending,
-          logoutThunk.pending
+          logoutThunk.pending,
+          verifyResendPassword.pending,
+          resetPasswordThunk.pending
         ),
         state => {
           state.isLoading = true;
@@ -80,7 +83,9 @@ const slice = createSlice({
           registerThunk.fulfilled,
           loginThunk.fulfilled,
           verifyLoginThunk.fulfilled,
-          logoutThunk.fulfilled
+          logoutThunk.fulfilled,
+          verifyResendPassword.fulfilled,
+          resetPasswordThunk.fulfilled
         ),
         state => {
           state.isLoading = false;
@@ -93,7 +98,9 @@ const slice = createSlice({
           registerThunk.rejected,
           verifyLoginThunk.rejected,
           logoutThunk.rejected,
-          refreshThunk.rejected
+          refreshThunk.rejected,
+          verifyResendPassword.rejected,
+          resetPasswordThunk.rejected
         ),
         (state, { payload }) => {
           state.error = payload;
