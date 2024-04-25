@@ -2,9 +2,16 @@ import { Icon } from '../Icon/Icon.jsx';
 import s from './Card.module.css';
 import { getColorByPriority } from '../../helpers/getColorByPriority.js';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteCard } from '../../redux/boards/cardOperations.js';
 
 const Card = ({ moveCardRight, index, card }) => {
   const [isBellActive, setIsBellActive] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleDeleteCard = (cardId, columnId) => {
+    dispatch(deleteCard({ cardId, columnId }));
+  };
 
   const cardPriority = card.priority;
   const priorityColorFlag = getColorByPriority(cardPriority);
@@ -72,7 +79,7 @@ const Card = ({ moveCardRight, index, card }) => {
         <button>
           <Icon id="pencil" className={s.cardIcon} size={16} />
         </button>
-        <button>
+        <button onClick={() => handleDeleteCard(card._id, card.columnId)}>
           <Icon id="trash" className={s.cardIcon} size={16} />
         </button>
       </div>
