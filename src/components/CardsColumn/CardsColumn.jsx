@@ -18,7 +18,7 @@ const CardsColumn = ({ column }) => {
     dispatch(deleteColumn(id));
   };
 
-  const addCardButtonLabel = !column.length ? 'Add card' : 'Add another card';
+  const addCardButtonLabel = column.length ? 'Add card' : 'Add another card';
 
   return (
     <div className={s.singleColumnWrapper}>

@@ -22,9 +22,6 @@
 
 .pageWrapper {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-image: var(--background-image-mob-1x);
   background-size: cover;
   background-position: 50% 50%;

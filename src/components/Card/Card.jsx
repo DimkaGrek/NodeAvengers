@@ -4,9 +4,13 @@ import { getColorByPriority } from '../../helpers/getColorByPriority.js';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteCard } from '../../redux/boards/cardOperations.js';
+import { useModal } from '../../hooks/useModal';
+import { Modal } from '../Modal/Modal.jsx';
+import { EditCardForm } from '../EditCardForm/EditCardForm.jsx';
 
 const Card = ({ moveCardRight, index, card }) => {
   const [isBellActive, setIsBellActive] = useState(false);
+  const [isEditCardModal, toggleIsEditCardModal] = useModal();
   const dispatch = useDispatch();
 
   const handleDeleteCard = (cardId, columnId) => {
@@ -76,13 +80,18 @@ const Card = ({ moveCardRight, index, card }) => {
             size={16}
           />
         </button>
-        <button>
+        <button onClick={toggleIsEditCardModal}>
           <Icon id="pencil" className={s.cardIcon} size={16} />
         </button>
         <button onClick={() => handleDeleteCard(card._id, card.columnId)}>
           <Icon id="trash" className={s.cardIcon} size={16} />
         </button>
       </div>
+      {isEditCardModal && (
+        <Modal title={'Edit card'} toggleModal={toggleIsEditCardModal}>
+          <EditCardForm toggleModal={toggleIsEditCardModal} card={card} />
+        </Modal>
+      )}
     </div>
   );
 };
