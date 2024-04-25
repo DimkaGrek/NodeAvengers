@@ -4,7 +4,7 @@ import {
   updateUserThemeThunk,
   updateUserThunk,
 } from './operations';
-import { loginThunk, refreshThunk } from '../auth/operations';
+import { loginThunk, refreshThunk, verifyLoginThunk } from '../auth/operations';
 
 const initialState = {
   id: null,
@@ -21,22 +21,6 @@ const slice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(loginThunk.fulfilled, (state, { payload: { user } }) => {
-        state.id = user.id;
-        state.name = user.name;
-        state.email = user.email;
-        state.avatarURL = user.avatarURL;
-        state.themeId = user.themeId;
-        state.isLoading = false;
-      })
-      .addCase(refreshThunk.fulfilled, (state, { payload: { user } }) => {
-        state.id = user.id;
-        state.name = user.name;
-        state.email = user.email;
-        state.avatarURL = user.avatarURL;
-        state.themeId = user.themeId;
-        state.isLoading = false;
-      })
       .addCase(
         updateUserThunk.fulfilled,
         (state, { payload: { name, email, avatarURL, themeId, errors } }) => {
@@ -55,6 +39,21 @@ const slice = createSlice({
       .addCase(needHelpThunk.fulfilled, state => {
         state.isLoading = false;
       })
+      .addMatcher(
+        isAnyOf(
+          loginThunk.fulfilled,
+          refreshThunk.fulfilled,
+          verifyLoginThunk.fulfilled
+        ),
+        (state, { payload: { user } }) => {
+          state.id = user.id;
+          state.name = user.name;
+          state.email = user.email;
+          state.avatarURL = user.avatarURL;
+          state.themeId = user.themeId;
+          state.isLoading = false;
+        }
+      )
       .addMatcher(
         isAnyOf(
           refreshThunk.pending,

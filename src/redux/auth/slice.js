@@ -39,8 +39,8 @@ const slice = createSlice({
       })
       .addCase(
         verifyLoginThunk.fulfilled,
-        (state, { payload: { id, accessToken, refreshToken } }) => {
-          state.id = id;
+        (state, { payload: { user, accessToken, refreshToken } }) => {
+          state.id = user.id;
           state.accessToken = accessToken;
           state.refreshToken = refreshToken;
           state.isLoggedIn = true;
