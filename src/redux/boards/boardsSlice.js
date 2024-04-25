@@ -23,7 +23,7 @@ const boardsSlice = createSlice({
     builder
       .addCase(getBoards.fulfilled, (state, { payload }) => {
         state.boards = payload;
-        state.currentBoard = payload[0];
+        // state.currentBoard = payload[0];
         state.isLoading = false;
       })
       .addCase(addBoard.fulfilled, (state, { payload }) => {

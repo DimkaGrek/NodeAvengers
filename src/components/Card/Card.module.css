@@ -9,7 +9,8 @@
   content: '';
   width: 4px;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  background-color: var(--priority-color);
   border-radius: 4px 0 0 4px;
   position: absolute;
   top: 0;
@@ -99,4 +100,22 @@
 .cardIcon {
   stroke: #fff;
   stroke-opacity: 0.5;
+}
+.bellIcon {
+  stroke: #bedbb0;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+  animation: glow 1.5s infinite alternate;
+  fill: transparent;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
+  }
+  to {
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
+  }
 }

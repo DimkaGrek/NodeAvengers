@@ -11,23 +11,32 @@ import { useState } from 'react';
 import DatePickerForm from '../../components/DatePicker/DatePicker.jsx';
 import { useTheme } from '../../hooks/useTheme.js';
 import { toast } from 'react-toastify';
-const EditCardForm = ({ toggleModal }) => {
+import { editCard } from '../../redux/boards/cardOperations.js';
+
+export const EditCardForm = ({ toggleModal, columnId, card }) => {
   const { theme } = useTheme();
   const { colors } = getColors(theme);
   const dispatch = useDispatch();
   const [selectedColor, setSelectedColor] = useState(null);
+
   return (
     <Formik
-      initialValues={{
-        title: '',
-        description: '',
-        priority: '',
-        deadline: '',
-        columnId: '',
-      }}
+      initialValues={
+        card
+          ? {
+              title: card.title,
+              description: card.description,
+              priority: card.priority,
+              deadline: card.deadline,
+              columnId: card.columnId,
+            }
+          : { title: '', description: '', priority: '', deadline: '', columnId }
+      }
       validationSchema={schema}
       onSubmit={values => {
-        dispatch(addCard(values))
+        dispatch(
+          card ? editCard({ ...values, _id: card._id }) : addCard(values)
+        )
           .unwrap()
           .then(() => {
             toggleModal();
@@ -109,5 +118,3 @@ const EditCardForm = ({ toggleModal }) => {
     </Formik>
   );
 };
-
-export default EditCardForm;
