@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
-import Resizer from 'react-image-file-resizer';
 import Switch from 'react-switch';
+import { toast } from 'react-toastify';
 
 import { Icon } from 'components';
 import Button from '../Button/Button';
@@ -13,7 +13,6 @@ import { updateUserThunk } from '../../redux/user/operations';
 import { EditUserPassSchema, EditUserSchema } from '../../schemas';
 
 import styles from './UserModal.module.css';
-import { toast } from 'react-toastify';
 
 export const UserModal = ({ toggleModal }) => {
   const [isEditPassword, setIsEditPassword] = useState(false);
@@ -38,40 +37,11 @@ export const UserModal = ({ toggleModal }) => {
     setShowNewPass(!showNewPass);
   };
 
-  const resizeFile = file =>
-    new Promise((resolve, reject) => {
-      const fileType = file.type;
-
-      let format;
-      if (fileType === 'image/jpeg' || fileType === 'image/jpg') {
-        format = 'JPEG';
-      } else if (fileType === 'image/png') {
-        format = 'PNG';
-      } else {
-        reject(new Error('Unsupported file format'));
-        return;
-      }
-
-      Resizer.imageFileResizer(
-        file,
-        64,
-        64,
-        format,
-        100,
-        0,
-        uri => {
-          resolve(uri);
-        },
-        'file'
-      );
-    });
-
   const handleUploadAvatar = async e => {
     const file = e.target.files[0];
     if (!file) return;
 
-    const resizedFile = await resizeFile(file);
-    const imageUrl = URL.createObjectURL(resizedFile);
+    const imageUrl = URL.createObjectURL(file);
 
     setAvatarPreview(imageUrl);
     setAvatarFile(file);
@@ -145,6 +115,8 @@ export const UserModal = ({ toggleModal }) => {
                 toggleModal();
               })
               .catch(error => toast.error(error));
+          } else {
+            toast.warning('You didn`t change anyting.');
           }
         }}
       >
