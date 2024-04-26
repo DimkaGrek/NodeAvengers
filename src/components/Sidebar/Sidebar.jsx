@@ -79,7 +79,11 @@ const Sidebar = () => {
                 <li
                   onClick={() => handleClickBoard(board.name)}
                   key={board._id}
-                  className={s.boardList}
+                  className={
+                    board._id === currentBoard._id
+                      ? s.boardListItemActive
+                      : s.boardListItem
+                  }
                 >
                   <div
                     className={
