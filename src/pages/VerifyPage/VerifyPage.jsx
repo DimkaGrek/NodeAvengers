@@ -37,7 +37,7 @@ const VerifyPage = () => {
   useEffect(() => {
     const verifyLogin = () => {
       if (token) {
-        localStorage.setItem('verified');
+        localStorage.setItem('verified', 'true');
         dispatch(verifyLoginThunk(token))
           .unwrap()
           .then(() => {
