@@ -136,6 +136,9 @@ html[data-theme='dark'] {
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(255, 255, 255, 0.3);
   --stroke-add-card-icon: #fff;
+  --modal-filters-background: #151515;
+  --modal-filters-after: rgba(255, 255, 255, 0.1);
+
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -194,6 +197,9 @@ html[data-theme='light'] {
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
   --stroke-add-card-icon: #fff;
+  --modal-filters-background: #fcfcfc;
+  --modal-filters-after: rgba(22, 22, 22, 0.1);
+
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -249,6 +255,8 @@ html[data-theme='violet'] {
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
   --stroke-add-card-icon: #161616;
+  --modal-filters-background: rgba(0, 0, 0, 0.2);
+  --modal-filters-after: rgba(22, 22, 22, 0.1);
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
