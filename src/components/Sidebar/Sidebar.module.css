@@ -99,13 +99,7 @@
   flex-grow: 1;
   overflow-y: scroll;
   &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--background-button);
-    border-radius: 4px 0px 0px 4px;
-    height: 61px;
+    width: 0px;
   }
 
   @media screen and (min-width: 768px) {
