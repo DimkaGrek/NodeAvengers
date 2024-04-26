@@ -95,7 +95,7 @@
 }
 .mainBoard {
   padding: 0;
-  margin: 40px -14px 0 -14px;
+  margin: 40px -14px 40px -14px;
   flex-grow: 1;
   overflow-y: scroll;
   &::-webkit-scrollbar {
@@ -109,7 +109,7 @@
   }
 
   @media screen and (min-width: 768px) {
-    margin: 40px -24px 0 -24px;
+    margin: 40px -24px 40px -24px;
   }
 }
 .board {
@@ -200,7 +200,7 @@
 .needHelpBlock {
   border-radius: 8px;
   margin-bottom: 24px;
-  margin-top: auto;
+
   padding: 20px;
   background-color: var(--background-help);
   color: var(--text-inside-sidebar);

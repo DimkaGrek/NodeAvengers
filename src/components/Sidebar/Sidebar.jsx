@@ -122,7 +122,6 @@ const Sidebar = () => {
               ))}
           </ul>
         </div>
-        {/* </div> */}
         <div className={s.needHelpBlock}>
           <img
             className={s.flower}
