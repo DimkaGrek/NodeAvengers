@@ -1,3 +1,7 @@
+.addColBtnWrapper {
+  width: 335px;
+}
+
 .addColBtn {
   padding: 0 20px;
   display: flex;
@@ -5,7 +9,7 @@
   justify-content: center;
   gap: 8px;
   border-radius: 8px;
-  width: 335px;
+  width: 100%;
   height: 56px;
   background-color: #121212;
   font-weight: 500;

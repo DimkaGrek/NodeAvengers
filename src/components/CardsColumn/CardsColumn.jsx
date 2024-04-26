@@ -18,7 +18,9 @@ const CardsColumn = ({ column }) => {
     dispatch(deleteColumn(id));
   };
 
-  const addCardButtonLabel = column.length ? 'Add card' : 'Add another card';
+  const addCardButtonLabel = !column.cards.length
+    ? 'Add card'
+    : 'Add another card';
 
   return (
     <div className={s.singleColumnWrapper}>
@@ -36,7 +38,7 @@ const CardsColumn = ({ column }) => {
 
       <div className={s.cardsContainer}>
         {column.cards.map(card => (
-          <Card key={card._id} card={card} column={column} />
+          <Card key={card._id} card={card} />
         ))}
       </div>
 

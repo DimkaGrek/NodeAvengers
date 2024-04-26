@@ -92,6 +92,9 @@
   stroke-opacity: 0.5;
   fill: transparent;
 }
+.bellIconButton {
+  cursor: default;
+}
 .bellIcon {
   stroke: #bedbb0;
   stroke-width: 1.5;
@@ -100,6 +103,7 @@
   filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
   animation: glow 1.5s infinite alternate;
   fill: transparent;
+  cursor: default;
 }
 
 @keyframes glow {
@@ -113,7 +117,7 @@
 .popupChangeColumnContainer {
   position: absolute;
   z-index: 10;
-  bottom: -73px;
+  top: 145px;
   right: 0;
   padding: 18px;
   border-radius: 8px;
@@ -129,21 +133,28 @@
   background-color: transparent;
   justify-content: space-between;
   align-items: center;
-  color: #bedbb0;
-  stroke: #bedbb0;
+}
+.columnNameItemWrapper:hover {
+  color: var();
 }
 .columnNameActive {
   font-size: 14px;
   letter-spacing: -0.02em;
   color: #bedbb0;
 }
-.cardIconActive {
-  stroke: #bedbb0;
-  fill: transparent;
-}
 .columnNameDefault {
   font-weight: 400;
   font-size: 14px;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.5);
+}
+.cardIconActive {
+  stroke: #bedbb0;
+  fill: transparent;
+}
+.cardIconDefault {
+  stroke: #bedbb0;
+  fill: transparent;
+  stroke: white;
+  stroke-opacity: 0.5;
 }
