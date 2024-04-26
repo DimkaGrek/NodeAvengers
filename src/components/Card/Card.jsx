@@ -8,10 +8,18 @@ import { useModal } from '../../hooks/useModal';
 import { Modal } from '../Modal/Modal.jsx';
 import { EditCardForm } from '../EditCardForm/EditCardForm.jsx';
 
-const Card = ({ moveCardRight, index, card }) => {
+const Card = ({ card, column }) => {
   const [isBellActive, setIsBellActive] = useState(false);
   const [isEditCardModal, toggleIsEditCardModal] = useModal();
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
   const dispatch = useDispatch();
+
+  console.log('column', column);
+  console.log('card', card);
+
+  const togglePopup = () => {
+    setIsOpenPopup(!isOpenPopup);
+  };
 
   const handleDeleteCard = (cardId, columnId) => {
     dispatch(deleteCard({ cardId, columnId }));
@@ -35,7 +43,7 @@ const Card = ({ moveCardRight, index, card }) => {
     const deadlineDate = new Date(card.deadline);
     const deadlineDay = deadlineDate.getDate();
 
-    if (currentDay === deadlineDay) {
+    if (deadlineDay < currentDay) {
       setIsBellActive(true);
     } else {
       setIsBellActive(false);
@@ -66,14 +74,12 @@ const Card = ({ moveCardRight, index, card }) => {
         </ul>
       </div>
       <div className={s.cardIconsWrapper}>
-        <button>
-          <Icon
-            id="bell"
-            className={isBellActive ? s.bellIcon : ''}
-            size={16}
-          />
-        </button>
-        <button onClick={() => moveCardRight(index)}>
+        {isBellActive && (
+          <button>
+            <Icon id="bell" className={s.bellIcon} size={16} />
+          </button>
+        )}
+        <button onClick={togglePopup}>
           <Icon
             id="arrow-circle-broken-right"
             className={s.cardIcon}
@@ -91,6 +97,26 @@ const Card = ({ moveCardRight, index, card }) => {
         <Modal title={'Edit card'} toggleModal={toggleIsEditCardModal}>
           <EditCardForm toggleModal={toggleIsEditCardModal} card={card} />
         </Modal>
+      )}
+      {isOpenPopup && (
+        <div className={s.popupChangeColumnContainer}>
+          <button className={s.columnNameItemWrapper}>
+            <p className={s.columnNameActive}>Active</p>
+            <Icon
+              id="arrow-circle-broken-right"
+              className={s.cardIconActive}
+              size={16}
+            />
+          </button>
+          <button className={s.columnNameItemWrapper}>
+            <p className={s.columnNameDefault}>Default</p>
+            <Icon
+              id="arrow-circle-broken-right"
+              className={s.cardIcon}
+              size={16}
+            />
+          </button>
+        </div>
       )}
     </div>
   );

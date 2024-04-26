@@ -36,11 +36,14 @@ const CardsColumn = ({ column }) => {
 
       <div className={s.cardsContainer}>
         {column.cards.map(card => (
-          <Card key={card._id} card={card} />
+          <Card key={card._id} card={card} column={column} />
         ))}
       </div>
 
-      <button className={s.addCardBtn} onClick={toggleIsAddCardModal}>
+      <button
+        className={`${s.addCardBtn} button`}
+        onClick={toggleIsAddCardModal}
+      >
         <AddButton color="dark" width={28} height={28} iconSize={14} />
         {addCardButtonLabel}
       </button>

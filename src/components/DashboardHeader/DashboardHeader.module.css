@@ -23,4 +23,5 @@
 .filterIcon {
   stroke: #fff;
   stroke-opacity: 0.8;
+  fill: transparent;
 }
