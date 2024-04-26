@@ -16,7 +16,11 @@ import {
   selectCurrentBoard,
 } from '../../redux/boards/boardsSlice';
 import { useEffect } from 'react';
-import { deleteBoard, getBoards } from '../../redux/boards/boardsOperations';
+import {
+  deleteBoard,
+  getBoard,
+  getBoards,
+} from '../../redux/boards/boardsOperations';
 import { getImages } from '../../helpers';
 import { NeedHelpForm } from '../NeedHelpForm/NeedHelpForm';
 
@@ -38,6 +42,9 @@ const Sidebar = () => {
   const handleDeleteBoard = id => {
     dispatch(deleteBoard(id));
   };
+  const handleClickBoard = name => {
+    navigate(`/home/${name}`);
+  };
 
   const handleLogOut = () => {
     dispatch(logoutThunk({ refreshToken }))
@@ -45,6 +52,7 @@ const Sidebar = () => {
       .then(() => navigate('/welcome'))
       .catch(() => toast.error('Something went wront please try again.'));
   };
+
   return (
     <>
       <div className={s.sideBarBlock}>
@@ -72,8 +80,16 @@ const Sidebar = () => {
             <ul>
               {boards.lenght !== 0 &&
                 boards.map(board => (
-                  <li key={board._id} className={s.boardList}>
-                    <NavLink className={s.nav} to="">
+                  <li
+                    onClick={() => handleClickBoard(board.name)}
+                    key={board._id}
+                    className={s.boardList}
+                  >
+                    <div
+                      className={
+                        board._id === currentBoard._id ? s.boardActive : s.board
+                      }
+                    >
                       <div className={s.titleBoard}>
                         <Icon
                           id={getImages().icons[board.icon]}
@@ -101,7 +117,7 @@ const Sidebar = () => {
                           <Icon id="trash" className={s.editIcon} size={16} />
                         </button>
                       </div>
-                    </NavLink>
+                    </div>
                   </li>
                 ))}
             </ul>
