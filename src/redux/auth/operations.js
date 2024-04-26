@@ -40,6 +40,7 @@ export const verifyLoginThunk = createAsyncThunk(
   async (token, thunkAPI) => {
     try {
       const { data } = await api.post('/auth/verifyLogin', { token });
+      setToken(data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
