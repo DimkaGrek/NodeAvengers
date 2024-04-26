@@ -28,19 +28,6 @@
   cursor: pointer;
 }
 
-.color_addbtn {
-  height: 28px;
-  width: 28px;
-  background-color: var(--color-text-button);
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.iconPlus {
-  stroke: var(--stroke-add-card-icon);
-}
-
 .top_wrapper {
   margin-top: 14px;
   margin-bottom: 14px;
@@ -68,4 +55,7 @@
 
 .selected_color {
   color: var(--stroke-svg);
+}
+.color_name {
+  cursor: pointer;
 }
