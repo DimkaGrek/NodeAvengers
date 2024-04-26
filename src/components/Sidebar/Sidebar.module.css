@@ -1,16 +1,17 @@
 .sideBarBlock {
   display: flex;
   flex-direction: column;
-  width: 225px;
+  justify-content: space-between;
+  width: 260px;
   height: 100%;
-  padding: 14px;
+  padding: 24px;
 
   background-color: var(--background-sidebar);
   color: var(--text-inside-sidebar);
 
-  @media (min-width: 768px) {
-    width: 260px;
-    padding: 24px;
+  @media (max-width: 375px) {
+    width: 225px;
+    padding: 14px;
   }
 }
 
@@ -37,6 +38,7 @@
 .navLogo {
   display: flex;
   align-items: center;
+  margin-bottom: 60px;
 }
 .title {
   color: var(--text-inside-sidebar);
@@ -49,6 +51,7 @@
 .section {
   padding-top: 70px;
   padding-bottom: 20px;
+  flex-grow: 1;
   @media screen and (min-width: 768px) {
     padding-top: 60px;
   }
@@ -67,7 +70,7 @@
   padding: 14px 0;
   border-top: 1px solid var(--line-color);
   border-bottom: 1px solid var(--line-color);
-
+  min-height: 70px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   letter-spacing: -0.28px;
@@ -93,7 +96,7 @@
 .mainBoard {
   padding: 0;
   margin: 40px -14px 0 -14px;
-  max-height: 130px;
+  flex-grow: 1;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 4px;
@@ -167,12 +170,12 @@
 .editIcon {
   fill: transparent;
   stroke: var(--text-inside-sidebar-50);
-  /* background-color: green; */
 }
 .needHelpBlock {
   border-radius: 8px;
   margin-bottom: 24px;
   margin-top: auto;
+  /* height: 352px; */
 
   padding: 20px;
   background-color: var(--background-help);
@@ -235,5 +238,8 @@
 .svgLogout {
   stroke: var(--button-logout-color);
   fill: transparent;
+  &:hover {
+    stroke: red;
+  }
   /* background-color: #fff; */
 }
