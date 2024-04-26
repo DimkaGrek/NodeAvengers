@@ -35,22 +35,24 @@ const VerifyPage = () => {
   const token = searchParams.get('token');
 
   useEffect(() => {
-    const verifyLogin = async () => {
+    const verifyLogin = () => {
       if (token) {
-        await dispatch(verifyLoginThunk(token))
+        localStorage.setItem('verified');
+        dispatch(verifyLoginThunk(token))
           .unwrap()
           .then(() => {
             {
               toast.success(`Verification and log in success.`);
               setIsVerified(true);
-              navigate('/home');
+              localStorage.removeItem('verified');
             }
-          });
+          })
+          .catch(error => toast.error(error));
       }
     };
 
     verifyLogin();
-  }, [dispatch, token, navigate]);
+  }, [dispatch, token]);
 
   useEffect(() => {
     if (messageCode === '2' && !isVerified) {
