@@ -70,7 +70,7 @@ const boardsSlice = createSlice({
           item => item._id === payload._id
         );
 
-        state.currentBoard.columns[indexColumn] = payload;
+        state.currentBoard.columns[indexColumn].name = payload.name;
         state.isLoading = false;
       })
       .addCase(deleteColumn.fulfilled, (state, { payload }) => {
