@@ -34,8 +34,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  height: calc((142px + 8px) * 3);
-
+  height: 65vh;
   overflow: scroll;
   margin-bottom: 14px;
 }

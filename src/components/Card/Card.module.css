@@ -1,20 +1,10 @@
 .cardWrapper {
   border-radius: 8px;
+  border-left: 4px solid var(--priority-color);
   width: 335px;
   background-color: #121212;
   padding: 14px 20px 14px 20px;
   position: relative;
-}
-.cardWrapper::before {
-  content: '';
-  width: 4px;
-  height: 100%;
-  /* background-color: rgba(255, 255, 255, 0.3); */
-  background-color: var(--priority-color);
-  border-radius: 4px 0 0 4px;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 .cardTitle {
   font-weight: 600;
@@ -100,6 +90,10 @@
 .cardIcon {
   stroke: #fff;
   stroke-opacity: 0.5;
+  fill: transparent;
+}
+.bellIconButton {
+  cursor: default;
 }
 .bellIcon {
   stroke: #bedbb0;
@@ -109,6 +103,7 @@
   filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 1));
   animation: glow 1.5s infinite alternate;
   fill: transparent;
+  cursor: default;
 }
 
 @keyframes glow {
@@ -118,4 +113,48 @@
   to {
     filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.5));
   }
+}
+.popupChangeColumnContainer {
+  position: absolute;
+  z-index: 10;
+  top: 145px;
+  right: 0;
+  padding: 18px;
+  border-radius: 8px;
+  width: 135px;
+  box-shadow: 0 4px 16px 0 rgba(17, 17, 17, 0.1);
+  background: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.columnNameItemWrapper {
+  display: flex;
+  background-color: transparent;
+  justify-content: space-between;
+  align-items: center;
+}
+.columnNameItemWrapper:hover {
+  color: var();
+}
+.columnNameActive {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: #bedbb0;
+}
+.columnNameDefault {
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.5);
+}
+.cardIconActive {
+  stroke: #bedbb0;
+  fill: transparent;
+}
+.cardIconDefault {
+  stroke: #bedbb0;
+  fill: transparent;
+  stroke: white;
+  stroke-opacity: 0.5;
 }

@@ -18,7 +18,9 @@ const CardsColumn = ({ column }) => {
     dispatch(deleteColumn(id));
   };
 
-  const addCardButtonLabel = column.length ? 'Add card' : 'Add another card';
+  const addCardButtonLabel = !column.cards.length
+    ? 'Add card'
+    : 'Add another card';
 
   return (
     <div className={s.singleColumnWrapper}>
@@ -40,7 +42,10 @@ const CardsColumn = ({ column }) => {
         ))}
       </div>
 
-      <button className={s.addCardBtn} onClick={toggleIsAddCardModal}>
+      <button
+        className={`${s.addCardBtn} button`}
+        onClick={toggleIsAddCardModal}
+      >
         <AddButton color="dark" width={28} height={28} iconSize={14} />
         {addCardButtonLabel}
       </button>
