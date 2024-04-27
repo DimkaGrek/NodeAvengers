@@ -8,6 +8,7 @@ import {
 } from './boardsOperations';
 import { addColumn, deleteColumn, editColumn } from './columnOperations';
 import { addCard, deleteCard, editCard } from './cardOperations';
+import { logoutThunk } from '../auth/operations';
 
 const initialState = {
   boards: [],
@@ -126,6 +127,9 @@ const boardsSlice = createSlice({
 
         state.currentBoard.columns[indexColumn].cards.splice(indexCard, 1);
         state.isLoading = false;
+      })
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(
