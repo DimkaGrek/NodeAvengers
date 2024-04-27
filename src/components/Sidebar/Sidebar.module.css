@@ -63,6 +63,14 @@
   font-size: 12px;
   letter-spacing: -0.24px;
 }
+/* 
+.boardName {
+  color: red;
+  max-width: 180px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+} */
 .boardTitleBlock {
   display: flex;
   gap: 50px;
