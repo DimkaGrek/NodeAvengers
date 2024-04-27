@@ -22,11 +22,13 @@ const Filters = ({ toggleModal }) => {
   const handleFilterChange = color => {
     setSelectedColor(color);
     dispatch(changeFilter(color));
+    toggleModal();
   };
 
   const handleShowAll = () => {
     setSelectedColor(null);
     dispatch(changeFilter('Show all'));
+    toggleModal();
   };
 
   return (
