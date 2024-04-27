@@ -16,11 +16,7 @@ import {
   selectCurrentBoard,
 } from '../../redux/boards/boardsSlice';
 import { useEffect } from 'react';
-import {
-  deleteBoard,
-  getBoard,
-  getBoards,
-} from '../../redux/boards/boardsOperations';
+import { deleteBoard, getBoards } from '../../redux/boards/boardsOperations';
 import { getImages } from '../../helpers';
 import { NeedHelpForm } from '../NeedHelpForm/NeedHelpForm';
 
@@ -61,67 +57,70 @@ const Sidebar = () => {
           <Icon id="logo" className={s.svgLightning} size={32} />
           <p className={s.title}>Task Pro</p>
         </NavLink>
-        <div className={s.section}>
-          <h2 className={s.myBoardTitle}>My boards</h2>
+        {/* <div className={s.section}> */}
+        <h2 className={s.myBoardTitle}>My boards</h2>
 
-          <div className={s.boardTitleBlock}>
-            <p className={s.boardTitle}>Create a new board</p>
-            <button
-              className={s.buttonAdd}
-              aria-label="add"
-              type="button"
-              onClick={toggleIsModalAddBoard}
-            >
-              <Icon id="plus" className={s.svgPlus} size={20} />
-            </button>
-          </div>
+        <div className={s.boardTitleBlock}>
+          <p className={s.boardTitle}>Create a new board</p>
+          <button
+            className={s.buttonAdd}
+            aria-label="add"
+            type="button"
+            onClick={toggleIsModalAddBoard}
+          >
+            <Icon id="plus" className={s.svgPlus} size={20} />
+          </button>
+        </div>
 
-          <div className={s.mainBoard}>
-            <ul>
-              {boards.lenght !== 0 &&
-                boards.map(board => (
-                  <li
-                    onClick={() => handleClickBoard(board.name)}
-                    key={board._id}
-                    className={s.boardList}
+        <div className={s.mainBoard}>
+          <ul>
+            {boards.lenght !== 0 &&
+              boards.map(board => (
+                <li
+                  onClick={() => handleClickBoard(board.name)}
+                  key={board._id}
+                  className={
+                    board._id === currentBoard._id
+                      ? s.boardListItemActive
+                      : s.boardListItem
+                  }
+                >
+                  <div
+                    className={
+                      board._id === currentBoard._id ? s.boardActive : s.board
+                    }
                   >
-                    <div
-                      className={
-                        board._id === currentBoard._id ? s.boardActive : s.board
-                      }
-                    >
-                      <div className={s.titleBoard}>
-                        <Icon
-                          id={getImages().icons[board.icon]}
-                          className={s.svgProject}
-                          size={18}
-                        />
-                        <p className={s.boardTitle}>{board.name}</p>
-                      </div>
-
-                      <div className={s.boardIcons}>
-                        <button
-                          className={s.buttonIcon}
-                          type="button"
-                          aria-label="edit"
-                          onClick={toggleIsModalEditBoard}
-                        >
-                          <Icon id="pencil" className={s.editIcon} size={16} />
-                        </button>
-                        <button
-                          className={s.buttonIcon}
-                          type="button"
-                          aria-label="delete"
-                          onClick={() => handleDeleteBoard(board._id)}
-                        >
-                          <Icon id="trash" className={s.editIcon} size={16} />
-                        </button>
-                      </div>
+                    <div className={s.titleBoard}>
+                      <Icon
+                        id={getImages().icons[board.icon]}
+                        className={s.svgProject}
+                        size={18}
+                      />
+                      <p className={s.boardTitle}>{board.name}</p>
                     </div>
-                  </li>
-                ))}
-            </ul>
-          </div>
+
+                    <div className={s.boardIcons}>
+                      <button
+                        className={s.buttonIcon}
+                        type="button"
+                        aria-label="edit"
+                        onClick={toggleIsModalEditBoard}
+                      >
+                        <Icon id="pencil" className={s.editIcon} size={16} />
+                      </button>
+                      <button
+                        className={s.buttonIcon}
+                        type="button"
+                        aria-label="delete"
+                        onClick={() => handleDeleteBoard(board._id)}
+                      >
+                        <Icon id="trash" className={s.editIcon} size={16} />
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+          </ul>
         </div>
         <div className={s.needHelpBlock}>
           <img
@@ -145,7 +144,6 @@ const Sidebar = () => {
             Need help?
           </button>
         </div>
-
         <button
           className={s.logoutBtn}
           type="button"

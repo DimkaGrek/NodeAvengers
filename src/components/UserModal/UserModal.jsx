@@ -67,6 +67,7 @@ export const UserModal = ({ toggleModal }) => {
         </button>
         {(avatarPreview || avatar) && (
           <img
+            className={styles.imgModal}
             src={avatarPreview || avatar}
             alt={userName}
             width={64}
