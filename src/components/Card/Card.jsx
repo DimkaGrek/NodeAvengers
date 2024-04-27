@@ -1,17 +1,60 @@
 import { Icon } from '../Icon/Icon.jsx';
 import s from './Card.module.css';
 import { getColorByPriority } from '../../helpers/getColorByPriority.js';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteCard } from '../../redux/boards/cardOperations.js';
+import { deleteCard, editCard } from '../../redux/boards/cardOperations.js';
 import { useModal } from '../../hooks/useModal';
 import { Modal } from '../Modal/Modal.jsx';
 import { EditCardForm } from '../EditCardForm/EditCardForm.jsx';
+import { useSelector } from 'react-redux';
+import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
 
-const Card = ({ moveCardRight, index, card }) => {
+const Card = ({ card }) => {
   const [isBellActive, setIsBellActive] = useState(false);
   const [isEditCardModal, toggleIsEditCardModal] = useModal();
+  const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [isChangeColumnButton, setIsChangeColumnButton] = useState(false);
+  const currentBoard = useSelector(selectCurrentBoard);
   const dispatch = useDispatch();
+
+  const { columns } = currentBoard;
+
+  console.log('card', card);
+  console.log('currentBoard', currentBoard);
+  console.log('columns', columns.length);
+
+  useEffect(() => {
+    if (columns.length > 1) {
+      setIsChangeColumnButton(true);
+    } else {
+      setIsChangeColumnButton(false);
+    }
+  }, [columns.length]);
+
+  const togglePopup = useCallback(() => {
+    setIsOpenPopup(!isOpenPopup);
+  }, [isOpenPopup]);
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      const popup = document.getElementById('popup');
+      const button = document.getElementById('changeColumnBtn');
+      if (
+        popup &&
+        !popup.contains(event.target) &&
+        !button.contains(event.target)
+      ) {
+        setIsOpenPopup(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleDeleteCard = (cardId, columnId) => {
     dispatch(deleteCard({ cardId, columnId }));
@@ -35,7 +78,7 @@ const Card = ({ moveCardRight, index, card }) => {
     const deadlineDate = new Date(card.deadline);
     const deadlineDay = deadlineDate.getDate();
 
-    if (currentDay === deadlineDay) {
+    if (deadlineDay < currentDay) {
       setIsBellActive(true);
     } else {
       setIsBellActive(false);
@@ -66,20 +109,20 @@ const Card = ({ moveCardRight, index, card }) => {
         </ul>
       </div>
       <div className={s.cardIconsWrapper}>
-        <button>
-          <Icon
-            id="bell"
-            className={isBellActive ? s.bellIcon : ''}
-            size={16}
-          />
-        </button>
-        <button onClick={() => moveCardRight(index)}>
-          <Icon
-            id="arrow-circle-broken-right"
-            className={s.cardIcon}
-            size={16}
-          />
-        </button>
+        {isBellActive && (
+          <button className={s.bellIconButton}>
+            <Icon id="bell" className={s.bellIcon} size={16} />
+          </button>
+        )}
+        {isChangeColumnButton && (
+          <button id="changeColumnBtn" onClick={togglePopup}>
+            <Icon
+              id="arrow-circle-broken-right"
+              className={s.cardIcon}
+              size={16}
+            />
+          </button>
+        )}
         <button onClick={toggleIsEditCardModal}>
           <Icon id="pencil" className={s.cardIcon} size={16} />
         </button>
@@ -91,6 +134,38 @@ const Card = ({ moveCardRight, index, card }) => {
         <Modal title={'Edit card'} toggleModal={toggleIsEditCardModal}>
           <EditCardForm toggleModal={toggleIsEditCardModal} card={card} />
         </Modal>
+      )}
+      {isOpenPopup && (
+        <div id="popup" className={s.popupChangeColumnContainer}>
+          {columns.map(column => (
+            <button
+              key={column._id}
+              className={s.columnNameItemWrapper}
+              onClick={() =>
+                dispatch(editCard({ ...card, columnId: column._id }))
+              }
+            >
+              <p
+                className={
+                  column._id === card.columnId
+                    ? s.columnNameActive
+                    : s.columnNameDefault
+                }
+              >
+                {column.name}
+              </p>
+              <Icon
+                id="arrow-circle-broken-right"
+                className={
+                  column._id === card.columnId
+                    ? s.cardIconActive
+                    : s.cardIconDefault
+                }
+                size={16}
+              />
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );
