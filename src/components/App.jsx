@@ -24,9 +24,11 @@ const App = () => {
   const link = isLoggedIn ? '/home' : '/welcome';
 
   useEffect(() => {
-    dispatch(refreshThunk());
-    dispatch(getThemesList());
-  }, [dispatch]);
+    const verified = localStorage.getItem('verified');
+    if (!isLoggedIn && !verified) {
+      dispatch(refreshThunk());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return isRefreshing ? (
     <Loader />

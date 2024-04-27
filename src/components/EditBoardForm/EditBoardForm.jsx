@@ -44,7 +44,7 @@ export const EditBoardForm = ({ board, toggleModal }) => {
               .unwrap()
               .then(() => {
                 toggleModal();
-                navigate(`/home`);
+                navigate(`/home/${values.name}`);
               })
           : dispatch(addBoard(values))
               .unwrap()
@@ -113,7 +113,14 @@ export const EditBoardForm = ({ board, toggleModal }) => {
             </ul>
           </div>
           <Button type="submit" className={s.button}>
-            {<AddButton width={28} height={28} iconSize={10} />}
+            {!board && (
+              <AddButton
+                color="boardCreate"
+                width={28}
+                height={28}
+                iconSize={10}
+              />
+            )}
             {board ? 'Edit' : 'Create'}
           </Button>
         </Form>

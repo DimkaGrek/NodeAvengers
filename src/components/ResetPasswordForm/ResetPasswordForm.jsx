@@ -61,6 +61,7 @@ export const ForgotForm = () => {
               </div>
               <div className={s.pass_input_wrapper}>
                 <Field
+                  className="input_field_welcome"
                   placeholder="Enter your new password"
                   name="password"
                   type={showPass ? 'text' : 'password'}

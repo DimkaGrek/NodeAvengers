@@ -30,3 +30,9 @@
     background-color: rgb(157, 200, 136);
   }
 }
+.boardCreate {
+  background-color: var(--plus-background-color);
+}
+.boardCreate > .iconPlus {
+  stroke: var(--plus-color);
+}

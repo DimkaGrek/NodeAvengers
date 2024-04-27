@@ -7,15 +7,14 @@ import s from './EditCardForm.module.css';
 import { Icon } from '../Icon/Icon.jsx';
 import { getColors, ICON_COLORS } from '../../helpers';
 import { useState } from 'react';
-
 import DatePickerForm from '../../components/DatePicker/DatePicker.jsx';
-import { useTheme } from '../../hooks/useTheme.js';
+// import { useTheme } from '../../hooks/useTheme.js';
 import { toast } from 'react-toastify';
 import { editCard } from '../../redux/boards/cardOperations.js';
 
 export const EditCardForm = ({ toggleModal, columnId, card }) => {
-  const { theme } = useTheme();
-  const { colors } = getColors(theme);
+  // const { theme } = useTheme();
+  const { colors } = getColors();
   const dispatch = useDispatch();
   const [selectedColor, setSelectedColor] = useState(null);
 
@@ -42,7 +41,7 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
             toggleModal();
           })
           .catch(error => {
-            toast.info(error.meassage);
+            toast.info(error.message);
           });
         console.log(values);
       }}

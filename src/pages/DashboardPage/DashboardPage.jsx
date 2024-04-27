@@ -4,7 +4,7 @@ import DashboardHeader from '../../components/DashboardHeader/DashboardHeader.js
 import CardsColumn from '../../components/CardsColumn/CardsColumn.jsx';
 import Button from '../../components/Button/Button.jsx';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getBoards } from '../../redux/boards/boardsOperations';
 import { getBoard } from '../../redux/boards/boardsOperations';
@@ -16,6 +16,8 @@ import { useSelector } from 'react-redux';
 import { useModal } from '../../hooks/useModal.jsx';
 import { Modal } from '../../components/Modal/Modal.jsx';
 import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
+import { getFilteredBoard } from '../../helpers';
+import { selectFilter } from '../../redux/filter/slice';
 
 const DashboardPage = () => {
   const [isAddColumnModal, toggleIsAddColumnModal] = useModal();
@@ -25,6 +27,8 @@ const DashboardPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   console.log('current Board?', currentBoard);
+  const filter = useSelector(selectFilter);
+  const [filteredBoard, setFilteredBoard] = useState([]);
 
   useEffect(() => {
     dispatch(getBoards())
@@ -41,6 +45,12 @@ const DashboardPage = () => {
       });
   }, [boardName, dispatch, navigate]);
 
+  useEffect(() => {
+    if (currentBoard) {
+      setFilteredBoard(getFilteredBoard(currentBoard, filter));
+    }
+  }, [currentBoard, filter]);
+
   const buttonLabel = currentBoard?.columns?.length
     ? 'Add another column'
     : 'Add column';
@@ -50,8 +60,8 @@ const DashboardPage = () => {
       <DashboardHeader />
 
       <div className={s.columnsContainer}>
-        {currentBoard.columns &&
-          currentBoard.columns.map(column => (
+        {filteredBoard.columns &&
+          filteredBoard.columns.map(column => (
             <CardsColumn key={column._id} column={column} />
           ))}
 

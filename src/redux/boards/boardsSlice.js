@@ -8,6 +8,7 @@ import {
 } from './boardsOperations';
 import { addColumn, deleteColumn, editColumn } from './columnOperations';
 import { addCard, deleteCard, editCard } from './cardOperations';
+import { logoutThunk } from '../auth/operations';
 
 const initialState = {
   boards: [],
@@ -98,8 +99,21 @@ const boardsSlice = createSlice({
           indexColumn
         ].cards.findIndex(card => card._id === payload._id);
 
-        state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
-        state.isLoading = false;
+        if (indexCard === -1) {
+          const oldColumn = state.currentBoard.columns.findIndex(column =>
+            column.cards.some(card => card._id === payload._id)
+          );
+
+          const oldCard = state.currentBoard.columns[oldColumn].cards.findIndex(
+            card => card._id === payload._id
+          );
+
+          state.currentBoard.columns[oldColumn].cards.splice(oldCard, 1);
+          state.currentBoard.columns[indexColumn].cards.push(payload);
+        } else {
+          state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
+          state.isLoading = false;
+        }
       })
       .addCase(deleteCard.fulfilled, (state, { payload }) => {
         console.log(payload);
@@ -113,6 +127,9 @@ const boardsSlice = createSlice({
 
         state.currentBoard.columns[indexColumn].cards.splice(indexCard, 1);
         state.isLoading = false;
+      })
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(

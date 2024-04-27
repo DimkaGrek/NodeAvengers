@@ -45,14 +45,15 @@ img {
 input,
 textarea {
   box-sizing: border-box;
-  border: 1px solid rgb(190, 219, 176);
+  border: 1px solid var(--background-button);
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
-  background: rgb(31, 31, 31);
+  background-color: transparent;
   opacity: 0.4;
   width: 100%;
+  height: 49px;
   padding: 14px 18px;
-  color: rgb(255, 255, 255);
+  color: var(--color-text);
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.02em;
@@ -62,16 +63,39 @@ textarea {
   &:hover,
   &:focus {
     opacity: 1;
-    color: #ffffff;
+    color: var(--color-text);
   }
-}
-
-input {
-  height: 49px;
 }
 
 textarea {
   resize: none;
+}
+
+.input_field_welcome {
+  box-sizing: border-box;
+  border: 1px solid rgb(190, 219, 176);
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  background: rgb(31, 31, 31);
+  opacity: 0.4;
+  width: 100%;
+  height: 49px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  outline: none;
+  transition: opacity 250ms ease;
+}
+
+.input_field_welcome:hover,
+.input_field_welcome:focus {
+  opacity: 1;
+  color: #ffffff;
 }
 
 /* Fonts */
@@ -101,6 +125,13 @@ textarea {
 
 /* Dark theme */
 html[data-theme='dark'] {
+  --placeholder-color: rgb(255, 255, 255);
+  --plus-background-color: rgb(22, 22, 22);
+  --plus-color: rgb(255, 255, 255);
+  --icon-color: rgba(255, 255, 255, 0.5);
+  --icon-color-select: rgb(255, 255, 255);
+  --background-disabled-button: rgba(240, 248, 255, 0.683);
+  --color-modal-title: rgb(255, 255, 255);
   --background-header: #161616;
   --background-sidebar: #121212;
   --fill-sidebar-logo: #ffffff;
@@ -128,6 +159,7 @@ html[data-theme='dark'] {
   --scroll-color: RGB(255, 255, 255, 0.1);
   --button-add-color: #bedbb0;
   --button-add-color-hover: #9dc888;
+  --after-color: #bedbb0;
   --border-modal-user: rgba(190, 219, 176, 0.5);
   --border-input: #bedbb0;
   --border-list-drop: #bedbb0;
@@ -136,14 +168,20 @@ html[data-theme='dark'] {
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(255, 255, 255, 0.3);
   --stroke-add-card-icon: #fff;
+  --modal-filters-background: #151515;
+  --modal-filters-after: rgba(255, 255, 255, 0.1);
+  --color-text-input: #fff;
+
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
   --main-medium-priority: #e09cb5;
   --main-high-priority: #bedbb0;
   --button-add-color: #bedbb0;
-  --button-logout-color: #bedbb0;
+  --button-logout-color: #bedb80;
+  --button-logout-color-hover: #9dc888;
   --span-color: #bedbb0;
+  --line-color: rgba(255, 255, 255, 0.1);
 
   /* Calendar-colors */
   --calendar-text: #fff;
@@ -157,6 +195,13 @@ html[data-theme='dark'] {
 
 /* Light theme */
 html[data-theme='light'] {
+  --placeholder-color: rgb(22, 22, 22);
+  --plus-background-color: rgb(22, 22, 22);
+  --plus-color: rgb(255, 255, 255);
+  --icon-color: rgba(22, 22, 22, 0.5);
+  --icon-color-select: rgb(22, 22, 22);
+  --background-disabled-button: rgba(62, 63, 64, 0.683);
+  --color-modal-title: rgb(22, 22, 22);
   --background-header: #fcfcfc;
   --background-sidebar: #ffffff;
   --fill-sidebar-logo: #ffffff;
@@ -184,7 +229,9 @@ html[data-theme='light'] {
   --scroll-color: #e8e8e8;
   --button-add-color: #bedbb0;
   --button-add-color-hover: #9dc888;
-  --button-logout-color: #bedbb0;
+  --after-color: #bedbb0;
+  --button-logout-color: #bedb80;
+  --button-logout-color-hover: #9dc888;
   --span-color: #bedbb0;
   --border-modal-user: rgba(190, 219, 176, 0.5);
   --border-input: #bedbb0;
@@ -194,6 +241,10 @@ html[data-theme='light'] {
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
   --stroke-add-card-icon: #fff;
+  --line-color: rgba(22, 22, 22, 0.1);
+  --modal-filters-background: #fcfcfc;
+  --modal-filters-after: rgba(22, 22, 22, 0.1);
+  --color-text-input: #161616;
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -212,6 +263,13 @@ html[data-theme='light'] {
 
 /* Violet theme */
 html[data-theme='violet'] {
+  --placeholder-color: rgb(22, 22, 22);
+  --plus-background-color: rgb(255, 255, 255);
+  --plus-color: rgb(22, 22, 22);
+  --icon-color: rgba(22, 22, 22, 0.5);
+  --icon-color-select: rgb(22, 22, 22);
+  --background-disabled-button: rgba(62, 63, 64, 0.683);
+  --color-modal-title: rgb(22, 22, 22);
   --background-header: #ffffff;
   --background-sidebar: #5255bc;
   --background-sidebar-logo: #ffffff;
@@ -226,8 +284,8 @@ html[data-theme='violet'] {
   --color-text-list-theme: #161616;
   --color-text-list-theme-hover: #5255bc;
   --background-list-theme: #ecedfd;
-  --background-button: #7b7ede;
-  --background-hover-button: #5255bc;
+  --background-button: #b8bcfd;
+  --background-hover-button: #979cea;
   --background-input: #ffffff;
   --background-modal: #fcfcfc;
   --background-help: rgba(236, 237, 253, 0.4);
@@ -239,7 +297,9 @@ html[data-theme='violet'] {
   --scroll-color: #b8bcfd;
   --button-add-color: #b8bcfd;
   --button-add-color-hover: #979cea;
+  --after-color: #fff;
   --button-logout-color: #ffffff;
+  --button-logout-color-hover: #b8bcfd;
   --span-color: #5255bc;
   --border-modal-user: rgba(190, 219, 176, 0.5);
   --border-input: #5255bc;
@@ -249,6 +309,10 @@ html[data-theme='violet'] {
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
   --stroke-add-card-icon: #161616;
+  --line-color: rgba(255, 255, 255, 0.1);
+  --modal-filters-background: rgba(0, 0, 0, 0.2);
+  --modal-filters-after: rgba(22, 22, 22, 0.1);
+  --color-text-input: #161616;
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;

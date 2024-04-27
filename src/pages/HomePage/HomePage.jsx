@@ -5,12 +5,14 @@ import { useModal } from '../../hooks/useModal';
 import s from './HomePage.module.css';
 import { useEffect } from 'react';
 import { getBoards } from '../../redux/boards/boardsOperations';
+import { getThemesList } from '../../redux/themes/operations';
 
 const HomePage = () => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getThemesList());
     dispatch(getBoards());
   }, [dispatch]);
 

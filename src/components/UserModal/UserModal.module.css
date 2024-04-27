@@ -66,7 +66,7 @@
 
 .spanStyles {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background-color: var(--user-image-default-background);
   border-radius: 8px;
@@ -88,6 +88,7 @@
   position: relative;
 }
 .inputStyle {
+  color: var(--color-text-input);
   border: 1px solid var(--border-input);
   border-radius: 8px;
   height: 49px;
@@ -151,7 +152,7 @@
     background-color: var(--background-hover-button);
   }
   &:disabled {
-    background-color: rgba(240, 248, 255, 0.683);
+    background-color: var(--background-disabled-button);
     cursor: not-allowed;
   }
 }
@@ -171,6 +172,8 @@
 }
 
 .iconUserModal {
+  position: absolute;
+  top: 16px;
   stroke: var(--stroke-svg-user-default);
   fill: var(--stroke-svg-user-default);
 }
@@ -194,4 +197,8 @@
   font-size: 10px;
   padding-left: 14px;
   margin-top: 3px;
+}
+
+.imgModal {
+  border-radius: 8px;
 }
