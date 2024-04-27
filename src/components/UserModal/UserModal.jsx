@@ -21,6 +21,11 @@ export const UserModal = ({ toggleModal }) => {
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [avatarFile, setAvatarFile] = useState(null);
 
+  const root = document.documentElement;
+  const backgroundColor = getComputedStyle(root).getPropertyValue(
+    '--background-hover-button'
+  );
+
   const { id, userName, userEmail, userAvatar, isLoading } = useUser();
 
   const dispatch = useDispatch();
@@ -124,23 +129,13 @@ export const UserModal = ({ toggleModal }) => {
         {({ errors, touched, setFieldValue }) => (
           <Form className={styles.stylesForm}>
             <div className={styles.inputWrapper}>
-              <Field
-                className={styles.inputStyle}
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
+              <Field type="text" name="name" placeholder="Name" />
               {errors.name && touched.name ? (
                 <p className={styles.descrError}>{errors.name}</p>
               ) : null}
             </div>
             <div className={styles.inputWrapper}>
-              <Field
-                className={styles.inputStyle}
-                type="email"
-                name="email"
-                placeholder="Email"
-              />
+              <Field type="email" name="email" placeholder="Email" />
               {errors.email && touched.email ? (
                 <p className={styles.descrError}>{errors.email}</p>
               ) : null}
@@ -203,11 +198,12 @@ export const UserModal = ({ toggleModal }) => {
                   setFieldValue('password', '');
                   setFieldValue('newPassword', '');
                 }}
+                // style={{backgroundColor:var(--background-hover-button)}}
                 checked={isEditPassword}
                 height={20}
                 width={35}
                 offColor="#615e5e"
-                onColor="#9DC888"
+                onColor={backgroundColor}
                 uncheckedIcon={false}
                 checkedIcon={false}
                 activeBoxShadow="none"
