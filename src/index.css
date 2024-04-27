@@ -128,6 +128,7 @@ html[data-theme='dark'] {
   --scroll-color: RGB(255, 255, 255, 0.1);
   --button-add-color: #bedbb0;
   --button-add-color-hover: #9dc888;
+  --after-color: #bedbb0;
   --border-modal-user: rgba(190, 219, 176, 0.5);
   --border-input: #bedbb0;
   --border-list-drop: #bedbb0;
@@ -145,8 +146,10 @@ html[data-theme='dark'] {
   --main-medium-priority: #e09cb5;
   --main-high-priority: #bedbb0;
   --button-add-color: #bedbb0;
-  --button-logout-color: #bedbb0;
+  --button-logout-color: #bedb80;
+  --button-logout-color-hover: #9dc888;
   --span-color: #bedbb0;
+  --line-color: rgba(255, 255, 255, 0.1);
 
   /* Calendar-colors */
   --calendar-text: #fff;
@@ -187,7 +190,9 @@ html[data-theme='light'] {
   --scroll-color: #e8e8e8;
   --button-add-color: #bedbb0;
   --button-add-color-hover: #9dc888;
-  --button-logout-color: #bedbb0;
+  --after-color: #bedbb0;
+  --button-logout-color: #bedb80;
+  --button-logout-color-hover: #9dc888;
   --span-color: #bedbb0;
   --border-modal-user: rgba(190, 219, 176, 0.5);
   --border-input: #bedbb0;
@@ -197,6 +202,7 @@ html[data-theme='light'] {
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
   --stroke-add-card-icon: #fff;
+  --line-color: rgba(22, 22, 22, 0.1);
   --modal-filters-background: #fcfcfc;
   --modal-filters-after: rgba(22, 22, 22, 0.1);
 
@@ -232,8 +238,8 @@ html[data-theme='violet'] {
   --color-text-list-theme: #161616;
   --color-text-list-theme-hover: #5255bc;
   --background-list-theme: #ecedfd;
-  --background-button: #7b7ede;
-  --background-hover-button: #5255bc;
+  --background-button: #b8bcfd;
+  --background-hover-button: #979cea;
   --background-input: #ffffff;
   --background-modal: #fcfcfc;
   --background-help: rgba(236, 237, 253, 0.4);
@@ -245,7 +251,9 @@ html[data-theme='violet'] {
   --scroll-color: #b8bcfd;
   --button-add-color: #b8bcfd;
   --button-add-color-hover: #979cea;
+  --after-color: #fff;
   --button-logout-color: #ffffff;
+  --button-logout-color-hover: #b8bcfd;
   --span-color: #5255bc;
   --border-modal-user: rgba(190, 219, 176, 0.5);
   --border-input: #5255bc;
@@ -255,6 +263,7 @@ html[data-theme='violet'] {
   --backdrop: rgba(21, 21, 21, 0.5);
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
   --stroke-add-card-icon: #161616;
+  --line-color: rgba(255, 255, 255, 0.1);
   --modal-filters-background: rgba(0, 0, 0, 0.2);
   --modal-filters-after: rgba(22, 22, 22, 0.1);
   /* Color-priority-tasks */
