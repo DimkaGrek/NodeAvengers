@@ -59,6 +59,7 @@ export const ForgotForm = () => {
             <Form className={s.form}>
               <div>
                 <Field
+                  className="input_field_welcome"
                   name="email"
                   type="email"
                   placeholder="Enter your email"

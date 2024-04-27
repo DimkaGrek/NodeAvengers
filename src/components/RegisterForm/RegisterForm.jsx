@@ -58,6 +58,7 @@ export const RegisterForm = () => {
               <Form className={s.form}>
                 <div>
                   <Field
+                    className="input_field_welcome"
                     name="name"
                     placeholder="Enter your name"
                     type="text"
@@ -68,6 +69,7 @@ export const RegisterForm = () => {
                 </div>
                 <div>
                   <Field
+                    className="input_field_welcome"
                     name="email"
                     type="email"
                     placeholder="Enter your email"
@@ -78,6 +80,7 @@ export const RegisterForm = () => {
                 </div>
                 <div className={s.pass_input_wrapper}>
                   <Field
+                    className="input_field_welcome"
                     placeholder="Create a password"
                     name="password"
                     type={showPass ? 'text' : 'password'}
