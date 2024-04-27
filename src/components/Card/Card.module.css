@@ -12,6 +12,8 @@
   letter-spacing: -0.02em;
   color: #fff;
   margin-bottom: 8px;
+  overflow: scroll;
+  white-space: nowrap;
 }
 .cardDescr {
   height: 29px;
