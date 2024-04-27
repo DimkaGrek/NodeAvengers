@@ -74,7 +74,7 @@ const Sidebar = () => {
 
         <div className={s.mainBoard}>
           <ul>
-            {boards.lenght !== 0 &&
+            {boards.length !== 0 &&
               boards.map(board => (
                 <li
                   onClick={() => handleClickBoard(board.name)}

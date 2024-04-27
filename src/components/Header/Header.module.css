@@ -138,4 +138,5 @@
   z-index: 1;
   opacity: 1;
   transition: opacity 1.3s;
+  height: 100%;
 }

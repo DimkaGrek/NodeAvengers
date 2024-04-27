@@ -44,7 +44,7 @@ export const EditBoardForm = ({ board, toggleModal }) => {
               .unwrap()
               .then(() => {
                 toggleModal();
-                navigate(`/home`);
+                navigate(`/home/${values.name}`);
               })
           : dispatch(addBoard(values))
               .unwrap()
