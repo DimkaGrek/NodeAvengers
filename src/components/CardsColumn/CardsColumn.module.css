@@ -1,6 +1,11 @@
 .singleColumnWrapper {
   height: 100%;
 }
+@media screen and (max-width: 320px) {
+  .singleColumnWrapper {
+    width: 280px;
+  }
+}
 .columnTitleWrapper {
   padding: 20px 20px;
   display: flex;
@@ -13,6 +18,12 @@
   background-color: #121212;
   margin-bottom: 14px;
 }
+@media screen and (max-width: 320px) {
+  .columnTitleWrapper {
+    width: 280px;
+  }
+}
+
 .columnTitle {
   font-weight: 500;
   font-size: 14px;

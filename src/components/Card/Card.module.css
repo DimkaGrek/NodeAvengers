@@ -6,6 +6,11 @@
   padding: 14px 20px 14px 20px;
   position: relative;
 }
+@media screen and (max-width: 320px) {
+  .cardWrapper {
+    width: 280px;
+  }
+}
 .cardTitle {
   font-weight: 600;
   font-size: 14px;
