@@ -37,14 +37,23 @@ const SharedLayout = () => {
       <main
         className={s.pageWrapper}
         style={
-          board && {
-            '--background-image-desk-1x': `url(${backgroundImage[0]})`,
-            '--background-image-desk-2x': `url(${backgroundImage[1]})`,
-            '--background-image-tab-1x': `url(${backgroundImage[2]})`,
-            '--background-image-tab-2x': `url(${backgroundImage[3]})`,
-            '--background-image-mob-1x': `url(${backgroundImage[4]})`,
-            '--background-image-mob-2x': `url(${backgroundImage[5]})`,
-          }
+          board
+            ? {
+                '--background-image-desk-1x': `url(${backgroundImage[0]})`,
+                '--background-image-desk-2x': `url(${backgroundImage[1]})`,
+                '--background-image-tab-1x': `url(${backgroundImage[2]})`,
+                '--background-image-tab-2x': `url(${backgroundImage[3]})`,
+                '--background-image-mob-1x': `url(${backgroundImage[4]})`,
+                '--background-image-mob-2x': `url(${backgroundImage[5]})`,
+              }
+            : {
+                '--background-image-desk-1x': 'none',
+                '--background-image-desk-2x': 'none',
+                '--background-image-tab-1x': 'none',
+                '--background-image-tab-2x': 'none',
+                '--background-image-mob-1x': 'none',
+                '--background-image-mob-2x': 'none',
+              }
         }
       >
         <Suspense fallback={null}>
