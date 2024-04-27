@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Field, Form, Formik } from 'formik';
-import Resizer from 'react-image-file-resizer';
 import Switch from 'react-switch';
+import { toast } from 'react-toastify';
 
 import { Icon } from 'components';
 import Button from '../Button/Button';
@@ -13,7 +13,6 @@ import { updateUserThunk } from '../../redux/user/operations';
 import { EditUserPassSchema, EditUserSchema } from '../../schemas';
 
 import styles from './UserModal.module.css';
-import { toast } from 'react-toastify';
 
 export const UserModal = ({ toggleModal }) => {
   const [isEditPassword, setIsEditPassword] = useState(false);
@@ -21,6 +20,11 @@ export const UserModal = ({ toggleModal }) => {
   const [showNewPass, setShowNewPass] = useState(false);
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [avatarFile, setAvatarFile] = useState(null);
+
+  const root = document.documentElement;
+  const backgroundColor = getComputedStyle(root).getPropertyValue(
+    '--background-hover-button'
+  );
 
   const { id, userName, userEmail, userAvatar, isLoading } = useUser();
 
@@ -38,40 +42,11 @@ export const UserModal = ({ toggleModal }) => {
     setShowNewPass(!showNewPass);
   };
 
-  const resizeFile = file =>
-    new Promise((resolve, reject) => {
-      const fileType = file.type;
-
-      let format;
-      if (fileType === 'image/jpeg' || fileType === 'image/jpg') {
-        format = 'JPEG';
-      } else if (fileType === 'image/png') {
-        format = 'PNG';
-      } else {
-        reject(new Error('Unsupported file format'));
-        return;
-      }
-
-      Resizer.imageFileResizer(
-        file,
-        64,
-        64,
-        format,
-        100,
-        0,
-        uri => {
-          resolve(uri);
-        },
-        'file'
-      );
-    });
-
   const handleUploadAvatar = async e => {
     const file = e.target.files[0];
     if (!file) return;
 
-    const resizedFile = await resizeFile(file);
-    const imageUrl = URL.createObjectURL(resizedFile);
+    const imageUrl = URL.createObjectURL(file);
 
     setAvatarPreview(imageUrl);
     setAvatarFile(file);
@@ -146,29 +121,21 @@ export const UserModal = ({ toggleModal }) => {
                 toggleModal();
               })
               .catch(error => toast.error(error));
+          } else {
+            toast.warning('You didn`t change anyting.');
           }
         }}
       >
         {({ errors, touched, setFieldValue }) => (
           <Form className={styles.stylesForm}>
             <div className={styles.inputWrapper}>
-              <Field
-                className={styles.inputStyle}
-                type="text"
-                name="name"
-                placeholder="Name"
-              />
+              <Field type="text" name="name" placeholder="Name" />
               {errors.name && touched.name ? (
                 <p className={styles.descrError}>{errors.name}</p>
               ) : null}
             </div>
             <div className={styles.inputWrapper}>
-              <Field
-                className={styles.inputStyle}
-                type="email"
-                name="email"
-                placeholder="Email"
-              />
+              <Field type="email" name="email" placeholder="Email" />
               {errors.email && touched.email ? (
                 <p className={styles.descrError}>{errors.email}</p>
               ) : null}
@@ -231,11 +198,12 @@ export const UserModal = ({ toggleModal }) => {
                   setFieldValue('password', '');
                   setFieldValue('newPassword', '');
                 }}
+                // style={{backgroundColor:var(--background-hover-button)}}
                 checked={isEditPassword}
                 height={20}
                 width={35}
                 offColor="#615e5e"
-                onColor="#9DC888"
+                onColor={backgroundColor}
                 uncheckedIcon={false}
                 checkedIcon={false}
                 activeBoxShadow="none"

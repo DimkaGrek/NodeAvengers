@@ -44,6 +44,7 @@
 .icon {
   cursor: pointer;
   stroke: rgba(255, 255, 255, 0.5);
+  fill: none;
 }
 .imageList {
   display: flex;

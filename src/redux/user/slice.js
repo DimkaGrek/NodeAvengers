@@ -4,7 +4,12 @@ import {
   updateUserThemeThunk,
   updateUserThunk,
 } from './operations';
-import { loginThunk, refreshThunk, verifyLoginThunk } from '../auth/operations';
+import {
+  loginThunk,
+  logoutThunk,
+  refreshThunk,
+  verifyLoginThunk,
+} from '../auth/operations';
 
 const initialState = {
   id: null,
@@ -38,6 +43,9 @@ const slice = createSlice({
       })
       .addCase(needHelpThunk.fulfilled, state => {
         state.isLoading = false;
+      })
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
       })
       .addMatcher(
         isAnyOf(
