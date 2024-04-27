@@ -113,7 +113,14 @@ export const EditBoardForm = ({ board, toggleModal }) => {
             </ul>
           </div>
           <Button type="submit" className={s.button}>
-            {!board && <AddButton width={28} height={28} iconSize={10} />}
+            {!board && (
+              <AddButton
+                color="boardCreate"
+                width={28}
+                height={28}
+                iconSize={10}
+              />
+            )}
             {board ? 'Edit' : 'Create'}
           </Button>
         </Form>

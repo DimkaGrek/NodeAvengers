@@ -11,6 +11,7 @@ export const AddButton = ({ color = 'dark', width, height, iconSize }) => {
       [`${s.dark}`]: color === 'dark',
       [`${s.light}`]: color === 'light',
       [`${s.green}`]: color === 'green',
+      [`${s.boardCreate}`]: color === 'boardCreate',
     });
   };
 

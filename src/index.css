@@ -45,12 +45,13 @@ img {
 input,
 textarea {
   box-sizing: border-box;
-  border: 1px solid rgb(190, 219, 176);
+  border: 1px solid var(--background-button);
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
   background-color: transparent;
   opacity: 0.4;
   width: 100%;
+  height: 49px;
   padding: 14px 18px;
   color: var(--color-text);
   font-size: 14px;
@@ -66,15 +67,8 @@ textarea {
   }
 }
 
-input {
-  height: 49px;
-}
-
 textarea {
   resize: none;
-}
-.switch {
-  /* background-color: var; */
 }
 
 /* Fonts */
@@ -104,6 +98,11 @@ textarea {
 
 /* Dark theme */
 html[data-theme='dark'] {
+  --plus-background-color: rgb(22, 22, 22);
+  --plus-color: rgb(255, 255, 255);
+  --icon-color: rgba(255, 255, 255, 0.5);
+  --icon-color-select: rgb(255, 255, 255);
+  --background-disabled-button: rgba(240, 248, 255, 0.683);
   --color-modal-title: rgb(255, 255, 255);
   --background-header: #161616;
   --background-sidebar: #121212;
@@ -168,6 +167,11 @@ html[data-theme='dark'] {
 
 /* Light theme */
 html[data-theme='light'] {
+  --plus-background-color: rgb(22, 22, 22);
+  --plus-color: rgb(255, 255, 255);
+  --icon-color: rgba(22, 22, 22, 0.5);
+  --icon-color-select: rgb(22, 22, 22);
+  --background-disabled-button: rgba(62, 63, 64, 0.683);
   --color-modal-title: rgb(22, 22, 22);
   --background-header: #fcfcfc;
   --background-sidebar: #ffffff;
@@ -230,6 +234,11 @@ html[data-theme='light'] {
 
 /* Violet theme */
 html[data-theme='violet'] {
+  --plus-background-color: rgb(255, 255, 255);
+  --plus-color: rgb(22, 22, 22);
+  --icon-color: rgba(22, 22, 22, 0.5);
+  --icon-color-select: rgb(22, 22, 22);
+  --background-disabled-button: rgba(62, 63, 64, 0.683);
   --color-modal-title: rgb(22, 22, 22);
   --background-header: #ffffff;
   --background-sidebar: #5255bc;

@@ -152,7 +152,7 @@
     background-color: var(--background-hover-button);
   }
   &:disabled {
-    background-color: rgba(240, 248, 255, 0.683);
+    background-color: var(--background-disabled-button);
     cursor: not-allowed;
   }
 }
