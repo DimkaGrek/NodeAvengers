@@ -16,7 +16,7 @@ import {
   selectCurrentBoard,
 } from '../../redux/boards/boardsSlice';
 import { useEffect } from 'react';
-import { deleteBoard, getBoards } from '../../redux/boards/boardsOperations';
+import { deleteBoard } from '../../redux/boards/boardsOperations';
 import { getImages } from '../../helpers';
 import { NeedHelpForm } from '../NeedHelpForm/NeedHelpForm';
 
@@ -29,25 +29,17 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const refreshToken = useSelector(selectRefreshToken);
-  // console.log(currentBoard);
+
   useEffect(() => {
-    dispatch(getBoards);
-  }, [dispatch]);
+    currentBoard?.name
+      ? navigate(`/home/${currentBoard.name}`)
+      : navigate(`/home`);
+  }, [currentBoard]);
   // console.log(boards);
 
   const handleDeleteBoard = id => {
     console.log(`before delete => `, currentBoard);
-    dispatch(deleteBoard(id))
-      .unwrap()
-      .then(data => {
-        // console.log('data=>', data);
-        // boards.length !== 0
-        //   ? navigate(`/home/${currentBoard.name}`)
-        //   :navigate(`/home/`)
-        navigate(`/home/`);
-        console.log(`after delete => `, currentBoard);
-      })
-      .catch(error => console.log(error));
+    dispatch(deleteBoard(id));
   };
   const handleClickBoard = name => {
     navigate(`/home/${name}`);

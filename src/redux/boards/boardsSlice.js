@@ -50,6 +50,7 @@ const boardsSlice = createSlice({
         if (state.boards.length === 1) {
           state.boards = [];
           state.currentBoard = [];
+          state.nextBoardName = null;
           state.isLoading = false;
           return;
         }
@@ -59,11 +60,12 @@ const boardsSlice = createSlice({
         if (board._id === state.currentBoard._id) {
           if (index === 0) {
             state.boards.splice(index, 1);
-            console.log(state.boards[0]);
             state.currentBoard = state.boards[0];
+            state.nextBoardName = state.currentBoard.name;
           } else {
             console.log(state.boards[index - 1]);
             state.currentBoard = state.boards[index - 1];
+            state.nextBoardName = state.currentBoard.name;
             state.boards.splice(index, 1);
           }
         } else {

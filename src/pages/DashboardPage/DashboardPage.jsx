@@ -26,7 +26,7 @@ const DashboardPage = () => {
   const currentBoard = useSelector(selectCurrentBoard);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log('current Board?', currentBoard);
+  // console.log('current Board?', currentBoard);
   const filter = useSelector(selectFilter);
   const [filteredBoard, setFilteredBoard] = useState([]);
 
