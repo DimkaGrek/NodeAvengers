@@ -37,6 +37,9 @@ const Sidebar = () => {
 
   const handleDeleteBoard = id => {
     dispatch(deleteBoard(id));
+    currentBoard.name
+      ? navigate(`/home/${currentBoard.name}`)
+      : navigate(`/home`);
   };
   const handleClickBoard = name => {
     navigate(`/home/${name}`);
@@ -96,7 +99,7 @@ const Sidebar = () => {
                         className={s.svgProject}
                         size={18}
                       />
-                      <p className={s.boardTitle}>{board.name}</p>
+                      <p className={s.boardName}>{board.name}</p>
                     </div>
 
                     <div className={s.boardIcons}>
