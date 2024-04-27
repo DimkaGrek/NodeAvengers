@@ -5,10 +5,12 @@ import { Formik, Form, Field } from 'formik';
 import Button from '../Button/Button';
 import { Icon } from '../Icon/Icon';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SignupSchema } from '../../schemas/RegisterSchema';
 import { registerThunk } from '../../redux/auth/operations';
 import { toast } from 'react-toastify';
+import Loader from '../Loader/Loader';
+import { selectIsLoading } from '../../redux/auth/slice';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -17,9 +19,10 @@ export const RegisterForm = () => {
   const passVisibility = () => {
     setShowPass(prevState => !prevState);
   };
-
+  const isLoading = useSelector(selectIsLoading);
   return (
     <>
+      {isLoading && <Loader />}
       {isRegistered ? (
         <div className={s.wrapper_verflink}>
           {' '}
