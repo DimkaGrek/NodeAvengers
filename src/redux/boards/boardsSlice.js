@@ -12,7 +12,7 @@ import { logoutThunk } from '../auth/operations';
 
 const initialState = {
   boards: [],
-  currentBoard: [],
+  currentBoard: null,
   isLoading: false,
   error: null,
 };
@@ -44,10 +44,16 @@ const boardsSlice = createSlice({
         state.boards[index] = payload;
         state.isLoading = false;
       })
+
       .addCase(deleteBoard.fulfilled, (state, { payload }) => {
+        if (state.boards.length === 1) {
+          state.boards = [];
+          state.currentBoard = null;
+          state.isLoading = false;
+          return;
+        }
         const board = state.boards.find(item => item._id === payload);
         const index = state.boards.findIndex(board => board._id === payload);
-
         if (board._id === state.currentBoard._id) {
           if (index === 0) {
             state.boards.splice(index, 1);
@@ -59,9 +65,9 @@ const boardsSlice = createSlice({
         } else {
           state.boards.splice(index, 1);
         }
-
         state.isLoading = false;
       })
+
       .addCase(addColumn.fulfilled, (state, { payload }) => {
         state.currentBoard.columns.push(payload);
         state.isLoading = false;

@@ -18,7 +18,7 @@ const CardsColumn = ({ column }) => {
     dispatch(deleteColumn(id));
   };
 
-  const addCardButtonLabel = !column.cards.length
+  const addCardButtonLabel = column.cards.length === 0
     ? 'Add card'
     : 'Add another card';
 
@@ -37,9 +37,8 @@ const CardsColumn = ({ column }) => {
       </div>
 
       <div className={s.cardsContainer}>
-        {column.cards.map(card => (
-          <Card key={card._id} card={card} />
-        ))}
+        {column.cards.length !== 0 &&
+          column.cards.map(card => <Card key={card._id} card={card} />)}
       </div>
 
       <button
