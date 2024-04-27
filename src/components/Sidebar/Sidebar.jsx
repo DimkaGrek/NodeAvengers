@@ -37,7 +37,9 @@ const Sidebar = () => {
 
   const handleDeleteBoard = id => {
     dispatch(deleteBoard(id));
-    navigate(`/home/${currentBoard.name}`);
+    currentBoard.name
+      ? navigate(`/home/${currentBoard.name}`)
+      : navigate(`/home`);
   };
   const handleClickBoard = name => {
     navigate(`/home/${name}`);
