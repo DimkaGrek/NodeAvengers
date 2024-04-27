@@ -131,6 +131,12 @@
   z-index: 1;
 }
 
+@media only screen and (min-width: 1440px) {
+  .backdrop {
+    display: none;
+  }
+}
+
 .wrapperSidebarContent {
   position: absolute;
   top: 0;
@@ -139,4 +145,10 @@
   opacity: 1;
   transition: opacity 1.3s;
   height: 100%;
+}
+
+@media only screen and (min-width: 1440px) {
+  .wrapperSidebarContent {
+    display: none;
+  }
 }
