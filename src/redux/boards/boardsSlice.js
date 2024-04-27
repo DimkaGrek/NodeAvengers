@@ -45,21 +45,32 @@ const boardsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(deleteBoard.fulfilled, (state, { payload }) => {
+        console.log('currBoard1=>', state);
+        console.log('payload=>', payload);
+        if (state.boards.length === 1) {
+          state.boards = [];
+          state.currentBoard = [];
+          state.isLoading = false;
+          return;
+        }
         const board = state.boards.find(item => item._id === payload);
         const index = state.boards.findIndex(board => board._id === payload);
 
         if (board._id === state.currentBoard._id) {
           if (index === 0) {
             state.boards.splice(index, 1);
+            console.log(state.boards[0]);
             state.currentBoard = state.boards[0];
           } else {
+            console.log(state.boards[index - 1]);
             state.currentBoard = state.boards[index - 1];
             state.boards.splice(index, 1);
           }
         } else {
+          console.log('testtest');
           state.boards.splice(index, 1);
         }
-
+        console.log('currBoard2=>', state);
         state.isLoading = false;
       })
       .addCase(addColumn.fulfilled, (state, { payload }) => {

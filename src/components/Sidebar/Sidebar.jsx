@@ -36,10 +36,18 @@ const Sidebar = () => {
   // console.log(boards);
 
   const handleDeleteBoard = id => {
-    dispatch(deleteBoard(id));
-    currentBoard.name
-      ? navigate(`/home/${currentBoard.name}`)
-      : navigate(`/home`);
+    console.log(`before delete => `, currentBoard);
+    dispatch(deleteBoard(id))
+      .unwrap()
+      .then(data => {
+        // console.log('data=>', data);
+        // boards.length !== 0
+        //   ? navigate(`/home/${currentBoard.name}`)
+        //   :navigate(`/home/`)
+        navigate(`/home/`);
+        console.log(`after delete => `, currentBoard);
+      })
+      .catch(error => console.log(error));
   };
   const handleClickBoard = name => {
     navigate(`/home/${name}`);
