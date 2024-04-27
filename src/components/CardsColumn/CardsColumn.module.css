@@ -15,7 +15,7 @@
   width: 335px;
   height: 56px;
   gap: 20px;
-  background-color: #121212;
+  background-color: var(--background-card);
   margin-bottom: 14px;
 }
 @media screen and (max-width: 320px) {
@@ -28,7 +28,7 @@
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--color-text);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -41,8 +41,8 @@
   }
 }
 .columnTitleIcon {
-  stroke: white;
-  stroke-opacity: 0.5;
+  stroke: var(--icons-card);
+  fill: transparent;
 }
 .cardsContainer {
   display: flex;
@@ -60,5 +60,4 @@
   border-radius: 8px;
   width: 335px;
   height: 56px;
-  background-color: #bedbb0;
 }

@@ -11,7 +11,12 @@
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--color-text);
+}
+@media screen and (min-width: 728px) {
+  .boardTitle {
+    font-size: 18px;
+  }
 }
 .filterBtn {
   display: flex;
@@ -20,11 +25,11 @@
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-80);
   background-color: transparent;
 }
 .filterIcon {
-  stroke: #fff;
+  stroke: var(--color-text);
   stroke-opacity: 0.8;
   fill: transparent;
 }

@@ -130,10 +130,12 @@ html[data-theme='dark'] {
   --plus-color: rgb(255, 255, 255);
   --icon-color: rgba(255, 255, 255, 0.5);
   --icon-color-select: rgb(255, 255, 255);
+  --icons-card: rgba(255, 255, 255, 0.5);
   --background-disabled-button: rgba(240, 248, 255, 0.683);
   --color-modal-title: rgb(255, 255, 255);
   --background-header: #161616;
   --background-sidebar: #121212;
+  --background-card: #121212;
   --fill-sidebar-logo: #ffffff;
   --stroke-sidebar-plus: #121212;
   --background-sidebar-logo: #1f1f1f;
@@ -200,10 +202,12 @@ html[data-theme='light'] {
   --plus-color: rgb(255, 255, 255);
   --icon-color: rgba(22, 22, 22, 0.5);
   --icon-color-select: rgb(22, 22, 22);
+  --icons-card: rgba(22, 22, 22, 0.5);
   --background-disabled-button: rgba(62, 63, 64, 0.683);
   --color-modal-title: rgb(22, 22, 22);
   --background-header: #fcfcfc;
   --background-sidebar: #ffffff;
+  --background-card: #ffffff;
   --fill-sidebar-logo: #ffffff;
   --stroke-sidebar-plus: #121212;
   --background-sidebar-logo: #1f1f1f;
@@ -268,10 +272,12 @@ html[data-theme='violet'] {
   --plus-color: rgb(22, 22, 22);
   --icon-color: rgba(22, 22, 22, 0.5);
   --icon-color-select: rgb(22, 22, 22);
+  --icons-card: rgba(22, 22, 22, 0.5);
   --background-disabled-button: rgba(62, 63, 64, 0.683);
   --color-modal-title: rgb(22, 22, 22);
   --background-header: #ffffff;
   --background-sidebar: #5255bc;
+  --background-card: #ffffff;
   --background-sidebar-logo: #ffffff;
   --fill-sidebar-logo: #5255bc;
   --stroke-sidebar-plus: #ffffff;
@@ -367,7 +373,7 @@ main {
   width: 100%;
   height: 49px;
   border-radius: 8px;
-  background-color: rgb(190, 219, 176);
+  background-color: var(--background-button);
   color: rgb(22, 22, 22);
   font-size: 14px;
   font-weight: 500;
@@ -378,5 +384,5 @@ main {
 
 .button:hover,
 .button:focus {
-  background-color: rgb(157, 200, 136);
+  background-color: var(--background-hover-button);
 }
