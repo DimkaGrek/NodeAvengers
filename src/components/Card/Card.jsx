@@ -9,6 +9,7 @@ import { Modal } from '../Modal/Modal.jsx';
 import { EditCardForm } from '../EditCardForm/EditCardForm.jsx';
 import { useSelector } from 'react-redux';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
+import Tooltip from '../Tooltip/Tooltip.jsx';
 
 const Card = ({ card }) => {
   const [isBellActive, setIsBellActive] = useState(false);
@@ -88,7 +89,9 @@ const Card = ({ card }) => {
   return (
     <div className={s.cardWrapper} style={priorityFlagStyleBefore}>
       <h4 className={s.cardTitle}>{card.title}</h4>
-      <p className={s.cardDescr}>{card.description}</p>
+      <Tooltip text={card.description}>
+        <p className={s.cardDescr}>{card.description}</p>
+      </Tooltip>
       <div className={s.cardDecorLine}></div>
       <div className={s.cardInfoWrapper}>
         <ul className={s.cardInfoPriorityWrapper}>
