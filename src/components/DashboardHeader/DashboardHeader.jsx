@@ -7,13 +7,13 @@ import { ModalFilters } from '../ModalFilters/ModalFilters.jsx';
 import s from './DashboardHeader.module.css';
 
 const DashboardHeader = () => {
-  const currentBoard = useSelector(selectCurrentBoard);
+  const { name } = useSelector(selectCurrentBoard);
   const [isModalFilters, toggleIsModalFilters] = useModal();
 
   return (
     <>
       <div className={s.topWrapper}>
-        <h2 className={s.boardTitle}>{currentBoard && currentBoard.name}</h2>
+        <h2 className={s.boardTitle}>{name}</h2>
         <button className={s.filterBtn} onClick={toggleIsModalFilters}>
           <Icon id="filter" className={s.filterIcon} size={16} />
           Filters
