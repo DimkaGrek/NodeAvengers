@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { EditBoardForm } from '../../components/EditBoardForm/EditBoardForm';
 import { Modal } from '../../components/Modal/Modal';
 import { useModal } from '../../hooks/useModal';
@@ -6,15 +6,22 @@ import s from './HomePage.module.css';
 import { useEffect } from 'react';
 import { getBoards } from '../../redux/boards/boardsOperations';
 import { getThemesList } from '../../redux/themes/operations';
+import { selectBoards } from '../../redux/boards/boardsSlice';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
   const dispatch = useDispatch();
+  const boards = useSelector(selectBoards);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getThemesList());
     dispatch(getBoards());
-  }, [dispatch]);
+    if (boards.length > 0) {
+      navigate(`/home/${boards[0]._id}`);
+    }
+  }, []);
 
   return (
     <>

@@ -15,10 +15,10 @@ import {
   selectBoards,
   selectCurrentBoard,
 } from '../../redux/boards/boardsSlice';
-import { useEffect } from 'react';
 import { deleteBoard, getBoards } from '../../redux/boards/boardsOperations';
 import { getImages } from '../../helpers';
 import { NeedHelpForm } from '../NeedHelpForm/NeedHelpForm';
+import { useEffect } from 'react';
 
 const Sidebar = () => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
@@ -29,35 +29,32 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const refreshToken = useSelector(selectRefreshToken);
-  // console.log(currentBoard);
-  useEffect(() => {
-    dispatch(getBoards);
-  }, [dispatch]);
-  // console.log(boards);
 
-  const handleDeleteBoard = id => {
-    console.log(`before delete => `, currentBoard);
+  useEffect(() => {
+    dispatch(getBoards());
+  }, []);
+
+  const handleDeleteBoard = async id => {
     dispatch(deleteBoard(id))
       .unwrap()
-      .then(data => {
-        // console.log('data=>', data);
-        // boards.length !== 0
-        //   ? navigate(`/home/${currentBoard.name}`)
-        //   :navigate(`/home/`)
-        navigate(`/home/`);
-        console.log(`after delete => `, currentBoard);
-      })
-      .catch(error => console.log(error));
+      .catch(e => console.log(e));
   };
-  const handleClickBoard = name => {
-    navigate(`/home/${name}`);
+
+  useEffect(() => {
+    currentBoard !== null
+      ? navigate(`/home/${currentBoard._id}`)
+      : navigate(`/home`);
+  }, [currentBoard]);
+
+  const handleClickBoard = ({ _id }) => {
+    navigate(`/home/${_id}`);
   };
 
   const handleLogOut = () => {
     dispatch(logoutThunk({ refreshToken }))
       .unwrap()
       .then(() => navigate('/welcome'))
-      .catch(() => toast.error('Something went wront please try again.'));
+      .catch(() => toast.error('Something went wrong please try again.'));
   };
 
   return (
@@ -84,21 +81,21 @@ const Sidebar = () => {
         </div>
 
         <div className={s.mainBoard}>
-          <ul>
-            {boards.length !== 0 &&
-              boards.map(board => (
+          {boards && (
+            <ul>
+              {boards.map(board => (
                 <li
-                  onClick={() => handleClickBoard(board.name)}
+                  onClick={() => handleClickBoard(board)}
                   key={board._id}
                   className={
-                    board._id === currentBoard._id
+                    board._id === currentBoard?._id
                       ? s.boardListItemActive
                       : s.boardListItem
                   }
                 >
                   <div
                     className={
-                      board._id === currentBoard._id ? s.boardActive : s.board
+                      board._id === currentBoard?._id ? s.boardActive : s.board
                     }
                   >
                     <div className={s.titleBoard}>
@@ -131,7 +128,8 @@ const Sidebar = () => {
                   </div>
                 </li>
               ))}
-          </ul>
+            </ul>
+          )}
         </div>
         <div className={s.needHelpBlock}>
           <img

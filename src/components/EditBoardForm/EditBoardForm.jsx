@@ -42,15 +42,15 @@ export const EditBoardForm = ({ board, toggleModal }) => {
         board
           ? dispatch(editBoard(values))
               .unwrap()
-              .then(() => {
+              .then((data) => {
                 toggleModal();
-                navigate(`/home/${values.name}`);
+                navigate(`/home/${data._id}`);
               })
           : dispatch(addBoard(values))
               .unwrap()
-              .then(() => {
+              .then((data) => {
                 toggleModal();
-                navigate(`/home/${values.name}`);
+                navigate(`/home/${data._id}`);
               });
       }}
     >
