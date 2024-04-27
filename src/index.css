@@ -139,6 +139,7 @@ html[data-theme='dark'] {
   --stroke-add-card-icon: #fff;
   --modal-filters-background: #151515;
   --modal-filters-after: rgba(255, 255, 255, 0.1);
+  --color-text-input: #fff;
 
   /* Color-priority-tasks */
 
@@ -205,7 +206,7 @@ html[data-theme='light'] {
   --line-color: rgba(22, 22, 22, 0.1);
   --modal-filters-background: #fcfcfc;
   --modal-filters-after: rgba(22, 22, 22, 0.1);
-
+  --color-text-input: #161616;
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;
@@ -266,6 +267,7 @@ html[data-theme='violet'] {
   --line-color: rgba(255, 255, 255, 0.1);
   --modal-filters-background: rgba(0, 0, 0, 0.2);
   --modal-filters-after: rgba(22, 22, 22, 0.1);
+  --color-text-input: #161616;
   /* Color-priority-tasks */
 
   --main-low-priority: #8fa1d0;

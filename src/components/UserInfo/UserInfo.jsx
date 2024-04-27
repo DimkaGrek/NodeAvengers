@@ -13,6 +13,7 @@ export const UserInfo = ({ toggleModal }) => {
         <button className={styles.buttonUserBar} onClick={toggleModal}>
           {avatarUrl ? (
             <img
+              className={styles.imgUserInfo}
               src={`${avatarUrl}`}
               alt="user-avatar"
               width="32"

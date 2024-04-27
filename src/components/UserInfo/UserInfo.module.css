@@ -25,10 +25,19 @@
 }
 
 .defaultUserSvg {
+  position: absolute;
+  top: 27px;
+  right: 24px;
   stroke: var(--stroke-svg-user-default);
   fill: var(--stroke-svg-user-default);
 }
 
 .buttonUserBar {
   background-color: transparent;
+  display: flex;
+  align-items: flex-end;
+}
+
+.imgUserInfo {
+  border-radius: 8px;
 }
