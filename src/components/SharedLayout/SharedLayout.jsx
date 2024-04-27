@@ -6,8 +6,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/slice';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
-import { getImages } from '../../helpers';
-import { getBgUrls } from '../../helpers/getBgUrl';
+import { getBgUrls, getImages } from '../../helpers';
 
 import s from './SharedLayout.module.css';
 
