@@ -21,10 +21,6 @@ const Card = ({ card }) => {
 
   const { columns } = currentBoard;
 
-  console.log('card', card);
-  console.log('currentBoard', currentBoard);
-  console.log('columns', columns.length);
-
   useEffect(() => {
     if (columns.length > 1) {
       setIsChangeColumnButton(true);

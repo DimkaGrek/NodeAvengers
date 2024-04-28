@@ -13,11 +13,11 @@ import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
 import { getFilteredBoard } from '../../helpers';
 import { selectFilter } from '../../redux/filter/slice';
 import { useParams } from 'react-router-dom';
-import { getBoard } from '../../redux/boards/boardsOperations.js';
+import { getBoard, getBoards } from '../../redux/boards/boardsOperations.js';
 import { Icon } from '../../components/Icon/Icon.jsx';
 
 const DashboardPage = () => {
-  const { id } = useParams();
+  const { boardName } = useParams();
   const [isAddColumnModal, toggleIsAddColumnModal] = useModal();
   const currentBoard = useSelector(selectCurrentBoard);
   const filter = useSelector(selectFilter);
@@ -25,8 +25,12 @@ const DashboardPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBoard(id));
-  }, [dispatch, id]);
+    dispatch(getBoards())
+      .unwrap()
+      .then(data => {
+        dispatch(getBoard({ data, boardName }));
+      });
+  }, [dispatch, boardName]);
 
   useEffect(() => {
     if (currentBoard) {

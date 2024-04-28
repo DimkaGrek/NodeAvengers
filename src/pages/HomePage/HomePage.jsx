@@ -19,7 +19,7 @@ const HomePage = () => {
     dispatch(getThemesList());
     dispatch(getBoards());
     if (boards.length > 0) {
-      navigate(`/home/${boards[0]._id}`);
+      navigate(`/home/${boards[0].name}`);
     }
   }, []);
 

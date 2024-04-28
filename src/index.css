@@ -315,8 +315,8 @@ html[data-theme='violet'] {
   --color-text-list-theme: #161616;
   --color-text-list-theme-hover: #5255bc;
   --background-list-theme: #ecedfd;
-  --background-button: #b8bcfd;
-  --background-hover-button: #979cea;
+  --background-button: #5255bc;
+  --background-hover-button: #7b7ede;
   --background-input: #ffffff;
   --background-modal: #fcfcfc;
   --background-help: rgba(236, 237, 253, 0.4);

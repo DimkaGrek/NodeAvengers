@@ -42,12 +42,12 @@ const Sidebar = () => {
 
   useEffect(() => {
     currentBoard !== null
-      ? navigate(`/home/${currentBoard._id}`)
+      ? navigate(`/home/${currentBoard.name}`)
       : navigate(`/home`);
   }, [currentBoard]);
 
-  const handleClickBoard = ({ _id }) => {
-    navigate(`/home/${_id}`);
+  const handleClickBoard = ({ name }) => {
+    navigate(`/home/${name}`);
   };
 
   const handleLogOut = () => {
@@ -76,7 +76,7 @@ const Sidebar = () => {
             type="button"
             onClick={toggleIsModalAddBoard}
           >
-            <Icon id="plus" className={s.svgPlus} size={20} />
+            <Icon id="plus" className={s.svgPlus} size={12} />
           </button>
         </div>
 
