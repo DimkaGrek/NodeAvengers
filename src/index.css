@@ -32,14 +32,13 @@ button {
   color: inherit;
   cursor: pointer;
 
-    &:disabled {
+  &:disabled {
     background-color: var(--background-disabled-button);
     cursor: not-allowed;
   }
-  &:hover:disabled{
-      background-color: var(--background-disabled-button);
+  &:hover:disabled {
+    background-color: var(--background-disabled-button);
     cursor: not-allowed;
-
   }
 }
 a {
@@ -147,16 +146,16 @@ html[data-theme='dark'] {
   --background-sidebar: #121212;
   --background-card: #121212;
   --background-dashboard: #1f1f1f;
-	--background-plus-container: #ffffff;
+  --background-plus-container: #ffffff;
   --color-text-dashboard: rgba(255, 255, 255, 0.5);
   --color-text-dashboard-highlight: #bedbb0;
   --fill-sidebar-logo: #ffffff;
   --stroke-sidebar-plus: #121212;
   --background-sidebar-logo: #1f1f1f;
   --background-main-content: #1f1f1f;
-	--color-tex-button-add-card: #161616;
-	--color-plus-icon: #ffff;
-	--color-plus-icon-container: #161616;
+  --color-tex-button-add-card: #161616;
+  --color-plus-icon: #ffff;
+  --color-plus-icon-container: #161616;
   --color-text: #fff;
   --color-text-button: #161616;
   --color-text-50: rgba(255, 255, 255, 0.5);
@@ -176,8 +175,8 @@ html[data-theme='dark'] {
   --stroke-svg-user-default: #151515;
   --stroke-icon-plus: #161616;
   --scroll-color: RGB(255, 255, 255, 0.1);
-	--button-add-card-color: #bedbb0;
-	--button-add-card-color-hover: #9dc888;
+  --button-add-card-color: #bedbb0;
+  --button-add-card-color-hover: #9dc888;
   --button-add-color: #bedbb0;
   --button-add-color-hover: #9dc888;
   --after-color: #bedbb0;
@@ -228,15 +227,15 @@ html[data-theme='light'] {
   --background-sidebar: #ffffff;
   --background-card: #ffffff;
   --background-dashboard: #f6f6f7;
-	--background-plus-container: #161616;
+  --background-plus-container: #161616;
   --fill-sidebar-logo: #ffffff;
   --stroke-sidebar-plus: #121212;
   --background-sidebar-logo: #1f1f1f;
   --background-main-content: #f6f6f7;
   --color-text: #161616;
-	--color-tex-button-add-card: #161616;
-	--color-plus-icon: #ffff;
-	--color-plus-icon-container: #161616;
+  --color-tex-button-add-card: #161616;
+  --color-plus-icon: #ffff;
+  --color-plus-icon-container: #161616;
   --color-text-dashboard: rgba(22, 22, 22, 0.7);
   --color-text-dashboard-highlight: #bedbb0;
   --color-text-button: #161616;
@@ -257,8 +256,8 @@ html[data-theme='light'] {
   --stroke-svg-user-default: #ffffff;
   --stroke-icon-plus: #161616;
   --scroll-color: #e8e8e8;
-	--button-add-card-color: #bedbb0;
-	--button-add-card-color-hover: #9dc888;
+  --button-add-card-color: #bedbb0;
+  --button-add-card-color-hover: #9dc888;
   --button-add-color: #bedbb0;
   --button-add-color-hover: #9dc888;
   --after-color: #bedbb0;
@@ -314,31 +313,30 @@ html[data-theme='violet'] {
   --stroke-sidebar-plus: #ffffff;
   --background-main-content: #f6f6f7;
   --color-text: #161616;
-	--color-plus-icon: #161616;
-	--color-plus-icon-container: #fff;
-	--color-tex-button-add-card: #ffff;
-	--color-text-popup:
+  --color-plus-icon: #161616;
+  --color-plus-icon-container: #fff;
+  --color-tex-button-add-card: #ffff;
   --color-text-button: #fff;
   --color-text-50: rgba(22, 22, 22, 0.5);
   --color-text-80: rgba(22, 22, 22, 0.8);
   --color-card-text: rgba(22, 22, 22, 0.7);
   --color-text-list-theme: #161616;
   --color-text-list-theme-hover: #5255bc;
-  --background-list-theme: #ecedfd;
+  --background-list-theme: #fcfcfc;
   --background-button: #5255bc;
   --background-hover-button: #7b7ede;
   --background-input: #ffffff;
   --background-modal: #fcfcfc;
   --background-help: rgba(236, 237, 253, 0.4);
-	--background-plus-container: #5255bc;
+  --background-plus-container: #5255bc;
   --text-inside-sidebar: #ffffff;
   --text-inside-sidebar-50: rgba(255, 255, 255, 0.5);
   --user-image-default-background: #ecedfd;
   --stroke-svg-user-default: #ffffff;
   --stroke-icon-plus: #f6f6f7;
   --scroll-color: #b8bcfd;
-	--button-add-card-color: #5255bc;
-	--button-add-card-color-hover: #7b7ede;
+  --button-add-card-color: #5255bc;
+  --button-add-card-color-hover: #7b7ede;
   --button-add-color: #b8bcfd;
   --button-add-color-hover: #979cea;
   --after-color: #fff;
@@ -354,7 +352,7 @@ html[data-theme='violet'] {
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
   --stroke-add-card-icon: #161616;
   --line-color: rgba(255, 255, 255, 0.1);
-  --modal-filters-background: rgba(0, 0, 0, 0.2);
+  --modal-filters-background: #fcfcfc;
   --modal-filters-after: rgba(22, 22, 22, 0.1);
   --color-text-input: #161616;
   /* Color-priority-tasks */
