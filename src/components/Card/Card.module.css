@@ -95,9 +95,12 @@
   }
 }
 .cardIcon {
-  stroke: #fff;
-  stroke-opacity: 0.5;
+  stroke: var(--icons-card);
   fill: transparent;
+  transition: transform 250ms ease;
+}
+.cardIcon:hover {
+  transform: scale(1.3);
 }
 .bellIconButton {
   cursor: default;

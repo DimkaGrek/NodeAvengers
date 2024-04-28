@@ -43,6 +43,10 @@
 .columnTitleIcon {
   stroke: var(--icons-card);
   fill: transparent;
+  transition: transform 250ms ease;
+}
+.columnTitleIcon:hover {
+  transform: scale(1.3);
 }
 .cardsContainer {
   display: flex;
