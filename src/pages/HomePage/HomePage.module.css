@@ -3,11 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--background-dashboard);
 }
 
 .text {
   width: 320px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-text-dashboard);
   text-align: center;
   font-size: 12px;
   line-height: 16px; /* 133.333% */
@@ -23,7 +24,7 @@
 }
 
 .highlightedText {
-  color: #bedbb0;
+  color: var(--color-text-dashboard-highlight);
   cursor: pointer;
 }
 

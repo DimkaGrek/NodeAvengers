@@ -136,6 +136,9 @@ html[data-theme='dark'] {
   --background-header: #161616;
   --background-sidebar: #121212;
   --background-card: #121212;
+  --background-dashboard: #1f1f1f;
+  --color-text-dashboard: rgba(255, 255, 255, 0.5);
+  --color-text-dashboard-highlight: #bedbb0;
   --fill-sidebar-logo: #ffffff;
   --stroke-sidebar-plus: #121212;
   --background-sidebar-logo: #1f1f1f;
@@ -208,11 +211,14 @@ html[data-theme='light'] {
   --background-header: #fcfcfc;
   --background-sidebar: #ffffff;
   --background-card: #ffffff;
+  --background-dashboard: #f6f6f7;
   --fill-sidebar-logo: #ffffff;
   --stroke-sidebar-plus: #121212;
   --background-sidebar-logo: #1f1f1f;
   --background-main-content: #f6f6f7;
   --color-text: #161616;
+  --color-text-dashboard: rgba(22, 22, 22, 0.7);
+  --color-text-dashboard-highlight: #bedbb0;
   --color-text-button: #161616;
   --color-text-50: rgba(22, 22, 22, 0.5);
   --color-text-80: rgba(22, 22, 22, 0.8);
@@ -278,6 +284,9 @@ html[data-theme='violet'] {
   --background-header: #ffffff;
   --background-sidebar: #5255bc;
   --background-card: #ffffff;
+  --background-dashboard: #ecedfd;
+  --color-text-dashboard: rgba(22, 22, 22, 0.7);
+  --color-text-dashboard-highlight: #5255bc;
   --background-sidebar-logo: #ffffff;
   --fill-sidebar-logo: #5255bc;
   --stroke-sidebar-plus: #ffffff;

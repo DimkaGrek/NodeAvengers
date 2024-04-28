@@ -37,7 +37,7 @@
   align-items: center;
   gap: 8px;
   button {
-    background-color: transparent;
+    background: none;
     transition: transform 250ms ease;
   }
   button:hover {
