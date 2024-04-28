@@ -105,6 +105,7 @@
 
 .bellIconButton {
   cursor: default;
+  transform: none;
 }
 .bellIcon {
   stroke: #bedbb0;
