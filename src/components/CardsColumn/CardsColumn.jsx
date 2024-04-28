@@ -3,11 +3,11 @@ import { Icon } from '../../components/Icon/Icon.jsx';
 import { Card } from '../../components/Card/Card.jsx';
 import { useDispatch } from 'react-redux';
 import { deleteColumn } from '../../redux/boards/columnOperations.js';
-import { useModal } from '../../hooks/useModal.jsx';
 import { Modal } from '../../components/Modal/Modal.jsx';
 import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
 import { EditCardForm } from '../../components/EditCardForm/EditCardForm.jsx';
 import { toast } from 'react-toastify';
+import { useModal } from '../../hooks';
 
 export const CardsColumn = ({ column }) => {
   const [isEditColumnModal, toggleIsEditColumnModal] = useModal();

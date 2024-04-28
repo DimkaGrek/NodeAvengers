@@ -1,10 +1,10 @@
 import { Icon } from '../../components/Icon/Icon.jsx';
 import { useSelector } from 'react-redux';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
-import { useModal } from '../../hooks/useModal.jsx';
 import Filters from '../Filters/Filters.jsx';
 import { ModalFilters } from '../ModalFilters/ModalFilters.jsx';
 import s from './DashboardHeader.module.css';
+import { useModal } from '../../hooks/useModal.js';
 
 const DashboardHeader = () => {
   const board = useSelector(selectCurrentBoard);

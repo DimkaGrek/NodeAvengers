@@ -7,7 +7,6 @@ import Button from '../../components/Button/Button.jsx';
 import { useEffect, useState } from 'react';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { useModal } from '../../hooks/useModal.jsx';
 import { Modal } from '../../components/Modal/Modal.jsx';
 import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
 import { getFilteredBoard } from '../../helpers';
@@ -16,6 +15,7 @@ import { useParams } from 'react-router-dom';
 import { getBoard, getBoards } from '../../redux/boards/boardsOperations.js';
 import { Icon } from '../../components/Icon/Icon.jsx';
 import { toast } from 'react-toastify';
+import { useModal } from '../../hooks';
 
 const DashboardPage = () => {
   const { boardName } = useParams();
