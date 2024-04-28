@@ -413,7 +413,7 @@ main {
   height: 49px;
   border-radius: 8px;
   background-color: var(--background-button);
-  color: rgb(22, 22, 22);
+  color: var(--color-text-button);
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
