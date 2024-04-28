@@ -107,24 +107,26 @@ const Sidebar = () => {
                       <p className={s.boardName}>{board.name}</p>
                     </div>
 
-                    <div className={s.boardIcons}>
-                      <button
-                        className={s.buttonIcon}
-                        type="button"
-                        aria-label="edit"
-                        onClick={toggleIsModalEditBoard}
-                      >
-                        <Icon id="pencil" className={s.editIcon} size={16} />
-                      </button>
-                      <button
-                        className={s.buttonIcon}
-                        type="button"
-                        aria-label="delete"
-                        onClick={() => handleDeleteBoard(board._id)}
-                      >
-                        <Icon id="trash" className={s.editIcon} size={16} />
-                      </button>
-                    </div>
+                    {currentBoard?._id === board?._id && (
+                      <div className={s.boardIcons}>
+                        <button
+                          className={s.buttonIcon}
+                          type="button"
+                          aria-label="edit"
+                          onClick={toggleIsModalEditBoard}
+                        >
+                          <Icon id="pencil" className={s.editIcon} size={16} />
+                        </button>
+                        <button
+                          className={s.buttonIcon}
+                          type="button"
+                          aria-label="delete"
+                          onClick={() => handleDeleteBoard(board._id)}
+                        >
+                          <Icon id="trash" className={s.editIcon} size={16} />
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </li>
               ))}
@@ -187,9 +189,5 @@ const Sidebar = () => {
     </>
   );
 };
-
-// const Sidebar = () => {
-//   return <h1>SIDEBAR</h1>;
-// };
 
 export default Sidebar;

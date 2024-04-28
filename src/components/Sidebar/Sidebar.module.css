@@ -147,6 +147,7 @@
   align-items: center;
   letter-spacing: -0.28px;
   margin-bottom: 4px;
+  cursor: pointer;
   &:last-child {
     margin-bottom: 0;
   }
