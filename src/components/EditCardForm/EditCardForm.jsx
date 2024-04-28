@@ -64,7 +64,7 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
                 title: '',
                 description: '',
                 priority: 'without',
-                deadline: '',
+                deadline: null,
                 columnId,
               }
         }

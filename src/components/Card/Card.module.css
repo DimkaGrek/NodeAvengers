@@ -17,8 +17,28 @@
   letter-spacing: -0.02em;
   color: var(--color-text);
   margin-bottom: 8px;
-  overflow: scroll;
+  overflow: auto;
   white-space: nowrap;
+}
+
+.cardTitle::-webkit-scrollbar {
+  width: var(--sb-size-small);
+}
+
+.cardTitle::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 12px;
+}
+
+.cardTitle::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 12px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .cardTitle {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }
 .cardDescr {
   height: 29px;
@@ -30,7 +50,7 @@
 
   font-weight: 400;
   font-size: 12px;
-  line-height: 1, 3%;
+  line-height: 1.3;
   letter-spacing: -0.02em;
   color: var(--color-card-text);
   margin-bottom: 20px;
@@ -89,13 +109,14 @@
   position: absolute;
   right: 20px;
   bottom: 10px;
-  button {
-    background: none;
-    transition: transform 250ms ease;
-  }
-  button:hover {
-    transform: scale(1.3);
-  }
+}
+
+.cardIconsWrapper button {
+  background: none;
+  transition: transform 250ms ease;
+}
+.cardIconsWrapper button:hover {
+  transform: scale(1.3);
 }
 .cardIcon {
   stroke: var(--icons-card);

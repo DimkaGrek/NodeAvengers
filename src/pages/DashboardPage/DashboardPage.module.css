@@ -1,8 +1,29 @@
 .columnsContainer {
   margin-bottom: 60px;
-  overflow: scroll;
+  overflow: auto;
   display: flex;
   gap: 30px;
+  padding-bottom: 8px;
+}
+
+.columnsContainer::-webkit-scrollbar {
+  width: var(--sb-size-big);
+}
+
+.columnsContainer::-webkit-scrollbar-track {
+  background: var(--sb-track-color-second);
+  border-radius: 12px;
+}
+
+.columnsContainer::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color-second);
+  border-radius: 12px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .columnsContainer {
+    scrollbar-color: var(--sb-thumb-color-second) var(--sb-track-color-second);
+  }
 }
 .addColBtn {
   padding: 0 20px;

@@ -131,9 +131,16 @@ textarea {
   font-display: swap;
 }
 /* ------------------- */
-
+:root {
+  --sb-size-small: 8px;
+  --sb-size-big: 12px;
+}
 /* Dark theme */
 html[data-theme='dark'] {
+  --sb-track-color: #313131;
+  --sb-thumb-color: #121212;
+  --sb-track-color-second: rgb(22, 22, 22);
+  --sb-thumb-color-second: rgba(255, 255, 255, 0.1);
   --placeholder-color: rgb(255, 255, 255);
   --plus-background-color: rgb(22, 22, 22);
   --plus-color: rgb(255, 255, 255);
@@ -215,6 +222,10 @@ html[data-theme='dark'] {
 
 /* Light theme */
 html[data-theme='light'] {
+  --sb-track-color: rgb(232, 232, 232);
+  --sb-thumb-color: rgba(22, 22, 22, 0.1);
+  --sb-track-color-second: rgb(255, 255, 255);
+  --sb-thumb-color-second: rgba(22, 22, 22, 0.1);
   --placeholder-color: rgb(22, 22, 22);
   --plus-background-color: rgb(22, 22, 22);
   --plus-color: rgb(255, 255, 255);
@@ -294,6 +305,10 @@ html[data-theme='light'] {
 
 /* Violet theme */
 html[data-theme='violet'] {
+  --sb-track-color: rgb(255, 255, 255);
+  --sb-thumb-color: rgb(184, 188, 253);
+  --sb-track-color-second: rgb(255, 255, 255);
+  --sb-thumb-color-second: rgb(184, 188, 253);
   --placeholder-color: rgb(22, 22, 22);
   --plus-background-color: rgb(255, 255, 255);
   --plus-color: rgb(22, 22, 22);
