@@ -6,7 +6,6 @@
 .tooltip {
   display: none;
   position: absolute;
-  overflow: scroll;
   white-space: wrap;
   background-color: #333;
   color: #fff;
