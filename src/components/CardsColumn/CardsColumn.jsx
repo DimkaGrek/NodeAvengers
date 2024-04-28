@@ -1,7 +1,6 @@
 import s from './CardsColumn.module.css';
 import { Icon } from '../../components/Icon/Icon.jsx';
 import Card from '../../components/Card/Card.jsx';
-import { AddButton } from '../../components/AddButton/AddButton.jsx';
 import { useDispatch } from 'react-redux';
 import { deleteColumn } from '../../redux/boards/columnOperations.js';
 import { useModal } from '../../hooks/useModal.jsx';
@@ -18,9 +17,8 @@ const CardsColumn = ({ column }) => {
     dispatch(deleteColumn(id));
   };
 
-  const addCardButtonLabel = column.cards.length === 0
-    ? 'Add card'
-    : 'Add another card';
+  const addCardButtonLabel =
+    column.cards.length === 0 ? 'Add card' : 'Add another card';
 
   return (
     <div className={s.singleColumnWrapper}>
@@ -41,11 +39,10 @@ const CardsColumn = ({ column }) => {
           column.cards.map(card => <Card key={card._id} card={card} />)}
       </div>
 
-      <button
-        className={`${s.addCardBtn} button`}
-        onClick={toggleIsAddCardModal}
-      >
-        <AddButton color="dark" width={28} height={28} iconSize={14} />
+      <button className={`${s.addCardBtn}`} onClick={toggleIsAddCardModal}>
+        <span className={s.buttonIconContainer}>
+          <Icon id="plus" className={s.buttonIconPlus} size={14} />
+        </span>
         {addCardButtonLabel}
       </button>
 

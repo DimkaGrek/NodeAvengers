@@ -37,7 +37,7 @@
   align-items: center;
   gap: 8px;
   button {
-    background-color: transparent;
+    background: none;
     transition: transform 250ms ease;
   }
   button:hover {
@@ -64,4 +64,22 @@
   border-radius: 8px;
   width: 335px;
   height: 56px;
+  background-color: var(--button-add-card-color);
+  color: var(--color-tex-button-add-card);
+  transition: all 250ms ease;
+}
+.addCardBtn:hover {
+  background-color: var(--button-add-card-color-hover);
+}
+.buttonIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: var(--color-plus-icon-container);
+}
+.buttonIconPlus {
+  stroke: var(--color-plus-icon);
 }

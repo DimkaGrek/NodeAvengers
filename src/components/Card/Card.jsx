@@ -33,26 +33,6 @@ const Card = ({ card }) => {
     setIsOpenPopup(!isOpenPopup);
   }, [isOpenPopup]);
 
-  useEffect(() => {
-    const handleClickOutside = event => {
-      const popup = document.getElementById('popup');
-      const button = document.getElementById('changeColumnButton');
-      if (
-        popup &&
-        !popup.contains(event.target) &&
-        !button.contains(event.target)
-      ) {
-        setIsOpenPopup(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
   const handleDeleteCard = (cardId, columnId) => {
     dispatch(deleteCard({ cardId, columnId }));
   };
