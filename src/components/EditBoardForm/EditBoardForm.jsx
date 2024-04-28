@@ -13,12 +13,19 @@ import { addBoard, editBoard } from '../../redux/boards/boardsOperations.js';
 import { useNavigate } from 'react-router-dom';
 import { selectId } from '../../redux/auth/slice';
 import { useSelector } from 'react-redux';
+import { selectIsLoading } from '../../redux/boards/boardsSlice.js';
+import Loader from '../Loader/Loader.jsx';
 
-export const EditBoardForm = ({ board, toggleModal }) => {
+export const EditBoardForm = ({
+  handleOpenModalSidebar,
+  board,
+  toggleModal,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { images, icons } = getImages();
   const userId = useSelector(selectId);
+  const isLoading = useSelector(selectIsLoading);
   return (
     <Formik
       initialValues={
@@ -42,13 +49,19 @@ export const EditBoardForm = ({ board, toggleModal }) => {
         board
           ? dispatch(editBoard(values))
               .unwrap()
-              .then((data) => {
+              .then(data => {
+                if (handleOpenModalSidebar) {
+                  handleOpenModalSidebar();
+                }
                 toggleModal();
                 navigate(`/home/${data.name}`);
               })
           : dispatch(addBoard(values))
               .unwrap()
-              .then((data) => {
+              .then(data => {
+                if (handleOpenModalSidebar) {
+                  handleOpenModalSidebar();
+                }
                 toggleModal();
                 navigate(`/home/${data.name}`);
               });
@@ -112,7 +125,7 @@ export const EditBoardForm = ({ board, toggleModal }) => {
               ))}
             </ul>
           </div>
-          <Button type="submit" className={s.button}>
+          <Button type="submit" className={s.button} disabled={isLoading}>
             {!board && (
               <AddButton
                 color="boardCreate"
@@ -122,6 +135,7 @@ export const EditBoardForm = ({ board, toggleModal }) => {
               />
             )}
             {board ? 'Edit' : 'Create'}
+            {isLoading && <Loader size={20} classTitle="insideButton" />}
           </Button>
         </Form>
       )}

@@ -12,11 +12,15 @@ import { toast } from 'react-toastify';
 import { editCard } from '../../redux/boards/cardOperations.js';
 import { selectIsLoading } from '../../redux/auth/slice.js';
 import Loader from '../../components/Loader/Loader.jsx';
+import { useBoards } from '../../hooks';
+
 export const EditCardForm = ({ toggleModal, columnId, card }) => {
   const { colors } = getColors();
   const dispatch = useDispatch();
   const [selectedColor, setSelectedColor] = useState(null);
+  const { isLoadingBoards } = useBoards();
   const isLoading = useSelector(selectIsLoading);
+
   const [isDeadlineChecked, setIsDeadlineChecked] = useState(
     card ? !!card.deadline : false
   );
@@ -142,12 +146,19 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
                 card={card}
               />
             </div>
-            <Button type="submit" className={s.button}>
+            <Button
+              type="submit"
+              className={s.button}
+              disabled={isLoadingBoards}
+            >
               <span className={s.color_addbtn}>
                 <Icon id="plus" className={s.iconPlus} size={10} />
               </span>
 
               {card ? 'Edit' : 'Add'}
+              {isLoadingBoards && (
+                <Loader size={20} classTitle="insideButton" />
+              )}
             </Button>
           </Form>
         )}

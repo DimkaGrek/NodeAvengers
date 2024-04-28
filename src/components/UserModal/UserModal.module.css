@@ -151,10 +151,6 @@
   &:hover {
     background-color: var(--background-hover-button);
   }
-  &:disabled {
-    background-color: var(--background-disabled-button);
-    cursor: not-allowed;
-  }
 }
 @media only screen and (max-width: 375px) {
   .submitButton {
