@@ -76,7 +76,7 @@ const Sidebar = () => {
             type="button"
             onClick={toggleIsModalAddBoard}
           >
-            <Icon id="plus" className={s.svgPlus} size={20} />
+            <Icon id="plus" className={s.svgPlus} size={12} />
           </button>
         </div>
 
