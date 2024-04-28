@@ -1,6 +1,6 @@
 .btn {
   background-color: transparent;
-  color: var(--background-button);
+  color: var(--color-text-list-theme-hover);
   text-align: left;
   display: flex;
   gap: 4px;
@@ -98,8 +98,11 @@
     width: 24px;
     height: 24px;
   }
-  :global(.react-datepicker__day--disabled),
-  :global(.react-datepicker__day--outside-month) {
+  :global(.react-datepicker__day--disabled:hover) {
+    background-color: transparent;
+  }
+
+  :global(.react-datepicker__day--disabled) {
     color: var(--prevmonth-day);
   }
   :global(.react-datepicker__day--selected) {
@@ -141,5 +144,5 @@
 }
 
 .icon {
-  stroke: var(--background-button);
+  stroke: var(--color-text-list-theme-hover);
 }
