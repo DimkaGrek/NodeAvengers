@@ -8,7 +8,7 @@ import { Icon } from 'components';
 import Button from '../Button/Button';
 import Loader from '../Loader/Loader';
 
-import { useUser } from '../../hooks/useUser';
+import { useUser } from '../../hooks';
 import { updateUserThunk } from '../../redux/user/operations';
 import { EditUserPassSchema, EditUserSchema } from '../../schemas';
 
@@ -198,7 +198,6 @@ export const UserModal = ({ toggleModal }) => {
                   setFieldValue('password', '');
                   setFieldValue('newPassword', '');
                 }}
-                // style={{backgroundColor:var(--background-hover-button)}}
                 checked={isEditPassword}
                 height={20}
                 width={35}

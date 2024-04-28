@@ -60,6 +60,7 @@
   border-radius: 6px;
 }
 .button {
+  position: relative;
   margin: 0 auto;
   padding: 10px;
   display: flex;

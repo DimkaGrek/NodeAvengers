@@ -7,14 +7,20 @@ import { useDispatch } from 'react-redux';
 import s from './ColumnForm.module.css';
 import { addColumn } from '../../redux/boards/columnOperations.js';
 import { useParams } from 'react-router-dom';
-import { selectBoards } from '../../redux/boards/boardsSlice.js';
+import {
+  selectBoards,
+  selectIsLoading,
+} from '../../redux/boards/boardsSlice.js';
 import { useSelector } from 'react-redux';
 import { editColumn } from '../../redux/boards/columnOperations.js';
+import Loader from '../Loader/Loader.jsx';
 
 export const ColumnForm = ({ column, toggleModal }) => {
   const dispatch = useDispatch();
   const { boardName } = useParams();
   const boards = useSelector(selectBoards);
+  const isLoading = useSelector(selectIsLoading);
+
   const currentBoard = boards.find(board => board.name === boardName);
 
   return (
@@ -43,9 +49,10 @@ export const ColumnForm = ({ column, toggleModal }) => {
               <p className={s.descrError}>{errors.name}</p>
             ) : null}
           </div>
-          <Button className="button" type="submit">
+          <Button className="button" type="submit" disabled={isLoading}>
             <AddButton width="28" height="28" iconSize="14" />{' '}
             {column ? 'Edit' : 'Add'}
+            {isLoading && <Loader size={20} classTitle="insideButton" />}
           </Button>
         </Form>
       )}
