@@ -19,6 +19,9 @@
   letter-spacing: -0.02em;
   color: var(--color-text);
 }
+.addColBtn:hover .addColBtnIcon {
+  transform: scale(1.1);
+}
 .addColBtnIcon {
   display: flex;
   align-items: center;
@@ -27,6 +30,10 @@
   width: 28px;
   height: 28px;
   border-radius: 6px;
+  transition: transform 250ms ease;
+}
+.addColBtnIcon:hover {
+  transform: scale(1.1);
 }
 .buttonIconPlus {
   stroke: var(--background-card);

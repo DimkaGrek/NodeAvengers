@@ -58,7 +58,7 @@ const DashboardPage = () => {
             onClick={() => toggleIsAddColumnModal()}
           >
             <span className={s.addColBtnIcon}>
-              <Icon id="plus" className={s.buttonIconPlus} size={14} />
+              <Icon id="plus" className={s.buttonIconPlus} size={12} />
             </span>
             {buttonLabel}
           </Button>

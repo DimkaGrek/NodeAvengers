@@ -1,7 +1,7 @@
 export const getColorByPriority = priority => {
   switch (priority) {
     case 'without':
-      return 'rgba(255, 255, 255, 0.3)';
+      return 'rgba(22, 22, 22, 0.3)';
     case 'low':
       return '#8fa1d0';
     case 'medium':
@@ -9,6 +9,6 @@ export const getColorByPriority = priority => {
     case 'high':
       return '#bedbb0';
     default:
-      return 'rgba(255, 255, 255, 0.3)';
+      return 'rgba(22, 22, 22, 0.3)';
   }
 };
