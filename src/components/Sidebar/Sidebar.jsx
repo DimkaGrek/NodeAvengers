@@ -42,12 +42,12 @@ const Sidebar = () => {
 
   useEffect(() => {
     currentBoard !== null
-      ? navigate(`/home/${currentBoard._id}`)
+      ? navigate(`/home/${currentBoard.name}`)
       : navigate(`/home`);
   }, [currentBoard]);
 
-  const handleClickBoard = ({ _id }) => {
-    navigate(`/home/${_id}`);
+  const handleClickBoard = ({ name }) => {
+    navigate(`/home/${name}`);
   };
 
   const handleLogOut = () => {

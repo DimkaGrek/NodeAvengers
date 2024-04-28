@@ -27,9 +27,12 @@ export const addBoard = createAsyncThunk(
 
 export const getBoard = createAsyncThunk(
   'boards/getBoard',
-  async (id, thunkAPI) => {
+  async (boardsAndName, thunkAPI) => {
     try {
-      const { data } = await api.get(`/board/${id}`);
+      const board = boardsAndName.data.find(
+        el => el.name === boardsAndName.boardName
+      );
+      const { data } = await api.get(`/board/${board._id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
