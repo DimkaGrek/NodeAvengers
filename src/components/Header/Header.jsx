@@ -101,7 +101,7 @@ export const Header = () => {
               className={styles.wrapperSidebarContent}
               onClick={event => event.stopPropagation()}
             >
-              <Sidebar />
+              <Sidebar handleOpenModalSidebar={handleOpenModalSidebar} />
             </div>
           </div>
         )}

@@ -14,7 +14,11 @@ import { useNavigate } from 'react-router-dom';
 import { selectId } from '../../redux/auth/slice';
 import { useSelector } from 'react-redux';
 
-export const EditBoardForm = ({ board, toggleModal }) => {
+export const EditBoardForm = ({
+  handleOpenModalSidebar,
+  board,
+  toggleModal,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { images, icons } = getImages();
@@ -42,13 +46,19 @@ export const EditBoardForm = ({ board, toggleModal }) => {
         board
           ? dispatch(editBoard(values))
               .unwrap()
-              .then((data) => {
+              .then(data => {
+                if (handleOpenModalSidebar) {
+                  handleOpenModalSidebar();
+                }
                 toggleModal();
                 navigate(`/home/${data.name}`);
               })
           : dispatch(addBoard(values))
               .unwrap()
-              .then((data) => {
+              .then(data => {
+                if (handleOpenModalSidebar) {
+                  handleOpenModalSidebar();
+                }
                 toggleModal();
                 navigate(`/home/${data.name}`);
               });
