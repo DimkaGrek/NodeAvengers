@@ -50,13 +50,29 @@ const Card = ({ card }) => {
 
   useEffect(() => {
     const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
     const currentDay = currentDate.getDate();
 
-    const deadlineDate = new Date(card.deadline);
-    const deadlineDay = deadlineDate.getDate();
+    if (card.deadline) {
+      const deadlineDate = new Date(card.deadline);
+      deadlineDate.setHours(0, 0, 0, 0);
+      const deadlineYear = deadlineDate.getFullYear();
+      const deadlineMonth = deadlineDate.getMonth();
+      const deadlineDay = deadlineDate.getDate();
 
-    if (deadlineDay < currentDay) {
-      setIsBellActive(true);
+      if (
+        deadlineYear < currentYear ||
+        (deadlineYear === currentYear && deadlineMonth < currentMonth) ||
+        (deadlineYear === currentYear &&
+          deadlineMonth === currentMonth &&
+          deadlineDay < currentDay)
+      ) {
+        setIsBellActive(true);
+      } else {
+        setIsBellActive(false);
+      }
     } else {
       setIsBellActive(false);
     }
@@ -83,7 +99,9 @@ const Card = ({ card }) => {
         <ul className={s.cardInfoDeadlineWrapper}>
           <li className={s.cardInfoTitle}>Deadline</li>
           <li className={s.cardInfoDeadline}>
-            {card.deadline && new Date(card.deadline).toLocaleDateString()}
+            {card.deadline
+              ? new Date(card.deadline).toLocaleDateString()
+              : 'No deadline'}
           </li>
         </ul>
       </div>
