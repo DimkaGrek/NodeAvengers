@@ -120,7 +120,6 @@ const Sidebar = ({ handleOpenModalSidebar }) => {
                           aria-label="edit"
                           onClick={e => {
                             e.stopPropagation();
-                            console.log('clickedit');
                             toggleIsModalEditBoard();
                           }}
                         >

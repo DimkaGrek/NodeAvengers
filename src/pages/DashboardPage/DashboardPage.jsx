@@ -20,6 +20,7 @@ const DashboardPage = () => {
   const { boardName } = useParams();
   const [isAddColumnModal, toggleIsAddColumnModal] = useModal();
   const currentBoard = useSelector(selectCurrentBoard);
+
   const filter = useSelector(selectFilter);
   const [filteredBoard, setFilteredBoard] = useState(null);
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const DashboardPage = () => {
       .then(data => {
         dispatch(getBoard({ data, boardName }));
       });
-  }, [dispatch, boardName]);
+  }, [dispatch, boardName, currentBoard?.backgroundImage, currentBoard?.icon]);
 
   useEffect(() => {
     if (currentBoard) {

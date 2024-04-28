@@ -195,6 +195,14 @@
     margin-right: 0;
   }
 }
+.buttonIcon {
+  background: none;
+  transition: transform 250ms ease;
+}
+.buttonIcon:hover {
+  transform: scale(1.3);
+}
+
 .editIcon {
   fill: transparent;
 }
