@@ -40,7 +40,7 @@ const Card = ({ card }) => {
   useEffect(() => {
     const handleClickOutside = event => {
       const popup = document.getElementById('popup');
-      const button = document.getElementById('changeColumnBtn');
+      const button = document.getElementById('changeColumnButton');
       if (
         popup &&
         !popup.contains(event.target) &&
@@ -113,9 +113,9 @@ const Card = ({ card }) => {
       </div>
       <div className={s.cardIconsWrapper}>
         {isBellActive && (
-          <button className={s.bellIconButton}>
+          <div className={s.bellIconButton}>
             <Icon id="bell" className={s.bellIcon} size={16} />
-          </button>
+          </div>
         )}
         {isChangeColumnButton && (
           <button id="changeColumnBtn" onClick={togglePopup}>
