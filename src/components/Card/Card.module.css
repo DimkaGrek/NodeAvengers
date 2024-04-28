@@ -107,7 +107,7 @@
   transform: none;
 }
 .bellIcon {
-  stroke: #bedbb0;
+  stroke: var(--button-add-card-color);
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -157,7 +157,7 @@
   font-weight: 400;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: var(--color-text);
+  color: var(--color-text-50);
 }
 .cardIconActive {
   stroke: var(--background-button);

@@ -67,7 +67,7 @@ const Card = ({ card }) => {
         (deadlineYear === currentYear && deadlineMonth < currentMonth) ||
         (deadlineYear === currentYear &&
           deadlineMonth === currentMonth &&
-          deadlineDay < currentDay)
+          deadlineDay <= currentDay)
       ) {
         setIsBellActive(true);
       } else {

@@ -27,6 +27,10 @@
   letter-spacing: -0.02em;
   color: var(--color-text-80);
   background-color: transparent;
+  transition: transform 250ms ease;
+}
+.filterBtn:hover {
+  transform: scale(1.1);
 }
 .filterIcon {
   stroke: var(--color-text);

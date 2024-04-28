@@ -41,7 +41,7 @@ const CardsColumn = ({ column }) => {
 
       <button className={`${s.addCardBtn}`} onClick={toggleIsAddCardModal}>
         <span className={s.buttonIconContainer}>
-          <Icon id="plus" className={s.buttonIconPlus} size={14} />
+          <Icon id="plus" className={s.buttonIconPlus} size={12} />
         </span>
         {addCardButtonLabel}
       </button>
