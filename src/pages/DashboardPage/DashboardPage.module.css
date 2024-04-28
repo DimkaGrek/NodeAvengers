@@ -19,3 +19,8 @@
   letter-spacing: -0.02em;
   color: #fff;
 }
+@media screen and (max-width: 320px) {
+  .addColBtn {
+    width: 280px;
+  }
+}
