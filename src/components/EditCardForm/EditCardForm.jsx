@@ -36,15 +36,14 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
     if (isDeadlineChecked && !values.deadline) {
       values.deadline = new Date().toISOString();
     }
-    console.log(values);
     dispatch(card ? editCard({ ...values, _id: card._id }) : addCard(values))
       .unwrap()
       .then(() => {
         toggleModal();
       })
-      .catch(error => {
-        toast.info(error.message);
-      });
+      .catch(() =>
+        toast.error('Something went wrong. Reload page or try again late!')
+      );
   };
 
   return (

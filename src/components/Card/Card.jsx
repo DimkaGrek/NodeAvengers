@@ -10,8 +10,9 @@ import { EditCardForm } from '../EditCardForm/EditCardForm.jsx';
 import { useSelector } from 'react-redux';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
 import Tooltip from '../Tooltip/Tooltip.jsx';
+import { toast } from 'react-toastify';
 
-const Card = ({ card }) => {
+export const Card = ({ card }) => {
   const [isBellActive, setIsBellActive] = useState(false);
   const [isEditCardModal, toggleIsEditCardModal] = useModal();
   const [isOpenPopup, setIsOpenPopup] = useState(false);
@@ -34,7 +35,11 @@ const Card = ({ card }) => {
   }, [isOpenPopup]);
 
   const handleDeleteCard = (cardId, columnId) => {
-    dispatch(deleteCard({ cardId, columnId }));
+    dispatch(deleteCard({ cardId, columnId }))
+      .unwrap()
+      .catch(() =>
+        toast.error('Something went wrong. Reload page or try again late!')
+      );
   };
 
   const cardPriority = card.priority;
@@ -140,6 +145,12 @@ const Card = ({ card }) => {
               className={s.columnNameItemWrapper}
               onClick={() =>
                 dispatch(editCard({ ...card, columnId: column._id }))
+                  .unwrup()
+                  .catch(() =>
+                    toast.error(
+                      'Something went wrong. Reload page or try again late!'
+                    )
+                  )
               }
             >
               <p
@@ -167,5 +178,3 @@ const Card = ({ card }) => {
     </div>
   );
 };
-
-export default Card;

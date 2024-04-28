@@ -1,13 +1,12 @@
 import s from './DashboardPage.module.css';
 
 import DashboardHeader from '../../components/DashboardHeader/DashboardHeader.jsx';
-import CardsColumn from '../../components/CardsColumn/CardsColumn.jsx';
+import { CardsColumn } from '../../components/CardsColumn/CardsColumn.jsx';
 import Button from '../../components/Button/Button.jsx';
 
 import { useEffect, useState } from 'react';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { useModal } from '../../hooks/useModal.jsx';
 import { Modal } from '../../components/Modal/Modal.jsx';
 import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
 import { getFilteredBoard } from '../../helpers';
@@ -15,6 +14,8 @@ import { selectFilter } from '../../redux/filter/slice';
 import { useParams } from 'react-router-dom';
 import { getBoard, getBoards } from '../../redux/boards/boardsOperations.js';
 import { Icon } from '../../components/Icon/Icon.jsx';
+import { toast } from 'react-toastify';
+import { useModal } from '../../hooks';
 
 const DashboardPage = () => {
   const { boardName } = useParams();
@@ -30,7 +31,10 @@ const DashboardPage = () => {
       .unwrap()
       .then(data => {
         dispatch(getBoard({ data, boardName }));
-      });
+      })
+      .catch(() =>
+        toast.error('Something went wrong. Reload page or try again late!')
+      );
   }, [dispatch, boardName, currentBoard?.backgroundImage, currentBoard?.icon]);
 
   useEffect(() => {

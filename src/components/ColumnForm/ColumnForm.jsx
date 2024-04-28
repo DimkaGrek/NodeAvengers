@@ -14,6 +14,7 @@ import {
 import { useSelector } from 'react-redux';
 import { editColumn } from '../../redux/boards/columnOperations.js';
 import Loader from '../Loader/Loader.jsx';
+import { toast } from 'react-toastify';
 
 export const ColumnForm = ({ column, toggleModal }) => {
   const dispatch = useDispatch();
@@ -38,7 +39,8 @@ export const ColumnForm = ({ column, toggleModal }) => {
           .unwrap()
           .then(() => {
             toggleModal();
-          });
+          })
+          .catch(e => toast.error(e));
       }}
     >
       {({ errors, touched }) => (
