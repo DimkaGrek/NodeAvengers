@@ -180,7 +180,7 @@ const boardsSlice = createSlice({
     selectBoards: state => state.boards,
     selectCurrentBoard: state => state.currentBoard,
     selectIsLoading: state => state.isLoading,
-    selectIsError: state => state.isErrorrror,
+    selectBoardsError: state => state.error,
   },
 });
 
@@ -189,5 +189,5 @@ export const {
   selectBoards,
   selectCurrentBoard,
   selectIsLoading,
-  selectIsError,
+  selectBoardsError,
 } = boardsSlice.selectors;

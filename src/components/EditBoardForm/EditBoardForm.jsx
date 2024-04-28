@@ -15,6 +15,7 @@ import { selectId } from '../../redux/auth/slice';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from '../../redux/boards/boardsSlice.js';
 import Loader from '../Loader/Loader.jsx';
+import { toast } from 'react-toastify';
 
 export const EditBoardForm = ({
   handleOpenModalSidebar,
@@ -46,25 +47,16 @@ export const EditBoardForm = ({
       }
       validationSchema={Schema}
       onSubmit={values => {
-        board
-          ? dispatch(editBoard(values))
-              .unwrap()
-              .then(data => {
-                if (handleOpenModalSidebar) {
-                  handleOpenModalSidebar();
-                }
-                toggleModal();
-                navigate(`/home/${data.name}`);
-              })
-          : dispatch(addBoard(values))
-              .unwrap()
-              .then(data => {
-                if (handleOpenModalSidebar) {
-                  handleOpenModalSidebar();
-                }
-                toggleModal();
-                navigate(`/home/${data.name}`);
-              });
+        dispatch(board ? editBoard(values) : addBoard(values))
+          .unwrap()
+          .then(data => {
+            if (handleOpenModalSidebar) {
+              handleOpenModalSidebar();
+            }
+            toggleModal();
+            navigate(`/home/${data.name}`);
+          })
+          .catch(e => toast.error(e));
       }}
     >
       {({ errors, touched, setFieldValue }) => (

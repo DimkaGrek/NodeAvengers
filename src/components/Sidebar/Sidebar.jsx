@@ -35,10 +35,11 @@ const Sidebar = ({ handleOpenModalSidebar }) => {
   }, []);
 
   const handleDeleteBoard = async id => {
-    console.log('clickdelete');
     dispatch(deleteBoard(id))
       .unwrap()
-      .catch(e => console.log(e));
+      .catch(() =>
+        toast.error('Something went wrong. Reload page or try again late!')
+      );
   };
 
   useEffect(() => {
@@ -59,7 +60,9 @@ const Sidebar = ({ handleOpenModalSidebar }) => {
     dispatch(logoutThunk({ refreshToken }))
       .unwrap()
       .then(() => navigate('/welcome'))
-      .catch(() => toast.error('Something went wrong please try again.'));
+      .catch(() =>
+        toast.error('Something went wrong. Reload page or try again late!')
+      );
   };
 
   return (

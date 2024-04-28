@@ -8,6 +8,7 @@ import { getBoards } from '../../redux/boards/boardsOperations';
 import { getThemesList } from '../../redux/themes/operations';
 import { selectBoards } from '../../redux/boards/boardsSlice';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const HomePage = () => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
@@ -17,7 +18,11 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getThemesList());
-    dispatch(getBoards());
+    dispatch(getBoards())
+      .unwrap()
+      .catch(() =>
+        toast.error('Something went wrong. Reload page or try again late!')
+      );
     if (boards.length > 0) {
       navigate(`/home/${boards[0].name}`);
     }

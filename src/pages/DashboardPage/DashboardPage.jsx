@@ -1,7 +1,7 @@
 import s from './DashboardPage.module.css';
 
 import DashboardHeader from '../../components/DashboardHeader/DashboardHeader.jsx';
-import CardsColumn from '../../components/CardsColumn/CardsColumn.jsx';
+import { CardsColumn } from '../../components/CardsColumn/CardsColumn.jsx';
 import Button from '../../components/Button/Button.jsx';
 
 import { useEffect, useState } from 'react';
@@ -15,6 +15,7 @@ import { selectFilter } from '../../redux/filter/slice';
 import { useParams } from 'react-router-dom';
 import { getBoard, getBoards } from '../../redux/boards/boardsOperations.js';
 import { Icon } from '../../components/Icon/Icon.jsx';
+import { toast } from 'react-toastify';
 
 const DashboardPage = () => {
   const { boardName } = useParams();
@@ -30,7 +31,10 @@ const DashboardPage = () => {
       .unwrap()
       .then(data => {
         dispatch(getBoard({ data, boardName }));
-      });
+      })
+      .catch(() =>
+        toast.error('Something went wrong. Reload page or try again late!')
+      );
   }, [dispatch, boardName, currentBoard?.backgroundImage, currentBoard?.icon]);
 
   useEffect(() => {
