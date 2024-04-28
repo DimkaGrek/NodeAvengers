@@ -352,7 +352,7 @@ html[data-theme='violet'] {
   --eye-button-stroke: rgba(21, 21, 21, 0.5);
   --stroke-add-card-icon: #161616;
   --line-color: rgba(255, 255, 255, 0.1);
-  --modal-filters-background: rgba(0, 0, 0, 0.2);
+  --modal-filters-background: #fcfcfc;
   --modal-filters-after: rgba(22, 22, 22, 0.1);
   --color-text-input: #161616;
   /* Color-priority-tasks */
