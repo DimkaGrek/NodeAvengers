@@ -35,7 +35,7 @@ const DashboardPage = () => {
       .catch(() =>
         toast.error('Something went wrong. Reload page or try again late!')
       );
-  }, [dispatch, boardName, currentBoard?.backgroundImage, currentBoard?.icon]);
+  }, [dispatch, boardName]);
 
   useEffect(() => {
     if (currentBoard) {

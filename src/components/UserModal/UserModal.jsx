@@ -120,7 +120,9 @@ export const UserModal = ({ toggleModal }) => {
                 }
                 toggleModal();
               })
-              .catch(error => toast.error(error));
+              .catch(error => {
+                toast.error(error.message);
+              });
           } else {
             toast.warning('You didn`t change anyting.');
           }

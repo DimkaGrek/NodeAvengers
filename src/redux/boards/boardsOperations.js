@@ -52,6 +52,7 @@ export const editBoard = createAsyncThunk(
         icon,
         backgroundImage,
       });
+      await api.get(`/board/${_id}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
