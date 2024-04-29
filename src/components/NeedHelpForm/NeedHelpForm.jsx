@@ -1,5 +1,5 @@
 import { Form, Field, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -10,11 +10,13 @@ import { NeedHelpFormSchema } from '../../schemas/NeedHelpSchema';
 import { needHelpThunk } from '../../redux/user/operations';
 
 import s from './NeedHelpForm.module.css';
+import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
 
 export const NeedHelpForm = ({ toggleModal }) => {
   const { isLoading, id } = useUser();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const currentBoard = useSelector(selectCurrentBoard);
   return (
     <Formik
       initialValues={{
@@ -31,7 +33,7 @@ export const NeedHelpForm = ({ toggleModal }) => {
             toast.success(
               `Your request ${values.title} has been received, please wait for a response`
             );
-            navigate(`/home`);
+            navigate(`/home/${currentBoard.name}`);
           });
       }}
     >
