@@ -2,9 +2,15 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Icon, Modal, EditBoardForm, NeedHelpForm } from 'components';
+import {
+  Icon,
+  Modal,
+  EditBoardForm,
+  NeedHelpForm,
+  ConfirmDeleteBoard,
+} from 'components';
 
 import { useModal } from '../../hooks/useModal';
 import { logoutThunk } from '../../redux/auth/operations';
@@ -13,39 +19,40 @@ import {
   selectBoards,
   selectCurrentBoard,
 } from '../../redux/boards/boardsSlice';
-import { deleteBoard, getBoards } from '../../redux/boards/boardsOperations';
+import { getBoards } from '../../redux/boards/boardsOperations';
 import { getImages } from '../../helpers';
 
 import s from './Sidebar.module.css';
 import flower from '../../assets/images/flower.png';
 
 export const Sidebar = ({ handleOpenModalSidebar }) => {
+  const [deletedBoard, setDeletedBoard] = useState(null);
+
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
   const [isModalEditBoard, toggleIsModalEditBoard] = useModal();
   const [isModalNeedHelp, toggleIsModalNeedHelp] = useModal();
+  const [isModalConfirmDelete, toggleIsModalConfirmDelete] = useModal();
+
   const boards = useSelector(selectBoards);
   const currentBoard = useSelector(selectCurrentBoard);
+  const refreshToken = useSelector(selectRefreshToken);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const refreshToken = useSelector(selectRefreshToken);
 
   useEffect(() => {
     dispatch(getBoards());
   }, []);
-
-  const handleDeleteBoard = async id => {
-    dispatch(deleteBoard(id))
-      .unwrap()
-      .catch(() =>
-        toast.error('Something went wrong. Reload page or try again late!')
-      );
-  };
 
   useEffect(() => {
     currentBoard !== null
       ? navigate(`/home/${currentBoard.name}`)
       : navigate(`/home`);
   }, [currentBoard]);
+
+  const handleDeleteBoard = board => {
+    setDeletedBoard(board);
+    toggleIsModalConfirmDelete();
+  };
 
   const handleClickBoard = (e, { name }) => {
     if (handleOpenModalSidebar) {
@@ -131,7 +138,10 @@ export const Sidebar = ({ handleOpenModalSidebar }) => {
                           className={s.buttonIcon}
                           type="button"
                           aria-label="delete"
-                          onClick={() => handleDeleteBoard(board._id)}
+                          onClick={e => {
+                            e.stopPropagation();
+                            handleDeleteBoard(board);
+                          }}
                         >
                           <Icon id="trash" className={s.editIcon} size={16} />
                         </button>
@@ -197,6 +207,18 @@ export const Sidebar = ({ handleOpenModalSidebar }) => {
           <NeedHelpForm
             board={currentBoard}
             toggleModal={toggleIsModalNeedHelp}
+          />
+        </Modal>
+      )}
+      {isModalConfirmDelete && (
+        <Modal
+          title={`Are you sure you want to delete ${deletedBoard.name}?`}
+          toggleModal={toggleIsModalConfirmDelete}
+          pad="35px"
+        >
+          <ConfirmDeleteBoard
+            toggleModal={toggleIsModalConfirmDelete}
+            id={deletedBoard._id}
           />
         </Modal>
       )}
