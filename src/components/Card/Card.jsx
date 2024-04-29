@@ -145,7 +145,7 @@ export const Card = ({ card }) => {
               className={s.columnNameItemWrapper}
               onClick={() =>
                 dispatch(editCard({ ...card, columnId: column._id }))
-                  .unwrup()
+                  .unwrap()
                   .catch(() =>
                     toast.error(
                       'Something went wrong. Reload page or try again late!'
