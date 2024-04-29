@@ -55,7 +55,7 @@
   flex-direction: column;
   gap: 8px;
   height: 65vh;
-  overflow: auto;
+  overflow-y: auto;
   margin-bottom: 14px;
   padding-right: 6px;
 }
