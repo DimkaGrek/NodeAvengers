@@ -139,40 +139,30 @@ export const Card = ({ card }) => {
       )}
       {isOpenPopup && (
         <div id="popup" className={s.popupChangeColumnContainer}>
-          {columns.map(column => (
-            <button
-              key={column._id}
-              className={s.columnNameItemWrapper}
-              onClick={() =>
-                dispatch(editCard({ ...card, columnId: column._id }))
-                  .unwrap()
-                  .catch(() =>
-                    toast.error(
-                      'Something went wrong. Reload page or try again late!'
+          {columns
+            .filter(column => column._id !== card.columnId)
+            .map(column => (
+              <button
+                key={column._id}
+                className={s.columnNameItemWrapper}
+                onClick={() =>
+                  dispatch(editCard({ ...card, columnId: column._id }))
+                    .unwrap()
+                    .catch(() =>
+                      toast.error(
+                        'Something went wrong. Reload page or try again late!'
+                      )
                     )
-                  )
-              }
-            >
-              <p
-                className={
-                  column._id === card.columnId
-                    ? s.columnNameActive
-                    : s.columnNameDefault
                 }
               >
-                {column.name}
-              </p>
-              <Icon
-                id="arrow-circle-broken-right"
-                className={
-                  column._id === card.columnId
-                    ? s.cardIconActive
-                    : s.cardIconDefault
-                }
-                size={16}
-              />
-            </button>
-          ))}
+                <p className={s.columnNameDefault}>{column.name}</p>
+                <Icon
+                  id="arrow-circle-broken-right"
+                  className={s.cardIconDefault}
+                  size={16}
+                />
+              </button>
+            ))}
         </div>
       )}
     </div>

@@ -23,8 +23,7 @@ const boardsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getBoards.fulfilled, (state, { payload }) => {
-        state.boards = payload;
-        // state.currentBoard = payload[0];
+        state.boards = payload.reverse();
         state.isLoading = false;
       })
       .addCase(addBoard.fulfilled, (state, { payload }) => {
@@ -116,13 +115,13 @@ const boardsSlice = createSlice({
 
           state.currentBoard.columns[oldColumn].cards.splice(oldCard, 1);
           state.currentBoard.columns[indexColumn].cards.push(payload);
+          state.isLoading = false;
         } else {
           state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
           state.isLoading = false;
         }
       })
       .addCase(deleteCard.fulfilled, (state, { payload }) => {
-        console.log(payload);
         const indexColumn = state.currentBoard.columns.findIndex(
           column => column._id === payload.columnId
         );

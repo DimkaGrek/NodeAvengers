@@ -88,7 +88,7 @@ export const Header = () => {
             size="20"
           />
         </button>
-        <Transition in={isSidebarModal} timeout={500} unmountOnExit>
+        <Transition in={isSidebarModal} timeout={100} unmountOnExit>
           {state => (
             <div
               className={`${styles.backdrop} ${
