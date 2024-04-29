@@ -33,7 +33,11 @@ export const ColumnForm = ({ column, toggleModal }) => {
       onSubmit={values => {
         dispatch(
           column
-            ? editColumn({ id: column._id, ...values })
+            ? editColumn({
+                id: column._id,
+                boardId: currentBoard._id,
+                ...values,
+              })
             : addColumn({ ...values, boardId: currentBoard._id })
         )
           .unwrap()

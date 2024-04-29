@@ -15,10 +15,11 @@ export const addColumn = createAsyncThunk(
 
 export const editColumn = createAsyncThunk(
   'column/editColumn',
-  async ({ id, name }, thunkAPI) => {
+  async ({ id, name, boardId }, thunkAPI) => {
     try {
       const { data } = await api.put(`/colum/${id}`, {
         name,
+        boardId,
       });
       return data;
     } catch (error) {
