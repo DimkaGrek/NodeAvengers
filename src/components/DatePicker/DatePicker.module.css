@@ -14,6 +14,10 @@
 }
 
 .datapicker {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
   background-color: var(--background-header);
   border-radius: 8px;
   border: none;
@@ -84,6 +88,7 @@
     margin-bottom: 8px;
   }
   :global(.react-datepicker__day) {
+    cursor: pointer;
     font-size: 14px;
     width: 23px;
     display: flex;
