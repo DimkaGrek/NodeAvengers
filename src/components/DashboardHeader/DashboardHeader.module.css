@@ -37,3 +37,33 @@
   stroke-opacity: 0.8;
   fill: transparent;
 }
+
+.filterWrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filterIndicator {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  filter: blur(1px);
+}
+
+@keyframes filterIndicator {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.filterIndicator {
+  animation: filterIndicator 2.5s ease-in-out infinite;
+}
