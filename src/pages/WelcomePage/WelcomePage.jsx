@@ -1,20 +1,21 @@
-import { useNavigate } from "react-router-dom";
-import { Icon } from "../../components/Icon/Icon";
-import Button from "../../components/Button/Button";
-import s from "./WelcomePage.module.css";
+import { useNavigate } from 'react-router-dom';
 
-import boyImg1 from "../../assets/images/boy@1x.png";
-import boyImg2 from "../../assets/images/boy@2x.png";
+import { Icon } from '../../components/Icon/Icon';
+import Button from '../../components/Button/Button';
+import s from './WelcomePage.module.css';
+
+import boyImg1 from '../../assets/images/boy@1x.png';
+import boyImg2 from '../../assets/images/boy@2x.png';
 
 const WelcomePage = () => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    navigate("/auth/login");
+    navigate('/auth/login');
   };
 
   const handleRegisterClick = () => {
-    navigate("/auth/register");
+    navigate('/auth/register');
   };
 
   return (

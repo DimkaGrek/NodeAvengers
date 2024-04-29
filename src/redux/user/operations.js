@@ -78,7 +78,6 @@ export const needHelpThunk = createAsyncThunk(
         description,
       });
 
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

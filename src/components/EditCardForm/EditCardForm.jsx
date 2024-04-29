@@ -1,19 +1,21 @@
 import { Formik, Form, Field } from 'formik';
-import { schema } from '../../schemas';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
+
+import DatePickerForm from '../../components/DatePicker/DatePicker.jsx';
+import Loader from '../../components/Loader/Loader.jsx';
+
+import { Icon } from 'components';
+import { schema } from '../../schemas';
 import { addCard } from '../../redux/boards/cardOperations.js';
 import Button from '../Button/Button';
-import s from './EditCardForm.module.css';
-import { Icon } from 'components';
 import { getColors, ICON_COLORS } from '../../helpers';
-import { useEffect, useState } from 'react';
-import DatePickerForm from '../../components/DatePicker/DatePicker.jsx';
-import { toast } from 'react-toastify';
 import { editCard } from '../../redux/boards/cardOperations.js';
 import { selectIsLoading } from '../../redux/auth/slice.js';
-import Loader from '../../components/Loader/Loader.jsx';
 import { useBoards } from '../../hooks';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice.js';
+import s from './EditCardForm.module.css';
 
 export const EditCardForm = ({ toggleModal, columnId, card }) => {
   const { colors } = getColors();
@@ -43,9 +45,7 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
       .then(() => {
         toggleModal();
       })
-      .catch(() =>
-        toast.error('Something went wrong. Reload page or try again late!')
-      );
+      .catch(data => toast.error(data.message));
   };
 
   return (

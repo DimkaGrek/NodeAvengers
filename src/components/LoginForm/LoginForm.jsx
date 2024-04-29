@@ -1,17 +1,19 @@
-import Button from '../../components/Button/Button';
-import s from './LoginForm.module.css';
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
-import Loader from '../../components/Loader/Loader';
-import { Icon } from '../Icon/Icon';
 import { Link, useNavigate } from 'react-router-dom';
-import { LoginFormShema } from '../../schemas/LoginSchema';
-import { loginThunk } from '../../redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { resendEmailThunk } from '../../redux/auth/operations';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
+
+import Button from '../../components/Button/Button';
+import Loader from '../../components/Loader/Loader';
+import { Icon } from '../Icon/Icon';
+import { LoginFormShema } from '../../schemas/LoginSchema';
+import { loginThunk } from '../../redux/auth/operations';
+import { resendEmailThunk } from '../../redux/auth/operations';
 import { selectIsLoading } from '../../redux/auth/slice';
+import s from './LoginForm.module.css';
+
 const schema = Yup.object().shape({
   email: Yup.string()
     .matches(

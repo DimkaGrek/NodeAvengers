@@ -1,16 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+
 import {
   resendEmailThunk,
   verifyLoginThunk,
 } from '../../redux/auth/operations';
-import { useEffect, useState } from 'react';
 import Button from '../../components/Button/Button';
-import { toast } from 'react-toastify';
-import s from './VerifyPage.module.css';
-import { Formik, Form, Field } from 'formik';
 import Loader from '../../components/Loader/Loader';
-import * as Yup from 'yup';
+import s from './VerifyPage.module.css';
 
 const schema = Yup.object().shape({
   email: Yup.string()

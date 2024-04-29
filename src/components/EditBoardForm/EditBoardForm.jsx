@@ -1,25 +1,19 @@
+import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
+import Loader from '../Loader/Loader.jsx';
 
 import Button from '../Button/Button';
 import { AddButton, Icon } from 'components';
-
 import { getImages } from '../../helpers';
 import { Schema } from '../../schemas';
-
-import { useDispatch } from 'react-redux';
-
-import s from './EditBoardForm.module.css';
-import {
-  addBoard,
-  editBoard,
-  getBoard,
-} from '../../redux/boards/boardsOperations.js';
-import { useNavigate, useParams } from 'react-router-dom';
+import { addBoard, editBoard } from '../../redux/boards/boardsOperations.js';
 import { selectId } from '../../redux/auth/slice';
-import { useSelector } from 'react-redux';
 import { selectIsLoading } from '../../redux/boards/boardsSlice.js';
-import Loader from '../Loader/Loader.jsx';
-import { toast } from 'react-toastify';
+import s from './EditBoardForm.module.css';
 
 export const EditBoardForm = ({
   handleOpenModalSidebar,
@@ -28,7 +22,6 @@ export const EditBoardForm = ({
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { boardName } = useParams();
   const { images, icons } = getImages();
   const userId = useSelector(selectId);
   const isLoading = useSelector(selectIsLoading);

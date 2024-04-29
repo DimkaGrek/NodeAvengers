@@ -1,15 +1,16 @@
-import Button from '../Button/Button';
-import s from './ResetPasswordForm.module.css';
 import { Formik, Form, Field } from 'formik';
-import Loader from '../Loader/Loader';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { selectIsLoading } from '../../redux/auth/slice';
 import { useState } from 'react';
+
+import Button from '../Button/Button';
+import Loader from '../Loader/Loader';
+import { selectIsLoading } from '../../redux/auth/slice';
 import { Icon } from '../Icon/Icon';
 import { ForgotPasswordSchema } from '../../schemas/ForgotPasswordSchema';
 import { verifyResendPassword } from '../../redux/auth/operations';
+import s from './ResetPasswordForm.module.css';
 
 export const ForgotForm = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,7 @@
 import { Formik, Form, Field } from 'formik';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import { Icon } from '../Icon/Icon.jsx';
 import {
@@ -6,13 +9,10 @@ import {
   getColorsFilter,
   ICON_COLORS_FILTER,
 } from '../../helpers';
+import { changeFilter, selectFilter } from '../../redux/filter/slice.js';
 
-import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
 import s from './Filters.module.css';
 import Button from '../Button/Button.jsx';
-import { changeFilter, selectFilter } from '../../redux/filter/slice.js';
 
 const Filters = ({ toggleModal }) => {
   const selectedFilter = useSelector(selectFilter);
@@ -39,20 +39,7 @@ const Filters = ({ toggleModal }) => {
   };
 
   return (
-    <Formik
-      initialValues={{ priority: '' }}
-      onSubmit={values => {
-        dispatch()
-          .unwrap()
-          .then(() => {
-            toggleModal();
-          })
-          .catch(error => {
-            toast.info(error.message);
-          });
-        console.log(values);
-      }}
-    >
+    <Formik initialValues={{ priority: '' }} onSubmit={toggleModal}>
       {({ setFieldValue }) => (
         <Form className={s.form}>
           <div className={s.wrapper}>

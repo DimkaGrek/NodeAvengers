@@ -1,13 +1,12 @@
 import { NavLink } from 'react-router-dom';
-// import { useTheme } from '../../hooks/useTheme';
-import s from './Sidebar.module.css';
-import { Icon } from 'components';
-import flower from '../../assets/images/flower.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutThunk } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router-dom';
-import { selectRefreshToken } from '../../redux/auth/slice';
 import { toast } from 'react-toastify';
+import { useEffect } from 'react';
+
+import { Icon } from 'components';
+import { logoutThunk } from '../../redux/auth/operations';
+import { selectRefreshToken } from '../../redux/auth/slice';
 import { useModal } from '../../hooks/useModal';
 import { Modal } from '../../components/Modal/Modal';
 import { EditBoardForm } from '../EditBoardForm/EditBoardForm';
@@ -18,7 +17,8 @@ import {
 import { deleteBoard, getBoards } from '../../redux/boards/boardsOperations';
 import { getImages } from '../../helpers';
 import { NeedHelpForm } from '../NeedHelpForm/NeedHelpForm';
-import { useEffect } from 'react';
+import s from './Sidebar.module.css';
+import flower from '../../assets/images/flower.png';
 
 const Sidebar = ({ handleOpenModalSidebar }) => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();

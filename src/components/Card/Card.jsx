@@ -1,16 +1,18 @@
-import { Icon } from '../Icon/Icon.jsx';
-import s from './Card.module.css';
-import { getColorByPriority } from '../../helpers/getColorByPriority.js';
 import { useState, useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteCard, editCard } from '../../redux/boards/cardOperations.js';
-import { useModal } from '../../hooks/useModal';
-import { Modal } from '../Modal/Modal.jsx';
-import { EditCardForm } from '../EditCardForm/EditCardForm.jsx';
 import { useSelector } from 'react-redux';
-import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
-import Tooltip from '../Tooltip/Tooltip.jsx';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+
+import { Icon } from '../Icon/Icon.jsx';
+import { EditCardForm } from '../EditCardForm/EditCardForm.jsx';
+import Tooltip from '../Tooltip/Tooltip.jsx';
+import { Modal } from '../Modal/Modal.jsx';
+
+import { getColorByPriority } from '../../helpers/getColorByPriority.js';
+import { deleteCard, editCard } from '../../redux/boards/cardOperations.js';
+import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
+import { useModal } from '../../hooks/useModal';
+import s from './Card.module.css';
 
 export const Card = ({ card }) => {
   const [isBellActive, setIsBellActive] = useState(false);

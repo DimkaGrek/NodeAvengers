@@ -1,9 +1,10 @@
-import s from './DatePicker.module.css';
 import { forwardRef, useState } from 'react';
 import { format, isSameDay, isBefore } from 'date-fns';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
 import { Icon } from '../Icon/Icon';
+import s from './DatePicker.module.css';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 const DatePickerForm = ({ onDateChange, disabled, card }) => {
   const [selectedDate, setSelectedDate] = useState(

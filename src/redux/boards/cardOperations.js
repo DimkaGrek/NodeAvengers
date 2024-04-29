@@ -5,11 +5,10 @@ export const addCard = createAsyncThunk(
   'card/addCard',
   async (card, thunkAPI) => {
     try {
-      console.log('card: ', card);
       const { data } = await api.post('/card', card);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -31,7 +30,7 @@ export const editCard = createAsyncThunk(
       });
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
@@ -43,7 +42,6 @@ export const deleteCard = createAsyncThunk(
       await api.delete(`/card/${cardId}`);
       return { cardId, columnId };
     } catch (error) {
-      console.log(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

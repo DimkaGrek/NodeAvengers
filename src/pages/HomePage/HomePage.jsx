@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
 import { EditBoardForm } from '../../components/EditBoardForm/EditBoardForm';
 import { Modal } from '../../components/Modal/Modal';
 import { useModal } from '../../hooks/useModal';
-import s from './HomePage.module.css';
-import { useEffect } from 'react';
 import { getBoards } from '../../redux/boards/boardsOperations';
 import { getThemesList } from '../../redux/themes/operations';
 import { selectBoards } from '../../redux/boards/boardsSlice';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import s from './HomePage.module.css';
 
 const HomePage = () => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();

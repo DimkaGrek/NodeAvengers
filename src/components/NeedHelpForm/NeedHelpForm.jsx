@@ -1,13 +1,14 @@
 import { Form, Field, Formik } from 'formik';
-import s from './NeedHelpForm.module.css';
-import Button from '../Button/Button';
-import { NeedHelpFormSchema } from '../../schemas/NeedHelpSchema';
 import { useDispatch } from 'react-redux';
-import { needHelpThunk } from '../../redux/user/operations';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+
+import Button from '../Button/Button';
+import { NeedHelpFormSchema } from '../../schemas/NeedHelpSchema';
+import { needHelpThunk } from '../../redux/user/operations';
 import Loader from '../Loader/Loader';
 import { useUser } from '../../hooks';
+import s from './NeedHelpForm.module.css';
 
 export const NeedHelpForm = ({ toggleModal }) => {
   const { isLoading, id } = useUser();
@@ -22,7 +23,6 @@ export const NeedHelpForm = ({ toggleModal }) => {
       }}
       validationSchema={NeedHelpFormSchema}
       onSubmit={values => {
-        // console.log(values);
         dispatch(needHelpThunk(values))
           .unwrap()
           .then(() => {

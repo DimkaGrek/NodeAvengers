@@ -1,16 +1,16 @@
-import s from './RegisterForm.module.css';
 import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import Button from '../Button/Button';
 import { Icon } from '../Icon/Icon';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { SignupSchema } from '../../schemas/RegisterSchema';
 import { registerThunk } from '../../redux/auth/operations';
-import { toast } from 'react-toastify';
 import Loader from '../Loader/Loader';
 import { selectIsLoading } from '../../redux/auth/slice';
+import s from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();

@@ -1,13 +1,16 @@
-import Button from '../Button/Button';
-import s from './ForgotForm.module.css';
 import { Formik, Form, Field } from 'formik';
-import Loader from '../Loader/Loader';
 import { Link, useNavigate } from 'react-router-dom';
-import { resetPasswordThunk } from '../../redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
+
+import Button from '../Button/Button';
+import Loader from '../Loader/Loader';
+
+import { resetPasswordThunk } from '../../redux/auth/operations';
 import { selectIsLoading } from '../../redux/auth/slice';
+import s from './ForgotForm.module.css';
+
 const schema = Yup.object().shape({
   email: Yup.string()
     .matches(

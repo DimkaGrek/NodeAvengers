@@ -1,19 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import { Icon } from '../Icon/Icon';
-import { useTheme } from '../../hooks/useTheme';
-import { UserInfo } from '../UserInfo/UserInfo';
-
-import styles from './Header.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
+
+import { Icon } from '../Icon/Icon';
+import { UserInfo } from '../UserInfo/UserInfo';
 import { UserModal } from '../UserModal/UserModal';
 import { Modal } from '../Modal/Modal';
+import { useTheme } from '../../hooks/useTheme';
 import { useModal } from '../../hooks/useModal';
 import Sidebar from '../Sidebar/Sidebar';
-import { useDispatch, useSelector } from 'react-redux';
-// import { getThemesList } from '../../redux/themes/operations';
 import { selectThemesList } from '../../redux/themes/slice';
 import { selectId, selectThemeId } from '../../redux/user/slice';
 import { updateUserThemeThunk } from '../../redux/user/operations';
+import styles from './Header.module.css';
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);

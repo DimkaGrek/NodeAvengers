@@ -1,8 +1,8 @@
-import s from './ModalFilters.module.css';
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import { Icon } from '../Icon/Icon';
+import s from './ModalFilters.module.css';
 
 const modalRoot = document.querySelector('#modalRoot');
 

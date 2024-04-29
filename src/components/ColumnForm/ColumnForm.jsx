@@ -1,12 +1,14 @@
 import { Field, Form, Formik } from 'formik';
-import { AddButton } from '../AddButton/AddButton';
-import { Schema } from '../../schemas';
-import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+import { AddButton } from '../AddButton/AddButton';
+import Button from '../Button/Button';
+import { Schema } from '../../schemas';
+import { addColumn } from '../../redux/boards/columnOperations.js';
 
 import s from './ColumnForm.module.css';
-import { addColumn } from '../../redux/boards/columnOperations.js';
-import { useParams } from 'react-router-dom';
+
 import {
   selectBoards,
   selectIsLoading,
