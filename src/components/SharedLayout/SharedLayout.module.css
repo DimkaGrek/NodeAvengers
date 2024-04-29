@@ -13,6 +13,27 @@ main {
   flex: 1;
   background: var(--background-dashboard);
   height: auto;
+  overflow-y: auto !important;
+}
+
+main::-webkit-scrollbar {
+  width: var(--sb-size-small);
+}
+
+main::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 12px;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 12px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  main {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }
 
 @media only screen and (min-width: 768px) {
