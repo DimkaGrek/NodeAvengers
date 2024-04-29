@@ -1,0 +1,103 @@
+.wrapper {
+  /* height: 100vh; */
+  background: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    rgb(190, 219, 176) 92.188%
+  );
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding-left: 147px;
+    padding-right: 148px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+h3 {
+  margin-top: 5px;
+}
+h4 {
+  margin: 5px;
+  margin-left: 0;
+  padding-left: 0;
+}
+.description {
+  font-size: 16px;
+  line-height: 20px;
+  color: rgb(22, 22, 22);
+  letter-spacing: 0.02em;
+  /* margin-top: 5px; */
+}
+
+.footer {
+  margin: 10px;
+}
+.footer a {
+  color: #016a16;
+}
+
+.logo_text {
+  color: rgb(22, 22, 22);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 42px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+  .logo_text {
+    font-size: 40px;
+    line-height: 60px;
+    letter-spacing: 0.04em;
+  }
+}
+
+.logo_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.userPhoto {
+  width: 124px;
+  height: 124px;
+  margin-bottom: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .userPhoto {
+    width: 162px;
+    height: 162px;
+    margin-bottom: 24px;
+  }
+}
+
+.icon {
+  border-radius: 8px;
+  background: rgb(22, 22, 22);
+  fill: white;
+  padding: 10px 12.5px;
+}
+
+@media screen and (min-width: 768px) {
+  .icon {
+    padding: 12px 15px;
+    width: 48px;
+    height: 48px;
+  }
+}

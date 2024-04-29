@@ -13,6 +13,7 @@ import { selectIsLoggedIn, selectIsRefreshing } from '../redux/auth/slice.js';
 import NotFound from '../pages/NotFound/NotFound.jsx';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
+const PolicyPage = lazy(() => import('pages/PolicyPage/PolicyPage'));
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 
@@ -39,6 +40,14 @@ const App = () => {
           element={
             <PublicRoute>
               <WelcomePage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/policy"
+          element={
+            <PublicRoute>
+              <PolicyPage />
             </PublicRoute>
           }
         />
