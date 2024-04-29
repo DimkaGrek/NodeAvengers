@@ -116,6 +116,7 @@ const boardsSlice = createSlice({
 
           state.currentBoard.columns[oldColumn].cards.splice(oldCard, 1);
           state.currentBoard.columns[indexColumn].cards.push(payload);
+          state.isLoading = false;
         } else {
           state.currentBoard.columns[indexColumn].cards[indexCard] = payload;
           state.isLoading = false;
