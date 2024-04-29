@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 
-import Button from '../Button/Button';
-import Loader from '../Loader/Loader';
+import { Button, Loader, Icon } from 'components';
+
 import { selectIsLoading } from '../../redux/auth/slice';
-import { Icon } from '../Icon/Icon';
-import { ForgotPasswordSchema } from '../../schemas/ForgotPasswordSchema';
+import { ForgotPasswordSchema } from '../../schemas';
 import { verifyResendPassword } from '../../redux/auth/operations';
+
 import s from './ResetPasswordForm.module.css';
 
-export const ForgotForm = () => {
+export const ResetPasswordForm = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const navigate = useNavigate();
@@ -92,5 +92,3 @@ export const ForgotForm = () => {
     </>
   );
 };
-
-export default ForgotForm;

@@ -4,23 +4,22 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 
-import { Icon } from 'components';
+import { Icon, Modal, EditBoardForm, NeedHelpForm } from 'components';
+
+import { useModal } from '../../hooks/useModal';
 import { logoutThunk } from '../../redux/auth/operations';
 import { selectRefreshToken } from '../../redux/auth/slice';
-import { useModal } from '../../hooks/useModal';
-import { Modal } from '../../components/Modal/Modal';
-import { EditBoardForm } from '../EditBoardForm/EditBoardForm';
 import {
   selectBoards,
   selectCurrentBoard,
 } from '../../redux/boards/boardsSlice';
 import { deleteBoard, getBoards } from '../../redux/boards/boardsOperations';
 import { getImages } from '../../helpers';
-import { NeedHelpForm } from '../NeedHelpForm/NeedHelpForm';
+
 import s from './Sidebar.module.css';
 import flower from '../../assets/images/flower.png';
 
-const Sidebar = ({ handleOpenModalSidebar }) => {
+export const Sidebar = ({ handleOpenModalSidebar }) => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
   const [isModalEditBoard, toggleIsModalEditBoard] = useModal();
   const [isModalNeedHelp, toggleIsModalNeedHelp] = useModal();
@@ -204,5 +203,3 @@ const Sidebar = ({ handleOpenModalSidebar }) => {
     </>
   );
 };
-
-export default Sidebar;

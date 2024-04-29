@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
-import Button from '../Button/Button';
-import Loader from '../Loader/Loader';
+import { Button, Loader } from 'components';
 
 import { resetPasswordThunk } from '../../redux/auth/operations';
 import { selectIsLoading } from '../../redux/auth/slice';
+
 import s from './ForgotForm.module.css';
 
 const schema = Yup.object().shape({
@@ -81,5 +81,3 @@ export const ForgotForm = () => {
     </>
   );
 };
-
-export default ForgotForm;

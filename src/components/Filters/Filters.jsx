@@ -1,9 +1,9 @@
 import { Formik, Form, Field } from 'formik';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
-import { Icon } from '../Icon/Icon.jsx';
+import { Icon, Button } from 'components';
+
 import {
   getColorDescription,
   getColorsFilter,
@@ -12,9 +12,8 @@ import {
 import { changeFilter, selectFilter } from '../../redux/filter/slice.js';
 
 import s from './Filters.module.css';
-import Button from '../Button/Button.jsx';
 
-const Filters = ({ toggleModal }) => {
+export const Filters = ({ toggleModal }) => {
   const selectedFilter = useSelector(selectFilter);
   const { colors } = getColorsFilter();
   const [selectedColor, setSelectedColor] = useState(null);
@@ -95,5 +94,3 @@ const Filters = ({ toggleModal }) => {
     </Formik>
   );
 };
-
-export default Filters;

@@ -80,6 +80,26 @@ textarea {
   resize: none;
 }
 
+textarea::-webkit-scrollbar {
+  width: var(--sb-size-small);
+}
+
+textarea::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 12px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 12px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  textarea {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
 .input_field_welcome {
   box-sizing: border-box;
   border: 1px solid rgb(190, 219, 176);

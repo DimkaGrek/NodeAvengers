@@ -1,7 +1,9 @@
 import { useSelector } from 'react-redux';
 
-import { Icon } from '../Icon/Icon';
+import { Icon } from 'components';
+
 import { selectAvatarURL, selectName } from '../../redux/user/slice';
+
 import styles from './UserInfo.module.css';
 
 export const UserInfo = ({ toggleModal }) => {

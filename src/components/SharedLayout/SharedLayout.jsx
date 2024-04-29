@@ -2,8 +2,8 @@ import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
-import { Header } from 'components/Header/Header';
-import Sidebar from '../Sidebar/Sidebar';
+import { Header, Sidebar } from 'components';
+
 import { selectIsLoggedIn } from '../../redux/auth/slice';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
 import { getBgUrls, getImages } from '../../helpers';

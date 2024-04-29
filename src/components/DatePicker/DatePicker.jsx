@@ -2,11 +2,12 @@ import { forwardRef, useState } from 'react';
 import { format, isSameDay, isBefore } from 'date-fns';
 import DatePicker from 'react-datepicker';
 
-import { Icon } from '../Icon/Icon';
+import { Icon } from 'components';
+
 import s from './DatePicker.module.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-const DatePickerForm = ({ onDateChange, disabled, card }) => {
+export const DatePickerForm = ({ onDateChange, disabled, card }) => {
   const [selectedDate, setSelectedDate] = useState(
     card && card.deadline ? new Date(card.deadline) : Date.now()
   );
@@ -52,5 +53,3 @@ const DatePickerForm = ({ onDateChange, disabled, card }) => {
     </>
   );
 };
-
-export default DatePickerForm;
