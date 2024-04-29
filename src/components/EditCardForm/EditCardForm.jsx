@@ -55,7 +55,9 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
     );
 
     if (hasOtherProperties) {
-      dispatch(card ? editCard({ ...values, _id: card._id }) : addCard(values))
+      dispatch(
+        card ? editCard({ ...updCard, _id: card._id }) : addCard(updCard)
+      )
         .unwrap()
         .then(() => {
           toggleModal();
@@ -157,8 +159,6 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
                   type="checkbox"
                   checked={isDeadlineChecked}
                   onChange={e => {
-                    console.log(e.target.checked);
-                    console.log(isDeadlineChecked);
                     setIsDeadlineChecked(e.target.checked);
                   }}
                 />
