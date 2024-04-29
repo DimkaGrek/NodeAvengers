@@ -1,7 +1,8 @@
 import { useState } from 'react';
+
 import styles from './Tooltip.module.css';
 
-const Tooltip = ({ text, children }) => {
+export const Tooltip = ({ text, children }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   let timeoutId;
@@ -30,5 +31,3 @@ const Tooltip = ({ text, children }) => {
     </div>
   );
 };
-
-export default Tooltip;

@@ -4,15 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import Loader from '../Loader/Loader.jsx';
+import { AddButton, Icon, Loader, Button } from 'components';
 
-import Button from '../Button/Button';
-import { AddButton, Icon } from 'components';
 import { getImages } from '../../helpers';
 import { Schema } from '../../schemas';
 import { addBoard, editBoard } from '../../redux/boards/boardsOperations.js';
 import { selectId } from '../../redux/auth/slice';
 import { selectIsLoading } from '../../redux/boards/boardsSlice.js';
+
 import s from './EditBoardForm.module.css';
 
 export const EditBoardForm = ({

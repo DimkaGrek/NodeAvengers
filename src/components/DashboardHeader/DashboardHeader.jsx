@@ -1,16 +1,15 @@
 import { useSelector } from 'react-redux';
 
-import { Icon } from '../../components/Icon/Icon.jsx';
-import Filters from '../Filters/Filters.jsx';
-import { ModalFilters } from '../ModalFilters/ModalFilters.jsx';
+import { Icon, ModalFilters, Filters } from 'components';
 
+import { useModal } from '../../hooks';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
-import { useModal } from '../../hooks/useModal.js';
 import { selectFilter } from '../../redux/filter/slice.js';
 import { getColorByPriority } from '../../helpers/getColorByPriority.js';
+
 import s from './DashboardHeader.module.css';
 
-const DashboardHeader = () => {
+export const DashboardHeader = () => {
   const board = useSelector(selectCurrentBoard);
   const [isModalFilters, toggleIsModalFilters] = useModal();
   const filter = useSelector(selectFilter);
@@ -41,5 +40,3 @@ const DashboardHeader = () => {
     </>
   );
 };
-
-export default DashboardHeader;

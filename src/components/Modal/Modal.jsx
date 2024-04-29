@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-import { Icon } from '../Icon/Icon';
+import { Icon } from 'components';
+
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modalRoot');

@@ -103,7 +103,8 @@
   padding: 0;
   margin: 40px -14px 40px -14px;
   flex-grow: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
+  scrollbar-width: 0;
   &::-webkit-scrollbar {
     width: 0px;
   }

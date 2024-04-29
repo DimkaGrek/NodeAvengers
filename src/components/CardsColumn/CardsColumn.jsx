@@ -1,14 +1,11 @@
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import { Icon } from '../../components/Icon/Icon.jsx';
-import { Card } from '../../components/Card/Card.jsx';
-import { Modal } from '../../components/Modal/Modal.jsx';
-import { EditCardForm } from '../../components/EditCardForm/EditCardForm.jsx';
-import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
+import { Icon, Card, Modal, EditCardForm, ColumnForm } from 'components';
 
 import { useModal } from '../../hooks';
 import { deleteColumn } from '../../redux/boards/columnOperations.js';
+
 import s from './CardsColumn.module.css';
 
 export const CardsColumn = ({ column }) => {

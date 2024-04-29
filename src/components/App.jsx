@@ -5,12 +5,12 @@ import { lazy, useEffect } from 'react';
 import SharedLayout from './SharedLayout/SharedLayout';
 import DashboardPage from '../pages/DashboardPage/DashboardPage.jsx';
 import VerifyPage from '../pages/VerifyPage/VerifyPage';
-import Loader from './Loader/Loader.jsx';
+import NotFound from '../pages/NotFound/NotFound.jsx';
+import { Loader } from 'components';
 
 import { PublicRoute, PrivateRoute } from '../routes';
 import { refreshThunk } from '../redux/auth/operations.js';
 import { selectIsLoggedIn, selectIsRefreshing } from '../redux/auth/slice.js';
-import NotFound from '../pages/NotFound/NotFound.jsx';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage'));
 const PolicyPage = lazy(() => import('pages/PolicyPage/PolicyPage'));

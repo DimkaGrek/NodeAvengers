@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
-import Button from '../Button/Button';
-import { Icon } from '../Icon/Icon';
-import { SignupSchema } from '../../schemas/RegisterSchema';
+import { Button, Icon, Loader } from 'components';
+
+import { SignupSchema } from '../../schemas';
 import { registerThunk } from '../../redux/auth/operations';
-import Loader from '../Loader/Loader';
 import { selectIsLoading } from '../../redux/auth/slice';
+
 import s from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
@@ -126,5 +126,3 @@ export const RegisterForm = () => {
     </>
   );
 };
-
-export default RegisterForm;

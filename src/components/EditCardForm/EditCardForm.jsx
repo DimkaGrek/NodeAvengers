@@ -3,18 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 
-import DatePickerForm from '../../components/DatePicker/DatePicker.jsx';
-import Loader from '../../components/Loader/Loader.jsx';
+import { Icon, Button, Loader, DatePickerForm } from 'components';
 
-import { Icon } from 'components';
+import { useBoards } from '../../hooks';
 import { schema } from '../../schemas';
 import { addCard } from '../../redux/boards/cardOperations.js';
-import Button from '../Button/Button';
 import { getColors, ICON_COLORS } from '../../helpers';
 import { editCard } from '../../redux/boards/cardOperations.js';
 import { selectIsLoading } from '../../redux/auth/slice.js';
-import { useBoards } from '../../hooks';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice.js';
+
 import s from './EditCardForm.module.css';
 
 export const EditCardForm = ({ toggleModal, columnId, card }) => {

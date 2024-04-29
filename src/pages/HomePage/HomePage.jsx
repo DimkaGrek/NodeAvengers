@@ -3,12 +3,13 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-import { EditBoardForm } from '../../components/EditBoardForm/EditBoardForm';
-import { Modal } from '../../components/Modal/Modal';
+import { EditBoardForm, Modal } from '../../components';
+
 import { useModal } from '../../hooks/useModal';
 import { getBoards } from '../../redux/boards/boardsOperations';
 import { getThemesList } from '../../redux/themes/operations';
 import { selectBoards } from '../../redux/boards/boardsSlice';
+
 import s from './HomePage.module.css';
 
 const HomePage = () => {

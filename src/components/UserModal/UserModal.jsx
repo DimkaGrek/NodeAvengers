@@ -4,9 +4,7 @@ import { Field, Form, Formik } from 'formik';
 import Switch from 'react-switch';
 import { toast } from 'react-toastify';
 
-import { Icon } from 'components';
-import Button from '../Button/Button';
-import Loader from '../Loader/Loader';
+import { Icon, Button, Loader } from 'components';
 
 import { useUser } from '../../hooks';
 import { updateUserThunk } from '../../redux/user/operations';

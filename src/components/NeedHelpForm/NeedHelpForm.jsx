@@ -3,11 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import Button from '../Button/Button';
+import { Button, Loader } from 'components';
+
+import { useUser } from '../../hooks';
 import { NeedHelpFormSchema } from '../../schemas/NeedHelpSchema';
 import { needHelpThunk } from '../../redux/user/operations';
-import Loader from '../Loader/Loader';
-import { useUser } from '../../hooks';
+
 import s from './NeedHelpForm.module.css';
 
 export const NeedHelpForm = ({ toggleModal }) => {

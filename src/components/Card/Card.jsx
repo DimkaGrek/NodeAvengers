@@ -3,15 +3,13 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
-import { Icon } from '../Icon/Icon.jsx';
-import { EditCardForm } from '../EditCardForm/EditCardForm.jsx';
-import Tooltip from '../Tooltip/Tooltip.jsx';
-import { Modal } from '../Modal/Modal.jsx';
+import { EditCardForm, Icon, Tooltip, Modal } from 'components';
 
 import { getColorByPriority } from '../../helpers/getColorByPriority.js';
 import { deleteCard, editCard } from '../../redux/boards/cardOperations.js';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice';
-import { useModal } from '../../hooks/useModal';
+import { useModal } from '../../hooks';
+
 import s from './Card.module.css';
 
 export const Card = ({ card }) => {

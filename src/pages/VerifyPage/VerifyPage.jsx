@@ -5,12 +5,13 @@ import { toast } from 'react-toastify';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
+import { Button, Loader } from '../../components';
+
 import {
   resendEmailThunk,
   verifyLoginThunk,
 } from '../../redux/auth/operations';
-import Button from '../../components/Button/Button';
-import Loader from '../../components/Loader/Loader';
+
 import s from './VerifyPage.module.css';
 
 const schema = Yup.object().shape({

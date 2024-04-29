@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
-import { Icon } from '../../components/Icon/Icon';
-import Button from '../../components/Button/Button';
+import { Icon, Button } from '../../components';
+
 import s from './WelcomePage.module.css';
 
 import boyImg1 from '../../assets/images/boy@1x.png';

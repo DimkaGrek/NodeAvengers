@@ -1,22 +1,19 @@
 import { Field, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-import { AddButton } from '../AddButton/AddButton';
-import Button from '../Button/Button';
+import { AddButton, Button, Loader } from 'components';
+
 import { Schema } from '../../schemas';
 import { addColumn } from '../../redux/boards/columnOperations.js';
-
-import s from './ColumnForm.module.css';
-
 import {
   selectBoards,
   selectIsLoading,
 } from '../../redux/boards/boardsSlice.js';
-import { useSelector } from 'react-redux';
 import { editColumn } from '../../redux/boards/columnOperations.js';
-import Loader from '../Loader/Loader.jsx';
-import { toast } from 'react-toastify';
+
+import s from './ColumnForm.module.css';
 
 export const ColumnForm = ({ column, toggleModal }) => {
   const dispatch = useDispatch();

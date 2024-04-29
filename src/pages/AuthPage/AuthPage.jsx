@@ -1,9 +1,12 @@
 import { useParams } from 'react-router-dom';
 
-import LoginForm from '../../components/LoginForm/LoginForm';
-import RegisterForm from '../../components/RegisterForm/RegisterForm';
-import ForgotForm from '../../components/ForgotForm/ForgotForm';
-import ResetPasswordForm from '../../components/ResetPasswordForm/ResetPasswordForm';
+import {
+  LoginForm,
+  RegisterForm,
+  ForgotForm,
+  ResetPasswordForm,
+} from '../../components';
+
 import s from './AuthPage.module.css';
 
 const AuthPage = () => {

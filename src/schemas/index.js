@@ -4,3 +4,4 @@ export * from './RegisterSchema';
 export * from './NeedHelpSchema';
 export * from './EditUserSchema';
 export * from './EditCardSchema';
+export * from './ForgotPasswordSchema';

@@ -1,7 +1,8 @@
 import { Circles } from 'react-loader-spinner';
+
 import s from './Loader.module.css';
 
-const Loader = ({ size, classTitle }) => {
+export const Loader = ({ size, classTitle }) => {
   return (
     <div
       className={
@@ -19,5 +20,3 @@ const Loader = ({ size, classTitle }) => {
     </div>
   );
 };
-
-export default Loader;
