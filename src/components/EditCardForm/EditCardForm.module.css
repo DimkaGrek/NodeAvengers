@@ -1,4 +1,5 @@
 .form {
+  position: relative;
   width: 100%;
   color: var(--color-text);
 }
