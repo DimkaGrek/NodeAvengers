@@ -13,6 +13,7 @@ import { editCard } from '../../redux/boards/cardOperations.js';
 import { selectIsLoading } from '../../redux/auth/slice.js';
 import Loader from '../../components/Loader/Loader.jsx';
 import { useBoards } from '../../hooks';
+import { selectCurrentBoard } from '../../redux/boards/boardsSlice.js';
 
 export const EditCardForm = ({ toggleModal, columnId, card }) => {
   const { colors } = getColors();
@@ -20,6 +21,7 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
   const [selectedColor, setSelectedColor] = useState(null);
   const { isLoadingBoards } = useBoards();
   const isLoading = useSelector(selectIsLoading);
+  const currentBoard = useSelector(selectCurrentBoard);
 
   const [isDeadlineChecked, setIsDeadlineChecked] = useState(
     card ? !!card.deadline : false
@@ -58,6 +60,7 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
                 priority: card.priority,
                 deadline: card.deadline,
                 columnId: card.columnId,
+                boardId: currentBoard._id,
               }
             : {
                 title: '',
@@ -65,6 +68,7 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
                 priority: 'without',
                 deadline: null,
                 columnId,
+                boardId: currentBoard._id,
               }
         }
         validationSchema={schema}

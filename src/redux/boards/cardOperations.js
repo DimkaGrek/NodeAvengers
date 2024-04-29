@@ -5,6 +5,7 @@ export const addCard = createAsyncThunk(
   'card/addCard',
   async (card, thunkAPI) => {
     try {
+      console.log('card: ', card);
       const { data } = await api.post('/card', card);
       return data;
     } catch (error) {
@@ -16,7 +17,7 @@ export const addCard = createAsyncThunk(
 export const editCard = createAsyncThunk(
   'card/editCard',
   async (
-    { _id, title, description, priority, deadline, columnId },
+    { _id, title, description, priority, deadline, columnId, boardId },
     thunkAPI
   ) => {
     try {
@@ -26,6 +27,7 @@ export const editCard = createAsyncThunk(
         priority,
         deadline,
         columnId,
+        boardId,
       });
       return data;
     } catch (error) {
