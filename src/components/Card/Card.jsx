@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
@@ -83,6 +83,14 @@ export const Card = ({ card }) => {
     }
   }, [card.deadline]);
 
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpenPopup && popupRef.current) {
+      popupRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [isOpenPopup]);
+
   return (
     <div className={s.cardWrapper} style={priorityFlagStyleBefore}>
       <h4 className={s.cardTitle}>{card.title}</h4>
@@ -138,27 +146,49 @@ export const Card = ({ card }) => {
         </Modal>
       )}
       {isOpenPopup && (
-        <div id="popup" className={s.popupChangeColumnContainer}>
+        <div
+          id="popup"
+          style={{ display: isOpenPopup ? 'flex' : 'none' }}
+          ref={popupRef}
+          className={s.popupChangeColumnContainer}
+        >
           {columns
-            .filter(column => column._id !== card.columnId)
+            // .filter(column => column._id !== card.columnId)
             .map(column => (
               <button
                 key={column._id}
                 className={s.columnNameItemWrapper}
-                onClick={() =>
-                  dispatch(editCard({ ...card, columnId: column._id }))
-                    .unwrap()
-                    .catch(() =>
-                      toast.error(
-                        'Something went wrong. Reload page or try again late!'
-                      )
-                    )
-                }
+                style={{
+                  cursor: column._id === card.columnId ? 'default' : 'pointer',
+                }}
+                onClick={() => {
+                  if (column._id !== card.columnId) {
+                    dispatch(editCard({ ...card, columnId: column._id }))
+                      .unwrap()
+                      .catch(() =>
+                        toast.error(
+                          'Something went wrong. Reload page or try again late!'
+                        )
+                      );
+                  }
+                }}
               >
-                <p className={s.columnNameDefault}>{column.name}</p>
+                <p
+                  className={
+                    column._id === card.columnId
+                      ? s.columnNameActive
+                      : s.columnNameDefault
+                  }
+                >
+                  {column.name}
+                </p>
                 <Icon
                   id="arrow-circle-broken-right"
-                  className={s.cardIconDefault}
+                  className={
+                    column._id === card.columnId
+                      ? s.cardIconActive
+                      : s.cardIconDefault
+                  }
                   size={16}
                 />
               </button>
