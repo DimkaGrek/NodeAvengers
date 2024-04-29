@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
-
+import { Transition } from 'react-transition-group';
 import { Icon, UserInfo, UserModal, Modal, Sidebar } from 'components';
 
 import { useTheme, useModal } from '../../hooks';
@@ -88,19 +88,25 @@ export const Header = () => {
             size="20"
           />
         </button>
-        {isSidebarModal && (
-          <div
-            className={styles.backdrop}
-            onClick={() => handleOpenModalSidebar()}
-          >
+        <Transition in={isSidebarModal} timeout={500} unmountOnExit>
+          {state => (
             <div
-              className={styles.wrapperSidebarContent}
-              onClick={event => event.stopPropagation()}
+              className={`${styles.backdrop} ${
+                state === 'entered' && styles.backdropEntered
+              }`}
+              onClick={() => handleOpenModalSidebar()}
             >
-              <Sidebar handleOpenModalSidebar={handleOpenModalSidebar} />
+              <div
+                className={`${styles.wrapperSidebarContent} ${
+                  state === 'entered' && styles.wrapperSidebarContentEntered
+                }`}
+                onClick={event => event.stopPropagation()}
+              >
+                <Sidebar handleOpenModalSidebar={handleOpenModalSidebar} />
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </Transition>
         <div className={styles.container}>
           <div
             className={styles.wrapperDrop}

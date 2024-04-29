@@ -122,13 +122,15 @@
 }
 
 .backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   background: rgba(21, 21, 21, 0.5);
   z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 @media only screen and (min-width: 1440px) {
@@ -145,6 +147,16 @@
   opacity: 1;
   transition: opacity 1.3s;
   height: 100%;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.backdropEntered {
+  opacity: 1;
+}
+
+.wrapperSidebarContentEntered {
+  transform: translateX(0);
 }
 
 @media only screen and (min-width: 1440px) {
