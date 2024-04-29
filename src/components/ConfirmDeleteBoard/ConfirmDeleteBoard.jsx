@@ -17,7 +17,7 @@ export const ConfirmDeleteBoard = ({ toggleModal, id }) => {
       .unwrap()
       .then(() => toggleModal())
       .catch(() =>
-        toast.error('Something went wrong. Reload page or try again late!')
+        toast.error('Something went wrong. Reload page or try again later!')
       );
   };
 
