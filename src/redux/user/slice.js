@@ -37,10 +37,13 @@ const slice = createSlice({
           state.isLoading = false;
         }
       )
-      .addCase(updateUserThemeThunk.fulfilled, (state, { payload }) => {
-        state.themeId = payload;
-        state.isLoading = false;
-      })
+      .addCase(
+        updateUserThemeThunk.fulfilled,
+        (state, { payload: { themeId } }) => {
+          state.themeId = themeId;
+          state.isLoading = false;
+        }
+      )
       .addCase(needHelpThunk.fulfilled, state => {
         state.isLoading = false;
       })
