@@ -7,17 +7,24 @@ import {
   ICON_COLORS_FILTER,
 } from '../../helpers';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './Filters.module.css';
 import Button from '../Button/Button.jsx';
-import { changeFilter } from '../../redux/filter/slice.js';
+import { changeFilter, selectFilter } from '../../redux/filter/slice.js';
 
 const Filters = ({ toggleModal }) => {
+  const selectedFilter = useSelector(selectFilter);
   const { colors } = getColorsFilter();
   const [selectedColor, setSelectedColor] = useState(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (colors.includes(selectedFilter)) {
+      setSelectedColor(selectedFilter);
+    }
+  }, [selectedFilter, colors]);
 
   const handleFilterChange = color => {
     setSelectedColor(color);
@@ -50,8 +57,12 @@ const Filters = ({ toggleModal }) => {
         <Form className={s.form}>
           <div className={s.wrapper}>
             <div className={s.top_wrapper}>
-              <p className={s.description_color}>Label color</p>
-              <Button className={s.btn_all} onClick={handleShowAll}>
+              <p className={s.description_color}>Priority color</p>
+              <Button
+                className={`${s.btn_all} 
+                ${selectedFilter === 'Show all' ? s.filter_checked : ''}`}
+                onClick={handleShowAll}
+              >
                 Show all
               </Button>
             </div>
@@ -80,9 +91,9 @@ const Filters = ({ toggleModal }) => {
                         size={14}
                       />
                       <span
-                        className={`${s.color_name} ${
-                          selectedColor === color ? s.selected_color : ''
-                        }`}
+                        className={`${s.color_name} 
+                   
+                        ${selectedFilter === color ? s.filter_checked : ''}`}
                       >
                         {getColorDescription[index]}
                       </span>

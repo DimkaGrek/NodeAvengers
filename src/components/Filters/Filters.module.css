@@ -53,9 +53,10 @@
   gap: 8px;
 }
 
-.selected_color {
-  color: var(--stroke-svg);
-}
 .color_name {
   cursor: pointer;
+}
+
+.filter_checked {
+  color: var(--stroke-svg);
 }
