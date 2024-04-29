@@ -8,7 +8,6 @@ import s from './Modal.module.css';
 const modalRoot = document.querySelector('#modalRoot');
 
 export const Modal = ({ children, toggleModal, title, pad = '' }) => {
-  console.log(pad && pad);
   useEffect(() => {
     const handleEscape = e => {
       if (e.code === 'Escape') {
