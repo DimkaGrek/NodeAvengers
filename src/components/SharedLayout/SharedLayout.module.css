@@ -11,7 +11,7 @@ header {
 
 main {
   flex: 1;
-  background-color: #1f1f1f;
+  background: var(--background-dashboard);
   height: auto;
 }
 

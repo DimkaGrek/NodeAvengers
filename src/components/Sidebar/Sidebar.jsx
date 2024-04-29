@@ -20,7 +20,7 @@ import { getImages } from '../../helpers';
 import { NeedHelpForm } from '../NeedHelpForm/NeedHelpForm';
 import { useEffect } from 'react';
 
-const Sidebar = () => {
+const Sidebar = ({ handleOpenModalSidebar }) => {
   const [isModalAddBoard, toggleIsModalAddBoard] = useModal();
   const [isModalEditBoard, toggleIsModalEditBoard] = useModal();
   const [isModalNeedHelp, toggleIsModalNeedHelp] = useModal();
@@ -35,6 +35,7 @@ const Sidebar = () => {
   }, []);
 
   const handleDeleteBoard = async id => {
+    console.log('clickdelete');
     dispatch(deleteBoard(id))
       .unwrap()
       .catch(e => console.log(e));
@@ -42,12 +43,16 @@ const Sidebar = () => {
 
   useEffect(() => {
     currentBoard !== null
-      ? navigate(`/home/${currentBoard._id}`)
+      ? navigate(`/home/${currentBoard.name}`)
       : navigate(`/home`);
   }, [currentBoard]);
 
-  const handleClickBoard = ({ _id }) => {
-    navigate(`/home/${_id}`);
+  const handleClickBoard = (e, { name }) => {
+    if (handleOpenModalSidebar) {
+      handleOpenModalSidebar();
+    }
+
+    navigate(`/home/${name}`);
   };
 
   const handleLogOut = () => {
@@ -85,7 +90,7 @@ const Sidebar = () => {
             <ul>
               {boards.map(board => (
                 <li
-                  onClick={() => handleClickBoard(board)}
+                  onClick={e => handleClickBoard(e, board)}
                   key={board._id}
                   className={
                     board._id === currentBoard?._id
@@ -113,7 +118,11 @@ const Sidebar = () => {
                           className={s.buttonIcon}
                           type="button"
                           aria-label="edit"
-                          onClick={toggleIsModalEditBoard}
+                          onClick={e => {
+                            e.stopPropagation();
+                            console.log('clickedit');
+                            toggleIsModalEditBoard();
+                          }}
                         >
                           <Icon id="pencil" className={s.editIcon} size={16} />
                         </button>
@@ -167,12 +176,16 @@ const Sidebar = () => {
       </div>
       {isModalAddBoard && (
         <Modal toggleModal={toggleIsModalAddBoard} title="New board">
-          <EditBoardForm toggleModal={toggleIsModalAddBoard} />
+          <EditBoardForm
+            handleOpenModalSidebar={handleOpenModalSidebar}
+            toggleModal={toggleIsModalAddBoard}
+          />
         </Modal>
       )}
       {isModalEditBoard && (
         <Modal toggleModal={toggleIsModalEditBoard} title="Edit board">
           <EditBoardForm
+            handleOpenModalSidebar={handleOpenModalSidebar}
             board={currentBoard}
             toggleModal={toggleIsModalEditBoard}
           />

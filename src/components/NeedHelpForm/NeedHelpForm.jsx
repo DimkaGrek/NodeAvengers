@@ -2,20 +2,21 @@ import { Form, Field, Formik } from 'formik';
 import s from './NeedHelpForm.module.css';
 import Button from '../Button/Button';
 import { NeedHelpFormSchema } from '../../schemas/NeedHelpSchema';
-import { selectId } from '../../redux/auth/slice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { needHelpThunk } from '../../redux/user/operations';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Loader from '../Loader/Loader';
+import { useUser } from '../../hooks';
 
 export const NeedHelpForm = ({ toggleModal }) => {
-  const userId = useSelector(selectId);
+  const { isLoading, id } = useUser();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
     <Formik
       initialValues={{
-        userId,
+        userId: id,
         title: '',
         description: '',
       }}
@@ -54,8 +55,9 @@ export const NeedHelpForm = ({ toggleModal }) => {
               ) : null}
             </div>
           </div>
-          <Button className="button" type="submit">
+          <Button className="button" type="submit" disabled={isLoading}>
             Send
+            {isLoading && <Loader size={20} classTitle="insideButton" />}
           </Button>
         </Form>
       )}

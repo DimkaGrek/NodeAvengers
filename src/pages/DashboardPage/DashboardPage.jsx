@@ -5,7 +5,6 @@ import CardsColumn from '../../components/CardsColumn/CardsColumn.jsx';
 import Button from '../../components/Button/Button.jsx';
 
 import { useEffect, useState } from 'react';
-import { AddButton } from '../../components/AddButton/AddButton.jsx';
 import { selectCurrentBoard } from '../../redux/boards/boardsSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../hooks/useModal.jsx';
@@ -14,10 +13,11 @@ import { ColumnForm } from '../../components/ColumnForm/ColumnForm.jsx';
 import { getFilteredBoard } from '../../helpers';
 import { selectFilter } from '../../redux/filter/slice';
 import { useParams } from 'react-router-dom';
-import { getBoard } from '../../redux/boards/boardsOperations.js';
+import { getBoard, getBoards } from '../../redux/boards/boardsOperations.js';
+import { Icon } from '../../components/Icon/Icon.jsx';
 
 const DashboardPage = () => {
-  const { id } = useParams();
+  const { boardName } = useParams();
   const [isAddColumnModal, toggleIsAddColumnModal] = useModal();
   const currentBoard = useSelector(selectCurrentBoard);
   const filter = useSelector(selectFilter);
@@ -25,36 +25,41 @@ const DashboardPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBoard(id));
-  }, [dispatch, id]);
+    dispatch(getBoards())
+      .unwrap()
+      .then(data => {
+        dispatch(getBoard({ data, boardName }));
+      });
+  }, [dispatch, boardName]);
 
   useEffect(() => {
     if (currentBoard) {
       setFilteredBoard(getFilteredBoard(currentBoard, filter));
     }
   }, [currentBoard, filter]);
-  
+
   const buttonLabel = currentBoard?.columns?.length
     ? 'Add another column'
     : 'Add column';
-  
+
   return (
     filteredBoard && (
       <div className="container">
         <DashboardHeader />
         <div className={s.columnsContainer}>
-          {
-            filteredBoard.columns[0]?._id &&
+          {filteredBoard.columns[0]?._id &&
             filteredBoard.columns.map(column => (
-            <CardsColumn key={column._id} column={column} />
-          ))}
+              <CardsColumn key={column._id} column={column} />
+            ))}
 
           <Button
             className={s.addColBtn}
             type="button"
             onClick={() => toggleIsAddColumnModal()}
           >
-            <AddButton color="light" width={28} height={28} iconSize={14} />
+            <span className={s.addColBtnIcon}>
+              <Icon id="plus" className={s.buttonIconPlus} size={14} />
+            </span>
             {buttonLabel}
           </Button>
         </div>

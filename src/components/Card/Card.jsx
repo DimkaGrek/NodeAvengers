@@ -21,10 +21,6 @@ const Card = ({ card }) => {
 
   const { columns } = currentBoard;
 
-  console.log('card', card);
-  console.log('currentBoard', currentBoard);
-  console.log('columns', columns.length);
-
   useEffect(() => {
     if (columns.length > 1) {
       setIsChangeColumnButton(true);
@@ -36,26 +32,6 @@ const Card = ({ card }) => {
   const togglePopup = useCallback(() => {
     setIsOpenPopup(!isOpenPopup);
   }, [isOpenPopup]);
-
-  useEffect(() => {
-    const handleClickOutside = event => {
-      const popup = document.getElementById('popup');
-      const button = document.getElementById('changeColumnButton');
-      if (
-        popup &&
-        !popup.contains(event.target) &&
-        !button.contains(event.target)
-      ) {
-        setIsOpenPopup(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   const handleDeleteCard = (cardId, columnId) => {
     dispatch(deleteCard({ cardId, columnId }));
@@ -74,13 +50,29 @@ const Card = ({ card }) => {
 
   useEffect(() => {
     const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
     const currentDay = currentDate.getDate();
 
-    const deadlineDate = new Date(card.deadline);
-    const deadlineDay = deadlineDate.getDate();
+    if (card.deadline) {
+      const deadlineDate = new Date(card.deadline);
+      deadlineDate.setHours(0, 0, 0, 0);
+      const deadlineYear = deadlineDate.getFullYear();
+      const deadlineMonth = deadlineDate.getMonth();
+      const deadlineDay = deadlineDate.getDate();
 
-    if (deadlineDay < currentDay) {
-      setIsBellActive(true);
+      if (
+        deadlineYear < currentYear ||
+        (deadlineYear === currentYear && deadlineMonth < currentMonth) ||
+        (deadlineYear === currentYear &&
+          deadlineMonth === currentMonth &&
+          deadlineDay < currentDay)
+      ) {
+        setIsBellActive(true);
+      } else {
+        setIsBellActive(false);
+      }
     } else {
       setIsBellActive(false);
     }
@@ -107,7 +99,9 @@ const Card = ({ card }) => {
         <ul className={s.cardInfoDeadlineWrapper}>
           <li className={s.cardInfoTitle}>Deadline</li>
           <li className={s.cardInfoDeadline}>
-            {card.deadline && new Date(card.deadline).toLocaleDateString()}
+            {card.deadline
+              ? new Date(card.deadline).toLocaleDateString()
+              : 'No deadline'}
           </li>
         </ul>
       </div>

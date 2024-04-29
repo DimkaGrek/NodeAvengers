@@ -76,7 +76,7 @@ const App = () => {
           }
         />
         <Route
-          path="/home/:id"
+          path="/home/:boardName"
           element={
             <PrivateRoute>
               <DashboardPage />

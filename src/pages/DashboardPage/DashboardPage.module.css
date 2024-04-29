@@ -13,11 +13,23 @@
   border-radius: 8px;
   min-width: 335px;
   height: 56px;
-  background-color: #121212;
+  background-color: var(--background-card);
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--color-text);
+}
+.addColBtnIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-plus-container);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+.buttonIconPlus {
+  stroke: var(--background-card);
 }
 @media screen and (max-width: 320px) {
   .addColBtn {
