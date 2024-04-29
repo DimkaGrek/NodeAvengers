@@ -23,8 +23,6 @@ export const EditUserPassSchema = Yup.object().shape({
     )
     .required('This field is required.'),
   password: Yup.string()
-    .min(8, 'Your password should be 8 or more characters.')
-    .max(64, 'Your password should not be more than 64 characters.')
     .matches(/^\S*$/, 'Your password should not contain spaces.')
     .required('This field is required.'),
   newPassword: Yup.string()
