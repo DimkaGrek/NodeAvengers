@@ -44,16 +44,31 @@ export const EditBoardForm = ({
       }
       validationSchema={Schema}
       onSubmit={values => {
-        dispatch(board ? editBoard(values) : addBoard(values))
-          .unwrap()
-          .then(data => {
-            if (handleOpenModalSidebar) {
-              handleOpenModalSidebar();
-            }
-            toggleModal();
-            navigate(`/home/${data.name}`);
-          })
-          .catch(e => toast.error(e));
+        const updBoard = {
+          userId,
+          ...(board?._id && { _id: board?._id }),
+          ...(values.name !== board?.name && { name: values.name }),
+          ...(values.icon !== board?.icon && { icon: values.icon }),
+          ...(values.backgroundImage !== board?.backgroundImage && {
+            backgroundImage: values.backgroundImage,
+          }),
+        };
+        const hasOtherProperties = Object.keys(updBoard).some(
+          key => key !== '_id' && key !== 'userId'
+        );
+
+        if (hasOtherProperties) {
+          dispatch(board ? editBoard(updBoard) : addBoard(updBoard))
+            .unwrap()
+            .then(data => {
+              if (handleOpenModalSidebar) {
+                handleOpenModalSidebar();
+              }
+              toggleModal();
+              navigate(`/home/${data.name}`);
+            })
+            .catch(e => toast.error(e));
+        } else return toast.warning('You didn`t change anyting.');
       }}
     >
       {({ errors, touched, setFieldValue }) => (

@@ -30,6 +30,9 @@ export const ColumnForm = ({ column, toggleModal }) => {
       }}
       validationSchema={Schema}
       onSubmit={values => {
+        if (column && column.name === values.name)
+          return toast.warning('You didn`t change anyting.');
+
         dispatch(
           column
             ? editColumn({

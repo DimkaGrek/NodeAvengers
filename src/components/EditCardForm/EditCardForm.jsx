@@ -35,15 +35,33 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
   }, [card, colors, selectedColor]);
 
   const handleSubmit = values => {
-    if (isDeadlineChecked && !values.deadline) {
+    if (!isDeadlineChecked || !values.deadline) {
       values.deadline = new Date().toISOString();
     }
-    dispatch(card ? editCard({ ...values, _id: card._id }) : addCard(values))
-      .unwrap()
-      .then(() => {
-        toggleModal();
-      })
-      .catch(data => toast.error(data.message));
+
+    const updCard = {
+      ...(values.title !== card?.title && { title: values.title }),
+      ...(values.description !== card?.description && {
+        description: values.description,
+      }),
+      ...(values.priority !== card?.priority && { priority: values.priority }),
+      ...(values.deadline !== card?.deadline && { deadline: values.deadline }),
+      ...((card?.columnId && { columnId: card?.columnId }) || { columnId }),
+      ...(currentBoard?._id && { boardId: currentBoard._id }),
+    };
+
+    const hasOtherProperties = Object.keys(updCard).some(
+      key => key !== 'columnId' && key !== 'boardId'
+    );
+
+    if (hasOtherProperties) {
+      dispatch(card ? editCard({ ...values, _id: card._id }) : addCard(values))
+        .unwrap()
+        .then(() => {
+          toggleModal();
+        })
+        .catch(data => toast.error(data.message));
+    } else return toast.warning('You didn`t change anyting.');
   };
 
   return (
@@ -138,7 +156,11 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
                   className={s.checkbox}
                   type="checkbox"
                   checked={isDeadlineChecked}
-                  onChange={e => setIsDeadlineChecked(e.target.checked)}
+                  onChange={e => {
+                    console.log(e.target.checked);
+                    console.log(isDeadlineChecked);
+                    setIsDeadlineChecked(e.target.checked);
+                  }}
                 />
               </div>
               <DatePickerForm

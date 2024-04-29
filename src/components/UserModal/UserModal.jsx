@@ -121,9 +121,7 @@ export const UserModal = ({ toggleModal }) => {
               .catch(error => {
                 toast.error(error.message);
               });
-          } else {
-            toast.warning('You didn`t change anyting.');
-          }
+          } else return toast.warning('You didn`t change anyting.');
         }}
       >
         {({ errors, touched, setFieldValue }) => (
