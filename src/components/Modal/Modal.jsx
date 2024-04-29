@@ -7,7 +7,8 @@ import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modalRoot');
 
-export const Modal = ({ children, toggleModal, title }) => {
+export const Modal = ({ children, toggleModal, title, pad = '' }) => {
+  console.log(pad && pad);
   useEffect(() => {
     const handleEscape = e => {
       if (e.code === 'Escape') {
@@ -32,7 +33,7 @@ export const Modal = ({ children, toggleModal, title }) => {
 
   return ReactDOM.createPortal(
     <div onClick={handleClickOnBackdrop} className={s.modalWrapper}>
-      <div className={s.modalContent}>
+      <div className={s.modalContent} style={{ padding: pad && pad }}>
         <button className={s.closeModalBtn} type="button" onClick={toggleModal}>
           <Icon id="close" className={s.closeModalIcon} size={12} />
         </button>

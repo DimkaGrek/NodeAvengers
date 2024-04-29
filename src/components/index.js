@@ -6,6 +6,7 @@ export * from './Button/Button.jsx';
 export * from './Card/Card.jsx';
 export * from './CardsColumn/CardsColumn.jsx';
 export * from './ColumnForm/ColumnForm.jsx';
+export * from './ConfirmDeleteBoard/ConfirmDeleteBoard.jsx';
 export * from './DashboardHeader/DashboardHeader.jsx';
 export * from './DatePicker/DatePicker.jsx';
 export * from './EditBoardForm/EditBoardForm.jsx';
