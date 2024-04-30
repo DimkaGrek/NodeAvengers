@@ -8,7 +8,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  background-color: var(--background-main-content);
+  background-color: transparent;
 }
 h1,
 h2,
