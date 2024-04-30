@@ -55,7 +55,12 @@ export const ResetPasswordForm = () => {
           {({ errors, touched }) => (
             <Form className={s.form}>
               <div>
-                <Field name="code" type="text" placeholder="Enter your code" />
+                <Field
+                  className="input_field_welcome"
+                  name="code"
+                  type="text"
+                  placeholder="Enter your code"
+                />
                 {errors.code && touched.code ? (
                   <div className={s.input_error}>{errors.code}</div>
                 ) : null}
