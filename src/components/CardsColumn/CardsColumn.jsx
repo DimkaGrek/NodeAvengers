@@ -1,24 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useState } from 'react';
 
-import { Icon, Card, Modal, EditCardForm, ColumnForm } from 'components';
+import {
+  Icon,
+  Card,
+  Modal,
+  EditCardForm,
+  ColumnForm,
+  ConfirmDelete,
+} from 'components';
 
 import { useModal } from '../../hooks';
-import { deleteColumn } from '../../redux/boards/columnOperations.js';
 
 import s from './CardsColumn.module.css';
 
 export const CardsColumn = ({ column }) => {
+  const [deletedColumn, setDeletedColumn] = useState(null);
+
   const [isEditColumnModal, toggleIsEditColumnModal] = useModal();
   const [isAddCardModal, toggleIsAddCardModal] = useModal();
-  const dispatch = useDispatch();
+  const [isConfirmDeleteModal, toggleIsConfirmDeleteModal] = useModal();
 
-  const handleDeleteColumn = id => {
-    dispatch(deleteColumn(id))
-      .unwrap()
-      .catch(() =>
-        toast.error('Something went wrong. Reload page or try again late!')
-      );
+  const handleDeleteColumn = column => {
+    setDeletedColumn(column);
+    toggleIsConfirmDeleteModal();
   };
 
   const addCardButtonLabel =
@@ -32,7 +36,7 @@ export const CardsColumn = ({ column }) => {
           <button onClick={toggleIsEditColumnModal}>
             <Icon id="pencil" className={s.columnTitleIcon} size={16} />
           </button>
-          <button onClick={() => handleDeleteColumn(column._id)}>
+          <button onClick={() => handleDeleteColumn(column)}>
             <Icon id="trash" className={s.columnTitleIcon} size={16} />
           </button>
         </div>
@@ -69,6 +73,19 @@ export const CardsColumn = ({ column }) => {
           </Modal>
         )}
       </div>
+      {isConfirmDeleteModal && (
+        <Modal
+          title={`Are you sure you want to delete "${deletedColumn.name}" column?`}
+          toggleModal={toggleIsConfirmDeleteModal}
+          pad="35px"
+        >
+          <ConfirmDelete
+            toggleModal={toggleIsConfirmDeleteModal}
+            id={deletedColumn._id}
+            name="column"
+          />
+        </Modal>
+      )}
     </div>
   );
 };
