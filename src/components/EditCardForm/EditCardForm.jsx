@@ -26,6 +26,7 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
   const [isDeadlineChecked, setIsDeadlineChecked] = useState(
     card ? !!card.deadline : false
   );
+
   useEffect(() => {
     if (card && card.priority && !selectedColor) {
       setSelectedColor(card.priority);
@@ -45,7 +46,8 @@ export const EditCardForm = ({ toggleModal, columnId, card }) => {
         description: values.description,
       }),
       ...(values.priority !== card?.priority && { priority: values.priority }),
-      ...(values.deadline !== card?.deadline && { deadline: values.deadline }),
+      ...((!isDeadlineChecked && { deadline: null }) ||
+        (values.deadline !== card?.deadline && { deadline: values.deadline })),
       ...((card?.columnId && { columnId: card?.columnId }) || { columnId }),
       ...(currentBoard?._id && { boardId: currentBoard._id }),
     };
