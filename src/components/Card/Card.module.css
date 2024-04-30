@@ -6,9 +6,9 @@
   padding: 14px 20px 14px 20px;
   position: relative;
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 350px) {
   .cardWrapper {
-    width: 280px;
+    width: 265px;
   }
 }
 .cardTitle {
