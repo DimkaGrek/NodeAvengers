@@ -40,7 +40,10 @@ export const CardsColumn = ({ column }) => {
 
       <div className={s.cardsContainer}>
         {column.cards.length !== 0 &&
-          column.cards.map(card => <Card key={card._id} card={card} />)}
+          column.cards
+            .slice()
+            .reverse()
+            .map(card => <Card key={card._id} card={card} />)}
       </div>
 
       <button className={`${s.addCardBtn}`} onClick={toggleIsAddCardModal}>
