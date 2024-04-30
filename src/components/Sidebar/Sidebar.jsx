@@ -9,7 +9,7 @@ import {
   Modal,
   EditBoardForm,
   NeedHelpForm,
-  ConfirmDeleteBoard,
+  ConfirmDelete,
 } from 'components';
 
 import { useModal } from '../../hooks/useModal';
@@ -212,11 +212,11 @@ export const Sidebar = ({ handleOpenModalSidebar }) => {
       )}
       {isModalConfirmDelete && (
         <Modal
-          title={`Are you sure you want to delete ${deletedBoard.name}?`}
+          title={`Are you sure you want to delete "${deletedBoard.name}" board?`}
           toggleModal={toggleIsModalConfirmDelete}
           pad="35px"
         >
-          <ConfirmDeleteBoard
+          <ConfirmDelete
             toggleModal={toggleIsModalConfirmDelete}
             id={deletedBoard._id}
           />

@@ -6,14 +6,15 @@ import { Loader, Button } from 'components';
 import { deleteBoard } from '../../redux/boards/boardsOperations';
 import { selectIsLoading } from '../../redux/boards/boardsSlice';
 
-import s from './ConfirmDeleteBoard.module.css';
+import s from './ConfirmDelete.module.css';
+import { deleteColumn } from '../../redux/boards/columnOperations';
 
-export const ConfirmDeleteBoard = ({ toggleModal, id }) => {
+export const ConfirmDelete = ({ toggleModal, id, name = 'board' }) => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
 
-  const handleDelete = boardId => {
-    dispatch(deleteBoard(boardId))
+  const handleDelete = id => {
+    dispatch(name === 'board' ? deleteBoard(id) : deleteColumn(id))
       .unwrap()
       .then(() => toggleModal())
       .catch(() =>
